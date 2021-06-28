@@ -1,0 +1,13 @@
+ // An RPN-like expression language
+ %import ast
+ %ignore /[ \t]+/
+ %%
+ E -> E E '+'                            %{ return ast.Plus (n1, n2) %}
+    | E E '-'                            %{ return ast.Minus (n1, n2) %}
+    | E E '*'                            %{ return ast.Minus (n1, n2) %}
+    | E E '/'                            %{ return ast.Minus (n1, n2) %}
+    |  E '!'                             %{ return ast.Not (n1) %}
+    | Primary                            %{ return ast.Primary (n1) %}
+    ;
+ Primary -> Integer       %{ return ast.Integer (n1) %} ;
+ Integer -> /-?[0-9]+/      %{ return int (n1) %} ;

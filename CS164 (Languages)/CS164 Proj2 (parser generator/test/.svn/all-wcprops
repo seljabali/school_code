@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/cs164/The_OLBs/!svn/ver/45/trunk/proj2/test
+END
+cvg_summary.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/cs164/The_OLBs/!svn/ver/45/trunk/proj2/test/cvg_summary.xml
+END
+sanity.grm
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/cs164/The_OLBs/!svn/ver/28/trunk/proj2/test/sanity.grm
+END
+err-sanity.grm
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/test/err-sanity.grm
+END
+.config
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/cs164/The_OLBs/!svn/ver/45/trunk/proj2/test/.config
+END
+report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/cs164/The_OLBs/!svn/ver/45/trunk/proj2/test/report.xml
+END
+sanity.grm.out
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/test/sanity.grm.out
+END

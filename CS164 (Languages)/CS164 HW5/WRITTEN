@@ -1,0 +1,44 @@
+
+==Ras Bodik has given us an extension==
+Static Checks:
+**************
+1) We can static check if an array's boundaries are explicitly being exceeded or not. For example:
+var arr:Array = [1,2,3,4];
+
+we then dereference arr[7]. 
+
+2) Have nested classes checked:
+Have 
+
+3) Check if the number of parameters being passed to a function is the same in number as in the function declaration.
+ 	This can be done by having a table which tracks all functions and the number of parameters that they take in.
+
+
+4) Every time a class's attributes is being called, we can check whether or not those attributes exist or not. 
+For example 
+class Foo{
+	var a:Number = 5
+	function Bar....
+}
+foo = new Foo();
+now if we were to say foo.c this would lead to an error. 
+
+
+5) Check if a class has a class doesn't have a constructor, if not then have cygen insert a dummy constructor that empty.  
+
+Dynamic Checks:
+***************
+1) Before every dereference check if the variable is pointing to null, and if it is don't deference to avoid corruption. 
+
+2) Check casts:
+class Dog {}
+class Dogma extends Dog {}
+
+
+Dog dogwood = new Dogma(); // We can check whether this upcast valid or not?
+
+3) Dynamically check classes that are made at run time and see if they access correct attributes. 
+
+4) We can check if an array's boundaries are being exceeded or not dynamically.
+
+5) Check to see if indices of array's are numbers and not anything else dynamically.

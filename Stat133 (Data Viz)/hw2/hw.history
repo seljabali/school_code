@@ -1,0 +1,56 @@
+file = file("/Users/samieljabali/Desktop/Stathw1.txt")
+data = read.csv(file)
+f1 = data$Flow1
+f2 = data$Flow2
+f3 = data$Flow3
+boxplot(f1,f2,f3)
+summary(f2)
+summary(f3)
+o1 = data$Occ1
+o2 = data$Occ2
+o3 = data$Occ3
+plot(f3,col="red", main = "Flow vs Occupancy of Lane 3", xlab="Flow: Red | Occupancy: Green",ylab="")
+boxplot(f1, f2, f3, main = "Traffic Flow(Cars vs Time)", xlab = "Lanes 1, 2, and 3", ylab="Number of cars")
+plot(f3,col="red", main = "Flow vs Occupancy of Lane 3", xlab="Flow: Red | Occupancy: Green",ylab="")
+plot(f1, col="green", xlab = "Lane 1: Green | Lane 2: Blue | Lane 3: Red", ylab = "Number of cars", main = "3 Lanes of Traffic(Cars Vs Time)")
+points(f2, col="blue")
+points(f3, col="red")
+plot(f1,col="red", main = "Flow vs Occupancy of Lane 1", xlab="Flow: Red | Occupancy: Green",ylab="")
+par(new=T)
+plot(o1,col="green", xlab="",ylab="")
+file = file("http://www.stat.berkeley.edu/users/nolan/stat133/data/wireless.txt")
+data = read.csv(file)
+file = file("/Users/samieljabali/Desktop/stathw2.txt")
+data = read.csv(file)
+data
+names(data)
+data[x]
+data["x"]
+dim(data)
+data2 = read(file)
+data2 = readtable(file)
+data2 = read.table(file)
+?read
+?read.table
+data2 = read.table(file,header = TRUE, sep = " ")
+file
+file = file("/Users/samieljabali/Desktop/stathw2.txt")
+data2 = read.table(file,header = TRUE, sep = " ")
+data2
+AP = c(data2$x,data2$y)
+ap
+AP
+AP[] = c(data2$x,data2$y)
+AP
+dim(AP)
+AP
+AP[1] = data2$x
+AP = []
+AP = c(1,2)
+file = file("/Users/samieljabali/Desktop/stathw2.txt")
+data2 = read.table(file,header = TRUE, sep = " ")
+ss = data.frame(x=data2$x[1:254], y=data2$y[1:254], signal = c(data2$S1[1:254], data2$S2[1:254], data2$S3[1:254],data2$S4[1:254],data2$S5[1:254]), accessPoints = rep(c(1,2,3,4,5), c(254,254,254,254,254)), client = rep(c(1:254),5))
+ss = data.frame(x=data2$x[1:254], y=data2$y[1:254], signal = c(data2$S1[1:254], data2$S2[1:254], data2$S3[1:254],data2$S4[1:254],data2$S5[1:254]), accessPoints = rep(c(1,2,3,4,5), c(254,254,254,254,254)), client = rep(c(1:254),5))
+AP = data.frame(x=data2$x[250:254], y = data2$y[250:254])
+AP
+ss

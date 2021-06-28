@@ -1,0 +1,18 @@
+ %import ast
+ %left '+' '-'
+ %left '*' '/'
+ %right '!'
+ %%
+ E -> E '+' E                            %{ return ast.Plus (n1, n3) %}
+    | E '-' E                            %{ return ast.Minus (n1, n3) %}
+    | E '*' E                            %{ return ast.Mult (n1, n3) %}
+    | E '/' E                            %{ return ast.Div (n1, n3) %}
+    | '!' E                              %{ return ast.Not (n2) %}
+    | '+' E  %prec '!'                   %{ return ast.UPlus (n2) %}
+    | '-' E  %prec '!'                   %{ return ast.UMinus (n2) %}
+    | 'if' E 'then' E           %dprec 1 %{ return ast.If (n2, n4) %}
+    | 'if' E 'then' E 'else' E  %dprec 2 %{ return ast.If (n2, n4, n6) %}
+    | Primary                            %{ return ast.Primary (n1) %}
+    ;
+ Integer -> /[0-9]+/      %{ return int (n1) %} ;
+

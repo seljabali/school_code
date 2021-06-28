@@ -1,0 +1,32 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Enter New Song"} %>
+
+<form action="/track/create/" method="post">
+<table border="0" cellpadding="5" cellspacing="0">
+<tr>
+<td><label for="track_album_id">Album: </label></td>
+<td><select name="track[album_id]">
+<% @albums.each do |album| %>
+	<option value="<%= album.id %>">
+	<%= album.artist.name %> / <%= album.name %>
+	</option>
+<% end %></select></td>
+</tr>
+<tr>
+<td><label for="track_name">Name: </label></td>
+<td><input id="track_name" name="track[name]" size="40" type="text" /></td>
+</tr>
+<td><label for="track_number">Number: </label></td>
+<td><input id="track_number" name="track[number]" size="10" type="integer" /></td>
+</tr>
+<tr>
+<td><label for="length">Length: </label></td>
+<td><input id="track_length" name="track[length]" size="10" type="integer" /></td>
+</tr>
+</table>
+<br>
+<input name="commit" type="submit" value="Create" />
+</form>
+
+</body>
+</html>

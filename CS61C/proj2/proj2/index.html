@@ -1,0 +1,641 @@
+<!-- Project 02: sprintf for MIPS -->
+<html>
+<head>
+<title>CS61C - Summer 2006 - Project 2</title>
+
+<!--
+<style type="text/css">
+html { margin: 0px; padding: 0px; }
+body { font-family: Trebuchet MS, Helvetica, Arial, sans-serif; margin: 0px; padding: 20px; border-left: 25px solid #008; font-size: 0.8em; }
+p, li { font-family: Trebuchet MS, Helvetica, Arial, sans-serif;  }
+h1, h2, h3, h4 { font-family: Georgia, Times, Times New Roman, serif; margin-left: -10px; margin-right: -10px; }
+h1 { text-align: center; color: darkblue; }
+h2 { border-bottom: 3px double silver; text-align: center; color: silver;  }
+h3 { border-top: 2px solid silver; margin-top: 40px; }
+pre { background-color: #FFC; border: 1px dotted #CC7; padding: 10px; }
+a, a:link { border: 1px solid white;  }
+a:hover { border: 1px solid blue; text-decoration: none; background-color: #EFF; }
+</style>
+-->
+</head>
+
+<body>
+
+<center>
+<h3>CS61C - Summer 2006</h3>
+<h1>Project 2<br>Towers of Hanoi and sprintf</h1>
+
+<p><img src="figures/TowersOfHanoi_1000.gif">
+</center>
+
+
+<p><center><b>TA in charge</b>:
+<a href="mailto:cs61c-tb@imail.eecs.berkeley.edu">Michael</a> (cs61c-tb@imail.eecs.berkeley.edu)
+<!--<br><i><b><font color=#ff0000>Last updated on Oct 06, 2005, 15:50</font></b></i>-->
+</center>
+
+<!--<h2>0. Changes</h2>
+<ul>
+<li><b>Oct 06, 2005 @ 19:56</b>: changed Towers of Hanoi output to make it easier to print (<i>see <a href=#towerout>Tower of Hanoi Output</a> section</i>)
+<li><b>Oct 06, 2005 @ 15:50</b>: updated how characters are passed to <code>sprintf</code> (<i>see <a href=#misc>Misc Notes</a> section</i>)
+</ul>
+-->
+
+<h2>1. Goals</h2>
+
+<p>The purpose of this project is to familiarize you with the details of
+the MIPS calling convention and enhance your assembly programming
+skills.
+
+<p><hr width=75%>
+
+<h2>2. Administrative Requirements</h2>
+
+<p>To submit your project, create a directory named <code>proj2</code> that
+contains your <code>sprintf.s</code> and <code>hanoi.s</code> file. From within that directory, type "<code>submit
+proj2</code>".
+
+<p>The deadline to submit your project is <b><font color=#00000>11:59pm</font></b> on <b><font color=#000000>Friday, July 28th</font></b>. <!--<br><i>Note: Because you have a midterm the following Monday (October 17, 2005), it is in your best interest to finish by Wednesday, October 12th.</i>-->
+
+<p>This is an individual project, not to be done in partnership.  Submit in your own work. Remember, you are allowed to discuss approaches, but <b>NOT</b> solutions.
+
+<p><hr width=75%>
+
+<h2>3. Disclaimer</h2>
+
+<p>This document mentions certain test cases.  However, this
+input/output behavior is not a comprehensive specification of all
+possible behavior.  Therefore, even if your project submission passes
+all of the test cases mentioned here, it may not be entirely correct.
+We strongly urge you to create test cases in addition to the ones
+provided here.
+
+<p><hr width=75%>
+
+<h2>4. Background</h2>
+
+<h4>4.1 Tower of Hanoi</h4>
+
+<p>The Tower of Hanoi (commonly also known as the "Towers of Hanoi"), is a puzzle invented by E. Lucas in 1883. The puzzle is simply this: given a stack of n disks arranged from largest on the bottom to smallest on top placed on a peg, together with two empty pegs, what are the minimum number of moves required to move the stack from one rod to another, where moves are allowed only if they place smaller disks on top of larger disks.
+
+
+<h4>4.2 MIPS Stack Management</h4>
+
+<p>By now, you should know how to manage the stack when writing functions in MIPS. Let's assume you have a function <tt>light_blue</tt>, which calls a function <tt>dark_blue</tt>. The very first thing that <tt>light_blue</tt> does is to allocate space in the stack for its variables (prolog). In Figure 1 (middle) we can see that it allocates space for 4 words. <tt>light_blue</tt> eventually calls <tt>dark_blue</tt>, which allocates space for its own variables. Figure 1 (right) shows that <tt>dark_blue</tt> has allocated space for 2 words.
+
+
+<p>
+<table border=1 align=center>
+<tr><td>
+<table border="0" align=center>
+	<tr>
+		<td><img src="figures/stack.0.jpg"></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td><img src="figures/stack.1.1.jpg"></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td><img src="figures/stack.1.2.jpg"></td>
+	</tr>
+</table>
+</td></tr>
+<tr>
+	<td colspan=5 align=center>&nbsp;<br><b>Figure 1</b> -- Typical Stack<br>&nbsp;</b></td>
+</tr>
+</table>
+
+
+<h4>4.3 MIPS Argument Passing</h4>
+
+<p>The MIPS function calling convention uses registers <code>$a0-$a3</code> for passing arguments down to functions. If there are more than four, the remaining arguments are passed on the stack. How is this mixed with the normal stack managing? Each argument gets one word of stack space (Why one word?). Suppose we are trying to write in MIPS assembler a program like this:
+
+<pre>
+    int dark_blue (int lvl, int hp, int mp, int str, int agl, int spd, int intel, int vit, int ftg) {
+
+         int a;
+         ...
+         a = spd;
+         ...
+    }
+
+    int light_blue () {
+         int c, d, e;
+         ...
+         dark_blue (c, d, e, 62, 25, 99, 47, 29, 1);
+         ...
+    }
+</pre>
+
+<p>Procedure <tt>dark_blue</tt> has nine integer arguments. The first four arguments are placed on $a0-$a3 as expected. The remaining arguments are "spilled" onto the stack as part of the caller's (<tt>light_blue</tt>) stack frame. In other words, <tt>light_blue</tt>, not <tt>dark_blue</tt>, must allocate the space needed for the remaining arguments.
+
+<p>Figure 2 shows this stack management method. <tt>light_blue</tt> now allocates space in the stack for its variables <b>and</b> the arguments that it will use to call <tt>dark_blue</tt>. We can see in Figure 2 (middle) that it allocates space for 9 words: 4 for its own consumption, and 5 more for the spilled arguments in calling <tt>dark_blue</tt>
+
+<p><tt>light_blue</tt> eventually calls <tt>dark_blue</tt> that then allocates space for its own variables. Figure 2 (right) shows that <tt>dark_blue</tt> has allocated space for 2 words. Note that <tt>dark_blue</tt> can access to the 5 arguments by accessing to the beginning of the stack reserved by its caller process (<tt>light_blue</tt>).
+
+
+<p>
+<table border=1 align=center>
+<tr><td>
+<table border="0" align=center>
+	<tr>
+		<td><img src="figures/stack.0.jpg"></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td><img src="figures/stack.2.1.jpg"></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td><img src="figures/stack.2.2.jpg"></td>
+	</tr>
+</table>
+</td></tr>
+<tr>
+	<td colspan=5 align=center>&nbsp;<br><b>Figure 2 - Stack with Spilled Arguments<br>&nbsp;</td>
+</tr>
+</table>
+
+<p>The 5 spilled arguments (patterned light-blue stack) are located at the lower addresses of <tt>light_blue</tt>'s stack frame.
+
+<p>That is, <tt>light_blue</tt> will use <code>0($sp)</code> to store the argument <code>agl</code>, <code>4($sp)</code> to store the argument <code>spdy</code>, and so on. Therefore, <tt>dark_blue</tt> will use <code>8($sp)</code> to access to the argument <code>agl</code>, <code>12($sp)</code> to access to the argument <code>spd</code>, and so on.
+
+<p>Note that the first spilled argument is always at the caller's stack frame lowest address, and the last spilled argument at the highest address. You have to be consistent about this so that <tt>dark_blue</tt> knows which argument is which.
+
+<pre>
+light_blue:
+	# prolog
+        addi $sp, $sp, -16  # allocate stack space for 4 words:
+                            # $ra, c, d, and e
+        sw   $ra, 12($sp)   # save $ra
+                            # use 0($sp) to save c ($t0) when needed
+                            # use 4($sp) to save d ($t1) when needed
+                            # use 8($sp) to save e ($t2) when needed
+
+	# body
+
+        ...
+
+        addi $t0, $0, 3     # assume this holds the value of c
+        addi $t1, $0, 4     # assume this holds the value of d
+        addi $t2, $0, 5     # assume this holds the value of e
+
+        ...
+
+	# this is the call to dark_blue
+        addi $sp, $sp, -20  # allocate stack space for 5 "spilled" words (patterned
+                            #   light-blue): the args agl, spd, intel, vit, fatigue
+        sw   $t0, 20($sp)   # save c before calling dark_blue
+        sw   $t1, 24($sp)   # save d before calling dark_blue
+        sw   $t2, 28($sp)   # save e before calling dark_blue
+
+        add  $a0, $0, $t0   # arg lvl = c
+        add  $a1, $0, $t1   # arg hp = d
+        addi $a2, $0, $t2   # arg mp = e
+        addi $a3, $0, 62    # arg str = 62
+        addi $t0, $0, 25    # arg agl = 25, but no more registers
+        sw   $t0, 0($sp)    #   so pass on the stack
+        addi $t0, $0, 99    # arg spd = 99, but no more registers
+        sw   $t0, 4($sp)    #   so pass on the stack
+        addi $t0, $0, 47    # arg intel = 47, but no more registers
+        sw   $t0, 8($sp)    #   so pass on the stack
+        addi $t0, $0, 29    # arg vit = 29, but no more registers
+        sw   $t0, 12($sp)   #   so pass on the stack
+        addi $t0, $0, 1     # arg ftg = 1, but no more registers
+        sw   $t0, 16($sp)   #   so pass on the stack
+        jal  dark_blue
+        addi $sp, $sp, 20   # restore stack space used for calling dark_blue
+
+        ...
+
+	# epilog
+        lw   $ra, 12($sp)   # reload return address
+        addi $sp, $sp, 16   # restore stack space
+        jr   $ra            # return to caller
+
+
+	...
+
+
+dark_blue:
+	# prolog
+        addi $sp, $sp, -8   # allocate stack space for 2 words:
+                            # $ra, a
+        sw   $ra, 4($sp)    # save $ra
+                            # use 0($sp) to save a when needed
+
+	# body
+
+        ...
+
+        add  $t0, $0, $a1   # get argument hp
+        lw   $t1, 20($sp)   # *** (see below)
+                            # 8 (dark_blue's frame) + 12 = 20 up on stack
+                            # fetched argument vit
+        ...
+
+	# epilog
+        lw   $ra, 4($sp)    # reload return address
+        addi $sp, $sp, 8    # restore stack space
+        jr   $ra            # return to caller
+</pre>
+
+<p>The instruction indicated by "***" is the key to understanding the stack method of argument passing.  Function <code>dark_blue</code> is referring to a word of stack memory that is from the caller's stack frame.  Its own frame includes only the two words 0($sp) and 4($sp).
+
+<p><hr width=75%>
+
+<h2>5. Project Description</h2>
+
+<h4>5.1 Setup</h4>
+
+<p>Copy the contents of ~cs61c/public_html/su06/hw/proj2 to a suitable location in your home directory.
+
+<pre>
+  % cd ~
+  % cp -r ~cs61c/public_html/su06/hw/proj2 ~/proj2
+</pre>
+
+You should have <code>hanoi.s</code>, <code>sprintf.s</code>, <code>test.hanoi.s</code>, <code>test.sprintf.s</code>, and <code>Makefile</code> in <code>~/proj2</code>. Your implementations must go in <code>hanoi.s</code> and <code>sprintf.s</code>. Test files are given to help you out, but they are by no means comprehensive tests. We strongly urge you to create test cases in addition to the ones provided here.
+
+<h4>5.2 sprintf</h4>
+
+<p>The first part of your project will be partially implementing the C sprintf function (see 'man sprintf') in MIPS. You will then use this function to record moves in solving the Tower of Hanoi problem. This is the function prototype for sprintf:
+
+<pre>
+  int sprintf (char *outbuf, char *format, ...)
+</pre>
+
+<p><code>sprintf</code> works like <code>printf</code>, except that it writes to the string <code>outbuf</code> instead of to standard output. <code>outbuf</code> is assumed already to point to allocated memory sufficient to hold the generated characters. Your function <b>must</b> accept any number of arguments passed according to the MIPS standard convention.
+
+<p>The first argument is the address of a character array into which your procedure will put its results. The second argument is a format string in which each occurrence of a percent sign (%) indicates where one of the subsequent arguments is to be substituted and how it is to be formatted. The remaining arguments are values that are to be converted to printable character form according to the format instructions. <code>sprintf</code> returns the number of characters in its output string not including the null at the end.
+
+<p>You do not have to do any error checking (e.g. comparing the number of arguments to the number of % specifications).  You also do not have to implement all of the formatting options of the real sprintf.  Here are the ones you are to implement:
+<ul>
+<li><b>%d</b>: signed integer argument to signed decimal (treat the next argument as a signed integer and output in decimal)
+
+<li><b>%o</b>: unsigned integer argument to unsigned octal (treat the next argument as a unsigned integer and output in octal)
+
+<li><b>%c</b>: character argument copied to output (treat the low byte of the argument word as a character and copy it to the output)
+
+<li><b>%s</b>: include a string of characters in output (treat the argument as a pointer to a null-terminated string to be copied to the output)
+
+<li> <b>%f</b>: floating-point number (treat the argument as a 32-bit word containing a IEEE 754, single-precision floating point number, and copy its value to the output following the guidelines mentioned below)
+
+</ul>
+
+<p>Don't implement width or precision modifiers (e.g., %6d ).
+
+<br>
+<h4>5.2.1 Floating-Point Formatting</h4>
+
+<p>Formatting floating-point numbers is a hard problem. Therefore, we will use a different format than what the real sprintf produces.
+
+<p>Remember that the <a href="http://www.duke.edu/~twf/cps104/floating.html">IEEE 754 standard</a> defines 5 different encodings for single-precision FP numbers: zero, normalized numbers, denormalized numbers, NaN, and infinity. We want your
+<tt>sprintf</tt> implementation to support all of them. The good thing is that, for 4 out of the 5 encodings, you'll just copy to the output buffer the sign and a string stating what encoding uses the number (0, denorm, Inf, or NaN). You must only develop the real value for normalized numbers, and in that case, you will format the mantissa in binary, and the exponent in decimal.
+
+
+<p>
+<table BORDER CELLPADDING=7 align=center>
+	<tr VALIGN=top>
+		<td colspan=2 align=center><b>Single Precision</b></td>
+		<td rowspan=2 valign=center><b>Object Represented</b></td>
+		<td rowspan=2 align=center valign=center><b>What you must write into the buffer</b></td>
+	</tr>
+	<tr>
+		<td>Exponent</td><td>Mantissa</td>
+	</tr>
+	<tr>
+		<td>0</td><td>0</td>
+		<td>zero</td>
+		<td>[-]0</td>
+	</tr>
+	<tr>
+		<td>0</td><td>nonzero</td>
+		<td>&plusmn; denormalized number</td>
+		<td>[-]denorm</td>
+	</tr>
+	<tr>
+		<td>1-254</td><td>anything</td>
+		<td>&plusmn; normalized number*</td>
+		<td>[-]<i>mantissa_in_binary</i>_2 x 2^([-]<i>exponent_in_decimal</i>)</td>
+	</tr>
+	<tr>
+		<td>255</td><td>0</td>
+		<td>&plusmn; infinity</td>
+		<td>[-]inf</td>
+	</tr>
+	<tr>
+		<td>255</td><td>nonzero</td>
+		<td>NaN (Not a Number)</td>
+		<td>[-]NaN</td>
+	</tr>
+	<tr><td colspan=4><font size=2><i>* Note that there is a "_2 x " after the mantissa when it is printed out</td></tr>
+</table>
+</p>
+
+
+
+<p>Consider the following piece of code:
+
+
+<pre>
+	.data
+__buffer:
+	.space  200
+__format:
+	.asciiz "%f"
+__float:
+	# here goes the code in the table's left column
+	***
+
+	.text
+
+	addi $sp, $sp, -20          # space for the stack of parameters
+	la   $t0, __buffer
+	sw   $t0, 0($sp)            #  0($sp): __buffer
+	la   $t0, __format
+	sw   $t0, 4($sp)            #  4($sp): __format
+	la   $t0, __float
+	lw   $t0, 0($t0)
+	sw   $t0, 8($sp)            #  8($sp): __float   (%f)
+	jal  sprintf
+</pre>
+
+<p>The following table shows some examples of how your <tt>sprintf</tt> code
+must deal with different floating point values. The left column of the
+table shows what goes in the line indicated by
+"***", and the right column what sprintf must write into the output
+buffer.
+
+<p><table border cellpadding=7 align=center>
+	<tr><td><b>Code in "***"</b></td><td><b>Output Buffer</b></td></tr>
+	<tr><td>.word 0xffff0000</td><td>-NaN</td></tr>
+	<tr><td>.word 0x7f800000</td><td>inf</td></tr>
+	<tr><td> .word 0x00100000</td><td>denorm</td></tr>
+	<tr><td> .word 0x80000000</td><td>-0</td></tr>
+	<tr><td> .float 1.2e25</td><td>1.00111101101000110010101_2 x 2^(83)</td></tr>
+	<tr><td> .float 1048576.5</td><td>1.000000000000000000001_2 x 2^(20)</td></tr>
+	<tr><td> .float 1048576.125</td><td>1.00000000000000000000001_2 x 2^(20)</td></tr>
+	<tr><td> .float 1048576.0625</td><td>1.0_2 x 2^(20) </td></tr>
+	<tr><td> .float 0.5078125</td><td>1.000001_2 x 2^(-1)</td></tr>
+	<tr><td> .float -0.03125</td><td>-1.0_2 x 2^(-5)</td></tr>
+	<tr><td> .float +1.125</td><td>1.001_2 x 2^(0)</td></tr>
+	<tr><td> .float -1.25</td><td>-1.01_2 x 2^(0)</td></tr>
+	<tr><td> .float -1.5</td><td>-1.1_2 x 2^(0)</td></tr>
+	<tr><td> .float -1.0</td><td>-1.0_2 x 2^(0)</td></tr>
+</table>
+
+<h4>5.3 Tower of Hanoi</h4>
+
+<p>The next part of your project is to write a MIPS assembly language implementation of a function that will fill a character array with the list the moves needed to solve a Tower of Hanoi puzzle of size n, where n is a positive integer (i.e. n > 0). If we asked to write this in Scheme, your code may look like this:
+
+<pre>
+  (define (hanoi peg1 peg2 peg3 discs)
+    (if (= discs 1)
+        (list (cons peg1 peg3))
+        (append (hanoi peg1 peg3 peg2 (- discs 1))
+                (append (list (cons peg1 peg3))
+                        (hanoi peg2 peg1 peg3 (- discs 1))))))
+</pre>
+
+<p>The C prototype for the function you are implementing is as follows:
+
+<pre>
+  void hanoi(char* result, char peg1, char peg2, char peg3, int discs);
+</pre>
+
+<p><code>result</code> will be a buffer you will write your result into using the <code>sprintf</code> function you wrote in the previous part. <code>peg1</code>, <code>peg2</code>, and <code>peg3</code> will be names of the pegs. <code>discs</code> is the number of discs to move. You can assume <code>result</code> will have more than enough space to output your result and <code>discs</code> will only be passed integers greater than 0. If you have not noticed, there are 5 variables to hanoi. Based on what you have been discussed in this project, it should be clear which variables will appear where.
+
+<p>When your Tower of Hanoi function returns, the output buffer should be similar to the line below:
+
+<pre>
+    (a . c)(a . b)(c . b)(a . c)(b . a)(b . c)(a . c)\0
+</pre>
+
+<p>In other words, there are no leading whitespaces, no spaces between the pairs, and no trailing whitespace after the list of pairs. Like any C string, it is null terminated. Do <b>NOT</b> terminate the buffer with a newline character. It will be added by the call to SPIM's <code>printf</code> function.
+
+<h4>5.4 Testing</h4>
+
+<p>To test your <code>sprintf</code>, you need to load two files in the correct order: run xspim (or spim), load <code>test.sprintf.s</code>, then load <code>sprintf.s</code>. Finally, run your program. Testing your Tower of Hanoi MIPS implementation is similar to testing <code>sprintf</code>--loading <code>test.hanoi.s</code>, then <code>sprintf.s</code>, and finally <code>hanoi.s</code>. The following <a HREF="Makefile">Makefile</a> may make your life easier. <code>make sprintf</code> will test your sprintf implementation and <code>make hanoi</code> will test your Tower of Hanoi implementation. <i>Note: certain errors will not be reported by spim/xspim to you if you use the Makefile</i>
+
+<h4>5.5 Submission Details</h4>
+
+<p>From within the directory containing your code, run <code>submit proj2</code>. You must include the following files: <code>sprintf.s</code>, <code>hanoi.s</code>, and <code>README</code>. Additionally, make sure no labels in your solutions begin with '__'. The testing framework will use labels that begin with __.
+
+
+<p><hr width=75%>
+
+<h2>6. Miscellaneous Requirements</h2>
+
+<ul>
+<li>Obey all register conventions in this project: return the number of characters in $v0 and do not use $s<i>x</i> registers without saving them first. In particular, remember that the $a<i>x</i> registers are temporary registers, so they will be clobbered by any function call. Points will be deducted for violations of these conventions.  Your <code>sprintf</code> function must work with the main function supplied in <code>test.sprintf.s</code> (as well as work with <code>hanoi.s</code>).
+<p>
+<li>Addenum to the register conventions -- <code>$sp</code> points to the <u>lowest occupied</u> space of the stack. This means you will need to move the stack pointer (i.e. <code>addi $sp, $sp, 4</code>) befor using the 0th offset of the stack pointer (i.e. <code>sw $ra, 0($sp)</code>).
+<p>
+<li>You <b>MUST</b> comment your MIPS code.  The readers will read it, and they need to be able to quickly understand what every section does.  A common style for commenting assembly is to include a long introductory comment before every block of assembly statements, with a short comment after every line telling what it does.  The introductory comment must describe the algorithm that the following block implements.  The line-by-line comments must just be an easy-to-read version of the assembly code, using real variable names and perhaps more C-like constructs.  If your code ends up being at least as much comment as code, this is probably a sign that you are doing a good job of commenting.
+<p>
+<li>Put your login name, section, and TA information at the top of <code>hanoi.s</code> and <code>sprintf.s</code>.
+
+</ul>
+
+<p><hr width=75%>
+
+<a name=misc>
+<h2>7. Extra notes to help you:</h2>
+<ul>
+<li><b>Minimum-Effort Digit Formatting</b>: For all the number formatting cases, you must minimize the number of digits your <tt>sprintf</tt> prints. For example, if the user tries to format the number 19 (decimal), your sprintf must format it as "10011" in binary, and not as, say, "00010011". Note, though, that when formatting the mantissa in FP numbers, the part to the right of the decimal point must have at least one digit, i.e., sprintf must format 1.0 as "1.0_2 x 2^(0)", not as "1._2 x 2^(0)".
+<p>
+<li><b>Unsupported Format Specifiers</b>: Your code does not need to handle any cases that are not mentioned here.  For example, if you encounter a format string with the sequence %% or %t, you must copy to the output just the last character, "%" or "t" respectively. That is, an unsupported escape sequence must <b>ONLY</b> copy the character following the %.  However, your code should not crash under these circumstances. It must continue processing the rest of the string.
+<p>
+<li><b>Spaces between '%' and format char</b>: Apparently, the original sprintf will interpret the format string "Hello % d\n" the same as "Hello %d\n". However, in this project you will assume that if the % sign is followed by a space, this is an unsupported escape sequence, and therefore you must print the space.
+<p>
+<li><b>Calling Convention</b>: Imagine that you have a subfunction that only your sprintf function calls.  Could you violate the calling convention?  For example, can you have the subfunction modify $t0 and leave a useful value in it for sprintf?  Can you use $s6 knowing that it will not be used by other parts of sprintf?  Certainly your code could work and still be violating the calling convention.  However, suppose that I want to use your subfunction in my code.  If I try
+this, it won't work.  Similarly, suppose I want to insert a different version of the subfunction into your code.  This will not work either because your sprintf is executing the subfunction to modify $t0 in a useful way.  This may seem unlikely but as the code that you work with gets bigger and bigger, adhering to calling conventions becomes more and more important.  So, when you write subfunctions, do as this spec says and <b>OBSERVE THE CALLING CONVENTION</b>.  You will be graded on this!!
+<p>
+<li><b>32 bits and octal printing</b>: Because 32 is not divisible by three, you can assume there is a 33rd bit that is zero.
+<p>
+<li><b>Character Passing</b>: Characters are stored as if they are a 32-bit value instead of a 8-bit value. This means, if they are passed via <code>$a0-$a3</code>, they get their own registers; and if they are passed via the stack, they get their own word (i.e. use <code>lw</code> to read a character argument from the stack, do <b>NOT</b> use <code>lb/lbu</code>).
+
+<!--
+<li><b>MIPS Calling Convention and Stack</b>: Due to mass confusion that
+might happen in the near and distant future regarding the MIPS calling
+convention and its application to this project, a <a href="stackIssues.htm">webpage</a> describes it in gory detail.
+-->
+
+<!--<li><b>sprintf 4 Arguments Management</b>: Note that the we deviate slightly
+from the proper MIPS stack conventions (see page 88 of the P&amp;H 3rd
+book). These state that the callee should always expect its first 4
+arguments in the $a0-$a3 registers, and if it needs more arguments, it
+should get them from the stack (allocating stack space for the first 4).
+In other words, a proper MIPS function should not get the first 4
+arguments from the caller's stack (though it has to consider the space for
+those 4 arguments when accessing the others, of course).
+
+
+<p>Here is where we deviate. For this project, your sprintf function
+will assume that:
+<ul>
+	<li>The contents of the first 4 words of the caller stack are the
+		valid source for the first 4 parameters, instead of the
+		$a0-$a3 registers (again, this is a clear break of the
+		MIPS convention). You must access to the first 4 arguments
+		through the stack.
+	<li>The caller will always pass the parameters through the stack,
+		even if there are less than 4 arguments (this is another
+		clear break of the MIPS convention. Note, though, that
+		this may help in your implementation).
+</ul>
+
+<p>In conclusion, your sprintf must get all arguments, all the time,
+from the stack.-->
+
+</ul>
+
+<p><hr width=75%>
+
+<h2>8. Frequently Asked Questions</h2>
+
+<p>Please consult this section before you ask a question on the newsgroup. An attempt will be made to keep this updated. Check this often.
+
+<p><table width=90% align=center><tr><td>
+
+<!--
+<hr>
+<p><b>Q</b>: I want to work from home. I downloaded spim and tried to run a program that runs perfectly in the lab. I get the following error:
+<br>
+<tt>
+<br>spim: (parser) Label is defined for the second time on line ... of file ...
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^
+<br>
+<br>spim: (parser) parse error on line ... of file ...
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puts chrs
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^
+</tt>
+<br>What's going on?
+
+<p><b>A</b>: You are using the wrong version of spim. The <a href="http://www.cs.wisc.edu/~larus/spim.html">original spim</a> MIPS simulator was written at the University of Wisconsin. We are using the <a href="http://inst.eecs.berkeley.edu/~spim/">UCB SPIM</a> version, which is pretty similar, but not the same.
+
+<p>There are some differences between the UW and the UCB versions
+(<a href="http://inst.eecs.berkeley.edu/~spim/source/spimsal/CHANGES.UCB">click
+here</a> to see a detailed list of the differences). The ones we're
+interested here are:
+
+<ul>
+	<li>the Wisc version lacks some macros that expand to system calls,
+	which are a sort of external predefined functions. These functions
+	include <tt>putc</tt>, <tt>getc</tt>, <tt>puts</tt>, and others.
+	U. Wisc's spim removed these functions around 6.1/6.2 version.
+	(If you want to know more about these functions, try
+	<a href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&selm=64ctoi%249rh%241%40agate.berkeley.edu">here</a>.)
+
+	<li>In the UCB version, the trap handler defines the label <tt>__start</tt>,
+	which after some initializing, ends up jumping to <tt>main</tt>. You
+	must load the trap handler, as
+<a href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&threadm=3F7CFC3A.5050806%40imail.EECS.Berkeley.EDU&rnum=13&prev=/groups%3Fq%3Dspim%2Bputs%26hl%3Den%26lr%3D%26ie%3DUTF-8%26start%3D10%26sa%3DN">
+	otherwise</a> you won't be able to use <tt>putc</tt>, <tt>getc</tt>,
+	<tt>puts</tt>, etc. In other words, you won't be able to read or print
+	anything. The solution is, therefore, to start your program with the
+	label <tt>main</tt> if you are using non-UCB SPIM.
+</ul>
+-->
+
+<p><hr>
+
+<p><b>Q</b>: For my sprintf implementation, can I use any label I want?
+<p><b>A</b>: Yes, with 2 exceptions: a) Don't use any label used in the <tt>test.sprintf.s</tt> file, and b) don't use any label that starts with two underscores ('<tt>_</tt>' character). For example, the label <tt>__mylabel</tt> is strictly forbidden.
+
+
+<p><hr>
+
+<p><b>Q</b>: Should I write the ASCII codes of the interesting characters?
+<p><b>A</b>: MIPS compilers are smart enough to understand C syntax to
+represent characters. For example, if you want to load into <tt>$t0</tt>
+the value of the ASCII code for the % character, you can use:
+<pre>
+	addi $t0, $0, '%'
+</pre>
+Note that this is way more readable than:
+<pre>
+	addi $t0, $0, 37
+</pre>
+And readers like readable code (remember, a happy reader is a good reader).
+
+<p><hr>
+
+<p><b>Q</b>: To convert integers to its ASCII representation, do we need to create something like lab4's table?
+<p><b>A</b>: This is a way to do it. But, before you do it, you may want to take a look at the <tt>__putint</tt> function in the <tt>test.sprintf.s</tt> file we provide. It may give you a better idea.
+
+<p><hr>
+
+<p><b>Q</b>: How do we know how many arguments there are?
+<p><b>A</b>: The interesting thing about <tt>sprintf</tt> is not only that it
+may use more than 4 arguments, but also that the number of arguments
+is variable. The output buffer and the format string for sure (at least 2).
+Then, we have to check the format string:
+
+<ul>
+	<li>Let's assume that the format string is "hello %d". How many
+	arguments will <tt>sprintf</tt> use? The original 2 plus the
+	number that will be substituting the "%d" escape sequence. Total:
+	3 arguments.
+
+	<li>Let's assume that the format string is "hello %d hola %u".
+	How many arguments will <tt>sprintf</tt> use now?
+</ul>
+
+<p><hr>
+
+<p><b>Q</b>: Are we allowed to used MIPS pseudoinstructions in this project (things like
+<tt>li</tt> and <tt>clear</tt>)?
+<p><b>A</b>: Yes.
+
+<p><hr>
+
+<p><b>Q</b>: What do you mean by proper register convention?
+<p><b>A</b>: "Proper convention" means, in register usage, that
+<ul>
+	<li>a) when your function returns, the save registers have
+	the same value that when the function was called, and
+	<li>b) your function doesn't expect that temporary registers
+	remain the same after calling another function.
+</ul>
+
+<p><hr>
+
+<p><b>Q</b>: Can I have a .data section with my .s files
+<p><b>A</b>: Yes you can. Make sure all labels in the .data section do not start with '__'
+
+<p><hr>
+
+<p><b>Q</b>: Can I submit other .s files?
+<p><b>A</b>: No.
+
+<p><hr>
+
+<p><b>Q</b>: Can I use $fp?
+<p><b>A</b>: Yes.
+
+<p><hr>
+
+<p><b>Q</b>: How can I get UCB xspim for Windows?
+<p><b>A</b>: Assuming you have <a href="http://www.cygwin.com">Cygwin</a>, a UNIX emulation layer for Windows installed with X11 packages, download <a href="spim_cygwin.tar.gz">this</a> unofficial binary/source. Extract the contents of the tarball into <code>/usr/spim</code>.
+The following items will be extracted: <code>spim.exe</code>, <code>xspim.exe</code>, <code>trap.handler</code>, and <code>spimsal</code> folder. Try running the binaries first. If they do not work, then <code>cd</code> into <code>spimsal</code> folder, and type <code>make</code>. If you have trouble getting this to work, contact the TA in charge.
+
+<p>Keep in mind the project will be tested and graded by running them on the instructional machines (Solaris/sparc or Solaris/x86). You must verify your project works on one of these platforms (i.e. like nova). It is not good enough that it worked Cygwin/Windows.
+
+<!--
+<p><hr>
+<p><b>Q</b>: When should we use the modified MIPS convention (parameters in stack
+have preference over parameters in <tt>$ax</tt> registers, and
+parameters always in the stack, even if less or equal than than 4)?
+<p><b>A</b>: In <tt>sprintf</tt>, and only in that function. If you need to
+use another function that requires a variable number of arguments, or
+more than 4 arguments (I can't fathom why you would need such thing,
+but you never know), use the proper MIPS conventions (parameters in
+<tt>$ax</tt> registers have preference over parameters in stack, and
+parameters only in stack if 5 or more).
+-->
+
+<p><hr width=75%>
+
+</td></tr></table>
+
+
+
+
+</body>
+</html>

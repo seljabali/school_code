@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>CS61C Lab 4</title>
+<link rel="stylesheet" href="../default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="cs61c-lab-4">
+<h1 class="title">CS61C Lab 4</h1>
+<h2 class="subtitle" id="assembly-practice">Assembly Practice</h2>
+<!-- $Header: /home/ff/cs61c/cvsroot/assignments/lab/04.assemblypractice/index.rst,v 1.9 2006/02/07 18:45:56 cs61c-th Exp $ -->
+<div class="section" id="background">
+<h1><a name="background">Background</a></h1>
+<div class="section" id="goals">
+<h2><a name="goals">Goals</a></h2>
+<p>This lab will give you practice running assembly programs using the 
+xspim interpreter.</p>
+</div>
+<div class="section" id="running-assembly-programs">
+<h2><a name="running-assembly-programs">Running Assembly programs</a></h2>
+<p>Assembly programs go in text files with a .s extention. The program must 
+start with the label &quot;main:&quot; (just like in C) and end with a &quot;jr $ra&quot;.  
+$ra is set to the return address whenever a function is called, and main must
+return just like any other function.</p>
+<p>xspim is a version of spim that runs on the X windows graphical user 
+interface, as opposed to spim's console interface. You can run spim 
+remotely, but you will have to refer to the spim documentation to find 
+the equivalent commands.  You can run xspim by executing this on the 
+command line:</p>
+<pre class="literal-block">
+$ xspim &amp;
+</pre>
+<p>The ampersand causes the program to run in the background.</p>
+<p>After starting xspim, use the load button to load in your .s file. The 
+set buttons can be used to set the register values, and the program can 
+then be executed using the run or step button. The register values will 
+change in the top frame.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h1><a name="exercises">Exercises</a></h1>
+<div class="section" id="setup">
+<h2><a name="setup">Setup</a></h2>
+<p>Copy the contents of ~cs61c/labs/04 to a suitable location in
+your home directory.</p>
+<pre class="literal-block">
+$ mkdir ~/lab
+$ cp -R ~cs61c/labs/04/ ~/lab
+</pre>
+</div>
+<div class="section" id="exercise-1-a-short-mips-program">
+<h2><a name="exercise-1-a-short-mips-program">Exercise 1: A short MIPS program</a></h2>
+<p>Write a piece of MIPS code that, given values in $s0 and $s1, put into 
+the $tk registers the following:</p>
+<pre class="literal-block">
+$t0 = $s0
+$t1 = $s1
+$t2 = $t0 + $t1
+$t3 = $t1 + $t2
+...
+$t7 = $t5 + $t6
+</pre>
+<p>In other words, for each register from $t2 to $t7, it stores the sum of 
+the previous two $t register values. The $s0 and $s1 registers contain 
+the initial values.</p>
+<p>Don't set the value of $s0 and $s1 in your code. Instead, learn how to 
+set it manually with xspim.</p>
+<div class="section" id="checkoff">
+<h3><a name="checkoff">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >Save your code in a file called lab4_ex1.s and show it to your TA.
+</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+<div class="section" id="exercise-2-debugging-a-mips-program">
+<h2><a name="exercise-2-debugging-a-mips-program">Exercise 2: Debugging a MIPS program</a></h2>
+<p>Debug the loop in the program in lab4a.s. It is meant to copy integers 
+from memory address $a0 to memory address $a1, until it reads a zero 
+value. The number of integers copied (up to, but not including the zero 
+value), should be stored in $v0.</p>
+<div class="section" id="id1">
+<h3><a name="id1">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >
+Describe in a file <tt>lab4a.txt</tt> the bug(s) of the code.
+</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >
+Create a file <tt>lab4a_ok.s</tt> that contains a bug fixed version of <tt>lab4a.s</tt>
+</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+<div class="section" id="exercise-3-compiling-from-c-to-mips">
+<h2><a name="exercise-3-compiling-from-c-to-mips">Exercise 3: Compiling from C to MIPS</a></h2>
+<p>The file lab4b.c is a C version of the program in the previous part of 
+the lab. Compile this program into MIPS code using the command:</p>
+<pre class="literal-block">
+$ mips-gcc -S -O2 -fno-delayed-branch lab4b.c
+</pre>
+<p>The -O2 option turns on optimization. The -S option generates assembly 
+code. Don't worry about the delayed branch option for now; we will 
+revisit this topic again when we talk about pipelining.</p>
+<p>The above command should generate assembly language output for the C 
+code. Find the assembly code for the loop that copies sources values to 
+destination values. Then, for the registers $a0, $a1, $v0, and $v1 from 
+part 2, determine what registers gcc used to store the corresponding 
+value. (For example, $a0 was used to store the source address of 
+integers to be copied. What register is used for this purpose in the gcc 
+output?)</p>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >
+Find the section of code in <tt>lab4b.s</tt> that corresponds to the copying loop.  Comment each line of that part of the code in <tt>lab4b.s</tt>.
+</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

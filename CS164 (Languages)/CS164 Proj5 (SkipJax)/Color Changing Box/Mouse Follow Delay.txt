@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <p>
+      The mouse's coordinates are
+      ({! mouseTop (document) ||| _ !},
+      {! mouseLeft (document) ||| _ !}).
+    </p>
+
+    <div style={! { color: '#FFFFFF', 
+                    backgroundColor: '#336699',
+                    position: 'absolute',
+                    left: delay (mouseLeft (), 100),
+                    top: delay (mouseTop (), 100),
+                    padding: '10px'} !}>
+      {! Math.floor (timer (100) / 1000) !}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Flapjax Demo: Time 2: JavaScript</title>
+
+<script type="text/javascript" src="skipjax.js"></script>
+<script type="text/javascript">
+
+function loader() {
+
+  var mtop = mouseTop(document);
+  insertDom(mtop, 'mouseTop');
+
+  var secondsMouseTop = seconds(mouseTop(document));
+  insertDom(secondsMouseTop, 'secondsMouseTop');
+  
+  var ticksMouseTop = ticks(mouseTop(document));
+  insertDom(ticksMouseTop, 'ticksMouseTop');  
+  
+  var ticks100 = ticks(100);
+  insertDom(ticks100, 'ticks100');
+  
+  var varyingticksbasis = lift(function (v) { return 100 * (1 + v % 10); }, seconds());
+  var timeVaryingTicks = ticks(varyingticksbasis);
+  insertDom(timeVaryingTicks, 'timeVaryingTicks');
+  
+if (timeVaryingTicks instanceof Event){
+	insertDom('true', 'ticksAnswer');
+}else{
+	insertDom('false', 'ticksAnswer');
+}
+	   
+  var decisecs = deciseconds(1);
+  insertDom(decisecs, 'decisecs');
+  
+  var decisecsMouseTop = deciseconds(mouseTop(document));
+  insertDom(decisecsMouseTop, 'decisecsMouseTop');
+  
+	var varyingdecisecsbasis = lift(function (v) { return 1 + v % 10; }, seconds());
+  	var timeVaryingDecisecs = ticks(varyingdecisecsbasis);
+  	insertDom(timeVaryingDecisecs, 'timeVaryingDecisecs');  
+  
+if (decisecs instanceof Event){
+	insertDom('true', 'decisecsAnswer');
+}else{
+	insertDom('false', 'decisecsAnswer');
+} 
+
+  accumFunc = function (acc, x){
+  	return acc + 1;
+  	}
+  var accumulator = collect(ticks(1000), accumFunc, 0);
+  insertDom(accumulator, 'accumulator');
+  
+  
+  //timeVaryingAccumFunc = lift(function(v){ return v % 2 ? function (acc, x) { return acc + x; } : function (acc, x) { return acc - x; }; }, seconds());
+  //var timeVaryingAccumulator = collect(ticks(500), timeVaryingAccumFunc, 0);
+  //insertDom(timeVaryingAccumulator, 'timeVaryingAccumulator');
+  
+  //var display42 = snapshot(ticks(100), deciseconds(1));
+  //insertDom(display42, 'display42')
+  
+  var tempS = lift(function (v) { return Math.floor(v/1000); }, ticks(1000)); 
+  var filteredSecondsEvent = filter (tempS, function (x) { return x % 2 == 0; });
+  insertDom(filteredSecondsEvent, 'filteredSecondsEvent');
+  
+  var filteredSecondsBehavior = filter (seconds(), function (x) { return x % 2 == 0; });
+  insertDom(filteredSecondsBehavior, 'filteredSecondsBehavior');
+  
+
+  
+	//if (filteredSeconds instanceof Event){
+		//insertDom('true', 'answer');
+	//}else{
+		//insertDom('false', 'answer');
+	//}
+	
+}
+
+</script>
+</head>
+
+<body onload="loader()">
+	<p>mouseTop of document is:  <span id="mouseTop">not initialized</span>.</p>
+	<p>Seconds mouseTop is:  <span id="secondsMouseTop">not initialized</span>.</p>
+	<p>Ticks mouseTop is:  <span id="ticksMouseTop">not initialized</span>.</p>
+	<p>Ticks 100 is:  <span id="ticks100">not initialized</span>.</p>
+	<p>Time varying ticks is:  <span id="timeVaryingTicks">not initialized</span>.</p>
+	<p>Is timeVaryingTicks an Event?:  <span id="ticksAnswer">not initialized</span>.</p>
+	<p>Decisecs 1 is:  <span id="decisecs">not initialized</span>.</p>
+	<p>Decisecs mouseTop is:  <span id="decisecsMouseTop">not initialized</span>.</p>
+	<p>Time varying decisecs is:  <span id="timeVaryingDecisecs">not initialized</span>.</p>	
+	<p>Is decisecs an Event?:  <span id="decisecsAnswer">not initialized</span>.</p>
+	<p>Filtered seconds event:  <span id="filteredSecondsEvent">not initialized</span>.</p>
+	<p>Filtered seconds behavior:  <span id="filteredSecondsBehavior">not initialized</span>.</p>
+	<p>Accumulator:  <span id="accumulator">not initialized</span>.</p>
+	<p>Time varying accumulator:  <span id="timeVaryingAccumulator">not initialized</span>.</p>
+</body>
+
+</html>

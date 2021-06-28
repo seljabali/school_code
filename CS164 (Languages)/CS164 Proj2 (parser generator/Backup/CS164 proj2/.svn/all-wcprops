@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/cs164/The_OLBs/!svn/ver/21/trunk/proj2
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/.project
+END
+test.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/test.py
+END
+run-test.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/run-test.py
+END
+grammar_parser.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/cs164/The_OLBs/!svn/ver/29/trunk/proj2/grammar_parser.py
+END
+.pydevproject
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/.pydevproject
+END
+grammar.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/cs164/The_OLBs/!svn/ver/14/trunk/proj2/grammar.py
+END

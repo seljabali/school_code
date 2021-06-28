@@ -1,0 +1,11 @@
+10
+10203 Mindy Ho 2000
+12345 Jeff Lee 211.22
+14142 James Bond 1500
+20103 Ed Sullivan 3000
+22345 Norma Patel 2496.24
+27183 Teresa Wong 1234.56
+30102 Ray Baldwin 3824.36
+30201 Susan Woo 9646.75
+31456 Jack Smith 1200
+31623 Norris Hunt 1500

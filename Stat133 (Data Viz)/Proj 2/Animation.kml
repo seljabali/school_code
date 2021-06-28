@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml>
+	<Document>
+		<name>KML Samples</name>
+
+	
+		<Placemark>
+		<color>7f00ffff</color>
+			<Style id="yellowLineGreenPoly">
+	      <TimeStamp>
+	        <when>2007-01-14T21:05:02Z</when>
+	      </TimeStamp>
+	      <styleUrl>#paddle-a</styleUrl>
+	      <Point>
+	        <coordinates>	34.0, 	120.0</coordinates>
+	      </Point>
+			</Style>
+	    </Placemark>
+	
+
+		<Placemark>
+		      <TimeStamp>
+		        <when>2008-01-14T21:05:02Z</when>
+		      </TimeStamp>
+		      <styleUrl>#paddle-a</styleUrl>
+		      <Point>
+		        <coordinates>	36.5,	123.6</coordinates>
+		      </Point>
+		</Placemark>
+
+
+
+			<Placemark>
+			      <TimeStamp>
+			        <when>2009-01-14T21:05:02Z</when>
+			      </TimeStamp>
+			      <styleUrl>#paddle-a</styleUrl>
+			      <Point>
+			        <coordinates>	36.8,	124.6</coordinates>
+			      </Point>
+			    </Placemark>
+	
+	</Document>
+</kml>
+

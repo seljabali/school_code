@@ -1,0 +1,103 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 Part 2\
+Washington Post:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 ********************\
+Original Post:\
+http://www.washingtonpost.com/wp-dyn/content/article/2007/09/04/AR2007090402275.html?sub=new\
+\
+Code:\
+<div class="print_tool">\
+<a href="http://www.washingtonpost.com/wp-dyn/content/article/2007/09/04/AR2007090402275_pf.html">Print This Article</a>\
+</div>\
+\
+Method:\
+Use regular expression to find "Print This Article"\
+/(Print This Article)/\
+\
+\
+//////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+http://www.washingtonpost.com/wp-dyn/content/article/2007/09/11/AR2007091100738.html?hpid=topnews\
+\
+NY Times\
+************\
+<li class="print">\
+\
+<A HREF="/2007/09/09/washington/09cnd-policy.html?_r=1&hp=&oref=login&pagewanted=print">Print</a>\
+\
+MSNBC\
+*********\
+<a href="javascript:printThis('20716575')">\
+\
+http://www.msnbc.msn.com/id/20718190/?T\
+http://www.msnbc.msn.com/id/20718190/?T&print=1&displaymode=1098\
+\
+http://www.msnbc.msn.com/id/20721866/\
+http://www.msnbc.msn.com/id/20721866/print/1/displaymode/1098/\
+\
+\
+Yahoo! News\
+***************\
+<li class="iprint"><a href="/s/ap/20070906/ap_on_re_mi_ea/bin_laden_video_10&printer=1;_ylt=AvXzf0e8e00iSMeyTq06OGkUewgF" class="action"><strong>Printable View</strong></a></li>\
+								</ul>\
+\
+"iprint"><a href="/s/ap/20070906/ap_on_re_mi_ea/bin_laden_video&printer=1;_ylt=AvXzf0e8e00iSMeyTq06OGkUewgF" class="action"><strong>Printable View</strong></a></li>\
+\
+\
+Part 4:\
+var objects = document.getElementsByTagName("object");\
+\
+for (i=0; i<objects.length; i++) \{\
+	//var flash=objects[i];\
+\
+	if ((objects[i]).innerHTML.match(/flash/)) //shockwave|flash|.swf \
+	\{\
+		//flash.on=false;\
+		//flash.style.display='none';		\
+		objects[i].style.display='none';	\
+		\
+	\}\
+\}\
+****************\
+\
+var containsPrint = 1;\
+document.addEventListener('click', function(event) \{\
+  if (event.target.nodeName == 'a' || event.target.nodeName=='A') \{\
+    lnk = event.target.href;\
+    if (!lnk.match(/pagewanted=print/i)) \{\
+      GM_xmlhttpRequest( \{\
+        method: "GEt",\
+        url: lnk,\
+        onload: function(responseDetails) \{\
+          var str = responseDetails.responseText.toString();\
+          var regex1 = /class=\\"print\\">\\n(.)+pagewanted=print/i;\
+          var out = str.match(regex1);\
+          if (out == null) \{\
+        containsPrint = 0;\
+        \} else \{\
+            out = out[0];\
+            var regex2 = /href=\\"(.)+/i;\
+            out = out.match(regex2);\
+            out = out[0];\
+            var regex3 = /\\/(.)+/i;\
+            out = out.match(regex3);\
+            out = out[0];\
+            out = "http://www.nytimes.com" + out;\
+            //console.log(out);\
+            window.location=out;\
+        \}\
+        \}\
+      \});\
+    console.log(containsPrint);\
+    if (containsPrint) \{\
+        event.stopPropagation();\
+        event.preventDefault();\
+    \}\
+    \}\
+  \}\
+\}, true);}

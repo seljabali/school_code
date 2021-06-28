@@ -1,0 +1,41 @@
+Part One
+
+Forgetting whether a variable is a Behavior or an Event
+-Incorrectly used seconds(8) instead of ticks(8000) for making an event that popped the tag queue every eight seconds
+and created the corresponding request url. Needed an event, because later used this event in a call to snapshot
+to display the loading notification
+
+
+HTML/Javscript Semantics
+- defined javascript/skipjax function that accessed html elements by their id's before they were defined. This didnt work. Moved the code to after these
+html fields were declared.
+
+
+Triggering of Javascript Events 
+-When extracting text from the tag field, using the calm function call, the text entry is triggered twice once for key-up and once for change. didnt realize this 
+initially so tags were getting double added to the queue and so 2 consecutive feed displays would have the same tag
+
+Do Not Lift
+-Did not set doNotLift on a function applied to an event returned by the extractEvent function. Hence the function was attempting to manipulate an event that returned
+an event object every time it fired instead of manipulating the event value
+
+Syntax Error
+- In creating the object for the call to evalForeignScript
+did {url: eightSecondQueueValue, globalArg: 'jsonResult'} 
+instead of 
+{'url': eightSecondQueueValue, 'globalArg': 'jsonResult'}
+
+-In using regular expressions to extract and eventually display the current feed's tag did
+re.match(str) instead of str.match(re)
+
+-to extract the time varying value of an images width did extractValue('imageName.style.width')
+
+-Attempted to use skipjax in in css 
+width: {! if $(image1)['width']  > maxSize : 200!}
+
+Using a Time-Varying Variable where a Javascript Value is Expected
+- In computing image width based on distance, used the time-varying distToMouse in if condition
+
+Using a Javascript Value Where a Time-Varying variable is expected
+- To pull the current width of each image, was doing $(imageName)['width'] and using it as a time-varying value.
+I later realized the $() function does not return a time varying dom element, just returns the dom element at the instant it is called.

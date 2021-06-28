@@ -1,0 +1,18 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "The Good Guys"} %>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td><b><i>Name: </b></i></td>
+<td><b><i>Average Rating: </b></i></td>
+</tr>
+
+<% @averages.each do |artist| %>
+	<tr>
+	<td><b><i><%= link_to artist.artist_name, :controller => "artist", :action => "show", :id => artist.artist_id %></i></b></td>
+	<td><%= artist.avg %></td>
+	</tr>
+<% end %>
+</table>
+</body>
+</html>

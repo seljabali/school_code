@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/cs164/Choot/!svn/ver/9/CS164%20Proj5/skipjax
+END
+rewrite.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/cs164/Choot/!svn/ver/9/CS164%20Proj5/skipjax/rewrite.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/cs164/Choot/!svn/ver/2/CS164%20Proj5/skipjax/__init__.py
+END
+compiler.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/cs164/Choot/!svn/ver/9/CS164%20Proj5/skipjax/compiler.py
+END
+cgen.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/cs164/Choot/!svn/ver/9/CS164%20Proj5/skipjax/cgen.py
+END
+semant.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/cs164/Choot/!svn/ver/2/CS164%20Proj5/skipjax/semant.py
+END
+emit.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/cs164/Choot/!svn/ver/2/CS164%20Proj5/skipjax/emit.py
+END
+template_parser.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/cs164/Choot/!svn/ver/2/CS164%20Proj5/skipjax/template_parser.py
+END

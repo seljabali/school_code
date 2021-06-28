@@ -1,0 +1,19 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Songs"} %>
+
+	<table border="1" cellpadding="5" cellspacing="0">
+	<td><b><i>Artist: </b></i></td>
+	<td><b><i>Song:</b></i></td>
+<% @track.each do |track| %>
+	<tr>
+	<td><%=link_to track.name_artist, :controller => "artist", :action=> "show", :id => track.artist_id %></td>
+	<td><%=link_to track.name_track, :controller => "album", :action=> "show", :id => track.album_id %></td>
+	</tr>	
+<% end %>
+</table>
+
+<br><br>
+<%= link_to "[ create new track ]", :action => "new" %>
+
+</body>
+</html>

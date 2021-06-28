@@ -1,0 +1,1 @@
+5 ! m/s*(s/s) in feet/s

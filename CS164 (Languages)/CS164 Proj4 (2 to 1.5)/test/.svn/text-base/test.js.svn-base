@@ -1,0 +1,4 @@
+class A extends B {
+  var x, y = 2, z;
+  static var a, b = 2, c;
+}

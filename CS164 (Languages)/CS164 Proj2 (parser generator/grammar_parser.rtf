@@ -1,0 +1,297 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red192\green192\blue192;\red0\green0\blue255;\red0\green170\blue0;
+\red128\green0\blue0;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs22 \cf2 ##\cf0 \
+ \cf2 # @file grammar_parser.py\cf0 \
+ \cf2 #\cf0 \
+ \cf2 # $Id: grammar_parser.py,v 1.5 2007/04/04 23:13:54 cgjones Exp $\cf0 \
+\pard\pardeftab720
+\cf3 import\cf0  grammar, re, sys, types\
+\
+\pard\pardeftab720
+\cf2 ##-----------------------------------------------------------------------------\cf0 \
+\cf2 ## Simple tokenizer\cf0 \
+\cf2 ##\cf0 \
+\pard\pardeftab720
+\cf3 class\cf0  Tokenizer:\
+    \cf4 '''A very simple stream tokenizer.'''\cf0 \
+\
+    \cf3 def\cf0  __init__ (self, input, whitespace=\cf4 '[ ]'\cf0 , comments=\cf4 '#'\cf0 ):\
+        \cf4 '''Create a new Tokenizer on INPUT.  Optionally accepts regexes\cf0 \
+\pard\pardeftab720
+\cf4         for WHITESPACE and COMMENTS to be ignored.'''\cf0 \
+        self.input = input\
+        self.__pos = \cf5 0\cf0 \
+        self.whitespace = re.compile (whitespace, re.VERBOSE)\
+        self.comments = re.compile (comments, re.VERBOSE)\
+\
+\
+    \cf3 def\cf0  checkpoint (self):\
+        \cf4 '''Make a checkpoint of the current scanning state.'''\cf0 \
+        \cf3 return\cf0  self.__pos\
+\
+\
+    \cf3 def\cf0  restore (self, checkpoint):\
+        \cf4 '''Restore a checkpoint made by the checkpoint() method.'''\cf0 \
+        self.__pos = checkpoint\
+\
+\
+    \cf3 def\cf0  token (self, regex):\
+        \cf4 '''Try to match REGEX against the input at the current position,\cf0 \
+\cf4         ignoring whitespace and comments.\cf0 \
+\cf4         Returns the part of the input that matches, or None if there is\cf0 \
+\cf4         no match.\cf0 \
+\cf4         \cf0 \
+\cf4         REGEX can be either a String or compiled regular expression.\cf0 \
+\cf4         \cf0 \
+\cf4         If there is a match, updates the current position within\cf0 \
+\cf4         the input string.\cf0 \
+\cf4         '''\cf0 \
+        \cf2 # Skip whitespace and comments\cf0 \
+        \cf2 #print 'Hello world'\cf0 \
+        \cf2 #if isinstance (regex, types.StringType):\cf0 \
+        \cf2 #    regex = re.compile(regex, re.VERBOSE)\cf0 \
+        \cf2 #    print regex.pattern\cf0 \
+        \cf2 #    print 'regex: ', regex\cf0 \
+        \cf2 #    print ''\cf0 \
+        \cf3 while\cf0  (self.__matchToken (self.whitespace)\
+               \cf3 or\cf0  self.__matchToken (self.comments)):\
+            \cf3 pass\cf0 \
+\
+        \cf2 # Return the match of REGEX\cf0 \
+        \cf3 if\cf0  isinstance (regex, types.StringType):\
+            \cf3 return\cf0  self.__matchToken (re.compile (regex, re.VERBOSE))\
+        \cf3 else\cf0 :\
+            \cf3 return\cf0  self.__matchToken (regex)\
+\
+\
+    \cf3 def\cf0  __matchToken (self, regex):\
+        \cf4 '''Try to match the compiled regular expression REGEX against\cf0 \
+\cf4         the input at the current position.  Returns the part of the\cf0 \
+\cf4         input that matches, or None if there is no match.\cf0 \
+\
+\cf4         If there is a match, updates the current position within\cf0 \
+\cf4         the input string.\cf0 \
+\cf4         '''\cf0 \
+        \cf2 ##\cf0 \
+        \cf2 ## IMPLEMENT ME\cf0 \
+        \cf2 ##\cf0 \
+        \
+        \cf2 #print len(self.input)\cf0 \
+        \cf2 #print 'pos:', self.__pos\cf0 \
+        r = regex.pattern\
+        out = regex.match(self.input, self.__pos)\
+        \cf3 if\cf0  self.__pos > (len(self.input)-\cf5 1\cf0 ):\
+            \cf3 return\cf0  \cf3 None\cf0 \
+        \cf3 if\cf0  self.input[self.__pos]==r \cf3 and\cf0  r==\cf4 ' '\cf0 :\
+            \
+            self.__pos += \cf5 1\cf0 \
+            \cf3 return\cf0  \cf3 True\cf0 \
+        \cf3 elif\cf0  self.input[self.__pos]==r \cf3 and\cf0  r==\cf4 '#'\cf0 :\
+            ret = re.match(\cf4 '#'\cf0 , self.input)\
+            self.__pos += len(ret.group())+\cf5 2\cf0 \
+            \cf3 return\cf0  \cf3 True\cf0 \
+        \cf3 elif\cf0  (out!=\cf3 None\cf0  \cf3 and\cf0  len(out.group(\cf5 0\cf0 ))>\cf5 0\cf0 ):\
+            self.__pos += len(out.group())\
+            \cf3 return\cf0  out.group()\
+        \cf3 else\cf0 :\
+            \cf3 return\cf0  \cf3 None\cf0 \
+        \cf2 #print regex.pattern\cf0 \
+        \cf2 #out = regex.match(self.input)\cf0 \
+\pard\pardeftab720
+\cf2 #        print regex.pattern\cf0 \
+        \cf2 #print out.group(0)\cf0 \
+        \cf2 #sys.exit()\cf0 \
+        \cf2 #return out\cf0 \
+    \
+\
+\cf2 ##-----------------------------------------------------------------------------\cf0 \
+\cf2 ## The Grammar Parser API\cf0 \
+\cf2 ##\cf0 \
+\pard\pardeftab720
+\cf3 def\cf0  parseFile (filename):\
+    \cf4 '''Construct a new Grammar from the specification in FILENAME.'''\cf0 \
+    \cf3 return\cf0  parse (open (filename).read (), filename)\
+\
+\
+\cf3 def\cf0  parse (spec, filename=\cf4 'stdin'\cf0 ):\
+    \cf4 '''Construct a new Grammar from the specification SPEC.'''\cf0 \
+\
+    \cf3 def\cf0  error (msg):\
+        \cf4 '''Prints MSG to stderr and exits with a non-zero error code.'''\cf0 \
+        \cf3 print\cf0  >>sys.stderr, \cf4 'Error: %s'\cf0 % (msg)\
+        sys.exit (\cf5 1\cf0 )\
+\
+    \cf3 def\cf0  checkpoint ():\
+        \cf4 '''Create a parser checkpoint.'''\cf0 \
+        \cf3 return\cf0  (lexer.checkpoint (), len (stack))\
+\
+    \cf3 def\cf0  restore (checkpoint):\
+        \cf4 '''Restore a parser checkpoint.'''\cf0 \
+        lexer.restore (checkpoint[\cf5 0\cf0 ])\
+        stack.__setslice__(\cf5 0\cf0 , len (stack), stack[\cf5 0\cf0 :checkpoint[\cf5 1\cf0 ]])\
+        \cf3 return\cf0  \cf3 True\cf0 \
+\
+    lexer = Tokenizer (spec, r\cf4 ' '\cf0 , \cf4 '#'\cf0 ) \cf2 # tokenizer\cf0 \
+    stack = []                          \cf2 # semantic stack\cf0 \
+\
+    \cf2 ##\cf0 \
+    \cf2 ## IMPLEMENT ME\cf0 \
+    \cf2 ##\cf0 \
+    \cf2 ## THE CODE BELOW IS AN EXAMPLE RECURSIVE-DESCENT PARSER WITH A SEMANTIC\cf0 \
+    \cf2 ## STACK.  PLEASE REPLACE IT WITH YOUR SOLUTION.\cf0 \
+    \cf2 ##\cf0 \
+\
+    \cf3 def\cf0  S ():\
+        cp = checkpoint ()\
+        g = grammar.Grammar()\
+        r = grammar.Rule(\cf4 'E'\cf0 )\
+        production(r)\
+        \
+        g.addRule(r)\
+        \
+        g.dump();\
+        \cf2 #print g\cf0 \
+        \
+        \cf3 print\cf0  \cf4 ''\cf0 \
+        \cf3 print\cf0  \cf4 'stack length:'\cf0 , len(stack)\
+        \
+\pard\pardeftab720
+\cf2 #        if terminal():\cf0 \
+\cf2 #            print 'Terminal:', stack.pop()\cf0 \
+\cf2 #        elif nonTerminal():\cf0 \
+\cf2 #            print 'nonTerminal:', stack.pop()\cf0 \
+\cf2 #        elif restore (cp) and action():\cf0 \
+\cf2 #            print 'action:', stack.pop ()\cf0 \
+\cf2 #        elif restore(cp) and id():\cf0 \
+\cf2 #            print 'id:', stack.pop ()\cf0 \
+\cf2 #        else:\cf0 \
+\cf2 #            return False\cf0 \
+\
+        stack.append (grammar.Grammar ())\
+        \cf3 return\cf0  \cf3 True\cf0 \
+\
+    \cf3 def\cf0  production(r):\
+        cp = checkpoint()\
+        n = nonEmptyProd()\
+        toAdd = \cf3 False\cf0 \
+\
+        \cf3 if\cf0  (n):\
+            \cf3 print\cf0 (\cf4 'Len Stack before: '\cf0 , len(stack))\
+            num = len(stack) - cp[\cf5 1\cf0 ]\
+            list = []\
+            \cf3 for\cf0  x \cf3 in\cf0  range(num):\
+                list.append(stack.pop())\
+            \cf3 print\cf0 (\cf4 'Len Stack after: '\cf0 , len(stack))\
+           \
+            list.reverse()\
+            \cf2 #print ('isOp(list[0])', list[0], isOp(list[1]))\cf0 \
+            \cf2 #print ('isWord([1])', list[1], isWord(list[1]))\cf0 \
+            \
+            \cf3 if\cf0  num == \cf5 2\cf0 :\
+                \cf3 if\cf0  isOp(list[\cf5 0\cf0 ]) \cf3 and\cf0  isWord(list[\cf5 1\cf0 ]):\
+                    toAdd = \cf3 True\cf0 \
+            \cf3 elif\cf0  num == \cf5 3\cf0 :\
+                \cf3 if\cf0  IsOp(list[\cf5 1\cf0 ]):\
+                    toAdd = \cf3 True\cf0 \
+\cf2 #            elif num == 4\cf0 \
+\cf2 #                if \cf0 \
+            \cf3 if\cf0  toAdd:\
+                r.addProduction(list)\
+        \cf3 else\cf0 :\
+            \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 def\cf0  isOp( str ):\
+        \cf3 if\cf0  (str == \cf4 "'+'"\cf0  \cf3 or\cf0  str == \cf4 "'-'"\cf0  \cf3 or\cf0  str == \cf4 "'*'"\cf0  \cf3 or\cf0  str == \cf4 "'%'"\cf0 ):\
+            \cf3 print\cf0 (str, \cf4 'is an Operator'\cf0 )\
+            \cf3 return\cf0  \cf3 True\cf0 \
+        \cf3 else\cf0 :\
+            \cf3 return\cf0  \cf3 False\cf0 \
+    \
+    \cf3 def\cf0  isWord( str ):\
+        p = re.compile(\cf4 '([A-Z]|[a-z])(_|[A-Z]|[a-z]|[0-9])*'\cf0 )\
+        out = p.match(str)\
+        \cf3 print\cf0 (\cf4 'Word: '\cf0 , str, \cf4 'Match: '\cf0 , out.group(\cf5 0\cf0 ))\
+        \cf3 if\cf0  out.group(\cf5 0\cf0 ) != \cf3 None\cf0 :\
+            \cf3 print\cf0 (str, \cf4 'is a word'\cf0 )\
+            \cf3 return\cf0  \cf3 True\cf0 \
+        \cf3 else\cf0 :\
+            \cf3 print\cf0 (str, \cf4 'is not a word'\cf0 )\
+            \cf3 return\cf0  \cf3 False\cf0 \
+        \
+    \cf3 def\cf0  nonEmptyProd():\
+        sym = symbol()\
+        \cf3 if\cf0  (sym==\cf3 None\cf0 ):\
+            \cf3 return\cf0  \cf3 None\cf0 \
+        \cf3 while\cf0  symbol():\
+            \cf3 pass\cf0 \
+        \cf3 return\cf0  \cf3 True\cf0 \
+     \
+    \cf3 def\cf0  symbol():\
+        t = terminal()\
+        \cf3 if\cf0  (t != \cf3 None\cf0 ):\
+            \cf3 return\cf0  t\
+        \cf3 else\cf0 :\
+            n = nonTerminal()\
+            \cf3 if\cf0  (n != \cf3 None\cf0 ):\
+                \cf3 return\cf0  n\
+        \cf3 return\cf0  \cf3 None\cf0 \
+    \
+    \cf3 def\cf0  pyModName():\
+        ret = id() \cf3 and\cf0  lexer.token(\cf4 ''\cf0 )\
+        \cf3 if\cf0  (ret): \
+            stack.append (ret)\
+            \cf3 return\cf0  ret\
+        \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 def\cf0  terminal():\
+        ret = lexer.token(\cf4 "(\\/.*\\/)|('.*')"\cf0 )\
+        \cf3 if\cf0  (ret): \
+            stack.append (ret)\
+            \cf3 return\cf0  ret\
+        \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 def\cf0  nonTerminal():\
+        ret = lexer.token(\cf4 '([A-Z]|[a-z])(_|[A-Z]|[a-z]|[0-9])*'\cf0 )\
+        \cf3 if\cf0  (ret): \
+            stack.append (ret)\
+            \cf3 return\cf0  ret\
+        \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 def\cf0  action():\
+        ret = lexer.token(\cf4 '%\{(.)*%\}'\cf0 )\
+        \cf3 if\cf0  (ret): \
+            stack.append (ret)\
+            \cf3 return\cf0  ret\
+        \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 def\cf0  id():\
+        ret = lexer.token(\cf4 '(_|[A-Z]|[a-z])(_|[A-Z]|[a-z]|[0-9])+'\cf0 )\
+        \cf3 if\cf0  (ret): \
+            stack.append (ret)\
+            \cf3 return\cf0  ret\
+        \cf3 return\cf0  \cf3 None\cf0 \
+\
+    \cf3 if\cf0  \cf3 not\cf0  S ():\
+        error (\cf4 'invalid input!'\cf0 )\
+    \cf3 else\cf0 :\
+        \cf3 print\cf0  \cf4 'Successful input!'\cf0 \
+        \cf3 return\cf0  stack.pop ()\
+\
+\cf2 ##-----------------------------------------------------------------------------\cf0 \
+\
+\pard\pardeftab720
+\cf3 def\cf0  main (argv):\
+    \cf3 print\cf0  \cf4 'Hello from grammar_parser.py!'\cf0 \
+    \cf2 ##\cf0 \
+    \cf2 ## IMPLEMENT ME, IF YOU WANT\cf0 \
+    \cf2 ##\cf0 \
+\
+\cf3 if\cf0  __name__ == \cf4 '__main__'\cf0 :\
+    main (sys.argv)\
+}

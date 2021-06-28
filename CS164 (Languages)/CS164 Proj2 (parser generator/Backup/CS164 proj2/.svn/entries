@@ -1,0 +1,106 @@
+8
+
+dir
+21
+https://isvn.eecs.berkeley.edu/cs164/The_OLBs/trunk/proj2
+https://isvn.eecs.berkeley.edu/cs164/The_OLBs
+
+
+
+2007-09-23T05:23:40.171636Z
+21
+cs164-bh
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+1d7a6b50-8c08-e93a-af5a-8f76b785c5f4
+
+test
+dir
+
+.project
+file
+
+
+
+
+2007-09-23T05:24:16.265625Z
+eea17f32cd574033833332ff3e63432d
+2007-09-21T20:15:55.067816Z
+14
+cs164-az
+
+test.py
+file
+
+
+
+
+2007-09-23T05:24:16.296875Z
+a98046c9ebf7530896c21e92f61c8c08
+2007-09-21T20:15:55.067816Z
+14
+cs164-az
+
+src
+dir
+
+run-test.py
+file
+
+
+
+
+2007-09-23T05:24:16.312500Z
+580f7c785671bb1f09244aefeb5426d3
+2007-09-21T20:15:55.067816Z
+14
+cs164-az
+
+grammar_parser.py
+file
+29
+
+
+
+2007-09-25T06:07:56.062500Z
+27607a6c075f9a885989203d352da4fa
+2007-09-25T06:08:34.863706Z
+29
+cs164-az
+
+.pydevproject
+file
+
+
+
+
+2007-09-23T05:24:16.343750Z
+d50ebadccdc2fbd667b705f16a23489f
+2007-09-21T20:15:55.067816Z
+14
+cs164-az
+
+grammar.py
+file
+
+
+
+
+2007-09-23T05:24:16.390625Z
+f422bcaeaa42e318060fe95057482460
+2007-09-21T20:15:55.067816Z
+14
+cs164-az
+

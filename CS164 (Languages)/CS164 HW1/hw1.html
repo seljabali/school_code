@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="824.42">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!--Sami Eljabali</p>
+<p class="p1"><span class="Apple-converted-space">    </span>CS164-bh</p>
+<p class="p1"><span class="Apple-converted-space">    </span>HW1</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Sept 3rd, 07</p>
+<p class="p1">//---&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;title&gt;Sami Eljabali's HW1&lt;/title&gt;</p>
+<p class="p1">&lt;style type="text/css"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">body {</p>
+<p class="p1"><span class="Apple-converted-space"> </span>font:76% normal verdana,arial,tahoma;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">h1, h2 {</p>
+<p class="p1"><span class="Apple-converted-space"> </span>font-size:1em;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">#Box {</p>
+<p class="p1"><span class="Apple-converted-space"> </span>/* Box Properties */</p>
+<p class="p1"><span class="Apple-converted-space"> </span>position:absolute;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>left:0px;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>top:10em;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>width:23em;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>line-height:5em;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>height:10;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>background:#99ccff;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>foreground:#28ccff;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>border:1px solid #003366;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>white-space:nowrap;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>padding:0.5em;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;script type="text/javascript"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">//Date from count-down</p>
+<p class="p1">var grad_day = new Date("May 28, 2008 00:00:00 GMT");</p>
+<p class="p1">var box = null;</p>
+<p class="p1">var tempX = 0, tempY = 0;</p>
+<p class="p1">var boxX = 0, boxY = 0;</p>
+<p class="p1">var IE = document.all?true:false;</p>
+<p class="p2"><br></p>
+<p class="p1">//Compatibility taken from //http://www.thescripts.com/forum/thread150939.html</p>
+<p class="p1">if (!IE) document.captureEvents(Event.MOUSEMOVE)</p>
+<p class="p1">function getMouseXY(e) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (IE) { // grab the x-y pos.s if browser is IE</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tempX = event.clientX + document.body.scrollLeft</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tempY = event.clientY + document.body.scrollTop</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {<span class="Apple-converted-space">  </span>// grab the x-y pos.s if browser is NS</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tempX = e.pageX</p>
+<p class="p1"><span class="Apple-converted-space">    </span>tempY = e.pageY</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (tempX &lt; 0){tempX = 0}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if (tempY &lt; 0){tempY = 0} <span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>return true</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">//Box</p>
+<p class="p1">function doHeight(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box.style.height =(Math.round(100 - Math.sqrt(</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Math.pow (tempX - boxX, 2) +</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Math.pow (tempY - boxY, 2) ))).toString();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(doHeight,1);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function doMove() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>boxX = tempX;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>boxY = tempY;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box.style.left = tempX; //parseInt(box.style.left)+1+'px';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box.style.top = tempY;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(doMove,200); //call doMove in 20msec</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function doTimer() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var cur_day = new Date()</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var time_left = Math.floor(</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>(grad_day.getTime()-cur_day.getTime()) /1000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>var secs = time_left %60;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>time_left=Math.floor(time_left/60);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>var mins = time_left%60;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>time_left = Math.floor(time_left/60);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>var hours = time_left%24;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>time_left = Math.floor(time_left/24);</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>var days = time_left;<span class="Apple-converted-space">   </span></p>
+<p class="p2"><span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>var output = "Freedom in: "+ "Days: " + days + " Hours: " +</p>
+<p class="p1"><span class="Apple-converted-space">                </span>hours + " Mins: " + mins + " Secs: " + secs;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('Box').innerHTML= output;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(doTimer,100);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function init() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box = document.getElementById('Box');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>box.style.left = '0px';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>doMove();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>doHeight();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>doTimer();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">window.onload = init;</p>
+<p class="p1">document.onmousemove = getMouseXY;</p>
+<p class="p1">document.onmousemove.write(tempX);</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h1&gt;Sami Eljabali's HW1: Countdown to Graduation&lt;/h1&gt;</p>
+<p class="p1">&lt;h3&gt;&lt;p&gt; Part 2: Analyze&lt;/p&gt;&lt;/h3&gt;</p>
+<p class="p1">&lt;h1&gt;HTML Syntax/Semantics Errors:&lt;/h1&gt;</p>
+<p class="p1">&lt;p&gt;1) Couldn't get to display a new line by writing "\n" in the text and I still can't. I am only using the p tag&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;2) Was referring to javascript variable names in the html section by using the script tag&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;3) 100 tries to find out how to write text in the box in the javascript&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;4) Trying to display the box without the div tag&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;5) Mismatched parenthesis &lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;6) Dind't include the /p when closing a p tag &lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;7) Didn't close the html tag &lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;8) Mispelled variable name &lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;9) Didn't add the + in between strings&lt;p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h1&gt; Logical Errors&lt;/h1&gt;</p>
+<p class="p1">&lt;p&gt;1) Was expecting sequential running of code &lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;2) Didn't have functions called, since they needed to be event triggered&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;3) Didn't have the functions call themselves TimeSet&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt;4) Figuring out how to deal with getTime<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1">&lt;h3&gt;&lt;p&gt;Part 3: Critique &amp; Suggestions&lt;/p&gt;&lt;/h3&gt;</p>
+<p class="p1">When describing an object as such "line-height:5em;"&lt;p&gt;What is meant by em?</p>
+<p class="p1">There is also another unit px. Both em and px are used to describe&lt;/p&gt; location. How?! Again you can also describe width with em. Bright side you can describe it &lt;p&gt;using percentages.&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt; Why on earth does getTime get the time from 1/1/1970?!!&lt;/p&gt;</p>
+<p class="p1">&lt;p&gt; Think the whole idea of inserting tags is primitive. Must have&lt;/p&gt;&lt;p&gt; templates, or at least have structures pre-defined such as bullet points. numbered points such&lt;/p&gt; &lt;p&gt; as MS Word.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="Box"&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>

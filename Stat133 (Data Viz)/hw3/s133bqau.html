@@ -1,0 +1,91 @@
+<html>
+<title> Super Bowl Advertising Tactics  </title>
+<body BGCOLOR="#FFFFFF" BACKGROUND="2.jpg" bgproperties="fixed" TEXT="#f5f5f5">
+<head>
+	Kai Man Jim S133AU<br>
+	Sami Eljabali S133BQ<br>
+	Statistics 133 Project #1<br>
+	4/3/2008<br>
+</head>
+<body>
+
+<h2> Remodeling "Super Bowl Advertising" </h2>
+	
+<h3>A. Deconstruction</h3>
+<p>1) Describe the data used in the plot.<br>
+<ul><li>The plot uses <a href = "http://www.swivel.com/data_sets/csv/1011663">data</a> the New York Times gathered from 1984 until 2008 that categorizes the various types of companies and their commercial tactics, which are the following:</ul></li>
+
+<dl><dd>
+<table border="5"cellpadding="5">
+<tr>
+<th>Types of Companies</th>
+<th>Tactics Used</th>
+</tr>
+<tr><td>Apparel</td><td>Humor</td></tr>	
+<tr><td>Credit</td><td>Animals</td></tr>
+<tr><td>Food</td><td>Celebrities</td></tr>
+<tr><td>Vehicles</td><td>&nbsp;</td></tr>
+<tr><td>Beverages</td><td>&nbsp;</td></tr>
+<tr><td>Drugs</td><td>&nbsp;</td></tr>
+<tr><td>Tech/Financial</td><td>&nbsp;</td></tr>
+<tr><td>Consumer</td><td>&nbsp;</td></tr>
+<tr><td>Films</td><td>&nbsp;</td></tr>
+<tr><td>Travel</td><td>&nbsp;</td></tr>
+</tr>
+<tr>
+</tr>
+</table></dd></dl><br>
+
+
+
+</p> 
+<p>2) Describe the plot using the terminology introduced in class.</p>
+<ul><li>The plot had Celebrities, Animals, and Humor Vs Time in a Box-plot format.</ul></li>
+<p>3) Briefly explain what you think the point is attempting to make.</p>
+<ul><li>It is trying to show how companies think they can get the audience to consume their products via commercials. </li></ul>
+
+<h3>B. Reconstruction</h3>
+<p>
+	<a href = "http://www.swivel.com/graphs/show/26269387"><img src ="original.png"
+		align ="right"></a>
+1) Provide at least two examples from Wainer's dirty dozen that are in the plot that you chose.		
+<dl><dt>&nbsp;&nbsp;&nbsp;#1 "Show as Little Data as possible."</dt>
+	<dd>&nbsp;&nbsp;&nbsp;We noticed that author omitted a lot of visual data by not showing the correlation between the types of commercials(i.e. humor) and companies that were advertising(i.e. beverages). This insight sheds light on the companies and how they target their consumers, which is crucial to the overall message.</dd></dl>
+
+
+<br>
+<dl><dt>&nbsp;&nbsp;&nbsp;#2 "Hide the data you do show."<dt>
+	<dd>&nbsp;&nbsp;&nbsp;We saw that because, the author had all 3 tactics laid out for all 24 years, it was difficult to visually determine which tactic was used more often than the others, and by how much. For example in finding out whether Celebrities or Animals were used more, one has to examine the graph a few times to give a definite answer.</dd></dl>	
+</p>	
+	
+	<br><br><br><br>
+	<a href = "final.png"><img src ="small_final3.jpg"	align ="right" </a>
+	<dl><dt>2) Improve upon the plot by adding additional data or more features to it, and explain how your new version of the plot makes a clearer, more informative observation.</dt>
+<dd>Our pie charts clearly show how much each kind of company uses Humor, Animals, & Celebrities in their advertising campaigns. It is also now easy to compare and contrast between the different tactics of which each company uses. We also placed the overall usage of these tactics next to its name.</dd></dl>
+
+<br><br><br><br><br><br>
+<h3>C. Implementation</h3>
+We used <a href="http://www.r-project.org/"> R </a>  to calculate the correlations between companies and tactics. This was made by averaging the amount of commercials made in a year then multiplying it by the percent of tactic (i.e.humorous ones), then multiplying it by the types of commercials that were made that year.
+Here's the code for the two functions that caculated
+<dl><dd>
+<i>
+# AvgType is the main function which calls AvgRow and loop 25 times to <br>
+#&nbsp;&nbsp;&nbsp;calculate an average for a certain item from year 1984 to 2008.<br>
+AvgType function (sumtable, type, category){<br>
+&nbsp;&nbsp;&nbsp;arg = 0<br>
+&nbsp;&nbsp;&nbsp;for ( i in 1:25)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg = arg + AvgRow(sumtable, type, category, i)<br>
+&nbsp;&nbsp;&nbsp;return arg / 25<br>
+}<br><br>
+	
+# AvgRow is a helper function which calculates the average of an specific<br>
+#&nbsp;&nbsp;&nbsp;item with respect to all items in that row.<br>
+AvgRow function (sumtable, type, category, index){<br>
+&nbsp;&nbsp;&nbsp;return type[index] / sumtable[index] * category[index]<br>
+}<br></dd></dl>
+</i>		
+
+For the complete set of code click <a href="hw3.R"> here</a>.
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+Part Two
+Critique:
+
+When trying to access an image's style and width without having the $ sign, the compiler should be smart enough to see that no variables of that name were declared, therefore will look into the list of DOM's and access them respectively.
+{!  extractValue('image').style.width !}
+
+Skipjax in the wrong places
+Nice to have skipjax in CSS since it is easier to read, and a lil more intuitive.
+
+Forgetting whether a variable is a Behavior or an Event can be fixed by type checking for function arguments in functions like snapshot, because it expects an event as its first argument. Therefore static checking could be made to check if used properly
+
+
+

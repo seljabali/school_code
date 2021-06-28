@@ -1,0 +1,59 @@
+
+* Background:
+
+We're starting a simple Event management application. An event has
+some basic descriptive information about the event including the
+address as well as the geocoded location. This first lab will focus on
+setting up the Rails environment and creating a single model. It will
+also require you to implement a small Ruby method and do some
+computations.
+
+The events are games played by Cal locally and at three other
+schools. The data is in the spec/fixtures/events.yml and gives all the
+data for the four events. All distances are calculated from Soda Hall.
+
+* Tasks:
+
+  1. Create a simple rails application
+
+  2. Unpack the Assignment_1.zip file in your application root directory.
+     
+     unzip Assignment_1.zip
+
+  3. Migrate your database
+
+     rake db:migrate
+
+  4. Using the provided tests, add a method to compute distance from
+     from a given longitude and latitude. The expected results are in
+     the spec test case, so all that is require is getting the test to
+     pass. Then write another method that uses the computed distance
+     to sort the event records from nearest to furthest. 
+
+     The distance calculation can be found at: 
+     	 http://en.wikipedia.org/wiki/Great-circle_distance
+
+     We'll be using the Haversine formula for the tests. Please refer
+     to the equation given in the above reference.
+
+     The distances are computed with Google Earth and are therefor
+     going to be a little different than the values you will get using
+     the distance formula. This is fine and accounted for in the
+     tests.
+
+* Hints: 
+
+  1. You should do all your computations in Ruby. This does not
+     require any GIS extensions to the database.
+
+  2. Don't worry about performance, we'll deal with that later.
+
+  3. The arguments to your event's distance function will be longitude then latitude.
+
+  4. Your distance function should return the distance in kilometers.
+
+  5. Make sure you use degrees and radians in the right places in your distance function. 
+
+* Goal:
+
+Get the rspec test to pass.

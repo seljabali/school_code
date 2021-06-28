@@ -1,0 +1,370 @@
+import ast
+
+def escapeQuotes (string):
+    result = ''
+    for c in string:
+        if c == '"':
+            result += '\\"'
+        elif c == "'":
+            result += "\\'"
+        else:
+            result += c
+    return result
+
+class CodeGenerator (ast.Visitor):
+    def __init__ (self, emitter, semant):
+        self.semant = semant
+        self.e = emitter
+        self.out = emitter
+        self.firstblock = True
+        self.inFuncDecl = False
+        self.static = False
+    
+    # === Helper functions ===
+
+    def joinChildren(self, children, sep, endLine=False):
+        if len(children):
+            children[0].accept(self)
+            for child in children[1:]:
+                self.e.printdent(sep, endLine)
+                child.accept(self)
+    
+    # === Leaf literals ===
+
+    def visitNumber (self, number):
+        self.e.printdent (number.value, endLine=False) #Must be True?
+
+    def visitString (self, string):
+        str = '"'+string.value+'"'
+        self.e.printdent (str, endLine=False)
+
+    def visitRegex (self, regex):
+        self.e.printdent (regex.value, endLine=False)
+
+    def visitTrue (self, true):
+        self.e.printdent ("true", endLine=False)
+
+    def visitFalse (self, false):
+        self.e.printdent ("false", endLine=False)
+
+    def visitNull (self, null):
+        self.e.printdent ("null", endLine=False)
+
+    # === Other literals ===
+
+    def visitArrayInit (self, array):
+        self.e.printdent("[", False)
+        self.joinChildren(array.children, ", ")
+        self.e.printdent("]", False)
+
+    def visitObjectInit (self, obj):
+        self.e.printdent("{")
+        self.joinChildren(obj.children, ", ")
+        self.e.printdent("}")
+
+    def visitPropertyInit (self, prop):
+        prop.property.accept (self)
+        self.e.printdent(" : ")
+        prop.value.accept (self)
+
+   # === Miscellaneous ===
+        
+    def visitIdentifier (self, id):
+        self.e.printdent (id.value, endLine=False)
+    
+    def visitThis (self, this):
+        self.e.printdent ("this")        
+        
+    def visitIndex (self, index):
+        index.object.accept (self)
+        self.e.printdent("[")
+        index.property.accept (self)
+        self.e.printdent("]")
+
+    def visitSelection (self, sel):
+        sel.property.accept (self)
+        self.e.printdent(".")
+        sel.object.accept (self)
+
+    #-----Expresssions-----#
+
+    def visitAssignment (self, assn):
+        assn.lhs.accept (self)
+        self.e.printdent (" %s "% assn.operator)
+        assn.rhs.accept (self)
+
+    def visitInfixExpression(self, expr):
+        self.e.printdent("(")
+        expr.lhs.accept(self)
+        self.e.printdent(" %s " % expr.operator)
+        expr.rhs.accept(self)
+        self.e.printdent(")")
+
+    def visitPrefixExpression(self, expr):
+        self.e.printdent("(")
+        self.e.printdent(expr.operator)
+        expr.operand.accept(self)
+        self.e.printdent(")")
+
+    def visitPostfixExpression(self, expr):
+        self.e.printdent("(")
+        expr.operand.accept(self)
+        self.e.printdent(expr.operator)
+        self.e.printdent(")")
+
+    def visitVoid(self, void):
+        self.e.printdent(' void ')
+        void.value.accept (self)
+
+    def visitConditional (self, cond):
+        cond.condition.accept(self)
+        self.e.printdent(" ? ")
+        cond.thenPart.accept(self)
+        self.e.printdent(" : ")
+        cond.elsePart.accept(self)    
+
+    def visitArgumentList(self, arglist):
+        self.joinChildren(arglist.children, ", ")
+
+    def visitCall (self, call):
+        call.function.accept (self)
+        self.e.printdent ("(", endLine=False)
+        call.arguments.accept (self)    
+        self.e.printdent (")", endLine=False)
+
+    def visitNew(self, new):
+        self.e.printdent("new ")
+        new.object.accept(self)
+        self.e.printdent("(")
+        new.arguments.accept(self)
+        self.e.printdent(")")
+        
+
+    def visitComma (self, comma):
+        for child in comma.children:
+            child.accept (self)
+            self.e.printdent(", ")
+
+    def visitInstanceof (self, instof):
+        self.e.printdent("(")
+        instof.value.accept (self)
+        self.e.printdent(" instanceof ")
+        instof.type.accept (self)
+        self.e.printdent(")")
+
+    def visitTypeof (self, typeof):
+        self.e.printdent("(")
+        self.e.printdent("typeof ")
+        typeof.value.accept (self)
+        self.e.printdent(")")
+    
+    # === Statements ===#
+    def visitBlock (self, block):
+        if self.firstblock:
+            self.firstblock = False
+            self.joinChildren(block.children, "", endLine=True)
+            self.e.endline()
+        else:
+            self.e.printdent ("{", endLine=True)
+            self.e.indent()
+            self.joinChildren(block.children, "", endLine=True)
+            self.e.dedent()
+            self.e.endline()
+            self.e.printdent ("}", endLine=True)
+
+    def visitIf (self, if_):
+        self.e.printdent ("if (", endLine=False)        
+        if_.condition.accept (self)
+        self.e.printdent (")", endLine=True)
+        if_.thenPart.accept (self)
+        if if_.elsePart:
+            self.e.printdent ("else ", endLine=False)
+            if_.elsePart.accept (self)
+    
+    #-----Variables-------#
+    def visitVarDecls (self, decls): 
+        self.e.printdent ("var ", endLine=False)
+        self.joinChildren(decls.children, ", ")
+          
+    def visitVarDecl (self, decl):
+        decl.name.accept (self)
+        if decl.initializer:
+            self.e.printdent (" = ", endLine=False)
+            decl.initializer.accept (self)
+    
+    #---Conditionals & Loops -----#
+    def visitSelection (self, sel):
+        sel.object.accept (self)
+        self.e.printdent (".", endLine=False)
+        sel.property.accept (self)    
+    
+    def visitFor (self, for_): 
+        self.e.printdent ("for(", endLine=False)
+        for_.setup.accept (self)
+        self.e.printdent (";", endLine=False)
+        for_.condition.accept (self)
+        self.e.printdent (";", endLine=False)
+        for_.update.accept (self)
+        self.e.printdent (")", endLine=False)
+        for_.body.accept (self)
+
+    def visitForIn (self, forin):
+        self.e.printdent ("for(", endLine=False)
+        forin.iterator.accept (self)
+        self.e.printdent (" in ", endLine=False)
+        forin.object.accept (self)
+        self.e.printdent (")", endLine=False)
+        forin.body.accept (self)
+        if forin.decl:
+            forin.decl.accept (self)
+            
+    def visitDo (self, do):
+        self.e.printdent ("do", endLine=False)
+        do.body.accept (self)
+        self.e.printdent ("while(", endLine=False)
+        do.condition.accept (self)
+        self.e.printdent (")", endLine=False)            
+        
+    def visitWhile (self, while_):
+        self.e.printdent ("while(", endLine=False)
+        while_.condition.accept (self)
+        self.e.printdent (")", endLine=False)
+        while_.body.accept (self)
+
+    def visitWith (self, w):
+        self.e.printdent ("with(", endLine=False)
+        w.object.accept (self)
+        self.e.printdent (")", endLine=False)
+        w.body.accept (self)
+
+    def visitBreak (self, brek): 
+        self.e.printdent ("break", endLine=False)        
+    
+    def visitContinue (self, cont): 
+        self.e.printdent ("continue", endLine=False)
+        
+    def visitReturn (self, ret):
+        if ret.value:
+            self.e.printdent ("return ", endLine=False)
+            ret.value.accept (self)
+    
+    #-----Switch-&-Try Catch-------#
+    def visitSwitch(self, sw):
+        self.e.printdent ("switch(", endLine=False)
+        sw.discriminant.accept (self)
+        self.e.printdent ("){", endLine=True)
+        self.e.indent()
+        sw.cases.accept (self)
+        self.e.dedent() 
+        self.e.printdent ("}", endLine=True)
+        #self.e.dedent() 
+    
+    def visitCaseList(self,list):
+        for case in list.children:
+            case.accept(self)
+                    
+    def visitCase(self,case):
+        self.e.printdent ("case ", endLine=False)
+        self.e.printdent (case.label.value, endLine=False)
+        self.e.printdent (":", endLine=True)
+        case.statements.accept(self)
+
+    def visitDefault(self,de):
+        self.e.printdent ("default:", endLine=False)
+        de.statements.accept(self)        
+    
+    def visitTryCatchFinally(self, final):
+        identifier = True
+        self.e.printdent ("try", endLine=True)
+        final.tryBlock.accept(self)
+        
+        self.e.printdent ("catch(", endLine=False)
+        for f in final.catch.children:
+            f.accept(self)
+            if (identifier):
+                identifier = False
+                self.e.printdent (")", endLine=True)
+                
+        self.e.printdent ("finally", endLine=True)
+        final.finallyBlock.accept(self)
+    
+    def visitThrow(self, t):
+        self.e.printdent ("throw ", endLine=False)
+        t.exception.accept(self)
+        
+        
+#    def visitFieldA(self, f_):
+#        f_.fname.accept(self)
+
+    #-----Classes-------#
+    def visitClassA(self, c_):
+        classname = c_.cname.value
+        super = None
+        if c_.csuper:
+            super = c_.csuper.value
+        classinfo = self.semant.classes[classname]
+
+        self.e.printdent ("function %s" % classname)
+        self.e.printdent ("(%s) {" % ", ".join(classinfo["cargs"]), True)
+        self.inClass = True
+        self.e.indent() 
+        for f in classinfo["fields"]:
+            self.e.printdent("this.%s = %s" % f, True)
+        for m in classinfo["methods"]:
+            self.e.printdent("this.%s = " % m[0])
+            self.static = m[2]
+            m[1].accept(self)
+            self.static = False
+        for s in classinfo["statics"]:
+            gf = "function (__s_arg__) { this.__proto__.%s = __s_arg__ }" % s[0]
+            setter = "this.__defineSetter__(\"%s\", %s)" % (s[0], gf)
+            self.e.printdent(setter, True)
+        self.e.printdent("this.%s.call (this, %s)" % 
+                         (classname, ", ".join(classinfo["cargs"])),
+                         True)
+        self.e.dedent()
+        self.e.printdent ("}", True)
+        self.e.printdent ("%s.prototype = " % classname)
+        if super:
+            self.e.printdent ("new %s" % super)
+        else:
+            self.e.printdent ("{}", True)
+        for s in classinfo["statics"]:
+             self.e.printdent ("%s.prototype.%s = " % (classname, s[0]))
+             s[1].accept(self)
+        self.inClass = False
+
+    #-----Functions-------#
+    def visitFunctionDecl (self, decl):
+        self.e.printdent("function ")
+        decl.name.accept (self)
+        oldfunc = self.inFuncDecl
+        self.inFuncDecl = True
+        decl.function.accept (self)
+        self.inFuncDecl = oldfunc
+        
+    def visitFunction (self, function):
+        #print "!Visiting Function"
+        #print function.children
+        #print function.parameters.children
+        if self.inFuncDecl:
+            self.e.printdent("(")
+        else:
+            self.e.printdent("function (")
+        chilun = function.parameters.children
+        if len(chilun) > 0:
+            first = True
+            for c in function.parameters.children:
+                if c:
+                    if first:
+                        first = False
+                    else:
+                        self.e.printdent(", ")
+                    c[0].accept(self)
+                    if c[1]:
+                        c[1].accept(self)
+        self.e.printdent(")", True)
+        oldfunc = self.inFuncDecl
+        self.inFuncDecl = False
+        function.body.accept (self)
+        self.inFuncDecl = oldfunc

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="bm.jar"/>
+	<classpathentry exported="true" kind="lib" path="dm.jar"/>
+	<classpathentry exported="true" kind="lib" path="hf.jar"/>
+	<classpathentry exported="true" kind="lib" path="ix.jar"/>
+	<classpathentry exported="true" kind="lib" path="ro.jar"/>
+	<classpathentry exported="true" kind="lib" path="qu.jar"/>
+	<classpathentry exported="true" kind="lib" path="gl.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,12 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Artists"} %>
+
+<% @artists.each do |artist| %>
+	<%= link_to artist.name, :action => "show", :id => artist.id %><br>
+<% end %>
+
+<br><br>
+<%= link_to "[ create new artist ]", :action => "new" %>
+
+</body>
+</html>

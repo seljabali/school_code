@@ -1,0 +1,8 @@
+0)
+I used read.csv because its default delimiter is the comma, which is what's used to separate values. However the read.table's default settings does not include comma.
+
+1)The average traffic flow of Lane #2 is 75, and for Lane #3 is 48, which makes the difference 27. 
+
+2)According to the graph, Lane 1 is the most traffic congested, and yes the other lanes were too congested when lane 1 was congested.
+
+

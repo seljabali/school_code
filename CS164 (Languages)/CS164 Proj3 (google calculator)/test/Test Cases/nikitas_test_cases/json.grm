@@ -1,0 +1,9 @@
+//JSON: JavaScript Object Notation
+%%
+O -> '{' FIELDS '}';
+FIELDS -> ID ':' V FMORE;
+FMORE -> ',' ID ':' V FMORE | _;
+V -> O | /'[^']*'/ | ARR | /[1-9][0-9]*/; //objects, strings, arrays, numbers
+ARR -> '[' ']' | '[' V AMORE ']';
+AMORE -> ',' V AMORE | _;
+ID -> /[a-zA-Z][^ :]*/;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="minibase_eclipse/minibase-diskmgr.jar"/>
+	<classpathentry exported="true" kind="lib" path="minibase_eclipse/minibase-exceptions.jar"/>
+	<classpathentry exported="true" sourcepath="C:/Documents and Settings/Yuly/Projects/Homework1/global" kind="lib" path="minibase_eclipse/minibase-global.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

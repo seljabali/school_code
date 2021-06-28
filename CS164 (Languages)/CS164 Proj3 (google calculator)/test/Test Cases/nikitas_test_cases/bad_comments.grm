@@ -1,0 +1,6 @@
+//This is a comment that should be ignored
+%left '+'
+%%
+A -> A '+' B #Comments don't use pound
+   | B ;
+B -> /[0-9]+/ ;

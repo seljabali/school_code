@@ -1,0 +1,11 @@
+if
+	if
+		if ! ! !
+			0 / 0
+		then 450 + 451 * 452
+		else 10 - 100
+	then
+		+7
+	else
+		-7
+	then +-0

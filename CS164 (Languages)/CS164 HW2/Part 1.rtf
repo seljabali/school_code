@@ -1,0 +1,61 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 import sys, re\
+def IsInt( str ):\
+    ok = 1\
+    try:\
+        num = int(str)\
+    except ValueError:\
+        ok = 0\
+    return ok\
+\
+#def main():\
+if __name__ == "__main__":\
+    #x = str(raw_input("Please an expression: "))\
+    if (len(sys.argv) < 3):\
+        print "Exhausted Stack" \
+        exit()\
+    stack = []\
+    for i in range(1, len(sys.argv)):\
+        char = sys.argv[i];\
+        if(i == len(sys.argv)):\
+            answer = int(stack.pop())\
+            if (IsInt(answer)):\
+                print answer\
+                exit();\
+            else:\
+                print "Error! Answer not a number"\
+                exit();\
+        else:\
+            if (IsInt(char)): \
+                stack.append(char)\
+            elif(char == "+" or char == "-" or char =="*"):\
+                try:\
+                    operand = int(stack.pop())\
+                    operand2 = int(stack.pop())\
+                except:\
+                    print "Error! Depleted stack!"\
+                    exit()\
+                if(char == '-'):\
+                    intermediate = operand2 - operand\
+                    stack.append(intermediate)\
+                elif(char == '+'):\
+                    intermediate = operand + operand2\
+                    stack.append(intermediate)\
+                elif(char == '*'):\
+                    intermediate = operand * operand2\
+                    stack.append(intermediate)\
+    if (len(stack) > 1):\
+        print "t00 big of a stack!"\
+        exit()\
+    else:\
+        answer = int(stack.pop())\
+        if (IsInt(answer)):\
+            print answer\
+            exit()\
+        else:\
+            print "Error!Answer not a number"}

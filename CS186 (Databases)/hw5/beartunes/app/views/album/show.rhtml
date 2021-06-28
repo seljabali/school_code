@@ -1,0 +1,53 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Album Details"} %>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<tr>
+<td><b><i>Artist: </b></i></td>
+<td><%=link_to @album.artist.name, :controller => "artist", :action=> "show", :id => @album.artist.id %></td>
+
+<tr>
+<td><b><i>Album: </b></i></td>
+<td><%= @album.name %></td>
+
+<tr>
+<td><b><i>Year: </b></i></td>
+<td><%= @album.year %></td>
+
+<tr>
+<td><b><i>Genre: </b></i></td>
+<td><%=link_to @album.genre.name, :controller => "genre", :action=> "show", :id => @album.genre.id %></td>
+
+<tr>
+<td><b><i>Rating: </b></i></td>
+<td><%= @album.rating %></td>
+
+</tr>
+</table>
+
+	<table border="1" cellpadding="5" cellspacing="0">
+	<td><b><i>Track #</b></i></td>
+	<td><b><i>Track Name</b></i></td>
+	<td><b><i>Length</b></i></td>
+
+<% @track.each do |track| %>
+	<tr>
+	<td><%=track.number %></td>
+
+	<td><%= track.name_track %></td>
+
+	<td><%= track.length %></td>
+	</tr>	
+
+<% end %>
+	</table>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "[ edit album details ]", { :action => 'edit', :id => @album.id }, :post => true %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "[ delete album ]", { :action => 'destroy', :id => @album.id }, :post => true %>
+<br><br>
+
+</body>
+</html>
+

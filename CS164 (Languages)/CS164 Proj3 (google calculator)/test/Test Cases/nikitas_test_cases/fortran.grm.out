@@ -1,0 +1,59 @@
+(Grammar
+    (Declarations
+        (import ast)
+        (assoc \+ 0 left)
+        (assoc \- 0 left)
+        (assoc \* 1 left)
+        (assoc \/ 1 left)
+        (assoc \! 2 right)
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, E, ]
+                (action { return ast.Plus (n1, n3) })
+            )
+            (production [ E, \-, E, ]
+                (action { return ast.Minus (n1, n3) })
+            )
+            (production [ E, \*, E, ]
+                (action { return ast.Mult (n1, n3) })
+            )
+            (production [ E, \/, E, ]
+                (action { return ast.Div (n1, n3) })
+            )
+            (production [ \!, E, ]
+                (action { return ast.Not (n2) })
+            )
+            (production [ \+, E, ]
+                (assoc \!)
+                (action { return ast.UPlus (n2) })
+            )
+            (production [ \-, E, ]
+                (assoc \!)
+                (action { return ast.UMinus (n2) })
+            )
+            (production [ if, E, then, E, ]
+                (precedence 1)
+                (action { return ast.If (n2, n4) })
+            )
+            (production [ if, E, then, E, else, E, ]
+                (precedence 2)
+                (action { return ast.If (n2, n4, n6) })
+            )
+            (production [ Primary, ]
+                (action { return ast.Primary (n1) })
+            )
+        )
+        (Rule Primary
+            (production [ Integer, ]
+                (action { return ast.Integer (n1) })
+            )
+        )
+        (Rule Integer
+            (production [ [0-9]+, ]
+                (action { return int (n1) })
+            )
+        )
+    )
+    (StartSymbol E)
+)

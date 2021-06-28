@@ -1,0 +1,18 @@
+Sami Eljabali
+CS182-CL
+19059321
+A7
+
+Questions:
+1.  Why do we think that exponential discounting not the way we humans discount future rewards? Describe, as part of this, how procrastination indicates that exponential discounting is incorrect.
+
+	Because if that were the case then we'd always be procrastinating.
+
+2. In what ways do we animals trade off exploring versus exploitation of our environment?
+
+	When our greedy method doesn't always pay off in the long run.
+
+
+3. How is prediction error encoded in the brain?
+	
+	From past experiences.

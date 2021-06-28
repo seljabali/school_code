@@ -1,0 +1,122 @@
+ <html><head><title>FishEye Menu</title>
+	<script src="http://webfiles.berkeley.edu/nthukral/shared/skipjax.js" type="text/javascript"></script>
+	<style type="text/css">
+	body {background-color: #AAAAFF;}
+	
+   	.pic {
+   		float: center;
+		margin: 10px 10px 10px 10px;
+		background-color: #9999FF;
+		border: 1px #DDDDFF solid;
+		padding: 0px;
+		overflow: hidden;}
+		
+    #images {
+    	border: 1px solid #DDDDFF;
+		overflow: hidden;
+		background-color: #BBBBFF;
+		padding: 0px 20px 10px 0px;
+		margin: 10px auto 0px auto;
+		vertical-align: top;} 
+	</style>
+   </head>
+   
+   <body id="BODY">
+   		<p>Request a tag here: <input type="text" id="nexTag" align="left"></input><span id='loaddisplay' text-align="right"></span></p>
+   		     
+		<div id="images" align="center">
+		 	<img id="image3"class="pic"src="http://www.olegvolk.net/olegv/north/emu.jpg"></img><img id="image4"class="pic"src="http://www.olegvolk.net/olegv/north/emu.jpg"></img>    		
+		 	<img id="image1"class="pic"src="http://www.olegvolk.net/olegv/north/emu.jpg"></img><img id="image2"class="pic"src="http://www.olegvolk.net/olegv/north/emu.jpg"></img>         
+		 	<img id="image5"class="pic"src="http://www.olegvolk.net/olegv/north/emu.jpg"></img>		         
+		</div>         
+        
+       <p>Currently Displaying: <span id='currenttag'></span></p>    
+       
+	<script type="text/skipjax">
+    		var maxWidth = 200;
+    		var minWidth = 50;		
+    		var sensitivity = maxWidth * 1.5 + 40;
+    		var numImages = 5;
+  
+    		var mouseL = mouseLeft('images')
+   			
+			function computeCenter(imageName){
+				return lift(function(x) { return $(imageName)['offsetLeft'] + (1/2)*$(imageName)['width'];}, mouseL)
+			}
+			
+			function computeDistanceToMouse(outerDiv, innerImage){
+				distance = Math.abs(mouseL - computeCenter(innerImage))			
+				safeDist = distance <2?2:distance;
+				return safeDist;
+			}
+			
+			function widthBasedOnDistance(outerDiv, innerImage){
+				distToMouse = computeDistanceToMouse(outerDiv, innerImage);
+				
+				return lift(function (dist){
+							if (dist > sensitivity) {return minWidth;}
+							else{
+								var res = Math.round(Math.max(minWidth,Math.min(maxWidth, maxWidth * Math.log(sensitivity - dist) / Math.log(sensitivity))));
+								return res;
+							}
+						},distToMouse)
+			}
+						
+			for (j = 1; j < numImages + 1; j++){
+				$('image' + j).width = widthBasedOnDistance('images', 'image' + j)
+			}	
+				
+  			function jsonFlickrFeed(v) {
+      			var i = 1;
+      			var feedTag = null;
+      			
+      			if(v.title == "Everyone's photos"){
+      				feedTag = "All Photos";
+      			}else{
+      				re = /Photos from everyone tagged (.+)/
+      				arr = v.title.match(re)
+      				feedTag = arr[1]
+      			}
+
+      			insertValue("", 'loaddisplay')      			
+   				insertValue(feedTag, 'currenttag', 'innerHTML')  
+   				    			
+      			for (i = 1; i < numImages + 1; i++){
+      				insertValue(v.items[i].media.m, "image" + i, "src")
+      			}
+  			}			
+
+    		var inputText = extractValue('nexTag')    		
+    		var calmedText = calm(inputText, 2000)    		
+    		var tagqueue = new Array();  		
+    		var jsonResult = null;  
+    		
+    		
+    		function tagFilter (x) {
+				if (x.length > 0){
+    				if(tagqueue.indexOf(x) == -1){
+    					tagqueue.push(x)
+    				}					
+    				return x
+    			}
+    		}
+    			
+    		var filteredCalmedText = tagFilter(calmedText)
+    		
+    		
+    		function requestNextTag (x){
+ 				if (tagqueue.length > 0){
+    				return "http://api.flickr.com/services/feeds/photos_public.gne?tags=" + tagqueue.shift() + "&" + "format=json";
+    			}else{
+    				return "http://api.flickr.com/services/feeds/photos_public.gne?format=json";
+    			}
+    		}   			
+
+  			var eightSecondQueueValue = requestNextTag(ticks(8000))
+  					
+    		var x = evalForeignScript({'url': eightSecondQueueValue, 'globalArg': 'jsonResult'})
+			
+			var loading = insertValue(snapshot(eightSecondQueueValue, "Loading..."), "loaddisplay")	    						 	
+	</script>
+   </body>
+ </html>

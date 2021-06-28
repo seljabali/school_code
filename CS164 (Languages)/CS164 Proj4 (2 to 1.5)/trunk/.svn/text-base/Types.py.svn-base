@@ -1,0 +1,139 @@
+import ast
+
+
+class Types(ast.Visitor):
+
+    def __init__ (self, emitter):
+        self.out = emitter
+        self.e = emitter
+        self.table = {'class':{},'methods':{}, 'fields': {}}
+        self.static = False
+        self.curClassName = None
+        
+        self.inFuncDecl = False
+        self.inClassFuncDecl = False
+        self.inClass = False
+        self.FuncName = None
+        self.construct = False
+
+        self.VarTypes = []
+        self.FuncTypes = []
+        
+        self.curMethod = None
+        
+    def visitClassA(self, c_):
+        cname = c_.cname.value                  
+        self.table['class'][cname] = {'super':None,'fields':{}, 'methods':{}}
+        self.curClassName = cname
+        super = None
+        if c_.csuper:
+            super = c_.csuper.value
+            self.table['class'][cname]['super'] = c_.csuper.value
+        else:
+            self.table['class'][cname]['super'] = None
+        self.inClass = True
+        c_.cbody.accept(self)
+        self.inClass = False
+
+    def visitCBlock(self, b_):
+        for o in b_.children:
+            self.static = o[1]
+            o[0].accept(self)
+
+    def visitFunctionDecl (self, decl):
+        #if not self.inFuncDecl:
+            
+        if self.inClass:
+            oldClassFuncDecl = self.inClassFuncDecl
+            self.inClassFuncDecl = True
+            self.table['class'][self.curClassName]['methods'][decl.name.value] = []            
+            if self.static:
+                self.table['class'][self.curClassName]['methods'][decl.name.value].append(True)
+                self.static = False
+            else:
+                self.table['class'][self.curClassName]['methods'][decl.name.value].append(False)
+        self.FuncName = decl.name.value
+        decl.name.accept (self)
+        oldfunc = self.inFuncDecl
+        self.inFuncDecl = True
+        decl.function.accept (self)
+        self.inFuncDecl = False #change
+        self.inFuncDecl = oldfunc
+        self.FuncName = None
+        if self.inClass:
+            self.inClassFuncDecl = oldClassFuncDecl
+        
+    def visitFunction (self, function):
+        #function type
+        
+        if getattr(function, 'typeDecorator'):
+            self.FuncTypes = []
+            function.typeDecorator.accept(self) 
+    
+            if self.inClass:
+                self.table['class'][self.curClassName]['methods'][self.FuncName].append(self.FuncTypes)
+            else:
+                self.table['methods'][self.FuncName].append(self.FuncTypes)
+                    
+        #function parameters
+        if len(function.parameters.children) > 0:
+            cargs = []
+            for c in function.parameters.children:
+                if c:
+                    if c[1]:
+                        cargs.append((c[0].value,c[1].value.value))
+                    else:
+                        cargs.append(c[0].value)
+            if self.inClass:
+                self.table['class'][self.curClassName]['methods'][self.FuncName].append(cargs)
+            else:
+                self.table['methods'][self.FuncName] = cargs
+    
+        oldfunc = self.inFuncDecl
+        self.inFuncDecl = False
+        function.body.accept (self)
+        self.inFuncDecl = oldfunc        
+            
+           
+    #-----Variables-------#      
+    def visitVarDecl (self, decl):
+        types = []
+        self.VarTypes = []
+        for t in decl.typeDecorator.children:
+            t.accept(self)
+
+        #print self.VarTypes   
+        if self.inClass and (not self.inClassFuncDecl):
+            if self.static:
+                self.table['class'][self.curClassName]['fields'][decl.name.value] = []
+                self.table['class'][self.curClassName]['fields'][decl.name.value].append((True,self.VarTypes))
+            else:
+                self.table['class'][self.curClassName]['fields'][decl.name.value] = [] 
+                self.table['class'][self.curClassName]['fields'][decl.name.value].append((False,self.VarTypes))
+            if decl.initializer:
+                decl.initializer.accept (self) 
+        elif (not self.inClass) and (not self.inClassFuncDecl):
+            if self.static:
+                self.table['fields'][decl.name.value] = []
+                self.table['fields'][decl.name.value].append((True,self.VarTypes))
+            else:
+                self.table['fields'][decl.name.value] = []
+                self.table['fields'][decl.name.value].append((False,self.VarTypes))                
+
+    def visitArrowType(self,arrow):
+        arrow.lhs.accept (self)
+        arrow.rhs.accept (self)
+    
+    def visitAtomType(self,atom):
+        if self.inFuncDecl:
+            self.FuncTypes.append(atom.value.value)
+        else:    
+            self.VarTypes.append(atom.value.value)
+        atom.value.accept (self)
+        
+    def visitTupleType (self,tuple):
+        for n in tuple.nuargs:
+            n.value.accept (self)
+    
+    def visitDynamicType (self,dynamic):
+        dynamic.value.accept (self)

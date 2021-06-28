@@ -1,0 +1,47 @@
+(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule O
+            (production [ \{, FIELDS, \}, ]
+            )
+        )
+        (Rule FIELDS
+            (production [ ID, \:, V, FMORE, ]
+            )
+        )
+        (Rule FMORE
+            (production [ \,, ID, \:, V, FMORE, ]
+            )
+            (production [ (epsilon), ]
+            )
+        )
+        (Rule V
+            (production [ O, ]
+            )
+            (production [ '[^']*', ]
+            )
+            (production [ ARR, ]
+            )
+            (production [ [1-9][0-9]*, ]
+            )
+        )
+        (Rule ARR
+            (production [ \[, \], ]
+            )
+            (production [ \[, V, AMORE, \], ]
+            )
+        )
+        (Rule AMORE
+            (production [ \,, V, AMORE, ]
+            )
+            (production [ (epsilon), ]
+            )
+        )
+        (Rule ID
+            (production [ [a-zA-Z][^ :]*, ]
+            )
+        )
+    )
+    (StartSymbol O)
+)

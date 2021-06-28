@@ -1,0 +1,22 @@
+(Grammar
+    (Declarations
+        (assoc \+ 0 left)
+    )
+    (Rules
+        (Rule A
+            (production [ A, \+, B, ]
+            )
+            (production [ B, ]
+            )
+        )
+        (Rule B
+            (production [ [0-9]+, ]
+            )
+        )
+        (Rule C
+            (production [ [a-z], ]
+            )
+        )
+    )
+    (StartSymbol A)
+)

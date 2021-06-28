@@ -1,0 +1,10 @@
+ // An English-like expression language
+ %import ast
+ %ignore /[ \t]+/
+ %%
+ Sentence -> Subject Verb Object '.' ;
+ Subject -> 'I' | 'a' Noun | 'the' Noun ;
+ Object -> 'me' | 'a' Noun | 'the' Noun ;
+ Noun -> 'cat' | 'mat' | 'rat' ;
+ Verb -> 'like' | 'is' | 'see' | 'sees' ;
+

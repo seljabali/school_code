@@ -1,0 +1,20 @@
+file = file("/Users/samieljabali/Desktop/Stathw1.txt")
+data = read.csv(file)
+f1 = data$Flow1
+f2 = data$Flow2
+f3 = data$Flow3
+boxplot(f1,f2,f3)
+summary(f2)
+summary(f3)
+o1 = data$Occ1
+o2 = data$Occ2
+o3 = data$Occ3
+plot(f3,col="red", main = "Flow vs Occupancy of Lane 3", xlab="Flow: Red | Occupancy: Green",ylab="")
+boxplot(f1, f2, f3, main = "Traffic Flow(Cars vs Time)", xlab = "Lanes 1, 2, and 3", ylab="Number of cars")
+plot(f3,col="red", main = "Flow vs Occupancy of Lane 3", xlab="Flow: Red | Occupancy: Green",ylab="")
+plot(f1, col="green", xlab = "Lane 1: Green | Lane 2: Blue | Lane 3: Red", ylab = "Number of cars", main = "3 Lanes of Traffic(Cars Vs Time)")
+points(f2, col="blue")
+points(f3, col="red")
+plot(f1,col="red", main = "Flow vs Occupancy of Lane 1", xlab="Flow: Red | Occupancy: Green",ylab="")
+par(new=T)
+plot(o1,col="green", xlab="",ylab="")

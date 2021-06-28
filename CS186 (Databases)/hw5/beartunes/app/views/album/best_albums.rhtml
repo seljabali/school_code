@@ -1,0 +1,31 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Best of the Best"} %>
+
+	<table border="1" cellpadding="5" cellspacing="0">
+	<tr>
+	<td><b><i>Artist:</b></i></td>
+	<td><b><i>Album:</b></i></td>
+	<td><b><i>Year</b></i></td>
+	<td><b><i>Rating</b></i></td>
+	</tr>
+
+<% @album.each do |alb| %>
+	<tr>
+	<td><%=link_to alb.artist_name, :controller => "artist", :action=> "show", :id => alb.artist_id %></td>
+	<td><%=link_to alb.album_name, :controller => "album", :action=> "show", :id => alb.album_id %></td>
+	<td><%= alb.year %></td>
+	<td><%= alb.rating %></td>
+	</tr>
+<% end %>
+</table>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "[ edit album details ]", { :action => 'edit', :id => @album.id }, :post => true %>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to "[ delete album ]", { :action => 'destroy', :id => @album.id }, :post => true %>
+<br><br>
+
+</body>
+</html>
+

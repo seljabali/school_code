@@ -1,0 +1,20 @@
+<html>
+<%= render :partial => "application/header", :locals => { :title => "Albums by Genre" } %>
+
+<table border="1" cellpadding="5" cellspacing="0">
+<td><b><i>Artist: </b></i></td>
+<td><b><i>Album: </b></i></td>
+<td><b><i>Genre:</b></i></td>
+<td><b><i>Year:</b></i></td>
+
+<% @genre.each do |gen| %> 
+	<tr>
+	<td><%=link_to gen.artist_name, :controller => "artist", :action=> "show", :id => gen.artist_id %></td>
+	<td><%=link_to gen.album_name, :controller => "album", :action=> "show", :id => gen.album_id %></td>
+	<td><%= gen.genre_name  %></td>
+	<td><%= gen.year %></td>
+	</tr>
+<% end %> 
+</table>
+</body>
+</html>

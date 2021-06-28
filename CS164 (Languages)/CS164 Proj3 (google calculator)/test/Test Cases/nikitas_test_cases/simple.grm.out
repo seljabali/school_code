@@ -1,0 +1,33 @@
+(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, T, ]
+            )
+            (production [ E, \-, T, ]
+            )
+            (production [ T, ]
+            )
+        )
+        (Rule T
+            (production [ T, \*, F, ]
+            )
+            (production [ T, \/, F, ]
+            )
+            (production [ F, ]
+            )
+        )
+        (Rule F
+            (production [ Int, ]
+            )
+            (production [ \(, E, \), ]
+            )
+        )
+        (Rule Int
+            (production [ [0-9]+, ]
+            )
+        )
+    )
+    (StartSymbol E)
+)

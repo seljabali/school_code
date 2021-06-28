@@ -1,0 +1,19 @@
+//a bit formula interpreter
+%left '+' '-'
+%left '>>' '<<'
+%left '&' '|'
+%right '!' '~'
+%%
+E -> E '+' E		%{ return n1 + n2 %}
+   | E '-' E		%{ return n1 - n2 %}
+   | E '&' E 		%{ return n1 & n2 %}
+   | E '|' E		%{ return n1 | n2 %}
+   | E '>>' E		%{ return n1 >> n2 %}
+   | E '<<' E		%{ return n1 << n2 %}
+   | '(' E ')'		%{ return n1 %}
+   | '!' E		%{ return !n1 %}
+   | '~' E		%{ return ~n1 %} //bit inverse
+   | '-' E %prec '!'	%{ return -n1 %}
+   | NUM;
+
+NUM -> /[1-9][0-9]*/ ;

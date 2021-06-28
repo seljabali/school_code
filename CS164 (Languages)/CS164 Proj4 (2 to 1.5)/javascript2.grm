@@ -1,0 +1,522 @@
+//
+// @file javascript.grm
+//
+// $Id: javascript.grm,v 1.1 2007/04/16 06:54:11 cgjones Exp $
+//
+
+%import ast
+%import util
+
+%ignore       /[ \t\v\f]+/ 
+%ignore       /\/\/[^\n\r]*?(?:[\n\r]|$)/
+%ignore       /\/\*(?:\n\r|\r|\n|.)*?\*\//
+
+%optional NL  /\r\n|\r|\n/
+//%ignore       /\r\n|\r|\n/
+
+%left  ','
+%right '='  '+='  '-='  '*='  '/='  '%='  '<<='  '>>=' '>>>='  '&='  '^='  '|='
+%left  '||'
+%left  '&&'
+%left  '|'
+%left  '^'
+%left  '&'
+%left  '=='   '!='  '==='  '!=='
+%left  '<'  '<='  '>'  '>='  'in'  'instanceof'
+%left  '<<'  '>>'  '>>>'
+%left  '+'  '-'
+%left  '*'  '/'  '%'
+%right   '->'
+%right '!'  '~'  'typeof'  'void'  'delete'
+%left  '++'  '--'  // these are non-associative, but we'll catch that later
+
+%%
+
+Script -> TopStmts                 %{ return ast.Script (n1.val) %} ;
+
+//-----------------------------------------------------------------------------
+// Statements (modulo Lambda)
+//
+
+TopStmts -> _                      %{ return ast.Block (ast.EmptyStatement ()) %}
+       | Stmt                  %dprec 2
+                                %{ return ast.Block (n1.val) %}
+       | TerminatedStmt        %dprec 3
+                                %{ return ast.Block (n1.val) %}
+       | TerminatedStmt TopStmts  %dprec 1
+                                %{ n2.val.add (n1.val, 0); return n2.val %}
+       | ClassDef TopStmts     %{ n2.val.add (n1.val, 0); return n2.val %}
+       ;
+
+
+ClassDef -> CClass ID OB CStmts CB %{ return ast.ClassA(n2.val, n4.val, False) %}
+       | Dynamic CClass ID OB CStmts CB %{ return ast.ClassA(n3.val, n5.val, True) %}
+       | CClass ID Extends ID OB CStmts CB %{ return ast.ClassA(n2.val, n6.val, False, n4.val) %}
+       | Dynamic CClass ID Extends ID OB CStmts CB %{ return ast.ClassA(n3.val, n7.val, True, n5.val) %}
+       ;
+
+
+CStmts -> _ %{ return ast.CBlock ((ast.EmptyStatement (), False)) %}
+        | FuncDecl CStmts      %{ n2.val.add ((n1.val, False), 0); return n2.val %}
+        | Static FuncDecl CStmts      %{ n3.val.add ((n2.val, True), 0); return n3.val %}
+        | VAR DeclList EOS CStmts       %{ n4.val.add((n2.val, False), 0); return n4.val %}        
+        | Static VAR DeclList EOS CStmts       %{ n5.val.add((n3.val, True), 0); return n5.val %}        
+        ;
+        
+
+Stmts -> _                      %{ return ast.Block (ast.EmptyStatement ()) %}
+       | Stmt                  %dprec 2
+                                %{ return ast.Block (n1.val) %}
+       | TerminatedStmt        %dprec 3
+                                %{ return ast.Block (n1.val) %}
+       | TerminatedStmt Stmts  %dprec 1
+                                %{ n2.val.add (n1.val, 0); return n2.val %}
+       ;
+
+StmtBlock -> OB Stmts CB      %{ return n2.val %} ;
+
+Stmt -> ExprStmt
+      | VarDecls
+      | Throw
+      | Return
+      | Break
+      | Continue
+      | DoWhile
+      | For
+      | ForIn
+      | If
+      | While
+      | With
+      ;
+
+TerminatedStmt -> DisambigTermStmt
+                | NormalTermStmt
+                ;
+
+TermStmtNoSemicolonBlock -> DisambigTermStmtNoSemicolonBlock
+                          | NormalTermStmt
+                          ;
+
+NormalTermStmt -> SEMI           %{ return ast.EmptyStatement () %}
+                | FuncDecl
+                | DoWhile
+                | Switch
+                | TryCatch
+                | TerminatedFor
+                | TerminatedForIn  
+                | TerminatedIf
+                | TerminatedWith
+                | TerminatedWhile  
+                | Lambda        %{ return ast.ExpressionStatement (n1.val) %}
+                ;
+
+DisambigTermStmt -> StmtBlock      %dprec 2
+                  | StmtBlock SEMI  %dprec 2
+                  | Stmt EOS       %dprec 1
+                  | ObjectLiteral  %dprec 1
+                                %{ return ast.ExpressionStatement (n1.val) %}
+                  ;
+
+DisambigTermStmtNoSemicolonBlock -> StmtBlock      %dprec 2
+                                  | Stmt EOS       %dprec 1  %{
+    ##
+    ## Firefox rejects "if (1) {}; else 2;".  For Spidermonkey-parser
+    ## compatibility, uncomment the hack below.
+    ##
+#    if isinstance (n1.val, ast.ExpressionStatement):
+#        e = n1.val.expression
+#        if (isinstance (e, ast.ObjectInit) and len (e.children) == 0 
+#            and n2.val == SEMI):
+#            util.error ("blocks cannot be ended with SEMI here")
+#        else:
+#            return n1.val
+#    else:
+        return n1.val
+%}
+                                  | ObjectLiteral  %dprec 1
+                                %{ return ast.ExpressionStatement (n1.val) %}
+                                  ;
+
+Suite -> Stmt                   %{ return ast.Block (n1.val) %} ;
+
+TerminatedSuite -> TerminatedStmt   %{ 
+    if isinstance (n1.val, ast.Block):
+        return n1.val
+    else:
+        return ast.Block (n1.val) 
+%} ;
+
+TermSuiteNoSemicolonBlock -> TermStmtNoSemicolonBlock %{
+    if isinstance (n1.val, ast.Block):
+        return n1.val
+    else:
+        return ast.Block (n1.val) 
+%} ;
+
+If -> IF OP E CP Suite                                  %dprec 2
+                                %{ return ast.If (n3.val, n5.val) %}
+    | IF OP E CP TermSuiteNoSemicolonBlock ELSE Suite  %dprec 1
+                                %{ return ast.If (n3.val, n5.val, n7.val) %}
+    ;
+
+TerminatedIf -> IF OP E CP TerminatedSuite                                   %dprec 2
+                                %{ return ast.If (n3.val, n5.val) %}
+              | IF OP E CP TermSuiteNoSemicolonBlock ELSE TerminatedSuite  %dprec 1
+                                %{ return ast.If (n3.val, n5.val, n7.val) %}
+              ;
+
+For -> FOR OP ForInit SEMI LoopTest SEMI ForUpdate CP Suite
+                                %{ return ast.For (n3.val, n5.val, n7.val, n9.val) %} ;
+TerminatedFor -> FOR OP ForInit SEMI LoopTest SEMI ForUpdate CP TerminatedSuite
+                                %{ return ast.For (n3.val, n5.val, n7.val, n9.val) %} ;
+ForInit -> _                    %{ return ast.EmptyStatement () %}
+         | VarDecls
+         | E
+         ;
+LoopTest -> _                   %{ return ast.EmptyStatement () %}
+          | E
+          ;
+ForUpdate -> _                  %{ return ast.EmptyStatement () %}
+           | E
+           ;
+
+// Laziness here.  Having all the AssgnENotIn crap is a waste of space and
+// computation, so we'll just do what Firefox does and claim the first
+// 'in' for the ForIn expression.
+ForIn -> FOR OP LhsE 'in' E CP Suite
+                                %{ return ast.ForIn (n3.val, n5.val, n7.val) %}
+       | FOR OP ForInDecl 'in' AssnE CP  Suite
+                                %{ return ast.ForIn (n3.val.name, n5.val, n7.val, n3.val) %}
+           ;
+TerminatedForIn -> FOR OP LhsE 'in' E CP TerminatedSuite
+                                %{ return ast.ForIn (n3.val, n5.val, n7.val) %}
+                 | FOR OP ForInDecl 'in' AssnE CP  TerminatedSuite
+                                %{ return ast.ForIn (n3.val.name, n5.val, n7.val, n3.val) %}
+             ;
+ForInDecl -> VAR ID TypeDecorator          %{ return ast.VarDecl (n2.val, n3.val) %} 
+           | VAR ID TypeDecorator '=' AssnE
+                                %{ return ast.VarDecl (n2.val, n3.val, n5.val) %}
+           ;
+
+While -> WHILE OP E CP  Suite
+                                %{ return ast.While (n3.val, n5.val) %} ;
+TerminatedWhile -> WHILE OP E CP  TerminatedSuite
+                                %{ return ast.While (n3.val, n5.val) %} ;
+
+With -> 'with' OP E CP Suite
+                                %{ return ast.With (n3.val, n5.val) %} ;
+TerminatedWith -> 'with' OP E CP TerminatedSuite
+                                %{ return ast.With (n3.val, n5.val) %} ;
+
+DoWhile -> 'do' TerminatedSuite WHILE OP E CP 
+                                %{ return ast.Do (n5.val, n2.val) %} ;
+
+ExprStmt -> E                   %{ return ast.ExpressionStatement (n1.val) %} ;
+
+VarDecls -> VAR DeclList        %{ return n2.val %} ;
+
+DeclList -> Decl                    %{ return ast.VarDecls (n1.val) %}
+          | Decl COMMA DeclList     %{ n3.val.add (n1.val, 0); return n3.val %}
+          ;
+Decl -> ID TypeDecorator            %{ return ast.VarDecl (n1.val, n2.val) %}
+      | ID TypeDecorator '=' AssnE %{ return ast.VarDecl (n1.val, n2.val, n4.val) %}
+      ;
+
+FuncDecl -> FUNCTION ID FuncVal %{ return ast.FunctionDecl (n2.val, n3.val) %} ;
+
+Lambda   -> FUNCTION FuncVal    %{ return n2.val %} ;
+
+FuncVal  ->  OP IDParams CP TypeDecorator StmtBlock 
+                                %{ return ast.Function (n2.val, n5.val, n4.val) %} ;
+                                
+IDParams -> _                   %{ return ast.NodeList () %}
+          | IDList 
+          ;
+          
+IDList  -> ID TypeDecorator     %{ return ast.NodeList ((n1.val, n2.val)) %}
+         | ID TypeDecorator COMMA IDList      %{ n4.val.add ((n1.val, n2.val), 0); return n4.val %}
+         ;
+
+Switch  -> 'switch' OP E CP OB CaseBlock CB 
+                                %{ return ast.Switch (n3.val, n6.val) %} ;
+
+CaseBlock -> _                  %{ return ast.CaseList () %}
+           | CaseList
+           ;
+
+CaseList -> CaseItem            %{ return ast.CaseList (n1.val) %}
+          | CaseItem CaseList   %{ n2.val.add (n1.val, 0); return n2.val %}
+          ;
+
+CaseItem  -> 'case' E COLON  Stmts
+                                %{ return ast.Case (n2.val, n4.val) %}
+           | 'default' COLON  Stmts 
+                                %{ return ast.Default (n3.val) %}
+           ;
+
+Throw -> 'throw' E              %{ return ast.Throw (n2.val) %} ;
+
+TryCatch -> Try Catch           %{ return ast.TryCatchFinally (n1.val, n2.val) %}
+          | Try Finally         %{ return ast.TryCatchFinally (n1.val, finallyBlock=n2.val) %}
+          | Try Catch Finally   %{ return ast.TryCatchFinally (n1.val, n2.val, n3.val) %}
+          ;
+Try -> 'try' StmtBlock          %{ return n2.val %} ;
+Catch -> 'catch' OP ID CP StmtBlock 
+                                %{ return ast.Catch (n3.val, n5.val) %} ;
+Finally -> 'finally' StmtBlock  %{ return n2.val %} ;
+
+Return -> 'return'              %{ return ast.Return () %}
+        | 'return' E            %{ return ast.Return (n2.val) %}
+        ;
+Break   -> 'break'              %{ return ast.Break () %} ;
+Continue -> 'continue'          %{ return ast.Continue () %} ;
+
+//-----------------------------------------------------------------------------
+// Expressions
+//
+
+E -> E COMMA E  %{
+    if isinstance (n1.val, ast.Comma):
+        n1.val.add (n3.val)
+        return n1.val
+    else:
+        return ast.Comma (n1.val, n3.val)
+%}
+   | AssnE
+   ;
+
+AssnE -> AssnE '=' AssnE     %{ return ast.Assignment ('=', n1.val, n3.val) %}
+       | AssnE '|=' AssnE    %{ return ast.Assignment ('|=', n1.val, n3.val) %}
+       | AssnE '^=' AssnE    %{ return ast.Assignment ('^=', n1.val, n3.val) %}
+       | AssnE '&=' AssnE    %{ return ast.Assignment ('&=', n1.val, n3.val) %}
+       | AssnE '<<=' AssnE   %{ return ast.Assignment ('<<=', n1.val, n3.val)%}
+       | AssnE '>>>=' AssnE  %{return ast.Assignment ('>>>=', n1.val, n3.val)%}
+       | AssnE '>>=' AssnE   %{ return ast.Assignment ('>>=', n1.val, n3.val)%}
+       | AssnE '+=' AssnE    %{ return ast.Assignment ('+=', n1.val, n3.val) %}
+       | AssnE '-=' AssnE    %{ return ast.Assignment ('-=', n1.val, n3.val) %}
+       | AssnE '*=' AssnE    %{ return ast.Assignment ('*=', n1.val, n3.val) %}
+       | AssnE '/=' AssnE    %{ return ast.Assignment ('/=', n1.val, n3.val) %}
+       | AssnE '%=' AssnE    %{ return ast.Assignment ('%=', n1.val, n3.val) %}
+       | ConditionalE
+       ;
+
+ConditionalE -> OpE '?' AssnE COLON AssnE
+                            %{return ast.Conditional (n1.val, n3.val, n5.val)%}
+              | OpE
+              ;
+
+OpE -> OpE '||' OpE     %{ return ast.InfixExpression ('||', n1.val, n3.val) %}
+     | OpE '&&' OpE     %{ return ast.InfixExpression ('&&', n1.val, n3.val) %}
+
+     | OpE '|' OpE      %{ return ast.InfixExpression ('|', n1.val, n3.val) %}
+     | OpE '^' OpE      %{ return ast.InfixExpression ('^', n1.val, n3.val) %}
+     | OpE '&' OpE      %{ return ast.InfixExpression ('&', n1.val, n3.val) %}
+
+     | OpE '===' OpE    %{ return ast.InfixExpression ('===', n1.val, n3.val)%}
+     | OpE '==' OpE     %{ return ast.InfixExpression ('==', n1.val, n3.val) %}
+     | OpE '!==' OpE    %{ return ast.InfixExpression ('!==', n1.val, n3.val)%}
+     | OpE '!=' OpE     %{ return ast.InfixExpression ('!=', n1.val, n3.val) %}
+
+     | OpE '<=' OpE     %{ return ast.InfixExpression ('<=', n1.val, n3.val) %}
+     | OpE '>=' OpE     %{ return ast.InfixExpression ('>=', n1.val, n3.val) %}
+     | OpE '<' OpE      %{ return ast.InfixExpression ('<', n1.val, n3.val) %}
+     | OpE '>' OpE      %{ return ast.InfixExpression ('>', n1.val, n3.val) %}
+     | OpE 'in' OpE     %{ return ast.In (n1.val, n3.val) %}
+     | OpE 'instanceof' OpE
+                        %{ return ast.Instanceof (n1.val, n3.val) %}
+
+     | OpE '<<' OpE     %{ return ast.InfixExpression ('<<', n1.val, n3.val) %}
+     | OpE '>>>' OpE    %{ return ast.InfixExpression ('>>>', n1.val, n3.val)%}
+     | OpE '>>' OpE     %{ return ast.InfixExpression ('>>', n1.val, n3.val) %}
+
+     | OpE '+' OpE      %{ return ast.InfixExpression ('+', n1.val, n3.val) %}
+     | OpE '-' OpE      %{ return ast.InfixExpression ('-', n1.val, n3.val) %}
+     | OpE '*' OpE      %{ return ast.InfixExpression ('*', n1.val, n3.val) %}
+     | OpE '/' OpE      %{ return ast.InfixExpression ('/', n1.val, n3.val) %}
+     | OpE '%' OpE      %{ return ast.InfixExpression ('%', n1.val, n3.val) %}
+
+     | '+' OpE  %prec '!'
+                        %{ return ast.PrefixExpression ('+', n2.val) %}
+     | '-' OpE  %prec '!'
+                        %{ return ast.PrefixExpression ('-', n2.val) %}
+     | '!' OpE          %{ return ast.PrefixExpression ('!', n2.val) %}
+     | '~' OpE          %{ return ast.PrefixExpression ('~', n2.val) %}
+     | 'typeof' OpE     %{ return ast.Typeof (n2.val) %}
+     | 'void' OpE       %{ return ast.Void (n2.val) %}
+     | 'delete' OpE     %{ return ast.Delete (n2.val) %}
+
+     | OpE '++'         %{ return ast.PostfixExpression ('++', n1.val) %}
+     | '++' OpE         %{ return ast.PrefixExpression ('++', n2.val) %}
+     | OpE '--'         %{ return ast.PostfixExpression ('--', n1.val) %}
+     | '--' OpE         %{ return ast.PrefixExpression ('--', n2.val) %}
+
+     | LhsE
+     ;
+
+LhsE -> NewE
+      | CallE
+      ;
+
+NewE -> MemberE
+      | 'new' NewE              %{ return ast.New (n2.val, ast.ArgumentList ()) %}
+      ;
+
+MemberE -> Primary
+         | MemberE OBK E CBK    %{ return ast.Index (n3.val, n1.val) %}
+         | MemberE DOT ID       %{ return ast.Selection (n3.val, n1.val) %}
+         | 'new' MemberE Arguments
+                                %{ return ast.New (n2.val, n3.val) %}
+         ;
+
+CallE -> MemberE Arguments      %{ return ast.Call (n1.val, n2.val) %}
+       | CallE Arguments        %{ return ast.Call (n1.val, n2.val) %}
+       | CallE OBK E CBK        %{ return ast.Index (n3.val, n1.val) %}
+       | CallE DOT ID           %{ return ast.Selection (n3.val, n1.val) %}
+       ;
+
+Arguments -> OP CP            %{ return ast.ArgumentList () %}
+           | OP ArgList CP    %{ return n2.val %}
+           ;
+
+ArgList -> AssnE                %{ return ast.ArgumentList (n1.val) %}
+         | AssnE COMMA ArgList    %{ n3.val.add (n1.val, 0); return n3.val %}
+         ;
+
+Primary -> 'this'               %{ return ast.This () %}
+         | ID
+         | Literal
+         | OP E CP            %{ return n2.val %}
+         ;
+
+Literal -> NumLiteral
+         | StringLiteral
+         | RegExpLiteral
+         | ArrayLiteral
+         | ObjectLiteral
+         | Lambda
+         | 'true'               %{ return ast.True_ () %}
+         | 'false'              %{ return ast.False_ () %}
+         | 'null'               %{ return ast.Null () %}
+         ;
+
+NumLiteral -> ExpLiteral
+            | FloatLiteral
+            | OctalLiteral
+            | IntLiteral
+            | HexLiteral
+            ;
+ExpLiteral -> /[1-9][0-9]*[eE][+-]?[0-9]+/
+                                %{ return ast.Number (n1.val) %}
+            | /\.[0-9]+[eE][+-]?[0-9]+/
+                                %{ return ast.Number (n1.val) %}
+            | /[0-9]+\.[0-9]*[eE][+-]?[0-9]+/
+                                %{ return ast.Number (n1.val) %}
+            ;
+FloatLiteral -> /\.[0-9]+/      %{ return ast.Number (n1.val) %}
+                | /[0-9]+\.[0-9]*/
+                                %{ return ast.Number (n1.val) %}
+                ;
+OctalLiteral -> /[0][0-7]*/     %{ return ast.Number (n1.val) %} ;
+IntLiteral   -> /[1-9][0-9]*/   %{ return ast.Number (n1.val) %} ;
+HexLiteral   -> /0[xX][0-9a-fA-F]+/ 
+                                %{ return ast.Number (n1.val) %} ;
+
+StringLiteral -> /\'(?:\\\\|\\\'|\\\r\n|\\\r|\\\n|[^\'\r\n])*\'/
+                                %{ return ast.String (n1.val[1:-1]) %}
+                | /\"(?:\\\\|\\\"|\\\r\n|\\\r|\\\n|[^\"\r\n])*\"/
+                                %{ return ast.String (n1.val[1:-1]) %}
+                ;
+
+RegExpLiteral -> /\/(?:\\\\|\\\/|[^\/\r\n])*\/[a-zA-Z]*/ 
+                                %{ return ast.Regex (n1.val) %} ;
+
+ArrayLiteral -> OBK ArrayElements CBK
+                                %{ return n2.val %} ;
+ArrayElements -> ArrayElement   %{
+    if isinstance (n1.val, ast.EmptyStatement):
+        return ast.ArrayInit ()
+    else:
+        return ast.ArrayInit (n1.val)
+%}
+                | ArrayElement COMMA ArrayElements
+                                %{ n3.val.add (n1.val, 0); return n3.val %}
+               ;
+ArrayElement -> _               %{ return ast.EmptyStatement () %}
+                | AssnE
+                ;
+
+
+ObjectLiteral -> OB Properties CB
+                                %{ return n2.val %}
+                | OB PropertyList COMMA CB
+                                %{ return n2.val %}
+                ;
+Properties -> _                 %{ return ast.ObjectInit () %}
+                | PropertyList
+                ;
+
+PropertyList -> Property        %{ return ast.ObjectInit (n1.val) %}
+                | Property COMMA PropertyList
+                                %{ n3.val.add (n1.val, 0); return n3.val %}
+                ;
+
+Property -> PropertyName COLON E  %{ return ast.PropertyInit (n1.val, n3.val) %};
+
+PropertyName -> ID
+            | StringLiteral
+            | NumLiteral
+            ;
+
+TypeDecorator -> COLON Type %{ 
+    return n2.val %}
+            | _ %{ return None %}
+            ;
+
+Type    -> SmallType
+            | TupleType '->' Type %{ return ast.ArrowType(n1.val, n3.val) %}        
+            | OP Type CP %{ return n2.val %}
+            ;
+
+TupleType   -> Type %dprec 2
+            | Type '*' TupleType %dprec 1 %{
+        if isinstance(n3.val, ast.TupleType):
+            n3.val.children.insert(0, n1.val)
+            return n3.val
+        else:
+            return ast.TupleType(n1.val, n3.val) %}
+            ;
+
+SmallType -> Dynamic %{ return ast.DynamicType() %}
+            | ID %{ return ast.AtomType(n1.val) %}
+            ;
+        
+//-----------------------------------------------------------------------------
+// Sundry tokens
+//
+
+EOS     -> SEMI | NL ;
+SEMI    -> ';';
+
+Extends -> 'extends';       
+Dynamic -> 'dynamic';       
+CClass -> 'class';
+Static -> 'static';
+
+
+FOR     -> 'for';
+WHILE   -> 'while';
+VAR     -> 'var';
+FUNCTION -> 'function';
+IF      -> 'if';
+ELSE    -> 'else';
+COMMA   -> ',';
+COLON   -> ':';
+DOT     -> '.';
+ID      -> /[_$a-zA-Z][_$a-zA-Z0-9]*/    %{ return ast.Identifier (n1.val) %} ;
+                                
+OP      -> '(';
+CP      -> ')';
+OB      -> '{';
+CB      -> '}';
+OBK     -> '[';
+CBK     -> ']';

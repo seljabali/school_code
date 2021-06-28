@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<script type="text/javascript">
+// ==Pre-Cgen==
+// ==Code Gen Phase==
+function B() {
+   this.x = null
+   this.y = 2
+   this.z = 4
+   this.Regular = function (foo)
+   {
+      x = 2
+      return x
+   }
+   this.Zib = function (x)
+   {
+      return function (y)
+      {
+         return function (z)
+         {
+            return (x + y)
+         }
+
+      }
+
+   }
+   this.call
+}
+B.prototype = {}
+
+b1 = new B()
+document.write(b1.Regular())
+
+</script>
+
+</body>
+</html>
+

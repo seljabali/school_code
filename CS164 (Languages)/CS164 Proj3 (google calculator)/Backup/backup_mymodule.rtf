@@ -1,0 +1,364 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red192\green18\blue25;\red0\green170\blue0;
+\red128\green0\blue0;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs22 \cf2 import\cf0  re\
+convTable = \{\
+\
+   \cf3 #Distance\cf0 \
+   (\cf4 'm'\cf0 ):       (\cf5 1.\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'cm'\cf0 ):      (\cf5 1\cf0 /\cf5 100.\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'mm'\cf0 ):      (\cf5 1\cf0 /\cf5 1000.\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'km'\cf0 ):      (\cf5 1\cf0 /\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'feet'\cf0 ):    (\cf5 1\cf0 /\cf5 3.2808399\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'foot'\cf0 ):    (\cf5 1\cf0 /\cf5 3.2808399\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'in'\cf0 ):      (\cf5 1\cf0 /\cf5 0.0254\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'inch'\cf0 ):    (\cf5 1\cf0 /\cf5 0.0254\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'inches'\cf0 ):  (\cf5 1\cf0 /\cf5 0.0254\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'smoot'\cf0 ):   (\cf5 1\cf0 /\cf5 1.7018\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'smoots'\cf0 ):  (\cf5 1\cf0 /\cf5 1.7018\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'mile'\cf0 ):    (\cf5 1\cf0 /\cf5 1609.344\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'miles'\cf0 ):   (\cf5 1\cf0 /\cf5 1609.344\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'ly'\cf0 ):      (\cf5 1.05702341\cf0 *\cf5 10\cf0 **-\cf5 16\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'lightyear'\cf0 ):  (\cf5 1.05702341\cf0 *\cf5 10\cf0 **-\cf5 16\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'lightyears'\cf0 ): (\cf5 1.05702341\cf0 *\cf5 10\cf0 **-\cf5 16\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'AU'\cf0 ):         (\cf5 6.68458134\cf0 *\cf5 10\cf0 **-\cf5 12\cf0 , \{\cf4 'm'\cf0 :\cf5 1\cf0 \},\cf4 'm'\cf0 ),\
+\
+   \cf3 #Weight\cf0 \
+   (\cf4 'g'\cf0 ):       (\cf5 1.\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'gram'\cf0 ):    (\cf5 1.\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'grams'\cf0 ):   (\cf5 1.\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'kg'\cf0 ):      (\cf5 1000.\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'lb'\cf0 ):      (\cf5 0.00220462262\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'lbs'\cf0 ):     (\cf5 0.00220462262\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'pound'\cf0 ):   (\cf5 0.00220462262\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+   (\cf4 'pounds'\cf0 ):  (\cf5 0.00220462262\cf0 ,\{\cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 'g'\cf0 ),\
+\
+   (\cf4 'acre'\cf0 ):    (\cf5 4046.85642\cf0 ,\{\cf4 'm'\cf0 :\cf5 2\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'acres'\cf0 ):   (\cf5 4046.85642\cf0 ,\{\cf4 'm'\cf0 :\cf5 2\cf0 \},\cf4 'm'\cf0 ),\
+\
+   \cf3 #Time\cf0 \
+   (\cf4 's'\cf0 ):       (\cf5 1.\cf0 , \{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'sec'\cf0 ):     (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'secs'\cf0 ):    (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'second'\cf0 ):  (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'seconds'\cf0 ): (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'min'\cf0 ):     (\cf5 60.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'minute'\cf0 ):  (\cf5 60.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'minutes'\cf0 ): (\cf5 60.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'h'\cf0 ):       (\cf5 3600.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'hour'\cf0 ):    (\cf5 3600.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'hours'\cf0 ):   (\cf5 3600.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'day'\cf0 ):     (\cf5 86400.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'days'\cf0 ):    (\cf5 86400.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'year'\cf0 ):    (\cf5 31556926.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+   (\cf4 'years'\cf0 ):   (\cf5 31556926.\cf0 ,\{\cf4 's'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 ),\
+\
+   \cf3 #Volume\cf0 \
+   (\cf4 'a cup'\cf0 ):    (\cf5 0.000236588238\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'a cups'\cf0 ):   (\cf5 0.000236588238\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'cup'\cf0 ):      (\cf5 0.000236588238\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'cups'\cf0 ):     (\cf5 0.000236588238\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'L'\cf0 ):        (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'l'\cf0 ):        (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'liter'\cf0 ):    (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'liters'\cf0 ):   (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'Liter'\cf0 ):    (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'Liters'\cf0 ):   (\cf5 0.001\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'teaspoon'\cf0 ): (\cf5 4.92892161\cf0 *\cf5 10\cf0 **-\cf5 6\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'teaspoons'\cf0 ):(\cf5 4.92892161\cf0 *\cf5 10\cf0 **-\cf5 6\cf0 , \{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'kilderkin'\cf0 ): (\cf5 0.0818296538\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'kilderkins'\cf0 ):(\cf5 0.0818296538\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'pint'\cf0 ):      (\cf5 0.000473176475\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'pints'\cf0 ):     (\cf5 0.000473176475\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+   (\cf4 'fl oz'\cf0 ):     (\cf5 2.95735297\cf0 *\cf5 10\cf0 **-\cf5 5\cf0 ,\{\cf4 'm'\cf0 :\cf5 3\cf0 \},\cf4 'm'\cf0 ),\
+\
+   \cf3 #Speed\cf0 \
+   (\cf4 'mph'\cf0 ):   (\cf5 0.44704\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 , \cf4 's'\cf0 :-\cf5 1\cf0 \},\cf4 'm'\cf0 ,\cf4 's'\cf0 ),\
+   (\cf4 'c'\cf0 ):     (\cf5 299792458.\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 , \cf4 's'\cf0 :-\cf5 1\cf0 \},\cf4 'm'\cf0 ,\cf4 's'\cf0 ),\
+   (\cf4 'knot'\cf0 ):  (\cf5 0.514444444\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 , \cf4 's'\cf0 :-\cf5 1\cf0 \},\cf4 'm'\cf0 ,\cf4 's'\cf0 ),\
+   (\cf4 'knots'\cf0 ): (\cf5 0.514444444\cf0 ,\{\cf4 'm'\cf0 :\cf5 1\cf0 , \cf4 's'\cf0 :-\cf5 1\cf0 \},\cf4 'm'\cf0 ,\cf4 's'\cf0 ),\
+\
+   \cf3 #Energy\cf0 \
+   (\cf4 'J'\cf0 ):        (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Joule'\cf0 ):    (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Joules'\cf0 ):   (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'joule'\cf0 ):    (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'joules'\cf0 ):   (\cf5 1.\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'cal'\cf0 ):      (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'calorie'\cf0 ):  (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'calories'\cf0 ): (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Cal'\cf0 ):      (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Calorie'\cf0 ):  (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Calories'\cf0 ): (\cf5 4.18400\cf0 ,\{\cf4 's'\cf0 :-\cf5 2\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+\
+   (\cf4 'W'\cf0 ):        (\cf5 1.\cf0 , \{\cf4 's'\cf0 :-\cf5 3\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Watt'\cf0 ):     (\cf5 1.\cf0 , \{\cf4 's'\cf0 :-\cf5 3\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'Watts'\cf0 ):    (\cf5 1.\cf0 , \{\cf4 's'\cf0 :-\cf5 3\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'watt'\cf0 ):     (\cf5 1.\cf0 , \{\cf4 's'\cf0 :-\cf5 3\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+   (\cf4 'watts'\cf0 ):    (\cf5 1.\cf0 , \{\cf4 's'\cf0 :-\cf5 3\cf0 , \cf4 'm'\cf0 :\cf5 2\cf0 , \cf4 'g'\cf0 :\cf5 1\cf0 \},\cf4 's'\cf0 , \cf4 'm'\cf0 , \cf4 'g'\cf0 ),\
+\}\
+\
+multiUnit = \{\cf4 "mph"\cf0 :\cf5 1\cf0 , \cf4 'c'\cf0 :\cf5 1\cf0 , \cf4 'knot'\cf0 :\cf5 1\cf0 ,\cf4 'knots'\cf0 :\cf5 1\cf0 ,\cf4 'watt'\cf0 :\cf5 1\cf0 ,\cf4 'watts'\cf0 :\cf5 1\cf0 , \cf4 'W'\cf0 :\cf5 1\cf0 , \cf4 'Watt'\cf0 :\cf5 1\cf0 , \cf4 'Watts'\cf0 :\cf5 1\cf0 ,\
+             \cf4 'Calories'\cf0 :\cf5 1\cf0 ,  (\cf4 'cal'\cf0 ):\cf5 1\cf0 , (\cf4 'Calorie'\cf0 ):\cf5 1\cf0 , (\cf4 'Cal'\cf0 ):\cf5 1\cf0 , (\cf4 'calories'\cf0 ):\cf5 1\cf0 , (\cf4 'calorie'\cf0 ):\cf5 1\cf0 ,\
+             (\cf4 'joules'\cf0 ):\cf5 1\cf0 , (\cf4 'joule'\cf0 ):\cf5 1\cf0 , (\cf4 'Joules'\cf0 ):\cf5 1\cf0 , (\cf4 'Joule'\cf0 ):\cf5 1\cf0 , (\cf4 'J'\cf0 ):\cf5 1\cf0 \
+             \}\
+\
+\cf2 def\cf0  printResult(val):\
+    \cf2 print\cf0  \cf4 ""\cf0 \
+    \cf2 if\cf0  type(val) != type([]):\
+        \cf2 if\cf0  val == \cf2 None\cf0 :\
+            \cf2 print\cf0  \cf4 "Error: Couldn't evaluate it!"\cf0 \
+        \cf2 else\cf0 :\
+            \cf2 print\cf0  val\
+    \cf2 else\cf0 :\
+        value = val[\cf5 0\cf0 ]\
+        unit = val[\cf5 1\cf0 ]\
+        \cf2 print\cf0  \cf4 "Result:"\cf0 , value,\cf4 '*'\cf0 ,\
+        \cf2 for\cf0  k \cf2 in\cf0  unit:\
+            \cf2 print\cf0  k,\cf4 '^'\cf0 ,unit[k],\
+    \cf2 print\cf0  \cf4 ""\cf0 \
+            \
+\pard\pardeftab720
+\cf3 #--------------------------MATH FUNCTIONS---------------------------------    \cf0 \
+    \
+\pard\pardeftab720
+\cf2 def\cf0  Add(x,y):        \
+    \cf2 if\cf0  x[\cf5 1\cf0 ].keys() != y[\cf5 1\cf0 ].keys():\
+        \cf2 print\cf0  \cf4 "Error: Can't add these units together"\cf0 \
+        \cf2 return\cf0  \cf2 None\cf0 \
+    \cf2 else\cf0 :\
+        sum = [\cf5 0\cf0 ,x[\cf5 1\cf0 ]]\
+        sum[\cf5 0\cf0 ] = x[\cf5 0\cf0 ] + y[\cf5 0\cf0 ]\
+        \cf2 return\cf0  sum\
+\
+\cf2 def\cf0  Convert(From,To):\
+    \cf2 def\cf0  findExp():\
+        canDo = \cf2 True\cf0   \
+        toUnit = conv[i]\
+        \cf3 #print toUnit\cf0 \
+        \cf2 if\cf0  From[\cf5 1\cf0 ].has_key(toUnit):\
+            expFrom = From[\cf5 1\cf0 ][toUnit] \cf3 #From exp\cf0 \
+            expTo = convTable[unit][\cf5 1\cf0 ][toUnit]\
+            \cf3 #print expTo\cf0 \
+            \cf2 if\cf0  expFrom == expTo:\
+                expFrom = \cf5 1\cf0 \
+            \cf3 #print expFrom\cf0 \
+        \cf2 else\cf0 :\
+            \cf2 print\cf0  \cf4 ""\cf0 \
+            \cf2 print\cf0  toUnit\
+            \cf2 print\cf0  \cf4 "couldn't be found in"\cf0 \
+            \cf2 print\cf0  From[\cf5 1\cf0 ]\
+            canDo = \cf2 False\cf0 \
+            expFrom = \cf5 0\cf0     \cf3 #Change\cf0 \
+        \cf2 return\cf0  expFrom , canDo\
+\
+\
+    result = [From[\cf5 0\cf0 ],\{\}]\
+    stopFlag = \cf2 False\cf0 \
+    \cf2 print\cf0  \cf4 ""\cf0 \
+    \cf2 print\cf0  \cf4 "\\tConvert:"\cf0 ,From, \cf4 "To:"\cf0 ,To\
+    \
+    \cf2 for\cf0  unit \cf2 in\cf0  To[\cf5 1\cf0 ]:\
+        conv = convTable[unit]\
+        \cf2 if\cf0   multiUnit.has_key(unit):\
+            stopFlag = \cf2 True\cf0     \
+            \
+        \cf2 for\cf0  i \cf2 in\cf0  range(len(conv)):\
+            \cf2 if\cf0  i > \cf5 1\cf0 :\
+                exp, valid = findExp()\
+                \cf2 if\cf0  valid == \cf2 False\cf0 :\
+                    \cf2 print\cf0  \cf4 "\\tMismatch: Can't convert"\cf0 \
+                    \cf2 return\cf0  \cf2 None\cf0 \
+                \
+                result[\cf5 1\cf0 ][unit] = exp\
+                \cf2 if\cf0  stopFlag:\
+                    result[\cf5 0\cf0 ] *= (\cf5 1\cf0 /conv[\cf5 0\cf0 ])**exp\
+                    result[\cf5 1\cf0 ] = conv[\cf5 1\cf0 ]\
+                    \cf2 break\cf0 \
+                \cf2 elif\cf0  exp >\cf5 1\cf0 : \cf3 #3:\cf0 \
+                    result[\cf5 0\cf0 ] *= (\cf5 1\cf0 /conv[\cf5 0\cf0 ])**exp\
+                \cf2 else\cf0 :\
+                    result[\cf5 0\cf0 ] *= (\cf5 1\cf0 /conv[\cf5 0\cf0 ])**exp\
+    \
+    \cf2 if\cf0  stopFlag \cf2 and\cf0  (conv[\cf5 1\cf0 ] == \{\cf4 's'\cf0 :-\cf5 1\cf0 ,\cf4 'm'\cf0 :\cf5 1\cf0 \} \cf2 or\cf0  conv[\cf5 1\cf0 ] == \{\cf4 'm'\cf0 :\cf5 1\cf0 ,\cf4 's'\cf0 :-\cf5 1\cf0 \}):\
+        \cf3 #print "Result:",result\cf0 \
+        \cf2 return\cf0  result        \
+    \cf2 elif\cf0  result[\cf5 1\cf0 ]!= To[\cf5 1\cf0 ]:\
+        \cf2 print\cf0  \cf4 "Mismatch: Can't convert"\cf0 \
+        \cf2 print\cf0  \cf4 "Result:"\cf0 ,result[\cf5 1\cf0 ]\
+        \cf2 return\cf0  \cf2 None\cf0 \
+    \cf2 else\cf0 :\
+        \cf3 #print "Result:",result\cf0 \
+        \cf2 return\cf0  result\
+    \
+\cf2 def\cf0  remove0exp(list):\
+    toRemove = [] \cf3 #If there are any 0 exponents\cf0 \
+    \cf2 for\cf0  unit \cf2 in\cf0  list[\cf5 1\cf0 ]:\
+        \cf2 if\cf0  list[\cf5 1\cf0 ][unit] == \cf5 0\cf0 :\
+            toRemove.append(unit)\
+    \cf2 for\cf0  unit \cf2 in\cf0  toRemove:\
+        \cf2 del\cf0  list[\cf5 1\cf0 ][unit]\
+        \
+\cf2 def\cf0  Divide(x,y):\
+    \cf2 print\cf0  \cf4 ""\cf0 \
+    \cf2 print\cf0  \cf4 "\\tDivide"\cf0 , x,\cf4 "by"\cf0 ,y\
+    quotient = [\cf5 0\cf0 ,\{\}]\
+    \cf2 if\cf0  (type(y) == type(\cf5 69\cf0 ) \cf2 and\cf0  y==\cf5 0\cf0 ) \cf2 or\cf0  (type(y) == type([]) \cf2 and\cf0  y[\cf5 0\cf0 ]==\cf5 0\cf0 ):\
+        \cf2 print\cf0  \cf4 "Can't divide by zero!"\cf0 \
+        \cf2 return\cf0  \cf2 None\cf0 \
+    \
+    \cf2 if\cf0  type(x) == type(\cf5 69\cf0 ):\
+        \cf2 if\cf0  type(y) == type([]):                   \
+            quotient[\cf5 0\cf0 ] =  x / y[\cf5 0\cf0 ]\
+        \cf2 else\cf0 :\
+            quotient[\cf5 0\cf0 ] =  x / y\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,quotient\
+            \cf2 return\cf0  quotient\
+    \cf2 else\cf0 :\
+        \cf2 if\cf0  type(y) == type([]):\
+            quotient[\cf5 0\cf0 ] =  x[\cf5 0\cf0 ] / y[\cf5 0\cf0 ]\
+        \cf2 else\cf0 :\
+            quotient[\cf5 0\cf0 ] = x[\cf5 0\cf0 ] / y\
+            quotient[\cf5 1\cf0 ] = x[\cf5 1\cf0 ]\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,quotient\
+            \cf2 return\cf0  quotient \
+    \
+    \cf2 if\cf0  len(y[\cf5 1\cf0 ]) == \cf5 0\cf0 :    \cf3 #Dividing by scalar\cf0 \
+        quotient[\cf5 1\cf0 ] = x[\cf5 1\cf0 ]\
+        \cf2 print\cf0  \cf4 "\\t="\cf0 ,quotient\
+        \cf2 return\cf0  quotient\
+    \
+    \cf2 for\cf0  unit \cf2 in\cf0  x[\cf5 1\cf0 ]:    \cf3 #Subtract exponents, of common units in X and Y\cf0 \
+        \cf2 if\cf0  y[\cf5 1\cf0 ].has_key(unit):\
+            quotient[\cf5 1\cf0 ][unit] =  x[\cf5 1\cf0 ][unit] - y[\cf5 1\cf0 ][unit]\
+        \cf2 else\cf0 :\
+            quotient[\cf5 1\cf0 ][unit] =  x[\cf5 1\cf0 ][unit]\
+    \
+    \cf2 for\cf0  unit \cf2 in\cf0  y[\cf5 1\cf0 ]:    \cf3 #Subtract powers from Y that aren't in X\cf0 \
+        \cf2 if\cf0  \cf2 not\cf0  quotient[\cf5 1\cf0 ].has_key(unit):\
+            quotient[\cf5 1\cf0 ][unit] = -\cf5 1\cf0  * y[\cf5 1\cf0 ][unit]\
+    \
+    remove0exp(quotient)\
+            \
+    \cf2 print\cf0  \cf4 "\\t="\cf0 ,quotient\
+    \cf2 return\cf0  quotient\
+        \
+\cf2 def\cf0  Factorial(x):\
+    \cf2 def\cf0  FactHelper(num):\
+        \cf2 if\cf0  num==\cf5 0\cf0 :\
+            \cf2 return\cf0  \cf5 1\cf0 \
+        \cf2 else\cf0 :\
+            \cf2 return\cf0  num*FactHelper(num-\cf5 1\cf0 )\
+    \
+    \cf2 if\cf0  type(x) == type([]):\
+        \cf2 if\cf0  x[\cf5 1\cf0 ] != \cf2 None\cf0 :\
+            \cf2 print\cf0  \cf4 "Error: Factorials are defined for positive, dimensionless integers only"\cf0 \
+            \cf2 return\cf0  \cf2 None\cf0 \
+        num = FactHelper(x[\cf5 0\cf0 ])\
+        \cf3 #print [num, x[1]]\cf0 \
+        \cf2 return\cf0  [num, x[\cf5 1\cf0 ]]\
+    \cf2 else\cf0 :\
+        \cf3 #print FactHelper(x)\cf0 \
+        \cf2 return\cf0  FactHelper(x)\
+\
+\cf2 def\cf0  FQ(x):\
+    \
+    List = \{\cf4 'half'\cf0 : \cf5 0.5\cf0 , \cf4 'quater'\cf0 :\cf5 0.25\cf0 , \cf4 'dozen'\cf0 :\cf5 12\cf0 , \cf4 'couple'\cf0 :\cf5 2\cf0 \}\
+    \
+    \cf2 print\cf0  \cf4 '\\t'\cf0 ,x,\cf4 'goes to'\cf0 ,List[x], type(List[x])\
+    \
+\
+    \cf2 return\cf0  List[x]\
+\
+\cf2 def\cf0  Epsilon(x):\
+    \cf2 print\cf0  \cf4 "\\tEpsilon:"\cf0 , x \
+    \cf2 if\cf0  type(x) == type(re.compile(\cf4 'lol'\cf0 )):\
+        \cf2 return\cf0  \cf5 1\cf0 \
+    \
+\cf2 def\cf0  Root(x,y):\
+    \cf2 return\cf0  Pow(x,(\cf5 1\cf0 /y))\
+\
+\cf2 def\cf0  Subtract(x,y):\
+    \cf2 if\cf0  x[\cf5 1\cf0 ].keys() != y[\cf5 1\cf0 ].keys():\
+        \cf2 print\cf0  \cf4 "Error: Can't subtract these units form one another"\cf0 \
+        \cf2 return\cf0  \cf2 None\cf0 \
+    \cf2 else\cf0 :\
+        diff = [\cf5 0\cf0 ,x[\cf5 1\cf0 ]]\
+        diff[\cf5 0\cf0 ] = x[\cf5 0\cf0 ] - y[\cf5 0\cf0 ]\
+        \cf2 return\cf0  diff \
+\
+\cf2 def\cf0  Times(x,y):\
+    \cf2 print\cf0  \cf4 ""\cf0 \
+    \cf2 print\cf0  \cf4 "\\t"\cf0 ,x, \cf4 "Times"\cf0 , y\
+    product = [\cf5 1\cf0 ,\{\}]\
+    \cf2 if\cf0  type(x) == type(\cf5 69\cf0 ):        \cf3 #X is scalar\cf0 \
+        \cf2 if\cf0  type(y) == type([]):\
+            product[\cf5 0\cf0 ] = x * y[\cf5 0\cf0 ]\
+            product[\cf5 1\cf0 ] = y[\cf5 1\cf0 ]\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,product\
+            \cf2 return\cf0  product\
+        \cf2 else\cf0 :       \
+            product[\cf5 0\cf0 ] =  x * y\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,product\
+            \cf2 return\cf0  product\
+    \cf2 else\cf0 :                            \cf3 #Y is a scalar\cf0 \
+        \cf2 if\cf0  type(y) == type(\cf5 69\cf0 ):\
+            product[\cf5 0\cf0 ] = x[\cf5 0\cf0 ] * y\
+            product[\cf5 1\cf0 ] = x[\cf5 1\cf0 ]\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,product\
+            \cf2 return\cf0  product\
+        \cf2 else\cf0 :\
+            product[\cf5 0\cf0 ] = x[\cf5 0\cf0 ] * y[\cf5 0\cf0 ]\
+            \cf2 for\cf0  unit \cf2 in\cf0  x[\cf5 1\cf0 ]:    \cf3 #Add powers of common units in X and Y\cf0 \
+                \cf2 if\cf0  y[\cf5 1\cf0 ].has_key(unit):\
+                    product[\cf5 1\cf0 ][unit] =  x[\cf5 1\cf0 ][unit] + y[\cf5 1\cf0 ][unit]\
+                \cf2 else\cf0 :\
+                    product[\cf5 1\cf0 ][unit] =  x[\cf5 1\cf0 ][unit]        \
+            \cf2 for\cf0  unit \cf2 in\cf0  y[\cf5 1\cf0 ]:    \cf3 #Add powers from Y that aren't in X\cf0 \
+                \cf2 if\cf0  \cf2 not\cf0  product[\cf5 1\cf0 ].has_key(unit):\
+                    product[\cf5 1\cf0 ][unit] = y[\cf5 1\cf0 ][unit]\
+            \
+            remove0exp(product)\
+            \cf2 print\cf0  \cf4 "\\t="\cf0 ,product\
+    \cf2 return\cf0  product      \
+     \
+\cf2 def\cf0  Negate(x):\
+    \cf2 if\cf0  type(x) == type([]):\
+        \cf2 return\cf0  [x[\cf5 0\cf0 ] *(-\cf5 1\cf0 ), x[\cf5 1\cf0 ]]\
+    \cf2 else\cf0 :\
+        \cf2 return\cf0  x*(-\cf5 1\cf0 )    \
+\
+\cf2 def\cf0  Pow(x,y):\
+    \cf2 print\cf0  \cf4 ""\cf0 \
+    \cf2 print\cf0  \cf4 "\\tPow:"\cf0 , x, \cf4 "^"\cf0 , y\
+    \cf2 if\cf0  type(x) == type([]):\
+        x[\cf5 0\cf0 ] **=y\
+        \cf2 for\cf0  unit \cf2 in\cf0  x[\cf5 1\cf0 ]:\
+            x[\cf5 1\cf0 ][unit] = x[\cf5 1\cf0 ][unit] * y\
+        \cf2 print\cf0  \cf4 "\\t="\cf0 ,x\
+        \cf2 return\cf0  x  \
+    \cf2 else\cf0 :\
+        \cf2 print\cf0  \cf4 "\\t="\cf0 ,x**y\
+        \cf2 return\cf0  x**y\
+    \
+\pard\pardeftab720
+\cf3 #--------------------------END OF MATH FUNCTIONS---------------------------------\cf0 \
+\
+\pard\pardeftab720
+\cf2 class\cf0  Term:\
+    \cf3 #unitList (unit, exponent)    \cf0 \
+    \cf2 def\cf0  __init__(self,units):\
+        self.unit = units\
+    \
+    \cf2 def\cf0  getSI(self):\
+        self.result = convTable[self.unit]\
+        self.val = [\cf5 1\cf0 *self.result[\cf5 0\cf0 ], self.result[\cf5 1\cf0 ]] \
+        \cf2 return\cf0  self.result\
+    \
+    \cf2 def\cf0  getInit(self):\
+        \cf2 return\cf0  [\cf5 1\cf0 , \{self.unit: \cf5 1\cf0 \}]}

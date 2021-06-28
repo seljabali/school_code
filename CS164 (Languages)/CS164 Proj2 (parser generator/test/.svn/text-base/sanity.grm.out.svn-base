@@ -1,0 +1,11 @@
+(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule X
+            (production [ X, ]
+            )
+        )
+    )
+    (StartSymbol X)
+)

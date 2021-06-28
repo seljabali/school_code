@@ -1,0 +1,2976 @@
+"countyName" "bushVote" "kerryVote"
+"arizona,apache" 8068 15082
+"arizona,cochise" 24828 16219
+"arizona,coconino" 20619 26513
+"arizona,gila" 10494 7107
+"arizona,graham" 7302 3141
+"arizona,greenlee" 1899 1146
+"arizona,la paz" 3158 1849
+"arizona,maricopa" 539776 403882
+"arizona,mohave" 29608 16267
+"arizona,navajo" 16474 14224
+"arizona,pima" 138431 154291
+"arizona,pinal" 34813 25652
+"arizona,santa cruz" 4668 6909
+"arizona,yavapai" 49675 30377
+"arizona,yuma" 18398 12668
+"alabama,autauga" 15213 4774
+"alabama,baldwin" 52971 15599
+"alabama,barbour" 5896 4832
+"alabama,bibb" 5472 2089
+"alabama,blount" 17386 3938
+"alabama,bullock" 1494 3210
+"alabama,butler" 4978 3409
+"alabama,calhoun" 29814 15083
+"alabama,chambers" 7622 5347
+"alabama,cherokee" 5923 3040
+"alabama,chilton" 12829 3778
+"alabama,choctaw" 3889 3289
+"alabama,clarke" 6732 4627
+"alabama,clay" 4624 1893
+"alabama,cleburne" 4369 1390
+"alabama,coffee" 13019 4480
+"alabama,colbert" 13188 10598
+"alabama,conecuh" 3266 2715
+"alabama,coosa" 2902 2055
+"alabama,covington" 11119 3423
+"alabama,crenshaw" 3774 1698
+"alabama,cullman" 26783 8022
+"alabama,dale" 13621 4484
+"alabama,dallas" 7335 11175
+"alabama,de kalb" 16901 7092
+"alabama,elmore" 22056 6471
+"alabama,escambia" 8513 3814
+"alabama,etowah" 26999 15328
+"alabama,fayette" 5534 2408
+"alabama,franklin" 7690 4514
+"alabama,geneva" 8342 2113
+"alabama,greene" 958 3763
+"alabama,hale" 3281 4631
+"alabama,henry" 4881 2452
+"alabama,houston" 26873 9143
+"alabama,jackson" 11534 8635
+"alabama,jefferson" 158504 132145
+"alabama,lamar" 4894 1956
+"alabama,lauderdale" 22161 14628
+"alabama,lawrence" 7728 6153
+"alabama,lee" 27972 16227
+"alabama,limestone" 19702 9126
+"alabama,lowndes" 1787 4235
+"alabama,macon" 1570 7800
+"alabama,madison" 77173 52644
+"alabama,marengo" 5255 5037
+"alabama,marion" 8983 3808
+"alabama,marshall" 22770 8448
+"alabama,mobile" 91989 63708
+"alabama,monroe" 5831 3666
+"alabama,montgomery" 44097 45160
+"alabama,morgan" 32449 14124
+"alabama,perry" 1738 3767
+"alabama,pickens" 5170 3915
+"alabama,pike" 7483 4334
+"alabama,randolph" 6129 2820
+"alabama,russell" 8332 8372
+"alabama,shelby" 63415 14844
+"alabama,st clair" 23477 5451
+"alabama,sumter" 1882 4537
+"alabama,talladega" 18331 11374
+"alabama,tallapoosa" 12392 5451
+"alabama,tuscaloosa" 42877 26447
+"alabama,walker" 19167 9016
+"alabama,washington" 5060 3145
+"alabama,wilcox" 1778 3238
+"alabama,winston" 8130 2236
+"arkansas,arkansas" 3783 3105
+"arkansas,ashley" 4566 3879
+"arkansas,baxter" 11117 7120
+"arkansas,benton" 46173 20594
+"arkansas,boone" 9742 4617
+"arkansas,bradley" 2190 2005
+"arkansas,calhoun" 1334 934
+"arkansas,carroll" 6184 4161
+"arkansas,chicot" 1723 2815
+"arkansas,clark" 4118 4981
+"arkansas,clay" 2735 3258
+"arkansas,cleburne" 6938 4419
+"arkansas,cleveland" 2008 1450
+"arkansas,columbia" 5706 4102
+"arkansas,conway" 3998 3972
+"arkansas,craighead" 15810 13647
+"arkansas,crawford" 13353 6747
+"arkansas,crittenden" 6930 8278
+"arkansas,cross" 3864 3135
+"arkansas,dallas" 1699 1670
+"arkansas,desha" 1783 2818
+"arkansas,drew" 3279 2965
+"arkansas,faulkner" 21514 14538
+"arkansas,franklin" 4179 3005
+"arkansas,fulton" 2187 2083
+"arkansas,garland" 21699 18014
+"arkansas,grant" 4205 2524
+"arkansas,greene" 7232 6561
+"arkansas,hempstead" 3580 3817
+"arkansas,hot spring" 5960 5901
+"arkansas,howard" 2728 2163
+"arkansas,independence" 7408 5428
+"arkansas,izard" 2833 2586
+"arkansas,jackson" 2617 3513
+"arkansas,jefferson" 10165 19536
+"arkansas,johnson" 4300 3621
+"arkansas,lafayette" 1595 1562
+"arkansas,lawrence" 2951 3543
+"arkansas,lee" 1491 2543
+"arkansas,lincoln" 1972 2190
+"arkansas,little river" 2574 2677
+"arkansas,logan" 5057 3357
+"arkansas,lonoke" 12860 6708
+"arkansas,madison" 3871 2420
+"arkansas,marion" 4102 2590
+"arkansas,miller" 8439 6135
+"arkansas,mississippi" 6090 7536
+"arkansas,monroe" 1585 2040
+"arkansas,montgomery" 2355 1518
+"arkansas,nevada" 1748 1688
+"arkansas,newton" 2778 1505
+"arkansas,ouachita" 5323 5171
+"arkansas,perry" 2435 1919
+"arkansas,phillips" 3138 5563
+"arkansas,pike" 2009 1310
+"arkansas,poinsett" 3554 4068
+"arkansas,polk" 5181 2468
+"arkansas,pope" 13614 7100
+"arkansas,prairie" 2029 1554
+"arkansas,pulaski" 65052 81291
+"arkansas,randolph" 3157 3411
+"arkansas,st francis" 3603 5486
+"arkansas,saline" 24833 14140
+"arkansas,scott" 2522 1477
+"arkansas,searcy" 2562 1352
+"arkansas,sebastian" 27251 16426
+"arkansas,sevier" 2513 2034
+"arkansas,sharp" 4090 3262
+"arkansas,stone" 3188 2255
+"arkansas,union" 10468 7056
+"arkansas,van buren" 3719 3310
+"arkansas,washington" 35652 27530
+"arkansas,white" 17001 9129
+"arkansas,woodruff" 1016 1969
+"arkansas,yell" 3660 2902
+"california,alameda" 107489 326675
+"california,alpine" 311 373
+"california,amador" 10479 6211
+"california,butte" 42645 35073
+"california,calaveras" 12469 7750
+"california,colusa" 3938 1858
+"california,contra costa" 130527 221449
+"california,del norte" 5125 3736
+"california,el dorado" 34514 21478
+"california,fresno" 120272 85943
+"california,glenn" 6299 2985
+"california,humboldt" 23014 34270
+"california,imperial" 11628 13955
+"california,inyo" 4559 3021
+"california,kern" 118571 57129
+"california,kings" 16846 8788
+"california,lake" 8185 9679
+"california,lassen" 7373 2867
+"california,los angeles" 954764 1670341
+"california,madera" 21881 11841
+"california,marin" 26141 73946
+"california,mariposa" 4750 2961
+"california,mendocino" 11963 22276
+"california,merced" 29968 22403
+"california,modoc" 2987 1049
+"california,mono" 2200 2200
+"california,monterey" 31382 48415
+"california,napa" 18886 28860
+"california,nevada" 25078 20716
+"california,orange" 455500 300490
+"california,placer" 84551 49519
+"california,plumas" 6681 3923
+"california,riverside" 263147 187823
+"california,sacramento" 171569 175725
+"california,san benito" 6158 7253
+"california,san bernardino" 226133 175533
+"california,san diego" 439242 394752
+"california,san francisco" 41157 222013
+"california,san joaquin" 87336 74868
+"california,san luis obispo" 53683 47079
+"california,san mateo" 66152 156570
+"california,santa barbara" 48451 60565
+"california,santa clara" 151660 280016
+"california,santa cruz" 25297 74302
+"california,shasta" 45392 20980
+"california,sierra" 1429 646
+"california,siskiyou" 10399 6545
+"california,solano" 49710 69729
+"california,sonoma" 55541 119821
+"california,stanislaus" 70981 49640
+"california,sutter" 17329 8254
+"california,tehama" 13384 6505
+"california,trinity" 3406 2682
+"california,tulare" 56556 27989
+"california,tuolumne" 14001 8971
+"california,ventura" 109007 103360
+"california,yolo" 24594 38190
+"california,yuba" 10805 5064
+"colorado,adams" 62485 65081
+"colorado,alamosa" 3137 2975
+"colorado,arapahoe" 114703 105008
+"colorado,archuleta" 2555 2111
+"colorado,baca" 1673 482
+"colorado,bent" 1310 757
+"colorado,boulder" 49352 101990
+"colorado,broomfield" 11847 10760
+"colorado,chaffee" 4634 3595
+"colorado,cheyenne" 902 193
+"colorado,clear creek" 2467 2899
+"colorado,conejos" 1855 1889
+"colorado,costilla" 547 1149
+"colorado,crowley" 977 469
+"colorado,custer" 1644 733
+"colorado,delta" 9563 4165
+"colorado,denver" 62868 148599
+"colorado,dolores" 785 333
+"colorado,douglas" 79115 38956
+"colorado,eagle" 8469 9630
+"colorado,el paso" 157594 75558
+"colorado,elbert" 8292 3103
+"colorado,fremont" 12241 5900
+"colorado,garfield" 10937 9077
+"colorado,gilpin" 1304 1772
+"colorado,grand" 4170 3159
+"colorado,gunnison" 3452 4730
+"colorado,hinsdale" 355 234
+"colorado,huerfano" 1661 1628
+"colorado,jackson" 710 209
+"colorado,jefferson" 137251 123174
+"colorado,kiowa" 688 167
+"colorado,kit carson" 2668 723
+"colorado,la plata" 11593 13266
+"colorado,lake" 1231 1574
+"colorado,larimer" 74899 67266
+"colorado,las animas" 3152 3248
+"colorado,lincoln" 1793 493
+"colorado,logan" 6054 2426
+"colorado,mesa" 40457 19072
+"colorado,mineral" 381 227
+"colorado,moffat" 4210 1343
+"colorado,montezuma" 6952 3839
+"colorado,montrose" 11045 4708
+"colorado,morgan" 6741 3017
+"colorado,otero" 4832 3092
+"colorado,ouray" 1383 1250
+"colorado,park" 4739 3405
+"colorado,phillips" 1661 565
+"colorado,pitkin" 2750 6275
+"colorado,prowers" 3382 1306
+"colorado,pueblo" 30665 34654
+"colorado,rio blanco" 2370 560
+"colorado,rio grande" 3413 1970
+"colorado,routt" 5109 6270
+"colorado,saguache" 1134 1558
+"colorado,san juan" 216 253
+"colorado,san miguel" 1070 2857
+"colorado,sedgwick" 947 368
+"colorado,summit" 5320 8032
+"colorado,teller" 7868 3447
+"colorado,washington" 2019 450
+"colorado,weld" 55213 31623
+"colorado,yuma" 3423 1044
+"delaware,kent" 31555 23854
+"delaware,new castle" 92973 145935
+"delaware,sussex" 47003 30098
+"district of columbia,washington" 19007 183876
+"florida,alachua" 47615 62348
+"florida,baker" 7738 2180
+"florida,bay" 53388 21058
+"florida,bradford" 7553 3244
+"florida,brevard" 152838 110153
+"florida,broward" 243699 452360
+"florida,calhoun" 3780 2116
+"florida,charlotte" 44402 34227
+"florida,citrus" 39498 29274
+"florida,clay" 61881 18905
+"florida,collier" 83485 43713
+"florida,columbia" 16753 8029
+"florida,de soto" 5512 3910
+"florida,dixie" 4433 1959
+"florida,duval" 219251 158121
+"florida,escambia" 93367 48243
+"florida,flagler" 19632 18574
+"florida,franklin" 3472 2400
+"florida,gadsden" 6253 14629
+"florida,gilchrist" 4934 2016
+"florida,glades" 2443 1718
+"florida,gulf" 4794 2398
+"florida,hamilton" 2792 2260
+"florida,hardee" 5047 2148
+"florida,hendry" 5756 3960
+"florida,hernando" 41847 36521
+"florida,highlands" 25874 15346
+"florida,hillsborough" 244606 213413
+"florida,holmes" 6410 1810
+"florida,indian river" 36869 23932
+"florida,jackson" 12115 7552
+"florida,jefferson" 3298 4134
+"florida,lafayette" 2460 845
+"florida,lake" 74382 48216
+"florida,lee" 144414 94365
+"florida,leon" 51594 83830
+"florida,levy" 10408 6073
+"florida,liberty" 1927 1070
+"florida,madison" 4196 4048
+"florida,manatee" 81272 61228
+"florida,marion" 81267 57255
+"florida,martin" 41350 30197
+"florida,dade" 358613 406099
+"florida,monroe" 19462 19649
+"florida,nassau" 23732 8545
+"florida,okaloosa" 69654 19358
+"florida,okeechobee" 6987 5151
+"florida,orange" 192390 193217
+"florida,osceola" 43108 38617
+"florida,palm beach" 211894 327698
+"florida,pasco" 103198 84731
+"florida,pinellas" 225627 225367
+"florida,polk" 123532 85983
+"florida,putnam" 18305 12409
+"florida,santa rosa" 51988 14637
+"florida,sarasota" 104630 88382
+"florida,seminole" 108126 76938
+"florida,st johns" 59178 26389
+"florida,st lucie" 47575 51816
+"florida,sumter" 19795 11584
+"florida,suwannee" 11153 4521
+"florida,taylor" 5466 3049
+"florida,union" 3396 1251
+"florida,volusia" 111544 115319
+"florida,wakulla" 6777 4896
+"florida,walton" 17553 6213
+"florida,washington" 7368 2912
+"georgia,appling" 4494 1848
+"georgia,atkinson" 1666 799
+"georgia,bacon" 2853 930
+"georgia,baker" 821 936
+"georgia,baldwin" 7707 6774
+"georgia,banks" 4410 1149
+"georgia,barrow" 13022 3937
+"georgia,bartow" 22302 7737
+"georgia,ben hill" 3331 2180
+"georgia,berrien" 3914 1637
+"georgia,bibb" 28079 29268
+"georgia,bleckley" 3167 1281
+"georgia,brantley" 4332 1258
+"georgia,brooks" 2722 2053
+"georgia,bryan" 7453 2632
+"georgia,bulloch" 12245 6832
+"georgia,burke" 4232 4213
+"georgia,butts" 5119 2570
+"georgia,calhoun" 890 1118
+"georgia,camden" 9471 4629
+"georgia,candler" 2048 1096
+"georgia,carroll" 24813 10203
+"georgia,catoosa" 16402 5805
+"georgia,charlton" 2310 1064
+"georgia,chatham" 41384 42910
+"georgia,chattahoochee" 902 773
+"georgia,chattooga" 4964 2791
+"georgia,cherokee" 55447 14090
+"georgia,clarke" 15042 21707
+"georgia,clay" 509 798
+"georgia,clayton" 19808 50445
+"georgia,clinch" 1501 750
+"georgia,cobb" 173206 103720
+"georgia,coffee" 8304 3977
+"georgia,colquitt" 8296 3378
+"georgia,columbia" 35546 11441
+"georgia,cook" 3065 1733
+"georgia,coweta" 31649 10630
+"georgia,crawford" 2827 1551
+"georgia,crisp" 3865 2357
+"georgia,dade" 4367 1822
+"georgia,dawson" 6649 1407
+"georgia,decatur" 5346 3573
+"georgia,de kalb" 73527 200632
+"georgia,dodge" 4584 2384
+"georgia,dooly" 1853 1973
+"georgia,dougherty" 13709 19795
+"georgia,douglas" 25835 15986
+"georgia,early" 2494 1698
+"georgia,echols" 757 231
+"georgia,effingham" 12451 3597
+"georgia,elbert" 4618 2979
+"georgia,emanuel" 4665 2774
+"georgia,evans" 2291 1213
+"georgia,fannin" 6859 2727
+"georgia,fayette" 37322 14862
+"georgia,floyd" 21338 10010
+"georgia,forsyth" 47254 9198
+"georgia,franklin" 5216 2245
+"georgia,fulton" 123670 189899
+"georgia,gilmer" 7414 2510
+"georgia,glascock" 1016 250
+"georgia,glynn" 18602 8960
+"georgia,gordon" 11671 4028
+"georgia,grady" 5065 3092
+"georgia,greene" 4069 2774
+"georgia,gwinnett" 160013 81334
+"georgia,habersham" 10428 2748
+"georgia,hall" 38861 10506
+"georgia,hancock" 822 2715
+"georgia,haralson" 7695 2431
+"georgia,harris" 8874 3400
+"georgia,hart" 5499 3476
+"georgia,heard" 2788 1148
+"georgia,henry" 42748 21091
+"georgia,houston" 29848 15042
+"georgia,irwin" 2347 1051
+"georgia,jackson" 12605 3466
+"georgia,jasper" 3157 1558
+"georgia,jeff davis" 3549 1277
+"georgia,jefferson" 3066 3447
+"georgia,jenkins" 1896 1493
+"georgia,johnson" 2279 1263
+"georgia,jones" 6939 3854
+"georgia,lamar" 4027 2432
+"georgia,lanier" 1641 931
+"georgia,laurens" 10882 6280
+"georgia,lee" 8201 2182
+"georgia,liberty" 6127 6616
+"georgia,lincoln" 2309 1337
+"georgia,long" 1992 1029
+"georgia,lowndes" 18942 12491
+"georgia,lumpkin" 6690 2091
+"georgia,macon" 1851 2906
+"georgia,madison" 7253 2527
+"georgia,marion" 1670 1275
+"georgia,mcduffie" 4755 2858
+"georgia,mcintosh" 2837 2523
+"georgia,meriwether" 4401 3709
+"georgia,miller" 1688 736
+"georgia,mitchell" 3885 3360
+"georgia,monroe" 6522 3216
+"georgia,montgomery" 2150 1007
+"georgia,morgan" 4902 2304
+"georgia,murray" 7745 2899
+"georgia,muscogee" 30544 32727
+"georgia,newton" 18094 10939
+"georgia,oconee" 10273 3785
+"georgia,oglethorpe" 3686 1899
+"georgia,paulding" 30830 9414
+"georgia,peach" 4554 3960
+"georgia,pickens" 7897 2353
+"georgia,pierce" 4677 1233
+"georgia,pike" 5193 1506
+"georgia,polk" 8467 3868
+"georgia,pulaski" 2202 1294
+"georgia,putnam" 5187 2876
+"georgia,quitman" 409 543
+"georgia,rabun" 4649 1918
+"georgia,randolph" 1418 1612
+"georgia,richmond" 29764 39262
+"georgia,rockdale" 18855 12134
+"georgia,schley" 1063 464
+"georgia,screven" 3360 2534
+"georgia,seminole" 1975 1278
+"georgia,spalding" 13458 7457
+"georgia,stephens" 6904 2714
+"georgia,stewart" 797 1220
+"georgia,sumter" 5682 5555
+"georgia,talbot" 1102 1830
+"georgia,taliaferro" 335 612
+"georgia,tattnall" 4657 1787
+"georgia,taylor" 1912 1458
+"georgia,telfair" 2171 1590
+"georgia,terrell" 1859 1950
+"georgia,thomas" 9659 5997
+"georgia,tift" 8616 3862
+"georgia,toombs" 6192 2561
+"georgia,towns" 3819 1430
+"georgia,treutlen" 1688 1052
+"georgia,troup" 14180 7625
+"georgia,turner" 1815 1135
+"georgia,twiggs" 2109 2219
+"georgia,union" 6843 2325
+"georgia,upson" 6632 3423
+"georgia,walker" 15340 5986
+"georgia,walton" 21585 5885
+"georgia,ware" 6789 2832
+"georgia,warren" 1121 1359
+"georgia,washington" 4081 3733
+"georgia,wayne" 6817 2683
+"georgia,webster" 485 515
+"georgia,wheeler" 1192 847
+"georgia,white" 7403 2016
+"georgia,whitfield" 19295 6933
+"georgia,wilcox" 1705 902
+"georgia,wilkes" 2488 2028
+"georgia,wilkinson" 2257 2233
+"georgia,worth" 5103 2217
+"idaho,ada" 93870 58230
+"idaho,adams" 1468 555
+"idaho,bannock" 21479 12903
+"idaho,bear lake" 2506 494
+"idaho,benewah" 2823 1148
+"idaho,bingham" 12734 3605
+"idaho,blaine" 4034 5992
+"idaho,boise" 2501 970
+"idaho,bonner" 10697 6649
+"idaho,bonneville" 30047 8352
+"idaho,boundary" 3012 1268
+"idaho,butte" 1078 321
+"idaho,camas" 450 139
+"idaho,canyon" 41599 13415
+"idaho,caribou" 2753 491
+"idaho,cassia" 6562 1153
+"idaho,clark" 302 46
+"idaho,clearwater" 2839 1117
+"idaho,custer" 1762 559
+"idaho,elmore" 5940 1931
+"idaho,franklin" 4527 456
+"idaho,fremont" 4965 751
+"idaho,gem" 5415 1628
+"idaho,gooding" 3973 1278
+"idaho,idaho" 6017 1686
+"idaho,jefferson" 7703 1084
+"idaho,jerome" 5177 1344
+"idaho,kootenai" 36173 17584
+"idaho,latah" 8686 8430
+"idaho,lemhi" 3079 915
+"idaho,lewis" 1359 440
+"idaho,lincoln" 1388 466
+"idaho,madison" 10693 826
+"idaho,minidoka" 5797 1331
+"idaho,nez perce" 11009 6476
+"idaho,oneida" 1789 304
+"idaho,owyhee" 2859 685
+"idaho,payette" 6256 1848
+"idaho,power" 2105 829
+"idaho,shoshone" 2921 2331
+"idaho,teton" 2235 1614
+"idaho,twin falls" 19535 6400
+"idaho,valley" 2863 1843
+"idaho,washington" 3274 1033
+"illinois,adams" 20788 10467
+"illinois,alexander" 1823 1978
+"illinois,bond" 4068 3228
+"illinois,boone" 11132 8286
+"illinois,brown" 1678 891
+"illinois,bureau" 9822 7961
+"illinois,calhoun" 1317 1367
+"illinois,carroll" 4534 3537
+"illinois,cass" 3163 2492
+"illinois,champaign" 39865 41455
+"illinois,christian" 9042 6111
+"illinois,clark" 5082 2877
+"illinois,clay" 4416 2101
+"illinois,clinton" 10205 6792
+"illinois,coles" 13013 9564
+"illinois,cook" 591438 1418001
+"illinois,crawford" 6081 3192
+"illinois,cumberland" 3497 1862
+"illinois,de kalb" 21095 19263
+"illinois,de witt" 4920 2836
+"illinois,douglas" 5702 2767
+"illinois,du page" 218369 179543
+"illinois,edgar" 5256 3093
+"illinois,edwards" 2412 930
+"illinois,effingham" 11769 4382
+"illinois,fayette" 5879 3570
+"illinois,ford" 4511 1912
+"illinois,franklin" 10385 8815
+"illinois,fulton" 7818 9080
+"illinois,gallatin" 1619 1577
+"illinois,greene" 3557 2455
+"illinois,grundy" 11191 8462
+"illinois,hamilton" 2653 1814
+"illinois,hancock" 5837 3975
+"illinois,hardin" 1501 923
+"illinois,henderson" 1857 2269
+"illinois,henry" 13212 11877
+"illinois,iroquois" 9909 3828
+"illinois,jackson" 11182 14275
+"illinois,jasper" 3529 1781
+"illinois,jefferson" 10158 6712
+"illinois,jersey" 5434 4596
+"illinois,jo daviess" 6171 5310
+"illinois,johnson" 3997 1813
+"illinois,kane" 94010 75625
+"illinois,kankakee" 24717 19989
+"illinois,kendall" 19104 11931
+"illinois,knox" 11104 13396
+"illinois,lake" 139006 134231
+"illinois,la salle" 26091 24251
+"illinois,lawrence" 4160 2518
+"illinois,lee" 9304 6415
+"illinois,livingston" 10316 5632
+"illinois,logan" 9108 4271
+"illinois,macon" 28077 23293
+"illinois,macoupin" 11413 11193
+"illinois,madison" 59262 63269
+"illinois,marion" 9410 7691
+"illinois,marshall" 3732 2806
+"illinois,mason" 3907 3215
+"illinois,massac" 4578 2804
+"illinois,mcdonough" 7645 7109
+"illinois,mchenry" 76371 50294
+"illinois,mclean" 41265 29865
+"illinois,menard" 4406 2137
+"illinois,mercer" 4403 4512
+"illinois,monroe" 9458 6783
+"illinois,montgomery" 6851 5979
+"illinois,morgan" 9392 5650
+"illinois,moultrie" 4026 2388
+"illinois,ogle" 14918 9018
+"illinois,peoria" 40968 41062
+"illinois,perry" 5588 4769
+"illinois,piatt" 5392 3124
+"illinois,pike" 5030 2847
+"illinois,pope" 1500 918
+"illinois,pulaski" 1720 1372
+"illinois,putnam" 1623 1704
+"illinois,randolph" 8073 6765
+"illinois,richland" 5152 2528
+"illinois,rock island" 29661 39879
+"illinois,saline" 7056 4697
+"illinois,sangamon" 55824 38564
+"illinois,schuyler" 2402 1593
+"illinois,scott" 1696 927
+"illinois,shelby" 6749 3744
+"illinois,st clair" 50149 62355
+"illinois,stark" 1841 1189
+"illinois,stephenson" 12204 8909
+"illinois,tazewell" 36037 25803
+"illinois,union" 5325 3730
+"illinois,vermilion" 18723 14721
+"illinois,wabash" 4210 1751
+"illinois,warren" 4474 3938
+"illinois,washington" 5072 2986
+"illinois,wayne" 6102 2139
+"illinois,white" 5180 3071
+"illinois,whiteside" 12949 13713
+"illinois,will" 128983 115499
+"illinois,williamson" 18080 11677
+"illinois,winnebago" 58887 58054
+"illinois,woodford" 12682 5994
+"indiana,adams" 9733 3512
+"indiana,allen" 81586 46385
+"indiana,bartholomew" 19093 9191
+"indiana,benton" 2797 1135
+"indiana,blackford" 3447 1903
+"indiana,boone" 17055 5636
+"indiana,brown" 4511 2729
+"indiana,carroll" 5863 2689
+"indiana,cass" 9432 4290
+"indiana,clark" 24495 17648
+"indiana,clay" 7361 3333
+"indiana,clinton" 8470 3334
+"indiana,crawford" 2609 1932
+"indiana,daviess" 7934 2573
+"indiana,dearborn" 14231 6596
+"indiana,decatur" 7499 2621
+"indiana,de kalb" 10141 4696
+"indiana,delaware" 27053 20429
+"indiana,dubois" 11726 5210
+"indiana,elkhart" 42933 17947
+"indiana,fayette" 5761 3626
+"indiana,floyd" 19877 13857
+"indiana,fountain" 5260 2477
+"indiana,franklin" 6978 2299
+"indiana,fulton" 6027 2607
+"indiana,gibson" 9133 5378
+"indiana,grant" 18769 8509
+"indiana,greene" 8666 4589
+"indiana,hamilton" 77883 26387
+"indiana,hancock" 20710 6891
+"indiana,harrison" 11015 6171
+"indiana,hendricks" 38430 13548
+"indiana,henry" 13136 7176
+"indiana,howard" 23714 12998
+"indiana,huntington" 11615 3877
+"indiana,jackson" 11079 5092
+"indiana,jasper" 8055 3678
+"indiana,jay" 5425 2740
+"indiana,jefferson" 7763 5117
+"indiana,jennings" 6864 3538
+"indiana,johnson" 37765 13109
+"indiana,knox" 9988 5647
+"indiana,kosciusko" 22136 5977
+"indiana,lagrange" 6430 2523
+"indiana,lake" 68512 108219
+"indiana,la porte" 20916 21114
+"indiana,lawrence" 12207 5346
+"indiana,madison" 32526 21882
+"indiana,marion" 155843 161957
+"indiana,marshall" 12074 5593
+"indiana,martin" 3414 1522
+"indiana,miami" 9548 3867
+"indiana,monroe" 22832 26962
+"indiana,montgomery" 10901 3536
+"indiana,morgan" 19176 6640
+"indiana,newton" 3756 2032
+"indiana,noble" 10859 4696
+"indiana,ohio" 1794 1139
+"indiana,orange" 5683 2885
+"indiana,owen" 5000 2536
+"indiana,parke" 4550 2362
+"indiana,perry" 4136 4210
+"indiana,pike" 3745 2418
+"indiana,porter" 34688 29313
+"indiana,posey" 7829 4084
+"indiana,pulaski" 3797 1750
+"indiana,putnam" 8906 4099
+"indiana,randolph" 7172 3812
+"indiana,ripley" 8224 3510
+"indiana,rush" 5362 1999
+"indiana,scott" 4793 3822
+"indiana,shelby" 11397 4519
+"indiana,spencer" 5922 3917
+"indiana,st joseph" 55254 52637
+"indiana,starke" 4846 3987
+"indiana,steuben" 8431 4345
+"indiana,sullivan" 4999 3341
+"indiana,switzerland" 2161 1479
+"indiana,tippecanoe" 30729 20683
+"indiana,tipton" 5545 2202
+"indiana,union" 2266 1045
+"indiana,vanderburgh" 41463 28767
+"indiana,vermillion" 3738 3583
+"indiana,vigo" 20988 18426
+"indiana,wabash" 9402 3812
+"indiana,warren" 2565 1356
+"indiana,warrick" 16930 8980
+"indiana,washington" 6915 3879
+"indiana,wayne" 16586 10775
+"indiana,wells" 9163 3106
+"indiana,white" 6974 3277
+"indiana,whitley" 9510 3878
+"iowa,adair" 2393 1833
+"iowa,adams" 1313 973
+"iowa,allamakee" 3523 3437
+"iowa,appanoose" 3328 3047
+"iowa,audubon" 1951 1599
+"iowa,benton" 6634 6690
+"iowa,black hawk" 27825 34614
+"iowa,boone" 6809 6956
+"iowa,bremer" 6662 6022
+"iowa,buchanan" 4785 5555
+"iowa,buena vista" 4867 3505
+"iowa,butler" 4413 3001
+"iowa,calhoun" 3240 2232
+"iowa,carroll" 5760 4688
+"iowa,cass" 4780 2666
+"iowa,cedar" 4831 4692
+"iowa,cerro gordo" 10917 13247
+"iowa,cherokee" 3750 2977
+"iowa,chickasaw" 3030 3694
+"iowa,clarke" 2188 2301
+"iowa,clay" 4878 3499
+"iowa,clayton" 4302 4715
+"iowa,clinton" 10749 13742
+"iowa,crawford" 3946 3213
+"iowa,dallas" 15094 10825
+"iowa,davis" 2142 1726
+"iowa,decatur" 2083 1854
+"iowa,delaware" 4894 4203
+"iowa,des moines" 8156 12296
+"iowa,dickinson" 5319 4115
+"iowa,dubuque" 19934 26265
+"iowa,emmet" 2686 2395
+"iowa,fayette" 5106 5156
+"iowa,floyd" 3716 4314
+"iowa,franklin" 3124 2333
+"iowa,fremont" 2348 1500
+"iowa,greene" 2609 2449
+"iowa,grundy" 4411 2373
+"iowa,guthrie" 3314 2591
+"iowa,hamilton" 4345 3866
+"iowa,hancock" 3352 2471
+"iowa,hardin" 4853 3989
+"iowa,harrison" 4659 2895
+"iowa,henry" 5199 4097
+"iowa,howard" 2020 2612
+"iowa,humboldt" 3146 2133
+"iowa,ida" 2335 1411
+"iowa,iowa" 4530 3820
+"iowa,jackson" 4231 5609
+"iowa,jasper" 9396 10346
+"iowa,jefferson" 3600 4388
+"iowa,johnson" 22287 40431
+"iowa,jones" 4809 5007
+"iowa,keokuk" 3110 2285
+"iowa,kossuth" 5022 4115
+"iowa,lee" 7303 9701
+"iowa,linn" 49243 59995
+"iowa,louisa" 2535 2239
+"iowa,lucas" 2534 1983
+"iowa,lyon" 4732 1295
+"iowa,madison" 4519 3346
+"iowa,mahaska" 6826 3763
+"iowa,marion" 9971 6564
+"iowa,marshall" 9481 9316
+"iowa,mills" 4538 2296
+"iowa,mitchell" 2629 2758
+"iowa,monona" 2561 2387
+"iowa,monroe" 2066 1854
+"iowa,montgomery" 3560 1862
+"iowa,muscatine" 8936 9397
+"iowa,obrien" 5318 2321
+"iowa,osceola" 2286 932
+"iowa,page" 5214 2199
+"iowa,palo alto" 2665 2479
+"iowa,plymouth" 7778 4251
+"iowa,pocahontas" 2440 1822
+"iowa,polk" 95056 103774
+"iowa,pottawattamie" 23521 16410
+"iowa,poweshiek" 4933 4999
+"iowa,ringgold" 1465 1284
+"iowa,sac" 3118 2208
+"iowa,scott" 39750 41738
+"iowa,shelby" 4240 2333
+"iowa,sioux" 14167 2247
+"iowa,story" 20716 23082
+"iowa,tama" 4434 4471
+"iowa,taylor" 1900 1245
+"iowa,union" 3143 2738
+"iowa,van buren" 2204 1556
+"iowa,wapello" 7234 8996
+"iowa,warren" 12130 10699
+"iowa,washington" 5955 4540
+"iowa,wayne" 1724 1373
+"iowa,webster" 8906 9468
+"iowa,winnebago" 3168 2691
+"iowa,winneshiek" 5308 5332
+"iowa,woodbury" 22274 21191
+"iowa,worth" 1790 2277
+"iowa,wright" 3625 2922
+"kansas,allen" 3808 1885
+"kansas,anderson" 2490 1291
+"kansas,atchison" 3769 3028
+"kansas,barber" 1754 585
+"kansas,barton" 8545 2837
+"kansas,bourbon" 4268 2167
+"kansas,brown" 3034 1234
+"kansas,butler" 18069 7307
+"kansas,chase" 1043 413
+"kansas,chautauqua" 1496 400
+"kansas,cherokee" 6045 3694
+"kansas,cheyenne" 1346 317
+"kansas,clark" 998 254
+"kansas,clay" 3119 777
+"kansas,cloud" 3134 1179
+"kansas,coffey" 3204 1076
+"kansas,comanche" 765 198
+"kansas,cowley" 9237 4747
+"kansas,crawford" 8423 7470
+"kansas,decatur" 1354 355
+"kansas,dickinson" 6186 2316
+"kansas,doniphan" 2460 1049
+"kansas,douglas" 19923 27282
+"kansas,edwards" 1072 383
+"kansas,elk" 1114 367
+"kansas,ellis" 7683 3938
+"kansas,ellsworth" 2246 794
+"kansas,finney" 7361 2303
+"kansas,ford" 6460 2212
+"kansas,franklin" 7278 3874
+"kansas,geary" 4553 2436
+"kansas,gove" 1182 245
+"kansas,graham" 1067 330
+"kansas,grant" 2082 549
+"kansas,gray" 1730 387
+"kansas,greeley" 577 137
+"kansas,greenwood" 2247 899
+"kansas,hamilton" 874 222
+"kansas,harper" 2123 717
+"kansas,harvey" 9364 5237
+"kansas,haskell" 1309 221
+"kansas,hodgeman" 949 222
+"kansas,jackson" 3682 2026
+"kansas,jefferson" 5345 3226
+"kansas,jewell" 1494 384
+"kansas,johnson" 153718 95002
+"kansas,kearny" 1160 272
+"kansas,kingman" 2795 902
+"kansas,kiowa" 1248 253
+"kansas,labette" 5345 3582
+"kansas,lane" 815 179
+"kansas,leavenworth" 15609 10802
+"kansas,lincoln" 1350 390
+"kansas,linn" 2954 1592
+"kansas,logan" 1252 248
+"kansas,lyon" 7604 5003
+"kansas,marion" 4393 1496
+"kansas,marshall" 3217 1754
+"kansas,mcpherson" 9395 3538
+"kansas,meade" 1721 349
+"kansas,miami" 8645 4681
+"kansas,mitchell" 2577 687
+"kansas,montgomery" 9435 4254
+"kansas,morris" 1945 921
+"kansas,morton" 1258 275
+"kansas,nemaha" 3966 1336
+"kansas,neosho" 4530 2318
+"kansas,ness" 1387 379
+"kansas,norton" 2069 472
+"kansas,osage" 4698 2482
+"kansas,osborne" 1552 444
+"kansas,ottawa" 2330 595
+"kansas,pawnee" 2144 759
+"kansas,phillips" 2206 550
+"kansas,pottawatomie" 6210 2147
+"kansas,pratt" 3075 1181
+"kansas,rawlins" 1408 288
+"kansas,reno" 17139 8739
+"kansas,republic" 2205 601
+"kansas,rice" 3124 1116
+"kansas,riley" 12415 7774
+"kansas,rooks" 2116 529
+"kansas,rush" 1224 516
+"kansas,russell" 2628 795
+"kansas,saline" 14758 7365
+"kansas,scott" 1897 339
+"kansas,sedgwick" 105413 61418
+"kansas,seward" 4144 1086
+"kansas,shawnee" 43467 35438
+"kansas,sheridan" 1133 232
+"kansas,sherman" 2063 630
+"kansas,smith" 1786 538
+"kansas,stafford" 1636 506
+"kansas,stanton" 780 160
+"kansas,stevens" 1912 308
+"kansas,sumner" 6997 3163
+"kansas,thomas" 2959 804
+"kansas,trego" 1219 434
+"kansas,wabaunsee" 2464 982
+"kansas,wallace" 741 112
+"kansas,washington" 2436 632
+"kansas,wichita" 861 183
+"kansas,wilson" 3204 1037
+"kansas,woodson" 1201 527
+"kansas,wyandotte" 17312 32781
+"kentucky,adair" 5628 1764
+"kentucky,allen" 5202 1923
+"kentucky,anderson" 6363 3141
+"kentucky,ballard" 2389 1759
+"kentucky,barren" 10822 5216
+"kentucky,bath" 2269 2608
+"kentucky,bell" 6722 4210
+"kentucky,boone" 32329 12391
+"kentucky,bourbon" 4953 3198
+"kentucky,boyd" 11501 10132
+"kentucky,boyle" 7764 4646
+"kentucky,bracken" 2363 1213
+"kentucky,breathitt" 2542 3328
+"kentucky,breckinridge" 5580 2884
+"kentucky,bullitt" 19433 9043
+"kentucky,butler" 4109 1436
+"kentucky,caldwell" 4066 2245
+"kentucky,calloway" 9289 5726
+"kentucky,campbell" 25539 14252
+"kentucky,carlisle" 1734 1102
+"kentucky,carroll" 2175 1688
+"kentucky,carter" 5422 5577
+"kentucky,casey" 5109 1174
+"kentucky,christian" 13938 6980
+"kentucky,clark" 9540 5661
+"kentucky,clay" 5726 1901
+"kentucky,clinton" 3369 952
+"kentucky,crittenden" 2726 1438
+"kentucky,cumberland" 2356 848
+"kentucky,daviess" 25372 15788
+"kentucky,edmonson" 3595 1856
+"kentucky,elliott" 871 2064
+"kentucky,estill" 3633 1907
+"kentucky,fayette" 66399 57989
+"kentucky,fleming" 3749 2406
+"kentucky,floyd" 6612 11132
+"kentucky,franklin" 12281 11620
+"kentucky,fulton" 1527 1340
+"kentucky,gallatin" 1869 1188
+"kentucky,garrard" 4784 1841
+"kentucky,grant" 5951 2818
+"kentucky,graves" 9903 6206
+"kentucky,grayson" 7170 2905
+"kentucky,green" 3866 1312
+"kentucky,greenup" 8696 7630
+"kentucky,hancock" 2286 1709
+"kentucky,hardin" 24627 11507
+"kentucky,harlan" 6659 4400
+"kentucky,harrison" 4855 2807
+"kentucky,hart" 4269 2470
+"kentucky,henderson" 10467 8101
+"kentucky,henry" 4094 2366
+"kentucky,hickman" 1395 926
+"kentucky,hopkins" 12314 6420
+"kentucky,jackson" 4369 769
+"kentucky,jefferson" 164566 170158
+"kentucky,jessamine" 12972 5476
+"kentucky,johnson" 5940 3288
+"kentucky,kenton" 43664 22834
+"kentucky,knott" 2648 4685
+"kentucky,knox" 8108 3822
+"kentucky,larue" 4111 1823
+"kentucky,laurel" 16819 5297
+"kentucky,lawrence" 3755 2705
+"kentucky,lee" 2018 878
+"kentucky,leslie" 3661 1266
+"kentucky,letcher" 4801 4192
+"kentucky,lewis" 3778 1667
+"kentucky,lincoln" 5707 2611
+"kentucky,livingston" 2675 2007
+"kentucky,logan" 6815 3768
+"kentucky,lyon" 2132 1769
+"kentucky,madison" 18922 11525
+"kentucky,magoffin" 2836 2843
+"kentucky,marion" 3905 3399
+"kentucky,marshall" 9049 6383
+"kentucky,martin" 2996 1504
+"kentucky,mason" 4381 2644
+"kentucky,mccracken" 18218 11361
+"kentucky,mccreary" 4121 1530
+"kentucky,mclean" 2584 1823
+"kentucky,meade" 7152 3724
+"kentucky,menifee" 1215 1284
+"kentucky,mercer" 6745 3224
+"kentucky,metcalfe" 2645 1472
+"kentucky,monroe" 4657 1158
+"kentucky,montgomery" 5647 4506
+"kentucky,morgan" 2682 2532
+"kentucky,muhlenberg" 6749 6636
+"kentucky,nelson" 10161 6524
+"kentucky,nicholas" 1700 1332
+"kentucky,ohio" 5910 3434
+"kentucky,oldham" 18801 8080
+"kentucky,owen" 3084 1615
+"kentucky,owsley" 1558 430
+"kentucky,pendleton" 4046 1940
+"kentucky,perry" 6187 5400
+"kentucky,pike" 12611 14002
+"kentucky,powell" 2687 2249
+"kentucky,pulaski" 19535 5829
+"kentucky,robertson" 670 413
+"kentucky,rockcastle" 4804 1320
+"kentucky,rowan" 4063 4556
+"kentucky,russell" 6009 1772
+"kentucky,scott" 10600 6325
+"kentucky,shelby" 10909 5277
+"kentucky,simpson" 4273 2730
+"kentucky,spencer" 4816 1970
+"kentucky,taylor" 7247 2980
+"kentucky,todd" 3242 1491
+"kentucky,trigg" 4023 2046
+"kentucky,trimble" 2332 1428
+"kentucky,union" 3534 2398
+"kentucky,warren" 25100 14326
+"kentucky,washington" 3479 1724
+"kentucky,wayne" 5027 2616
+"kentucky,webster" 3207 2308
+"kentucky,whitley" 9559 3985
+"kentucky,wolfe" 1385 1744
+"kentucky,woodford" 6937 4480
+"louisiana,acadia" 16083 8937
+"louisiana,allen" 5140 3791
+"louisiana,ascension" 24661 13955
+"louisiana,assumption" 4966 5585
+"louisiana,avoyelles" 8302 6976
+"louisiana,beauregard" 9470 3666
+"louisiana,bienville" 3612 3399
+"louisiana,bossier" 30040 12317
+"louisiana,caddo" 54292 51739
+"louisiana,calcasieu" 46058 32844
+"louisiana,caldwell" 3308 1384
+"louisiana,cameron" 3190 1367
+"louisiana,catahoula" 3219 1673
+"louisiana,claiborne" 3704 2854
+"louisiana,concordia" 5427 3446
+"louisiana,de soto" 6211 5026
+"louisiana,east baton rouge" 99943 82298
+"louisiana,east carroll" 1357 1980
+"louisiana,east feliciana" 5021 4091
+"louisiana,evangeline" 7949 5757
+"louisiana,franklin" 6141 2828
+"louisiana,grant" 5911 1977
+"louisiana,iberia" 19420 12426
+"louisiana,iberville" 6333 8259
+"louisiana,jackson" 5038 2525
+"louisiana,jefferson davis" 8055 4745
+"louisiana,jefferson" 117692 71936
+"louisiana,lafayette" 57730 31205
+"louisiana,lafourche" 22734 14417
+"louisiana,la salle" 5015 1155
+"louisiana,lincoln" 10791 7242
+"louisiana,livingston" 33976 9895
+"louisiana,madison" 2291 2334
+"louisiana,morehouse" 7471 5336
+"louisiana,natchitoches" 9261 7398
+"louisiana,orleans" 42760 151686
+"louisiana,ouachita" 41750 22016
+"louisiana,plaquemines" 7866 4181
+"louisiana,pointe coupee" 5429 5712
+"louisiana,rapides" 34492 18904
+"louisiana,red river" 2507 2140
+"louisiana,richland" 5471 3082
+"louisiana,sabine" 6711 2743
+"louisiana,st bernard" 19597 9956
+"louisiana,st charles" 14747 8856
+"louisiana,st helena" 2235 3173
+"louisiana,st james" 4545 6407
+"louisiana,st john the baptist" 9039 10305
+"louisiana,st landry" 18315 18166
+"louisiana,st martin" 12095 10321
+"louisiana,st mary" 12877 9547
+"louisiana,st tammany" 75139 24665
+"louisiana,tangipahoa" 26181 15345
+"louisiana,tensas" 1453 1469
+"louisiana,terrebonne" 26358 13684
+"louisiana,union" 7457 3089
+"louisiana,vermilion" 15069 9085
+"louisiana,vernon" 11032 4035
+"louisiana,washington" 11006 6554
+"louisiana,webster" 11070 6833
+"louisiana,west baton rouge" 5822 4932
+"louisiana,west carroll" 3740 1231
+"louisiana,west feliciana" 2932 2214
+"louisiana,winn" 4366 2056
+"maryland,allegany" 17825 9769
+"maryland,anne arundel" 124071 95171
+"maryland,baltimore" 155371 170104
+"maryland,baltimore city" 33736 165055
+"maryland,calvert" 21619 14812
+"maryland,caroline" 6947 3538
+"maryland,carroll" 51840 21143
+"maryland,cecil" 21428 13777
+"maryland,charles" 26357 27445
+"maryland,dorchester" 7260 4971
+"maryland,frederick" 56243 36470
+"maryland,garrett" 8431 2952
+"maryland,harford" 67397 36868
+"maryland,howard" 54768 65704
+"maryland,kent" 4437 3883
+"maryland,montgomery" 123472 244211
+"maryland,prince georges" 50594 236698
+"maryland,queen annes" 14380 7019
+"maryland,somerset" 4604 3737
+"maryland,st marys" 22015 12625
+"maryland,talbot" 10249 6531
+"maryland,washington" 34726 18859
+"maryland,wicomico" 20262 13873
+"maryland,worcester" 13860 8598
+"michigan,alcona" 3590 2871
+"michigan,alger" 2316 2395
+"michigan,allegan" 32952 19227
+"michigan,alpena" 7665 7406
+"michigan,antrim" 8379 5072
+"michigan,arenac" 4071 4076
+"michigan,baraga" 1977 1660
+"michigan,barry" 18638 11312
+"michigan,bay" 25443 31041
+"michigan,benzie" 5283 4383
+"michigan,berrien" 41069 32830
+"michigan,branch" 10784 7004
+"michigan,calhoun" 31643 29482
+"michigan,cass" 12915 9522
+"michigan,charlevoix" 8214 5729
+"michigan,cheboygan" 7795 5941
+"michigan,chippewa" 9122 7203
+"michigan,clare" 7087 6981
+"michigan,clinton" 21976 15473
+"michigan,crawford" 4017 3126
+"michigan,delta" 9678 9381
+"michigan,dickinson" 7688 5624
+"michigan,eaton" 29777 25410
+"michigan,emmet" 10329 6845
+"michigan,genesee" 83890 128382
+"michigan,gladwin" 6770 6343
+"michigan,gogebic" 3935 4421
+"michigan,grand traverse" 27446 18255
+"michigan,gratiot" 9831 7377
+"michigan,hillsdale" 12804 7123
+"michigan,houghton" 8889 6731
+"michigan,huron" 9670 7629
+"michigan,ingham" 54713 76826
+"michigan,ionia" 16589 10645
+"michigan,iosco" 7294 6555
+"michigan,iron" 3224 3135
+"michigan,isabella" 11754 12334
+"michigan,jackson" 39713 31013
+"michigan,kalamazoo" 57139 61425
+"michigan,kalkaska" 5088 3185
+"michigan,kent" 171157 116814
+"michigan,keweenaw" 781 630
+"michigan,lake" 2502 2675
+"michigan,lapeer" 25555 18084
+"michigan,leelanau" 7733 6048
+"michigan,lenawee" 25669 20785
+"michigan,livingston" 58854 33980
+"michigan,luce" 1749 1045
+"michigan,mackinac" 3687 2793
+"michigan,macomb" 201283 195683
+"michigan,manistee" 6286 6269
+"michigan,marquette" 14689 17409
+"michigan,mason" 8124 6333
+"michigan,mecosta" 9710 7730
+"michigan,menominee" 5945 5327
+"michigan,midland" 24369 18355
+"michigan,missaukee" 5055 2319
+"michigan,monroe" 37469 36086
+"michigan,montcalm" 14967 11466
+"michigan,montmorency" 3300 2196
+"michigan,muskegon" 35943 45248
+"michigan,newaygo" 13607 9054
+"michigan,oakland" 316567 319607
+"michigan,oceana" 6677 5441
+"michigan,ogemaw" 5454 5213
+"michigan,ontonagon" 2267 1863
+"michigan,osceola" 6599 4467
+"michigan,oscoda" 2570 1792
+"michigan,otsego" 7470 4674
+"michigan,ottawa" 92039 35551
+"michigan,presque isle" 3982 3432
+"michigan,roscommon" 7364 6810
+"michigan,saginaw" 47164 54874
+"michigan,sanilac" 12632 7883
+"michigan,schoolcraft" 2267 2137
+"michigan,shiawassee" 19405 16881
+"michigan,st clair" 42739 36174
+"michigan,st joseph" 15340 9648
+"michigan,tuscola" 15388 12631
+"michigan,van buren" 17631 16152
+"michigan,washtenaw" 61425 109872
+"michigan,wayne" 257267 596208
+"michigan,wexford" 8965 6034
+"minnesota,aitkin" 4768 4539
+"minnesota,anoka" 91853 80226
+"minnesota,becker" 9795 6756
+"minnesota,beltrami" 10003 10285
+"minnesota,benton" 10053 8059
+"minnesota,big stone" 1483 1536
+"minnesota,blue earth" 15737 16865
+"minnesota,brown" 8405 5159
+"minnesota,carlton" 6643 11464
+"minnesota,carver" 28510 16456
+"minnesota,cass" 8813 6764
+"minnesota,chippewa" 3089 3424
+"minnesota,chisago" 15705 12219
+"minnesota,clay" 14365 12989
+"minnesota,clearwater" 2438 1871
+"minnesota,cook" 1489 1733
+"minnesota,cottonwood" 3558 2727
+"minnesota,crow wing" 19106 14005
+"minnesota,dakota" 108923 104609
+"minnesota,dodge" 5593 4118
+"minnesota,douglas" 11793 8219
+"minnesota,faribault" 4794 3770
+"minnesota,fillmore" 5694 5825
+"minnesota,freeborn" 7681 9733
+"minnesota,goodhue" 13135 12100
+"minnesota,grant" 1893 1856
+"minnesota,hennepin" 255112 383823
+"minnesota,houston" 5631 5276
+"minnesota,hubbard" 6444 4741
+"minnesota,isanti" 11093 7568
+"minnesota,itasca" 10705 13290
+"minnesota,jackson" 3033 2657
+"minnesota,kanabec" 4527 3592
+"minnesota,kandiyohi" 11704 9337
+"minnesota,kittson" 1307 1333
+"minnesota,koochiching" 3489 3662
+"minnesota,lac qui parle" 2093 2390
+"minnesota,lake" 2769 4212
+"minnesota,lake of the woods" 1428 921
+"minnesota,le sueur" 7746 6466
+"minnesota,lincoln" 1737 1557
+"minnesota,lyon" 7202 5292
+"minnesota,mahnomen" 1132 1339
+"minnesota,marshall" 3187 2308
+"minnesota,martin" 6311 4590
+"minnesota,mcleod" 11409 6713
+"minnesota,meeker" 6854 5292
+"minnesota,mille lacs" 7194 5667
+"minnesota,morrison" 9698 6794
+"minnesota,mower" 7591 12334
+"minnesota,murray" 2719 2218
+"minnesota,nicollet" 8688 8797
+"minnesota,nobles" 5159 3898
+"minnesota,norman" 1794 1954
+"minnesota,olmsted" 37370 33287
+"minnesota,otter tail" 19737 12042
+"minnesota,pennington" 3767 3117
+"minnesota,pine" 7033 7128
+"minnesota,pipestone" 3066 1900
+"minnesota,polk" 8724 6729
+"minnesota,pope" 3303 3301
+"minnesota,ramsey" 95074 169979
+"minnesota,red lake" 1164 963
+"minnesota,redwood" 4897 3103
+"minnesota,renville" 4431 3789
+"minnesota,rice" 13881 16425
+"minnesota,rock" 3086 1981
+"minnesota,roseau" 5355 2442
+"minnesota,scott" 36055 23958
+"minnesota,sherburne" 25182 15816
+"minnesota,sibley" 4669 3108
+"minnesota,st louis" 40112 77958
+"minnesota,stearns" 42881 34171
+"minnesota,steele" 10388 7992
+"minnesota,stevens" 3030 2821
+"minnesota,swift" 2481 3165
+"minnesota,todd" 6945 5034
+"minnesota,traverse" 1076 1026
+"minnesota,wabasha" 6120 5548
+"minnesota,wadena" 4214 2791
+"minnesota,waseca" 5456 4177
+"minnesota,washington" 65751 61372
+"minnesota,watonwan" 2970 2514
+"minnesota,wilkin" 2303 1169
+"minnesota,winona" 12525 14112
+"minnesota,wright" 36176 22574
+"minnesota,yellow medicine" 2878 2799
+"mississippi,adams" 6487 7844
+"mississippi,alcorn" 8605 5425
+"mississippi,amite" 4106 2973
+"mississippi,attala" 4882 3014
+"mississippi,benton" 1962 2234
+"mississippi,bolivar" 4722 8560
+"mississippi,calhoun" 4096 2211
+"mississippi,carroll" 3652 1897
+"mississippi,chickasaw" 4193 4078
+"mississippi,choctaw" 2598 1290
+"mississippi,claiborne" 941 4338
+"mississippi,clarke" 5027 2377
+"mississippi,clay" 4333 4732
+"mississippi,coahoma" 3643 6741
+"mississippi,copiah" 6316 4902
+"mississippi,covington" 5010 3135
+"mississippi,de soto" 35437 13247
+"mississippi,forrest" 15966 9781
+"mississippi,franklin" 2883 1566
+"mississippi,george" 6182 1715
+"mississippi,greene" 3850 1421
+"mississippi,grenada" 5844 4154
+"mississippi,hancock" 12332 5023
+"mississippi,harrison" 38781 22555
+"mississippi,hinds" 34269 51370
+"mississippi,holmes" 1925 6170
+"mississippi,humphreys" 1626 2975
+"mississippi,issaquena" 437 510
+"mississippi,itawamba" 6751 2771
+"mississippi,jackson" 34035 15046
+"mississippi,jasper" 3808 4081
+"mississippi,jefferson davis" 2668 2959
+"mississippi,jefferson" 627 2798
+"mississippi,jones" 19032 7344
+"mississippi,kemper" 2107 2454
+"mississippi,lafayette" 9004 6218
+"mississippi,lamar" 16288 3876
+"mississippi,lauderdale" 19395 10026
+"mississippi,lawrence" 4119 2355
+"mississippi,leake" 4926 3212
+"mississippi,lee" 19878 9895
+"mississippi,leflore" 4427 7240
+"mississippi,lincoln" 9889 4372
+"mississippi,lowndes" 13690 10408
+"mississippi,madison" 24015 12942
+"mississippi,marion" 7845 3828
+"mississippi,marshall" 5932 8472
+"mississippi,monroe" 9223 6149
+"mississippi,montgomery" 2953 2422
+"mississippi,neshoba" 7581 2515
+"mississippi,newton" 6156 2274
+"mississippi,noxubee" 1698 4293
+"mississippi,oktibbeha" 9068 7015
+"mississippi,panola" 6734 6540
+"mississippi,pearl river" 14612 4392
+"mississippi,perry" 3729 1259
+"mississippi,pike" 8547 7578
+"mississippi,pontotoc" 8375 2591
+"mississippi,prentiss" 6503 3306
+"mississippi,quitman" 1360 2032
+"mississippi,rankin" 41971 10738
+"mississippi,scott" 6364 3780
+"mississippi,sharkey" 1115 1553
+"mississippi,simpson" 6810 3262
+"mississippi,smith" 5566 1493
+"mississippi,stone" 4072 1502
+"mississippi,sunflower" 3492 6057
+"mississippi,tallahatchie" 2725 3377
+"mississippi,tate" 6663 4279
+"mississippi,tippah" 6048 2983
+"mississippi,tishomingo" 5288 2775
+"mississippi,tunica" 845 1934
+"mississippi,union" 7422 2710
+"mississippi,walthall" 3873 2550
+"mississippi,warren" 11773 8244
+"mississippi,washington" 7031 10562
+"mississippi,wayne" 5333 3155
+"mississippi,webster" 3668 1318
+"mississippi,wilkinson" 1563 2794
+"mississippi,winston" 5432 3972
+"mississippi,yalobusha" 3278 2656
+"mississippi,yazoo" 5672 5013
+"missouri,adair" 6367 4938
+"missouri,andrew" 5135 3069
+"missouri,atchison" 2137 1005
+"missouri,audrain" 6294 4318
+"missouri,barry" 9599 4223
+"missouri,barton" 4572 1373
+"missouri,bates" 5005 3397
+"missouri,benton" 5575 3381
+"missouri,bollinger" 4102 1754
+"missouri,boone" 37515 37480
+"missouri,buchanan" 19812 17798
+"missouri,butler" 11696 4666
+"missouri,caldwell" 2593 1645
+"missouri,callaway" 11108 6559
+"missouri,camden" 13122 6296
+"missouri,cape girardeau" 23814 10568
+"missouri,carroll" 3155 1568
+"missouri,carter" 1797 964
+"missouri,cass" 27248 16681
+"missouri,cedar" 4238 1910
+"missouri,chariton" 2419 1890
+"missouri,christian" 22101 9058
+"missouri,clark" 1899 1794
+"missouri,clay" 51033 44522
+"missouri,clinton" 5282 4164
+"missouri,cole" 24750 11753
+"missouri,cooper" 5058 2400
+"missouri,crawford" 5686 3632
+"missouri,dade" 2963 1104
+"missouri,dallas" 4788 2407
+"missouri,daviess" 2351 1402
+"missouri,de kalb" 2941 1707
+"missouri,dent" 4369 1865
+"missouri,douglas" 4498 1741
+"missouri,dunklin" 6721 4901
+"missouri,franklin" 26428 18556
+"missouri,gasconade" 4753 2355
+"missouri,gentry" 2085 1200
+"missouri,greene" 77841 46626
+"missouri,grundy" 3171 1561
+"missouri,harrison" 2729 1279
+"missouri,henry" 6357 4456
+"missouri,hickory" 2790 2043
+"missouri,holt" 1864 811
+"missouri,howard" 2915 1972
+"missouri,howell" 11093 5118
+"missouri,iron" 2477 2157
+"missouri,jackson" 129612 180944
+"missouri,jasper" 31846 13002
+"missouri,jefferson" 46624 46057
+"missouri,johnson" 12194 7778
+"missouri,knox" 1205 761
+"missouri,laclede" 10576 4212
+"missouri,lafayette" 9642 6397
+"missouri,lawrence" 11194 4506
+"missouri,lewis" 2862 1754
+"missouri,lincoln" 11316 8367
+"missouri,linn" 3420 2440
+"missouri,livingston" 4029 2278
+"missouri,macon" 4673 2857
+"missouri,madison" 2905 1970
+"missouri,maries" 2825 1563
+"missouri,marion" 7815 4568
+"missouri,mcdonald" 5443 2215
+"missouri,mercer" 1207 582
+"missouri,miller" 7795 2956
+"missouri,mississippi" 2903 2374
+"missouri,moniteau" 4743 1913
+"missouri,monroe" 2632 1645
+"missouri,montgomery" 3561 2147
+"missouri,morgan" 5654 3053
+"missouri,new madrid" 4154 3714
+"missouri,newton" 17186 6563
+"missouri,nodaway" 6226 3830
+"missouri,oregon" 2769 1823
+"missouri,osage" 4975 1673
+"missouri,ozark" 3083 1560
+"missouri,pemiscot" 3398 3381
+"missouri,perry" 5583 2621
+"missouri,pettis" 11600 5801
+"missouri,phelps" 11874 6666
+"missouri,pike" 4312 3664
+"missouri,platte" 23298 18404
+"missouri,polk" 8586 3775
+"missouri,pulaski" 8618 3550
+"missouri,putnam" 1659 771
+"missouri,ralls" 2986 2031
+"missouri,randolph" 6550 3585
+"missouri,ray" 5672 5034
+"missouri,reynolds" 1895 1449
+"missouri,ripley" 3693 1907
+"missouri,saline" 5333 4428
+"missouri,schuyler" 1124 894
+"missouri,scotland" 1352 828
+"missouri,scott" 11330 6057
+"missouri,shannon" 2086 1160
+"missouri,shelby" 2280 1200
+"missouri,st charles" 95789 66826
+"missouri,st clair" 3098 1841
+"missouri,st francois" 12087 10748
+"missouri,st louis city" 27460 115414
+"missouri,st louis" 244388 294402
+"missouri,ste genevieve" 3791 4281
+"missouri,stoddard" 9241 3946
+"missouri,stone" 10521 4576
+"missouri,sullivan" 1880 1178
+"missouri,taney" 13550 5585
+"missouri,texas" 7234 3664
+"missouri,vernon" 5731 3206
+"missouri,warren" 7882 5461
+"missouri,washington" 4638 4455
+"missouri,wayne" 3919 2249
+"missouri,webster" 10181 4648
+"missouri,worth" 691 436
+"missouri,wright" 6090 2188
+"montana,beaverhead" 3066 1103
+"montana,big horn" 2026 2213
+"montana,blaine" 1484 1300
+"montana,broadwater" 1778 533
+"montana,carbon" 3341 1847
+"montana,carter" 623 76
+"montana,cascade" 18933 13616
+"montana,chouteau" 1921 941
+"montana,custer" 3294 1629
+"montana,daniels" 764 326
+"montana,dawson" 2884 1494
+"montana,deer lodge" 1725 2699
+"montana,fallon" 1178 289
+"montana,fergus" 4425 1582
+"montana,flathead" 25966 11566
+"montana,gallatin" 22368 16381
+"montana,garfield" 590 52
+"montana,glacier" 1828 2641
+"montana,golden valley" 396 119
+"montana,granite" 1144 404
+"montana,hill" 3505 2997
+"montana,jefferson" 3843 1880
+"montana,judith basin" 943 322
+"montana,lake" 7240 4952
+"montana,lewis and clark" 16432 12655
+"montana,liberty" 734 281
+"montana,lincoln" 5884 2320
+"montana,madison" 2868 983
+"montana,mccone" 791 320
+"montana,meagher" 698 247
+"montana,mineral" 1242 542
+"montana,missoula" 23951 26937
+"montana,musselshell" 1662 538
+"montana,park" 4771 3199
+"montana,petroleum" 228 55
+"montana,phillips" 1677 456
+"montana,pondera" 1852 956
+"montana,powder river" 856 154
+"montana,powell" 1968 751
+"montana,prairie" 546 181
+"montana,ravalli" 13224 6128
+"montana,richland" 3110 1120
+"montana,roosevelt" 1760 2193
+"montana,rosebud" 1982 1520
+"montana,sanders" 3461 1501
+"montana,sheridan" 1159 845
+"montana,silver bow" 6381 9307
+"montana,stillwater" 2856 987
+"montana,sweet grass" 1502 443
+"montana,teton" 2232 1047
+"montana,toole" 1582 690
+"montana,treasure" 348 121
+"montana,valley" 2476 1429
+"montana,wheatland" 705 250
+"montana,wibaux" 407 144
+"montana,yellowstone" 40863 24101
+"nebraska,adams" 9119 3752
+"nebraska,antelope" 2739 610
+"nebraska,arthur" 238 24
+"nebraska,banner" 373 56
+"nebraska,blaine" 296 36
+"nebraska,boone" 2304 545
+"nebraska,box butte" 3396 1657
+"nebraska,boyd" 904 223
+"nebraska,brown" 1417 266
+"nebraska,buffalo" 13888 4025
+"nebraska,burt" 2327 1260
+"nebraska,butler" 2994 1056
+"nebraska,cass" 7120 3310
+"nebraska,cedar" 3387 1083
+"nebraska,chase" 1597 280
+"nebraska,cherry" 2503 481
+"nebraska,cheyenne" 3719 870
+"nebraska,clay" 2501 738
+"nebraska,colfax" 2589 990
+"nebraska,cuming" 3305 964
+"nebraska,custer" 4518 1040
+"nebraska,dakota" 3446 2935
+"nebraska,dawes" 2715 1084
+"nebraska,dawson" 6025 1711
+"nebraska,deuel" 812 218
+"nebraska,dixon" 2015 934
+"nebraska,dodge" 10111 4924
+"nebraska,douglas" 118184 80832
+"nebraska,dundy" 858 186
+"nebraska,fillmore" 2292 816
+"nebraska,franklin" 1277 412
+"nebraska,frontier" 1157 274
+"nebraska,furnas" 1941 491
+"nebraska,gage" 6541 3627
+"nebraska,garden" 970 201
+"nebraska,garfield" 805 196
+"nebraska,gosper" 890 222
+"nebraska,grant" 352 41
+"nebraska,greeley" 862 361
+"nebraska,hall" 14168 6064
+"nebraska,hamilton" 3724 1007
+"nebraska,harlan" 1454 396
+"nebraska,hayes" 524 66
+"nebraska,hitchcock" 1171 296
+"nebraska,holt" 4080 871
+"nebraska,hooker" 392 64
+"nebraska,howard" 2007 894
+"nebraska,jefferson" 2586 1347
+"nebraska,johnson" 1458 885
+"nebraska,kearney" 2604 706
+"nebraska,keith" 3290 736
+"nebraska,keya paha" 441 96
+"nebraska,kimball" 1473 362
+"nebraska,knox" 3062 1086
+"nebraska,lancaster" 68143 51350
+"nebraska,lincoln" 10546 4665
+"nebraska,logan" 316 60
+"nebraska,loup" 310 68
+"nebraska,madison" 10809 2866
+"nebraska,mcpherson" 258 49
+"nebraska,merrick" 2770 833
+"nebraska,morrill" 1734 494
+"nebraska,nance" 1208 457
+"nebraska,nemaha" 2595 1066
+"nebraska,nuckolls" 1884 541
+"nebraska,otoe" 4967 2252
+"nebraska,pawnee" 979 477
+"nebraska,perkins" 1276 261
+"nebraska,phelps" 3798 825
+"nebraska,pierce" 2824 546
+"nebraska,platte" 10995 2609
+"nebraska,polk" 1886 454
+"nebraska,red willow" 4063 1040
+"nebraska,richardson" 2903 1283
+"nebraska,rock" 743 130
+"nebraska,saline" 3031 2389
+"nebraska,sarpy" 42263 18361
+"nebraska,saunders" 6866 3090
+"nebraska,scotts bluff" 10131 3747
+"nebraska,seward" 5257 2086
+"nebraska,sheridan" 2127 429
+"nebraska,sherman" 1065 536
+"nebraska,sioux" 657 123
+"nebraska,stanton" 2147 555
+"nebraska,thayer" 2043 751
+"nebraska,thomas" 378 60
+"nebraska,thurston" 1808 1115
+"nebraska,valley" 1692 562
+"nebraska,washington" 7009 2728
+"nebraska,wayne" 2971 1059
+"nebraska,webster" 1401 557
+"nebraska,wheeler" 366 81
+"nebraska,york" 5381 1302
+"nevada,carson city" 13164 9441
+"nevada,churchill" 7335 2705
+"nevada,clark" 253432 279575
+"nevada,douglas" 15192 8269
+"nevada,elko" 11935 3047
+"nevada,esmeralda" 367 98
+"nevada,eureka" 571 144
+"nevada,humboldt" 3896 1360
+"nevada,lander" 1602 414
+"nevada,lincoln" 1579 418
+"nevada,lyon" 11136 5637
+"nevada,mineral" 1336 931
+"nevada,nye" 8498 5623
+"nevada,pershing" 1341 538
+"nevada,storey" 1253 871
+"nevada,washoe" 79698 73219
+"nevada,white pine" 2604 1082
+"new jersey,atlantic" 46197 52181
+"new jersey,bergen" 178304 192827
+"new jersey,burlington" 90112 103971
+"new jersey,camden" 76925 129918
+"new jersey,cape may" 26316 19614
+"new jersey,cumberland" 23186 26410
+"new jersey,essex" 80822 191999
+"new jersey,gloucester" 59760 66476
+"new jersey,hudson" 55530 113603
+"new jersey,hunterdon" 39449 25727
+"new jersey,mercer" 53469 85682
+"new jersey,middlesex" 119436 156168
+"new jersey,monmouth" 161693 131808
+"new jersey,morris" 126761 90476
+"new jersey,ocean" 143797 92621
+"new jersey,passaic" 73568 91939
+"new jersey,salem" 15635 13650
+"new jersey,somerset" 67505 61550
+"new jersey,sussex" 42085 22282
+"new jersey,union" 77621 112542
+"new jersey,warren" 29323 17876
+"new mexico,bernalillo" 119161 128531
+"new mexico,catron" 1427 551
+"new mexico,chaves" 14791 6743
+"new mexico,cibola" 3428 3969
+"new mexico,colfax" 3082 2824
+"new mexico,curry" 10649 3541
+"new mexico,de baca" 706 281
+"new mexico,dona ana" 28710 30174
+"new mexico,eddy" 13266 6879
+"new mexico,grant" 5974 7020
+"new mexico,guadalupe" 914 1340
+"new mexico,harding" 380 259
+"new mexico,hidalgo" 1081 861
+"new mexico,lea" 14349 3615
+"new mexico,lincoln" 6079 2833
+"new mexico,los alamos" 5810 5206
+"new mexico,luna" 4164 3340
+"new mexico,mckinley" 7349 13060
+"new mexico,mora" 928 1876
+"new mexico,otero" 14062 6431
+"new mexico,quay" 2661 1422
+"new mexico,rio arriba" 5136 9737
+"new mexico,roosevelt" 4998 2083
+"new mexico,san juan" 29511 14831
+"new mexico,san miguel" 3216 8435
+"new mexico,sandoval" 22482 21215
+"new mexico,santa fe" 18463 47069
+"new mexico,sierra" 3162 1926
+"new mexico,socorro" 3696 4025
+"new mexico,taos" 3605 10772
+"new mexico,torrance" 4026 2386
+"new mexico,union" 1454 411
+"new mexico,valencia" 14355 11176
+"new york,albany" 51297 81666
+"new york,allegany" 11560 6067
+"new york,bronx" 52955 262658
+"new york,kings" 156612 468495
+"new york,broome" 40207 42092
+"new york,cattaraugus" 18665 12410
+"new york,cayuga" 15511 16157
+"new york,chautauqua" 29993 25459
+"new york,chemung" 20639 16486
+"new york,chenango" 10751 8413
+"new york,clinton" 14095 16217
+"new york,columbia" 11237 14055
+"new york,cortland" 10708 9902
+"new york,delaware" 11558 7971
+"new york,dutchess" 59122 53034
+"new york,erie" 171061 230986
+"new york,essex" 8971 7855
+"new york,franklin" 7875 8674
+"new york,fulton" 11686 8486
+"new york,genesee" 15799 9615
+"new york,greene" 13641 9079
+"new york,hamilton" 2210 1075
+"new york,herkimer" 14894 10706
+"new york,jefferson" 19368 15305
+"new york,lewis" 6144 4273
+"new york,livingston" 17632 11244
+"new york,madison" 15345 11947
+"new york,new york" 95362 468841
+"new york,monroe" 158856 166355
+"new york,montgomery" 10645 8833
+"new york,nassau" 278727 312388
+"new york,niagara" 43808 44072
+"new york,oneida" 49256 37601
+"new york,onondaga" 87694 107429
+"new york,ontario" 26308 19585
+"new york,orange" 74397 58944
+"new york,orleans" 9893 5570
+"new york,oswego" 24724 23202
+"new york,otsego" 12547 11474
+"new york,putnam" 25147 18067
+"new york,queens" 156655 398051
+"new york,rensselaer" 32540 33195
+"new york,rockland" 60627 59326
+"new york,st lawrence" 16609 20814
+"new york,saratoga" 52798 45033
+"new york,schenectady" 30113 33248
+"new york,schoharie" 7892 5128
+"new york,schuyler" 4805 3309
+"new york,seneca" 7407 6420
+"new york,richmond" 84450 62699
+"new york,steuben" 25292 13318
+"new york,suffolk" 301710 303375
+"new york,sullivan" 13930 13643
+"new york,tioga" 12869 8938
+"new york,tompkins" 12957 24589
+"new york,ulster" 36279 45402
+"new york,warren" 15269 11879
+"new york,washington" 12947 9803
+"new york,wayne" 23250 14620
+"new york,westchester" 153426 218336
+"new york,wyoming" 11086 5757
+"new york,yates" 5794 3772
+"north carolina,alamance" 32914 20334
+"north carolina,alexander" 10678 4657
+"north carolina,alleghany" 2844 1898
+"north carolina,anson" 3788 5350
+"north carolina,ashe" 7254 4453
+"north carolina,avery" 5589 1772
+"north carolina,beaufort" 12355 6936
+"north carolina,bertie" 3018 4770
+"north carolina,bladen" 6145 6009
+"north carolina,brunswick" 22819 14809
+"north carolina,buncombe" 51686 50903
+"north carolina,burke" 16075 10153
+"north carolina,cabarrus" 40270 19464
+"north carolina,caldwell" 20799 9839
+"north carolina,camden" 2271 1329
+"north carolina,carteret" 16904 7369
+"north carolina,caswell" 4873 4543
+"north carolina,catawba" 39017 18520
+"north carolina,chatham" 12712 12679
+"north carolina,cherokee" 7382 3617
+"north carolina,chowan" 2240 1780
+"north carolina,clay" 3185 1620
+"north carolina,cleveland" 22509 14028
+"north carolina,columbus" 10585 10101
+"north carolina,craven" 23389 15072
+"north carolina,cumberland" 48042 44328
+"north carolina,currituck" 5954 2887
+"north carolina,dare" 9247 6075
+"north carolina,davidson" 41780 16962
+"north carolina,davie" 12343 4225
+"north carolina,duplin" 9468 6780
+"north carolina,durham" 34124 72986
+"north carolina,edgecombe" 7990 12478
+"north carolina,forsyth" 74743 62333
+"north carolina,franklin" 11341 9127
+"north carolina,gaston" 34492 15186
+"north carolina,gates" 1920 2117
+"north carolina,graham" 2687 1270
+"north carolina,granville" 9438 8962
+"north carolina,greene" 3790 2648
+"north carolina,guilford" 97905 99223
+"north carolina,halifax" 7996 11322
+"north carolina,harnett" 20649 11289
+"north carolina,haywood" 14607 11222
+"north carolina,henderson" 27390 14608
+"north carolina,hertford" 2827 4903
+"north carolina,hoke" 5180 5663
+"north carolina,hyde" 1222 1042
+"north carolina,iredell" 37841 17673
+"north carolina,jackson" 7283 6700
+"north carolina,johnston" 31304 14384
+"north carolina,jones" 2564 1837
+"north carolina,lee" 11443 7319
+"north carolina,lenoir" 12745 9539
+"north carolina,lincoln" 19878 9318
+"north carolina,macon" 9416 5465
+"north carolina,madison" 5113 4178
+"north carolina,martin" 5302 5055
+"north carolina,mcdowell" 10484 5274
+"north carolina,mecklenburg" 154177 167051
+"north carolina,mitchell" 7218 2054
+"north carolina,montgomery" 5619 4212
+"north carolina,moore" 24149 13186
+"north carolina,nash" 13709 10167
+"north carolina,new hanover" 44804 35103
+"north carolina,northampton" 3163 5558
+"north carolina,onslow" 25396 10996
+"north carolina,orange" 20673 42683
+"north carolina,pamlico" 3650 2320
+"north carolina,pasquotank" 6546 6895
+"north carolina,pender" 9917 6928
+"north carolina,perquimans" 2964 1971
+"north carolina,person" 8928 6152
+"north carolina,pitt" 28099 24386
+"north carolina,polk" 4846 3516
+"north carolina,randolph" 37109 12575
+"north carolina,richmond" 7604 8229
+"north carolina,robeson" 15471 17172
+"north carolina,rockingham" 22450 14068
+"north carolina,rowan" 34549 16517
+"north carolina,rutherford" 16190 8106
+"north carolina,sampson" 12374 9389
+"north carolina,scotland" 5097 6330
+"north carolina,stanly" 17744 7567
+"north carolina,stokes" 13404 5702
+"north carolina,surry" 17241 8153
+"north carolina,swain" 2591 2416
+"north carolina,transylvania" 9172 5707
+"north carolina,tyrrell" 850 727
+"north carolina,union" 42266 17639
+"north carolina,vance" 6870 8749
+"north carolina,wake" 172563 162750
+"north carolina,warren" 2737 4973
+"north carolina,washington" 2465 2931
+"north carolina,watauga" 12485 11064
+"north carolina,wayne" 23826 14267
+"north carolina,wilkes" 18935 7783
+"north carolina,wilson" 16287 13924
+"north carolina,yadkin" 12220 3544
+"north carolina,yancey" 4769 4315
+"north dakota,adams" 910 351
+"north dakota,barnes" 3519 2175
+"north dakota,benson" 1000 1195
+"north dakota,billings" 449 99
+"north dakota,bottineau" 2457 1163
+"north dakota,bowman" 1280 397
+"north dakota,burke" 807 334
+"north dakota,burleigh" 26370 11511
+"north dakota,cass" 39517 25927
+"north dakota,cavalier" 1530 882
+"north dakota,dickey" 1889 881
+"north dakota,divide" 748 483
+"north dakota,dunn" 1176 569
+"north dakota,eddy" 653 533
+"north dakota,emmons" 1449 608
+"north dakota,foster" 1215 518
+"north dakota,golden valley" 715 194
+"north dakota,grand forks" 17255 12611
+"north dakota,grant" 950 264
+"north dakota,griggs" 903 504
+"north dakota,hettinger" 1042 403
+"north dakota,kidder" 901 433
+"north dakota,la moure" 1589 712
+"north dakota,logan" 844 265
+"north dakota,mchenry" 1743 1028
+"north dakota,mcintosh" 1253 437
+"north dakota,mckenzie" 1884 840
+"north dakota,mclean" 2995 1651
+"north dakota,mercer" 3277 1243
+"north dakota,morton" 8279 4041
+"north dakota,mountrail" 1520 1463
+"north dakota,nelson" 1107 778
+"north dakota,oliver" 789 309
+"north dakota,pembina" 2461 1320
+"north dakota,pierce" 1466 684
+"north dakota,ramsey" 2941 1884
+"north dakota,ransom" 1351 1197
+"north dakota,renville" 944 494
+"north dakota,richland" 5255 2820
+"north dakota,rolette" 1391 2559
+"north dakota,sargent" 1145 1017
+"north dakota,sheridan" 725 199
+"north dakota,sioux" 318 801
+"north dakota,slope" 345 89
+"north dakota,stark" 7195 3001
+"north dakota,steele" 584 614
+"north dakota,stutsman" 6495 3429
+"north dakota,towner" 754 606
+"north dakota,traill" 2539 1650
+"north dakota,walsh" 3189 1905
+"north dakota,ward" 16970 8223
+"north dakota,wells" 1651 858
+"north dakota,williams" 6264 2510
+"ohio,adams" 7480 4189
+"ohio,allen" 31629 15822
+"ohio,ashland" 15826 8345
+"ohio,ashtabula" 20621 23545
+"ohio,athens" 9912 17369
+"ohio,auglaize" 16437 5729
+"ohio,belmont" 15275 17256
+"ohio,brown" 12480 7058
+"ohio,butler" 106735 54185
+"ohio,carroll" 7531 6190
+"ohio,champaign" 11432 6752
+"ohio,clark" 34444 32824
+"ohio,clermont" 61694 25318
+"ohio,clinton" 12625 5244
+"ohio,columbiana" 25212 22884
+"ohio,coshocton" 9121 6763
+"ohio,crawford" 13667 7626
+"ohio,cuyahoga" 215624 433262
+"ohio,darke" 17869 7663
+"ohio,defiance" 11018 6683
+"ohio,delaware" 52237 26491
+"ohio,erie" 18019 20652
+"ohio,fairfield" 42057 24321
+"ohio,fayette" 7221 4244
+"ohio,franklin" 234196 275573
+"ohio,fulton" 13443 8098
+"ohio,gallia" 8320 5188
+"ohio,geauga" 29957 19571
+"ohio,greene" 46841 29349
+"ohio,guernsey" 9095 7072
+"ohio,hamilton" 215639 190956
+"ohio,hancock" 24345 9930
+"ohio,hardin" 8187 4723
+"ohio,harrison" 4318 3824
+"ohio,henry" 9770 5027
+"ohio,highland" 11871 6012
+"ohio,hocking" 6821 6065
+"ohio,holmes" 8299 2622
+"ohio,huron" 14553 10354
+"ohio,jackson" 8382 5519
+"ohio,jefferson" 16887 18674
+"ohio,knox" 16677 9613
+"ohio,lake" 60615 57471
+"ohio,lawrence" 15178 11874
+"ohio,licking" 48092 29350
+"ohio,logan" 14084 6644
+"ohio,lorain" 59751 76512
+"ohio,lucas" 85405 128874
+"ohio,madison" 10931 6080
+"ohio,mahoning" 47968 81500
+"ohio,marion" 16729 11492
+"ohio,medina" 47499 35725
+"ohio,meigs" 6156 4334
+"ohio,mercer" 15022 4924
+"ohio,miami" 33039 17039
+"ohio,monroe" 3370 4164
+"ohio,montgomery" 134716 138262
+"ohio,morgan" 3695 2810
+"ohio,morrow" 10313 5651
+"ohio,muskingum" 21901 16050
+"ohio,noble" 3799 2618
+"ohio,ottawa" 11820 10915
+"ohio,paulding" 6074 3544
+"ohio,perry" 7767 7205
+"ohio,pickaway" 13864 8388
+"ohio,pike" 6385 5865
+"ohio,portage" 35054 39915
+"ohio,preble" 13512 7165
+"ohio,putnam" 14196 4348
+"ohio,richland" 36253 24056
+"ohio,ross" 16940 13701
+"ohio,sandusky" 17824 13909
+"ohio,scioto" 17938 16438
+"ohio,seneca" 15624 10770
+"ohio,shelby" 15825 6337
+"ohio,stark" 89859 92295
+"ohio,summit" 116184 152897
+"ohio,trumbull" 40220 65321
+"ohio,tuscarawas" 23359 18460
+"ohio,union" 15593 6546
+"ohio,van wert" 10484 4026
+"ohio,vinton" 3194 2612
+"ohio,warren" 66523 25399
+"ohio,washington" 17029 12137
+"ohio,wayne" 31433 19455
+"ohio,williams" 11633 6231
+"ohio,wood" 32574 28216
+"ohio,wyandot" 6956 3554
+"oklahoma,adair" 4971 2560
+"oklahoma,alfalfa" 2201 470
+"oklahoma,atoka" 3140 1946
+"oklahoma,beaver" 2271 297
+"oklahoma,beckham" 5454 1931
+"oklahoma,blaine" 3199 1222
+"oklahoma,bryan" 8614 5742
+"oklahoma,caddo" 6491 3916
+"oklahoma,canadian" 33297 9712
+"oklahoma,carter" 12173 6464
+"oklahoma,cherokee" 9563 8622
+"oklahoma,choctaw" 3168 2639
+"oklahoma,cimarron" 1242 184
+"oklahoma,cleveland" 65704 33998
+"oklahoma,coal" 1396 1203
+"oklahoma,comanche" 21163 12020
+"oklahoma,cotton" 1742 898
+"oklahoma,craig" 3894 2504
+"oklahoma,creek" 18845 9927
+"oklahoma,custer" 7839 2801
+"oklahoma,delaware" 10016 5591
+"oklahoma,dewey" 1843 408
+"oklahoma,ellis" 1685 395
+"oklahoma,garfield" 17685 5586
+"oklahoma,garvin" 7610 3706
+"oklahoma,grady" 14129 5969
+"oklahoma,grant" 1950 571
+"oklahoma,greer" 1529 719
+"oklahoma,harmon" 838 354
+"oklahoma,harper" 1397 268
+"oklahoma,haskell" 2946 2378
+"oklahoma,hughes" 3066 2283
+"oklahoma,jackson" 7024 2232
+"oklahoma,jefferson" 1546 1057
+"oklahoma,johnston" 2634 1711
+"oklahoma,kay" 14121 5956
+"oklahoma,kingfisher" 5629 1022
+"oklahoma,kiowa" 2608 1413
+"oklahoma,latimer" 2535 1945
+"oklahoma,le flore" 10681 6740
+"oklahoma,lincoln" 10149 4041
+"oklahoma,logan" 11467 4869
+"oklahoma,love" 2295 1538
+"oklahoma,major" 3122 537
+"oklahoma,marshall" 3363 2088
+"oklahoma,mayes" 9946 6933
+"oklahoma,mcclain" 10038 3742
+"oklahoma,mccurtain" 7472 3684
+"oklahoma,mcintosh" 4692 4488
+"oklahoma,murray" 3665 2310
+"oklahoma,muskogee" 15121 12585
+"oklahoma,noble" 3993 1335
+"oklahoma,nowata" 2805 1659
+"oklahoma,okfuskee" 2542 1743
+"oklahoma,oklahoma" 174707 97283
+"oklahoma,okmulgee" 8363 7367
+"oklahoma,osage" 11467 8068
+"oklahoma,ottawa" 7441 5084
+"oklahoma,pawnee" 4412 2563
+"oklahoma,payne" 19560 10101
+"oklahoma,pittsburg" 11134 7452
+"oklahoma,pontotoc" 9647 5165
+"oklahoma,pottawatomie" 17212 8636
+"oklahoma,pushmataha" 2862 1934
+"oklahoma,roger mills" 1388 382
+"oklahoma,rogers" 24974 11917
+"oklahoma,seminole" 5623 3648
+"oklahoma,sequoyah" 8865 5910
+"oklahoma,stephens" 13645 5514
+"oklahoma,texas" 5449 1016
+"oklahoma,tillman" 2273 1175
+"oklahoma,tulsa" 163434 90204
+"oklahoma,wagoner" 19081 9157
+"oklahoma,washington" 16551 6862
+"oklahoma,washita" 3705 1340
+"oklahoma,woods" 3165 930
+"oklahoma,woodward" 6188 1457
+"oregon,baker" 6155 2585
+"oregon,benton" 18057 25877
+"oregon,clackamas" 91399 88388
+"oregon,clatsop" 8168 10116
+"oregon,columbia" 11821 12488
+"oregon,coos" 16164 12849
+"oregon,crook" 6815 3016
+"oregon,curry" 7302 5195
+"oregon,deschutes" 41203 30721
+"oregon,douglas" 35508 17924
+"oregon,gilliam" 754 369
+"oregon,grant" 2809 683
+"oregon,harney" 2804 832
+"oregon,hood river" 4089 5525
+"oregon,jackson" 53035 41586
+"oregon,jefferson" 4723 3202
+"oregon,josephine" 25869 14959
+"oregon,klamath" 22412 8158
+"oregon,lake" 3033 800
+"oregon,lane" 69289 99048
+"oregon,lincoln" 9964 13460
+"oregon,linn" 30461 19376
+"oregon,malheur" 8077 2552
+"oregon,marion" 62682 51432
+"oregon,morrow" 2719 1355
+"oregon,multnomah" 93219 245733
+"oregon,polk" 19140 15175
+"oregon,sherman" 690 389
+"oregon,tillamook" 6834 6576
+"oregon,umatilla" 16789 8738
+"oregon,union" 8730 4346
+"oregon,wallowa" 3122 1265
+"oregon,wasco" 5988 5557
+"oregon,washington" 101324 113921
+"oregon,wheeler" 610 244
+"oregon,yamhill" 21452 16258
+"pennsylvania,adams" 27883 13600
+"pennsylvania,allegheny" 268387 363674
+"pennsylvania,armstrong" 18871 11999
+"pennsylvania,beaver" 39705 41874
+"pennsylvania,bedford" 16586 6007
+"pennsylvania,berks" 82486 72499
+"pennsylvania,blair" 35422 17972
+"pennsylvania,bradford" 16753 8420
+"pennsylvania,bucks" 153424 162220
+"pennsylvania,butler" 54654 29913
+"pennsylvania,cambria" 33837 32397
+"pennsylvania,cameron" 1599 794
+"pennsylvania,carbon" 12458 12169
+"pennsylvania,centre" 32789 30396
+"pennsylvania,chester" 119106 108670
+"pennsylvania,clarion" 10546 5830
+"pennsylvania,clearfield" 20458 13471
+"pennsylvania,clinton" 7991 5802
+"pennsylvania,columbia" 15914 10598
+"pennsylvania,crawford" 21785 15856
+"pennsylvania,cumberland" 67175 37577
+"pennsylvania,dauphin" 64816 54653
+"pennsylvania,delaware" 116728 157531
+"pennsylvania,elk" 7813 6578
+"pennsylvania,erie" 56895 67067
+"pennsylvania,fayette" 24484 28289
+"pennsylvania,forest" 1511 953
+"pennsylvania,franklin" 40764 16127
+"pennsylvania,fulton" 4731 1461
+"pennsylvania,greene" 7766 7649
+"pennsylvania,huntingdon" 12124 5878
+"pennsylvania,indiana" 20116 15734
+"pennsylvania,jefferson" 13242 6021
+"pennsylvania,juniata" 7063 2759
+"pennsylvania,lackawanna" 44562 59305
+"pennsylvania,lancaster" 144291 73395
+"pennsylvania,lawrence" 21542 21131
+"pennsylvania,lebanon" 36796 17917
+"pennsylvania,lehigh" 70474 73747
+"pennsylvania,luzerne" 64751 68665
+"pennsylvania,lycoming" 33476 15784
+"pennsylvania,mckean" 10780 6193
+"pennsylvania,mercer" 24545 22761
+"pennsylvania,mifflin" 11628 4878
+"pennsylvania,monroe" 27708 27674
+"pennsylvania,montgomery" 172206 217342
+"pennsylvania,montour" 4867 2634
+"pennsylvania,northampton" 61636 62974
+"pennsylvania,northumberland" 22124 14517
+"pennsylvania,perry" 13885 5408
+"pennsylvania,philadelphia" 125727 524752
+"pennsylvania,pike" 12328 8577
+"pennsylvania,potter" 5602 2244
+"pennsylvania,schuylkill" 35449 29091
+"pennsylvania,snyder" 10521 4319
+"pennsylvania,somerset" 23686 12802
+"pennsylvania,sullivan" 2018 1201
+"pennsylvania,susquehanna" 11420 7237
+"pennsylvania,tioga" 11849 5341
+"pennsylvania,union" 10288 5665
+"pennsylvania,venango" 14213 8886
+"pennsylvania,warren" 10971 8035
+"pennsylvania,washington" 46944 47357
+"pennsylvania,wayne" 13596 7995
+"pennsylvania,westmoreland" 98792 76966
+"pennsylvania,wyoming" 7726 4914
+"pennsylvania,york" 114621 63628
+"south carolina,abbeville" 5435 4389
+"south carolina,aiken" 38912 19687
+"south carolina,allendale" 984 2563
+"south carolina,anderson" 43313 20670
+"south carolina,bamberg" 2135 3837
+"south carolina,barnwell" 4602 3979
+"south carolina,beaufort" 33234 21462
+"south carolina,berkeley" 32042 20102
+"south carolina,calhoun" 3447 3390
+"south carolina,charleston" 62179 57249
+"south carolina,cherokee" 12064 6443
+"south carolina,chester" 5205 5200
+"south carolina,chesterfield" 7176 6642
+"south carolina,clarendon" 6035 7050
+"south carolina,colleton" 7242 6672
+"south carolina,darlington" 13406 11811
+"south carolina,dillon" 4293 4831
+"south carolina,dorchester" 26006 14733
+"south carolina,edgefield" 5611 4051
+"south carolina,fairfield" 3515 5748
+"south carolina,florence" 27488 21267
+"south carolina,georgetown" 12420 10456
+"south carolina,greenville" 109292 54286
+"south carolina,greenwood" 14136 8859
+"south carolina,hampton" 3093 4814
+"south carolina,horry" 50382 29489
+"south carolina,jasper" 2929 3828
+"south carolina,kershaw" 14160 8515
+"south carolina,lancaster" 12916 7631
+"south carolina,laurens" 14367 9109
+"south carolina,lee" 2891 4900
+"south carolina,lexington" 67030 25341
+"south carolina,marion" 5037 6876
+"south carolina,marlboro" 3423 4984
+"south carolina,mccormick" 2445 2643
+"south carolina,newberry" 7313 4286
+"south carolina,oconee" 18715 8326
+"south carolina,orangeburg" 12676 24655
+"south carolina,pickens" 29706 10272
+"south carolina,richland" 55922 75863
+"south carolina,saluda" 4499 2989
+"south carolina,spartanburg" 61892 33545
+"south carolina,sumter" 18037 18631
+"south carolina,union" 6592 5036
+"south carolina,williamsburg" 4793 9039
+"south carolina,york" 45180 24201
+"south dakota,aurora" 1009 620
+"south dakota,beadle" 4917 3443
+"south dakota,bennett" 833 759
+"south dakota,bon homme" 2063 1293
+"south dakota,brookings" 7662 5443
+"south dakota,brown" 10386 7943
+"south dakota,brule" 1544 1040
+"south dakota,buffalo" 223 603
+"south dakota,butte" 3162 1009
+"south dakota,campbell" 708 239
+"south dakota,charles mix" 2555 2155
+"south dakota,clark" 1435 875
+"south dakota,clay" 2692 3313
+"south dakota,codington" 7778 4803
+"south dakota,corson" 720 971
+"south dakota,custer" 2922 1272
+"south dakota,davison" 5561 3262
+"south dakota,day" 1670 1817
+"south dakota,deuel" 1406 961
+"south dakota,dewey" 921 1606
+"south dakota,douglas" 1596 393
+"south dakota,edmunds" 1434 765
+"south dakota,fall river" 2409 1323
+"south dakota,faulk" 945 418
+"south dakota,grant" 2392 1633
+"south dakota,gregory" 1685 813
+"south dakota,haakon" 1007 219
+"south dakota,hamlin" 1946 1015
+"south dakota,hand" 1482 668
+"south dakota,hanson" 1379 745
+"south dakota,harding" 704 94
+"south dakota,hughes" 6017 2697
+"south dakota,hutchinson" 2898 1178
+"south dakota,hyde" 631 259
+"south dakota,jackson" 726 508
+"south dakota,jerauld" 736 482
+"south dakota,jones" 565 134
+"south dakota,kingsbury" 1804 1163
+"south dakota,lake" 3359 2508
+"south dakota,lawrence" 7489 3857
+"south dakota,lincoln" 11158 5703
+"south dakota,lyman" 1029 871
+"south dakota,marshall" 1241 1099
+"south dakota,mccook" 2017 1201
+"south dakota,mcpherson" 1180 369
+"south dakota,meade" 8341 2939
+"south dakota,mellette" 553 361
+"south dakota,miner" 810 641
+"south dakota,minnehaha" 44180 32303
+"south dakota,moody" 1790 1609
+"south dakota,pennington" 29972 14213
+"south dakota,perkins" 1329 418
+"south dakota,potter" 1143 463
+"south dakota,roberts" 2394 2525
+"south dakota,sanborn" 817 581
+"south dakota,shannon" 526 3563
+"south dakota,spink" 2259 1478
+"south dakota,stanley" 1129 464
+"south dakota,sully" 702 201
+"south dakota,todd" 889 2543
+"south dakota,tripp" 2230 972
+"south dakota,turner" 3084 1646
+"south dakota,union" 3987 3000
+"south dakota,walworth" 1967 887
+"south dakota,yankton" 6000 4236
+"south dakota,ziebach" 447 640
+"tennessee,anderson" 18510 12896
+"tennessee,bedford" 8348 5261
+"tennessee,benton" 3161 3869
+"tennessee,bledsoe" 2849 1927
+"tennessee,blount" 33240 15042
+"tennessee,bradley" 25942 9426
+"tennessee,campbell" 7859 6163
+"tennessee,cannon" 2923 2510
+"tennessee,carroll" 6603 5070
+"tennessee,carter" 15763 6390
+"tennessee,cheatham" 9676 5918
+"tennessee,chester" 4086 2182
+"tennessee,claiborne" 6447 4033
+"tennessee,clay" 1647 1673
+"tennessee,cocke" 8290 3932
+"tennessee,coffee" 11785 8238
+"tennessee,crockett" 3239 2455
+"tennessee,cumberland" 15142 8326
+"tennessee,davidson" 107618 132362
+"tennessee,decatur" 2566 2268
+"tennessee,de kalb" 3685 3445
+"tennessee,dickson" 10557 8592
+"tennessee,dyer" 8447 5287
+"tennessee,fayette" 8960 5692
+"tennessee,fentress" 4293 2371
+"tennessee,franklin" 9126 7797
+"tennessee,gibson" 10596 8509
+"tennessee,giles" 6162 5273
+"tennessee,grainger" 4905 2569
+"tennessee,greene" 16374 7625
+"tennessee,grundy" 2102 2787
+"tennessee,hamblen" 14733 7426
+"tennessee,hamilton" 78513 57268
+"tennessee,hancock" 1756 776
+"tennessee,hardeman" 4702 5683
+"tennessee,hardin" 6087 3834
+"tennessee,hawkins" 13445 6683
+"tennessee,haywood" 3140 4359
+"tennessee,henderson" 6585 3448
+"tennessee,henry" 7337 5728
+"tennessee,hickman" 4359 4261
+"tennessee,houston" 1438 2126
+"tennessee,humphreys" 3261 4485
+"tennessee,jackson" 2024 2996
+"tennessee,jefferson" 11617 5469
+"tennessee,johnson" 4632 1810
+"tennessee,knox" 110653 65921
+"tennessee,lake" 1039 1317
+"tennessee,lauderdale" 4164 4472
+"tennessee,lawrence" 9952 6592
+"tennessee,lewis" 2819 2191
+"tennessee,lincoln" 7827 4546
+"tennessee,loudon" 14041 5706
+"tennessee,macon" 4672 2739
+"tennessee,madison" 21672 16837
+"tennessee,marion" 5862 5548
+"tennessee,marshall" 5825 4722
+"tennessee,maury" 17495 12372
+"tennessee,mcminn" 11966 5878
+"tennessee,mcnairy" 5787 4101
+"tennessee,meigs" 2499 1595
+"tennessee,monroe" 10113 5349
+"tennessee,montgomery" 28615 20061
+"tennessee,moore" 1667 1084
+"tennessee,morgan" 4401 2924
+"tennessee,obion" 7859 5549
+"tennessee,overton" 3941 4518
+"tennessee,perry" 1520 1579
+"tennessee,pickett" 1600 1033
+"tennessee,polk" 3923 2724
+"tennessee,putnam" 15619 10549
+"tennessee,rhea" 7288 3663
+"tennessee,roane" 14423 8676
+"tennessee,robertson" 15329 9863
+"tennessee,rutherford" 52189 31639
+"tennessee,scott" 4508 3085
+"tennessee,sequatchie" 2950 1986
+"tennessee,sevier" 22127 8613
+"tennessee,shelby" 157591 215810
+"tennessee,smith" 3738 4038
+"tennessee,stewart" 2675 2860
+"tennessee,sullivan" 42526 19626
+"tennessee,sumner" 40141 21439
+"tennessee,tipton" 14178 7379
+"tennessee,trousdale" 1314 1850
+"tennessee,unicoi" 5026 2372
+"tennessee,union" 4145 2524
+"tennessee,van buren" 1119 1209
+"tennessee,warren" 7502 6803
+"tennessee,washington" 29720 14937
+"tennessee,wayne" 3998 1951
+"tennessee,weakley" 7816 5584
+"tennessee,white" 5268 4147
+"tennessee,williamson" 57409 21719
+"tennessee,wilson" 28896 15256
+"texas,anderson" 11495 4664
+"texas,andrews" 3837 677
+"texas,angelina" 18920 9293
+"texas,aransas" 6567 2639
+"texas,archer" 3545 877
+"texas,armstrong" 826 170
+"texas,atascosa" 7596 4397
+"texas,austin" 8064 2579
+"texas,bailey" 1775 525
+"texas,bandera" 6911 1730
+"texas,bastrop" 13281 9785
+"texas,baylor" 1169 467
+"texas,bee" 5424 4041
+"texas,bell" 51776 26941
+"texas,bexar" 259762 210354
+"texas,blanco" 3271 1266
+"texas,borden" 303 55
+"texas,bosque" 5720 1808
+"texas,bowie" 21778 11872
+"texas,brazoria" 63611 28873
+"texas,brazos" 37523 16090
+"texas,brewster" 1978 1726
+"texas,briscoe" 619 191
+"texas,brooks" 844 1820
+"texas,brown" 11638 2523
+"texas,burleson" 4403 2275
+"texas,burnet" 11449 4145
+"texas,caldwell" 6429 5045
+"texas,calhoun" 4347 2561
+"texas,callahan" 4536 1072
+"texas,cameron" 34689 33887
+"texas,camp" 2636 1776
+"texas,carson" 2446 485
+"texas,cass" 7544 4667
+"texas,castro" 1794 630
+"texas,chambers" 8618 2951
+"texas,cherokee" 11310 4432
+"texas,childress" 1629 511
+"texas,clay" 3964 1298
+"texas,cochran" 856 249
+"texas,coke" 1338 266
+"texas,coleman" 3034 778
+"texas,collin" 173014 68312
+"texas,collingsworth" 1051 346
+"texas,colorado" 5484 2159
+"texas,comal" 31544 9138
+"texas,comanche" 3710 1431
+"texas,concho" 861 250
+"texas,cooke" 11897 3136
+"texas,coryell" 12359 5088
+"texas,cottle" 549 214
+"texas,crane" 1314 254
+"texas,crockett" 1248 473
+"texas,crosby" 1647 621
+"texas,culberson" 407 375
+"texas,dallam" 1370 305
+"texas,dallas" 345482 335871
+"texas,dawson" 3419 1114
+"texas,de witt" 5095 1610
+"texas,deaf smith" 4139 1133
+"texas,delta" 1447 627
+"texas,denton" 140541 59163
+"texas,dickens" 815 245
+"texas,dimmit" 1188 2365
+"texas,donley" 1420 340
+"texas,duval" 1160 2916
+"texas,eastland" 5247 1582
+"texas,ector" 27502 8579
+"texas,edwards" 745 217
+"texas,el paso" 73046 94879
+"texas,ellis" 34577 11618
+"texas,erath" 9499 2408
+"texas,falls" 3378 2125
+"texas,fannin" 7892 4000
+"texas,fayette" 7526 2803
+"texas,fisher" 1161 757
+"texas,floyd" 2007 567
+"texas,foard" 347 235
+"texas,fort bend" 93554 68655
+"texas,franklin" 3156 987
+"texas,freestone" 5053 2070
+"texas,frio" 1985 1928
+"texas,gaines" 3538 608
+"texas,galveston" 61290 43919
+"texas,garza" 1479 326
+"texas,gillespie" 9294 2102
+"texas,glasscock" 488 44
+"texas,goliad" 2266 1219
+"texas,gonzales" 4290 1707
+"texas,gray" 7258 1289
+"texas,grayson" 34679 15062
+"texas,gregg" 29931 12297
+"texas,grimes" 5263 2713
+"texas,guadalupe" 28192 10280
+"texas,hale" 8011 2074
+"texas,hall" 858 412
+"texas,hamilton" 2855 845
+"texas,hansford" 1892 243
+"texas,hardeman" 1214 480
+"texas,hardin" 14844 5519
+"texas,harris" 580553 472320
+"texas,harrison" 16456 9637
+"texas,hartley" 1735 315
+"texas,haskell" 1137 611
+"texas,hays" 26991 20086
+"texas,hemphill" 1380 257
+"texas,henderson" 20182 8496
+"texas,hidalgo" 51438 63035
+"texas,hill" 9223 3750
+"texas,hockley" 6158 1385
+"texas,hood" 16265 4862
+"texas,hopkins" 8580 3439
+"texas,houston" 5848 2921
+"texas,howard" 7479 2663
+"texas,hudspeth" 577 302
+"texas,hunt" 20065 7971
+"texas,hutchinson" 7829 1501
+"texas,irion" 684 141
+"texas,jack" 2469 642
+"texas,jackson" 3763 1296
+"texas,jasper" 8328 4459
+"texas,jeff davis" 764 378
+"texas,jefferson" 44412 47050
+"texas,jim hogg" 712 1344
+"texas,jim wells" 5808 6824
+"texas,johnson" 34739 12311
+"texas,jones" 4234 1657
+"texas,karnes" 3112 1542
+"texas,kaufman" 21292 8947
+"texas,kendall" 11428 2531
+"texas,kenedy" 82 85
+"texas,kent" 382 138
+"texas,kerr" 16519 4552
+"texas,kimble" 1479 324
+"texas,king" 137 18
+"texas,kinney" 1050 542
+"texas,kleberg" 5379 4552
+"texas,knox" 1079 464
+"texas,la salle" 989 1229
+"texas,lavaca" 5974 2151
+"texas,lamar" 12039 5335
+"texas,lamb" 3392 855
+"texas,lampasas" 5417 1591
+"texas,lee" 4157 1899
+"texas,leon" 5012 1750
+"texas,liberty" 14798 6777
+"texas,limestone" 5028 2752
+"texas,lipscomb" 1147 184
+"texas,live oak" 3144 1034
+"texas,llano" 7231 2255
+"texas,loving" 65 12
+"texas,lubbock" 69675 22331
+"texas,lynn" 1745 465
+"texas,madison" 2828 1233
+"texas,marion" 2434 1875
+"texas,martin" 1511 293
+"texas,mason" 1599 459
+"texas,matagorda" 8114 4347
+"texas,maverick" 4025 5948
+"texas,mcculloch" 2465 745
+"texas,mclennan" 52078 26759
+"texas,mcmullen" 467 95
+"texas,medina" 10385 4316
+"texas,menard" 761 331
+"texas,midland" 36548 7994
+"texas,milam" 5280 3435
+"texas,mills" 1820 439
+"texas,mitchell" 1911 639
+"texas,montague" 5901 1944
+"texas,montgomery" 104361 28561
+"texas,moore" 4598 1009
+"texas,morris" 2814 2435
+"texas,motley" 564 113
+"texas,nacogdoches" 13964 7077
+"texas,navarro" 10706 5256
+"texas,newton" 3147 2510
+"texas,nolan" 3722 1541
+"texas,nueces" 59337 44408
+"texas,ochiltree" 2920 251
+"texas,oldham" 733 108
+"texas,orange" 20272 11469
+"texas,palo pinto" 7137 2816
+"texas,panola" 7020 2958
+"texas,parker" 31759 8948
+"texas,parmer" 3340 542
+"texas,pecos" 3160 1241
+"texas,polk" 13778 6954
+"texas,potter" 21033 7487
+"texas,presidio" 713 1156
+"texas,rains" 2995 1213
+"texas,randall" 40512 7842
+"texas,reagan" 955 184
+"texas,real" 1338 326
+"texas,red river" 3377 2097
+"texas,reeves" 1777 1600
+"texas,refugio" 2163 1205
+"texas,roberts" 428 39
+"texas,robertson" 3781 2977
+"texas,rockwall" 20111 5318
+"texas,runnels" 3238 787
+"texas,rusk" 13386 4895
+"texas,sabine" 3134 1476
+"texas,san augustine" 2231 1506
+"texas,san jacinto" 5391 2688
+"texas,san patricio" 13464 7758
+"texas,san saba" 1814 446
+"texas,schleicher" 1011 312
+"texas,scurry" 4576 981
+"texas,shackelford" 1281 222
+"texas,shelby" 6287 2943
+"texas,sherman" 942 121
+"texas,smith" 53321 19937
+"texas,somervell" 2692 827
+"texas,starr" 2552 7199
+"texas,stephens" 2803 703
+"texas,sterling" 544 76
+"texas,stonewall" 356 253
+"texas,sutton" 1173 280
+"texas,swisher" 916 407
+"texas,tarrant" 349294 207184
+"texas,taylor" 37191 10645
+"texas,terrell" 306 159
+"texas,terry" 3166 794
+"texas,throckmorton" 656 202
+"texas,titus" 5704 3173
+"texas,tom green" 28087 8971
+"texas,travis" 147625 196780
+"texas,trinity" 3983 2204
+"texas,tyler" 5012 2645
+"texas,upshur" 10222 4218
+"texas,upton" 1008 185
+"texas,uvalde" 5147 3297
+"texas,val verde" 6923 4750
+"texas,van zandt" 14966 4820
+"texas,victoria" 20860 8552
+"texas,walker" 11692 5966
+"texas,waller" 7680 6145
+"texas,ward" 2855 901
+"texas,washington" 9590 3387
+"texas,webb" 17733 23636
+"texas,wharton" 9288 4702
+"texas,wheeler" 1953 408
+"texas,wichita" 32472 12819
+"texas,wilbarger" 3685 1284
+"texas,willacy" 2209 2731
+"texas,williamson" 83079 42986
+"texas,wilson" 10379 4404
+"texas,winkler" 1601 391
+"texas,wise" 15162 4776
+"texas,wood" 12826 4030
+"texas,yoakum" 2228 376
+"texas,young" 5856 1505
+"texas,zapata" 1228 1661
+"texas,zavala" 777 2332
+"utah,beaver" 1975 486
+"utah,box elder" 15244 2169
+"utah,cache" 31379 6131
+"utah,carbon" 4856 3378
+"utah,daggett" 376 106
+"utah,davis" 84390 20384
+"utah,duchesne" 4590 707
+"utah,emery" 3772 830
+"utah,garfield" 1839 260
+"utah,grand" 2073 1782
+"utah,iron" 12422 2208
+"utah,juab" 2659 601
+"utah,kane" 2325 540
+"utah,millard" 3905 591
+"utah,morgan" 3252 468
+"utah,piute" 642 123
+"utah,rich" 895 106
+"utah,salt lake" 209162 131057
+"utah,san juan" 2908 1838
+"utah,sanpete" 6866 1158
+"utah,sevier" 6458 902
+"utah,summit" 7731 6754
+"utah,tooele" 11751 4010
+"utah,uintah" 8378 1251
+"utah,utah" 95039 11893
+"utah,wasatch" 5392 1825
+"utah,washington" 31747 6371
+"utah,wayne" 1059 278
+"utah,weber" 49538 19079
+"washington,adams" 3727 1312
+"washington,asotin" 5306 3310
+"washington,benton" 43105 20838
+"washington,chelan" 17759 10015
+"washington,clallam" 18659 16848
+"washington,clark" 86025 77180
+"washington,columbia" 1364 565
+"washington,cowlitz" 19921 21219
+"washington,douglas" 8498 4097
+"washington,ferry" 2011 1192
+"washington,franklin" 10509 5016
+"washington,garfield" 933 362
+"washington,grant" 17722 7751
+"washington,grays harbor" 15270 16840
+"washington,island" 18374 17051
+"washington,jefferson" 6568 11398
+"washington,king" 290661 554993
+"washington,kitsap" 53768 58639
+"washington,kittitas" 8517 6252
+"washington,klickitat" 4906 3940
+"washington,lewis" 20933 10671
+"washington,lincoln" 4007 1704
+"washington,mason" 11670 12579
+"washington,okanogan" 9627 6299
+"washington,pacific" 4614 5538
+"washington,pend oreille" 3671 2292
+"washington,pierce" 145538 152193
+"washington,san juan" 3202 6379
+"washington,skagit" 22558 21516
+"washington,skamania" 2678 2361
+"washington,snohomish" 130714 151811
+"washington,spokane" 107455 84161
+"washington,stevens" 12250 6396
+"washington,thurston" 46635 61017
+"washington,wahkiakum" 1165 1018
+"washington,walla walla" 12810 7293
+"washington,whatcom" 39060 46076
+"washington,whitman" 8239 6974
+"washington,yakima" 41696 26797
+"west virginia,barbour" 3975 2636
+"west virginia,berkeley" 20724 11888
+"west virginia,boone" 4163 5890
+"west virginia,braxton" 2964 3014
+"west virginia,brooke" 5147 5460
+"west virginia,cabell" 20777 16328
+"west virginia,calhoun" 1569 1253
+"west virginia,clay" 2183 1824
+"west virginia,doddridge" 2340 792
+"west virginia,fayette" 7767 8860
+"west virginia,gilmer" 1660 1153
+"west virginia,grant" 4005 944
+"west virginia,greenbrier" 8278 6039
+"west virginia,hampshire" 5465 2444
+"west virginia,hancock" 7224 6829
+"west virginia,hardy" 3600 1606
+"west virginia,harrison" 16913 13102
+"west virginia,jackson" 7604 5332
+"west virginia,jefferson" 10442 9202
+"west virginia,kanawha" 43777 42321
+"west virginia,lewis" 3500 1863
+"west virginia,lincoln" 4076 4033
+"west virginia,logan" 6513 7760
+"west virginia,marion" 12082 12717
+"west virginia,marshall" 8443 6379
+"west virginia,mason" 6451 5374
+"west virginia,mcdowell" 2729 4464
+"west virginia,mercer" 12914 9052
+"west virginia,mineral" 7640 3444
+"west virginia,mingo" 4544 5912
+"west virginia,monongalia" 17459 16136
+"west virginia,monroe" 3596 2321
+"west virginia,morgan" 4474 2260
+"west virginia,nicholas" 5389 4718
+"west virginia,ohio" 11539 8406
+"west virginia,pendleton" 2120 1367
+"west virginia,pleasants" 2023 1333
+"west virginia,pocahontas" 2282 1565
+"west virginia,preston" 7813 3944
+"west virginia,putnam" 15587 9223
+"west virginia,raleigh" 18338 11723
+"west virginia,randolph" 6495 4880
+"west virginia,ritchie" 3060 1060
+"west virginia,roane" 3424 2599
+"west virginia,summers" 2963 2489
+"west virginia,taylor" 3839 2590
+"west virginia,tucker" 2151 1382
+"west virginia,tyler" 2770 1386
+"west virginia,upshur" 6134 2998
+"west virginia,wayne" 9998 8363
+"west virginia,webster" 1706 1943
+"west virginia,wetzel" 3609 3293
+"west virginia,wirt" 1712 892
+"west virginia,wood" 24636 13824
+"west virginia,wyoming" 4930 3666
+"wisconsin,adams" 4890 5447
+"wisconsin,ashland" 3313 5705
+"wisconsin,barron" 12030 11696
+"wisconsin,bayfield" 3753 5845
+"wisconsin,brown" 67113 54889
+"wisconsin,buffalo" 3502 3998
+"wisconsin,burnett" 4743 4499
+"wisconsin,calumet" 14719 10289
+"wisconsin,chippewa" 15450 14751
+"wisconsin,clark" 7965 6964
+"wisconsin,columbia" 14956 14300
+"wisconsin,crawford" 3680 4656
+"wisconsin,dane" 90356 181032
+"wisconsin,dodge" 27200 16689
+"wisconsin,door" 8910 8367
+"wisconsin,douglas" 8448 16534
+"wisconsin,dunn" 10878 12039
+"wisconsin,eau claire" 24644 30049
+"wisconsin,florence" 1703 993
+"wisconsin,fond du lac" 33291 19214
+"wisconsin,forest" 2608 2509
+"wisconsin,grant" 12113 12865
+"wisconsin,green" 8497 9575
+"wisconsin,green lake" 6472 3605
+"wisconsin,iowa" 5348 7122
+"wisconsin,iron" 1884 1956
+"wisconsin,jackson" 4387 5249
+"wisconsin,jefferson" 23775 17926
+"wisconsin,juneau" 6478 5734
+"wisconsin,kenosha" 35583 40102
+"wisconsin,kewaunee" 5947 5166
+"wisconsin,la crosse" 28286 33157
+"wisconsin,lafayette" 3926 4415
+"wisconsin,langlade" 6235 4751
+"wisconsin,lincoln" 8032 7482
+"wisconsin,manitowoc" 23025 20655
+"wisconsin,marathon" 36394 30897
+"wisconsin,marinette" 11870 10204
+"wisconsin,marquette" 4604 3785
+"wisconsin,menominee" 288 1412
+"wisconsin,milwaukee" 180041 297260
+"wisconsin,monroe" 10280 8982
+"wisconsin,oconto" 11043 8533
+"wisconsin,oneida" 11349 10468
+"wisconsin,outagamie" 48809 40369
+"wisconsin,ozaukee" 34901 17708
+"wisconsin,pepin" 1853 2184
+"wisconsin,pierce" 10437 11177
+"wisconsin,polk" 11895 11178
+"wisconsin,portage" 16546 21861
+"wisconsin,price" 4311 4349
+"wisconsin,racine" 52449 48226
+"wisconsin,richland" 4841 4505
+"wisconsin,rock" 33055 46598
+"wisconsin,rusk" 3985 3820
+"wisconsin,sauk" 14415 15708
+"wisconsin,sawyer" 4950 4410
+"wisconsin,shawano" 12149 8656
+"wisconsin,sheboygan" 34456 27606
+"wisconsin,st croix" 22679 18784
+"wisconsin,taylor" 5535 3783
+"wisconsin,trempealeau" 5883 8077
+"wisconsin,vernon" 6773 7924
+"wisconsin,vilas" 8153 5713
+"wisconsin,walworth" 28752 19175
+"wisconsin,washburn" 4766 4705
+"wisconsin,washington" 50640 21235
+"wisconsin,waukesha" 154910 73618
+"wisconsin,waupaca" 15952 10794
+"wisconsin,waushara" 6888 5119
+"wisconsin,winnebago" 46538 40937
+"wisconsin,wood" 20592 18950
+"wyoming,albany" 8879 7032
+"wyoming,big horn" 4232 960
+"wyoming,campbell" 12407 2464
+"wyoming,carbon" 4758 2157
+"wyoming,converse" 4446 1183
+"wyoming,crook" 2836 500
+"wyoming,fremont" 11428 5337
+"wyoming,goshen" 4114 1566
+"wyoming,hot springs" 1811 623
+"wyoming,johnson" 3231 736
+"wyoming,laramie" 25947 13170
+"wyoming,lincoln" 6424 1363
+"wyoming,natrona" 21503 9852
+"wyoming,niobrara" 1064 230
+"wyoming,park" 10660 2939
+"wyoming,platte" 3127 1318
+"wyoming,sheridan" 9635 4041
+"wyoming,sublette" 2846 730
+"wyoming,sweetwater" 10638 5201
+"wyoming,teton" 5124 5971
+"wyoming,uinta" 6080 1812
+"wyoming,washakie" 3200 855
+"wyoming,weston" 2739 580
+"connecticut,fairfield" 189605  205902
+"connecticut,hartford" 154919  229902
+"connecticut,litchfield"  50160   44647
+"connecticut,middlesex"  35252   47292
+"connecticut,new haven" 160390  199060
+"connecticut,new london"  49931   66062
+"connecticut,tolland"  31245   39146
+"connecticut,windham"  22324   25477
+"maine,androscoggin"  24453   30345
+"maine,aroostook"  17726   19539
+"maine,cumberland"  65184   94699
+"maine,franklin"   7355    9464
+"maine,hancock"  14385   18037
+"maine,kennebec"  29577   34051
+"maine,knox"  10103   12693
+"maine,lincoln"  10370   11351
+"maine,oxford"  14368   16829
+"maine,penobscot"  40189   40285
+"maine,piscataquis"   5261    4378
+"maine,sagadahoc"  10063   11688
+"maine,somerset"  12951   13555
+"maine,waldo"  10309   11554
+"maine,washington"   8621    8398
+"maine,york"  49501   58596
+"new hampshire,belknap"  17920   14080
+"new hampshire,carroll"  14614   13319
+"new hampshire,cheshire"  16463   24438
+"new hampshire,coos"   8143    8585
+"new hampshire,grafton"  20277   26180
+"new hampshire,hillsborough"  99724   94121
+"new hampshire,merrimack"  36060   39975
+"new hampshire,rockingham"  82069   75437
+"new hampshire,strafford"  25825   32942
+"new hampshire,sullivan"  10142   11434
+"vermont,addison"   7077   11147
+"vermont,bennington"   7616   11069
+"vermont,caledonia"   6765    7106
+"vermont,chittenden"  26422   49369
+"vermont,essex"   1591    1276
+"vermont,franklin"   8936   10598
+"vermont,grand isle"   1754    2246
+"vermont,lamoille"   4260    7636
+"vermont,orange"   6421    8159
+"vermont,orleans"   5666    6330
+"vermont,rutland"  14440   15904
+"vermont,washington"  11461   19177
+"vermont,windham"   7280   15489
+"vermont,windsor"  11491   18561
+"massachusetts,barnstable"  58527   72156
+"massachusetts,berkshire"  16806   47743
+"massachusetts,bristol"  82524  147854
+"massachusetts,dukes"   2602    7265
+"massachusetts,essex" 135114  194068
+"massachusetts,franklin"  11058   25550
+"massachusetts,hampden"  70925  113710
+"massachusetts,hampshire"  21315   51680
+"massachusetts,middlesex" 237815  440862
+"massachusetts,nantucket"   2040    3608
+"massachusetts,norfolk" 127763  199392
+"massachusetts,plymouth" 105603  125178
+"massachusetts,suffolk"  54923  182592
+"massachusetts,worcester" 144094  192142
+"rhode island,bristol"   9855   14448
+"rhode island,kent"  33699   42830
+"rhode island,newport"  16622   22992
+"rhode island,providence"  82337  144811
+"rhode island,washington"  26533   34679

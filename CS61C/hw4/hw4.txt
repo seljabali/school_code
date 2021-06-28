@@ -1,0 +1,72 @@
+Sami Eljabali
+HW#4
+
+1)
+#a0,a1 have the base addresses
+#a2,a3 have their sizes
+
+   	sll  	$a2, $a2, 2	#Multiply a2 by 4
+  	sll 	$a3, $a3, 2	#Multiply a3 by 4
+
+	add	$v0, $zero, $zero	#Initialize v0
+  	add 	$t0, $zero, $zero	#Initialize t0
+
+outer: 	add 	$t4, $a0, $t0	#Load t4th element of a0 and store 
+	lw 	$t4, 0($t4)	# it into t4
+  	add 	$t1, $zero, $zero
+
+inner: 	add 	$t3, $a1, $t1	#Load t3rd element of a1 and store it into
+  	lw 	$t3, 0($t3)	#  t3
+  	bne 	$t3, $t4, skip	#if element in a0!=a1 then skip
+  	addi 	$v0, $v0, 1	# else v0++
+
+skip: 	addi 	$t1, $t1, 4	#Point to the next element
+  	bne 	$t1, $a3, inner	# if we haven't reached the 
+  	addi 	$t0, $t0, 4	#  end of the array
+  	bne 	$t0, $a2, outer
+
+#The program will increment v0 everytime an element in array_two matches an element in array_one.
+
+
+2) First 4 lines: 4 cycles
+   Outer:	6 cycles
+   Inner:	6 cycles
+   Skip:	6 cycles
+
+   4(intro)
+
+   4(outer)------------|
+                       |
+   6(inner)-----|      |
+	        |2500x |2500x						
+   3(1/2 skip)--|      |
+                       |
+   3(1/2 skip)---------|
+
+Cycles 4+2500(4+ 2500(6+3)+3) = 56,267,504. 56267504/2 billion = .28134 seconds
+
+3)  #$s0=b, $s1 = a
+    ori $s0,$s1,25
+
+4) Since the bne operation only has 16 bits to store its relative adresses. Some labels may be too far to store its relative adress, since branch statements only have 16bits to spare. Therefore, using the jump operation would solve the problem, if not using the jump register would.
+
+   la $s0, there
+   jr $s0
+
+5)	add	$t0,$0,$0	#i=0	
+ Loop:  slti	$s1,$t0,404	#if i<400
+	beq	$s1,$0,Exit	# exit
+	add	$a1,$a1,$t0	#else get (b+i)
+	lw	$t1,0($a1)	# store b[i] in t1
+	add	$t1, $t1,$s0	# t1 = b[i] + c		
+	add	$t3,$a0,$t0	#t3 = (a+i) 
+	sw	$t1,0($t3)	#t3 = t1   
+	addi	$t0,$t0,4	#i++
+	j	Loop
+   Exit:	
+# The program will go through 1+(9*100)+2 instructions. It will have 2*100 data references.
+
+6) a) 000000 10000 10001 10000 00000 100100
+   b) x &=y; x|=y; x^=y;
+   c) add $s0,$0,$0
+   d) 0x156AFFF8

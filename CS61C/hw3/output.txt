@@ -1,0 +1,12 @@
+Cheapest
+Appetizer:	Stuffed Mushrooms
+Entre:	Lasagna
+Dessert:	Tiramisu
+Most Expensive
+Appetizer:	Stuffed Mushrooms
+Entre:	Lasagna
+Dessert:	Tiramisu
+Closest
+Appetizer:	Garlic Bread
+Entre:	Lasagna
+Dessert:	Tiramisu

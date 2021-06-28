@@ -1,0 +1,1 @@
+half half 10 m^2/(s*s) in (acre/(s*s))/(s/s)}

@@ -1,0 +1,141 @@
+<?xml version="1.0" ?><proj passed="false"><testcase filename="sanity.grm" passed="false" ref_output="" ref_result="FINISHED" stu_output="" stu_result="FINISHED"><noinput match="false" ref_output="(Grammar
+    (Declarations
+        (import ast)
+        (assoc \+ 0 left)
+        (assoc \- 0 left)
+        (assoc \* 1 left)
+        (assoc \/ 1 left)
+        (assoc \! 2 right)
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, E, ]
+                (action { return ast.Plus (n1, n3) })
+            )
+            (production [ E, \-, E, ]
+                (action { return ast.Minus (n1, n3) })
+            )
+            (production [ E, \*, E, ]
+                (action { return ast.Mult (n1, n3) })
+            )
+            (production [ E, \/, E, ]
+                (action { return ast.Div (n1, n3) })
+            )
+            (production [ \!, E, ]
+                (action { return ast.Not (n2) })
+            )
+            (production [ \+, E, ]
+                (assoc \!)
+                (action { return ast.UPlus (n2) })
+            )
+            (production [ \-, E, ]
+                (assoc \!)
+                (action { return ast.UMinus (n2) })
+            )
+            (production [ if, E, then, E, ]
+                (precedence 1)
+                (action { return ast.If (n2, n4) })
+            )
+            (production [ if, E, then, E, else, E, ]
+                (precedence 2)
+                (action { return ast.If (n2, n4, n6) })
+            )
+            (production [ Primary, ]
+                (action { return ast.Primary (n1) })
+            )
+        )
+        (Rule Primary
+            (production [ Integer, ]
+                (action { return ast.Integer (n1) })
+            )
+        )
+        (Rule Integer
+            (production [ [0-9]+, ]
+                (action { return int (n1) })
+            )
+        )
+    )
+    (StartSymbol E)
+)
+" stu_output="(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule X
+            (production [ X, ]
+            )
+        )
+    )
+    (StartSymbol X)
+)
+"><ref_output><![CDATA[(Grammar
+    (Declarations
+        (import ast)
+        (assoc \+ 0 left)
+        (assoc \- 0 left)
+        (assoc \* 1 left)
+        (assoc \/ 1 left)
+        (assoc \! 2 right)
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, E, ]
+                (action { return ast.Plus (n1, n3) })
+            )
+            (production [ E, \-, E, ]
+                (action { return ast.Minus (n1, n3) })
+            )
+            (production [ E, \*, E, ]
+                (action { return ast.Mult (n1, n3) })
+            )
+            (production [ E, \/, E, ]
+                (action { return ast.Div (n1, n3) })
+            )
+            (production [ \!, E, ]
+                (action { return ast.Not (n2) })
+            )
+            (production [ \+, E, ]
+                (assoc \!)
+                (action { return ast.UPlus (n2) })
+            )
+            (production [ \-, E, ]
+                (assoc \!)
+                (action { return ast.UMinus (n2) })
+            )
+            (production [ if, E, then, E, ]
+                (precedence 1)
+                (action { return ast.If (n2, n4) })
+            )
+            (production [ if, E, then, E, else, E, ]
+                (precedence 2)
+                (action { return ast.If (n2, n4, n6) })
+            )
+            (production [ Primary, ]
+                (action { return ast.Primary (n1) })
+            )
+        )
+        (Rule Primary
+            (production [ Integer, ]
+                (action { return ast.Integer (n1) })
+            )
+        )
+        (Rule Integer
+            (production [ [0-9]+, ]
+                (action { return int (n1) })
+            )
+        )
+    )
+    (StartSymbol E)
+)
+]]></ref_output><stu_output><![CDATA[(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule X
+            (production [ X, ]
+            )
+        )
+    )
+    (StartSymbol X)
+)
+]]></stu_output></noinput></testcase><testcase filename="err-sanity.grm" passed="true" ref_output="" ref_result="ERROR" stu_output="" stu_result="ERROR"><noinput match="true" ref_output="Error" stu_output="Error"><ref_output><![CDATA[Error]]></ref_output><stu_output><![CDATA[Error]]></stu_output></noinput></testcase></proj>

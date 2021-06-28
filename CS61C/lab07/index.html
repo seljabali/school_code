@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.7: http://docutils.sourceforge.net/" />
+<title>CS61C Lab 7</title>
+<link rel="stylesheet" href="../default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="cs61c-lab-7">
+<h1 class="title">CS61C Lab 7</h1>
+<h2 class="subtitle" id="linking">Linking</h2>
+<!-- $Header: /home/ff/cs61c/cvsroot/assignments/lab/07.linking/index.rst,v 1.8 2005/11/30 23:42:29 cs61c-tc Exp $ -->
+<div class="section" id="background">
+<h1><a name="background">Background</a></h1>
+<div class="section" id="goals">
+<h2><a name="goals">Goals</a></h2>
+<p>Assemblers output object files. Object files are binary files that 
+contain the machine code and data that corresponds to the assembly code 
+that you (or a compiler) wrote. Several object files can be linked 
+together to form executable files. Object files and executable files can 
+come in several different formats. The most common one is the
+Executabl and Linking Format (ELF). The purpose of this lab is to
+familiarize you with the ELF file formats and to practice linking
+several .o files together to form an a.out file.</p>
+</div>
+<div class="section" id="reading">
+<h2><a name="reading">Reading</a></h2>
+<ul class="simple">
+<li>P&amp;H Sections on compilation, assembly, and linking</li>
+</ul>
+</div>
+<div class="section" id="info">
+<h2><a name="info">Info</a></h2>
+<p>From class, we know that the toolchain executes the following steps to 
+make your executable:</p>
+<blockquote>
+<ol class="arabic simple">
+<li>Compile your source files into assembly (compiler)</li>
+<li>Assemble the assembly files into object files (assembler)</li>
+<li>Combine your object files into an executable (linker)</li>
+</ol>
+</blockquote>
+<div class="section" id="compiler">
+<h3><a name="compiler">Compiler</a></h3>
+<p>To create the assembly files which result from the first stage
+(compilation), you can execute the following:</p>
+<pre class="literal-block">
+$ mips-gcc -S input.c
+</pre>
+<p>This will create a file called input.s which contains the assembly for input.c.</p>
+</div>
+<div class="section" id="assembler">
+<h3><a name="assembler">Assembler</a></h3>
+<p>To create the object files which result from the second stage 
+(assembly), you can execute either of the following:</p>
+<pre class="literal-block">
+$ mips-gcc -c input.c
+</pre>
+<p>or:</p>
+<pre class="literal-block">
+$ mips-gcc -c input.s
+</pre>
+<p>Either command will create an object file called input.o.</p>
+</div>
+<div class="section" id="id1">
+<h3><a name="id1">Linking</a></h3>
+<p>To create the final executable from multiple object files, you can just pass
+the filenames to gcc like this:</p>
+<pre class="literal-block">
+$ mips-gcc input1.o input2.o -o finalexe
+</pre>
+<p>This creates an executable called 'finalexe' that results from linking 
+the two given object files.</p>
+</div>
+<div class="section" id="object-dump">
+<h3><a name="object-dump">Object Dump</a></h3>
+<p>The object files are binary files and not readable in an editor, so we 
+need to make use of another utility to view the contents.  To view the 
+contents of an object file, you can use mips-objdump as follows:</p>
+<pre class="literal-block">
+$ mips-objdump -x -d input.o &gt; input.o.dump
+</pre>
+<p>The -x option tells mips-objdump to print information about all of the 
+sections and the -d option tells it to disassemble the instructions in 
+the .text section. Open the .dump files in your favorite text editor and 
+look them over. There will be many fields that you do not understand but 
+you should recognize certain things. In particular, the part that begins 
+with the label &quot;Sections:&quot; tells you the section name, size of the 
+section, virtual memory address of the section (VMA), and some 
+interesting flags (CONTENTS, ALLOC, etc.)</p>
+<p>Additionally, mips-readelf can print out some of the information in the
+object file in a more human-friendly format.  You can do this using:</p>
+<pre class="literal-block">
+$ mips-readelf -a input.o &gt; input.o.readelf
+</pre>
+</div>
+<div class="section" id="the-file-command">
+<h3><a name="the-file-command">The file command</a></h3>
+<p>The name of a file usually gives you a good idea about the type of a
+file.  For example, you know, usually, a file named input.c should be
+a C program, while a file input.s is usually an assembly program.  But
+what about a file input.o?  The Unix command <tt class="docutils literal"><span class="pre">file</span></tt> can report the
+type of a file.  For example, the following command tells you the
+type of input.o:</p>
+<pre class="literal-block">
+$ file input.o
+</pre>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h1><a name="exercises">Exercises</a></h1>
+<div class="section" id="setup">
+<h2><a name="setup">Setup</a></h2>
+<p>Copy the contents of ~cs61c/labs/07 to a suitable location in
+your home directory.</p>
+<pre class="literal-block">
+$ mkdir ~/lab
+$ cp -R ~cs61c/labs/07/ ~/lab
+</pre>
+</div>
+<div class="section" id="exercise-1">
+<h2><a name="exercise-1">Exercise 1</a></h2>
+<p>When the object files are created, the absolute addresses of functions 
+and data are unknown. Instead, relative addresses are specified in the 
+left most column.  Create the file stack.o by the command:</p>
+<pre class="literal-block">
+$ mips-gcc -c stack.c
+</pre>
+<p>Then create an object dump of the resulting stack.o by:</p>
+<pre class="literal-block">
+$ mips-objdump -x -d stack.o &gt; stack.o.dump
+</pre>
+<p>Inspect the file stack.o.dump.  What are the relative addresses of the
+functions IsEmpty, Push, and Pop in stack.o?</p>
+</div>
+<div class="section" id="exercise-2">
+<h2><a name="exercise-2">Exercise 2</a></h2>
+<p>Create an object dump of teststack.o following similar steps as
+above. Look at teststack.o.dump. The main function calls several
+functions that are in the stack.o object file. However, at this stage
+of creating the executable, the addresses of those functions are
+unknown. How does the assembler handle these function calls?</p>
+</div>
+<div class="section" id="exercise-3">
+<h2><a name="exercise-3">Exercise 3</a></h2>
+<p>Now, link stack.o and teststack.o into an executable as described above.  
+If you do not use -o, the output file will be called a.out.  The 
+resulting file is also an object file. However, it does not have any 
+unresolved references so it is executable. Like the other object file, 
+opening it in a text editor is not very revealing. Instead, dump it 
+using mips-objdump and open the resulting file. Note that there are MANY 
+symbols in this file that we did not define. These are all linked in by 
+default. You may ignore these symbols.</p>
+</div>
+<div class="section" id="exercise-4">
+<h2><a name="exercise-4">Exercise 4</a></h2>
+<p>What are the actual addresses of the funcitons isEmpty, Push, and Pop in 
+the executable?</p>
+</div>
+<div class="section" id="exercise-5">
+<h2><a name="exercise-5">Exercise 5</a></h2>
+<p>What is the address of the structure ourStack in the final executable? 
+What section is ourStack in?</p>
+</div>
+</div>
+</div>
+<hr class="docutils footer" />
+<div class="footer">
+<a class="reference" href="index.rst">View document source</a>.
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+</div>
+</body>
+</html>

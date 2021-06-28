@@ -1,0 +1,53 @@
+(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule ARPN
+            (production [ V, ARPN, ]
+            )
+            (production [ UNIT, ARPN, ]
+            )
+            (production [ (epsilon), ]
+            )
+        )
+        (Rule V
+            (production [ V, V, OP, ]
+            )
+            (production [ ID, ]
+            )
+            (production [ NUM, ]
+            )
+        )
+        (Rule UNIT
+            (production [ ASGN, ]
+            )
+            (production [ RM, ]
+            )
+        )
+        (Rule ASGN
+            (production [ V, ID, \:\=, ]
+            )
+        )
+        (Rule RM
+            (production [ ID, x\=, ]
+            )
+        )
+        (Rule OP
+            (production [ \+, ]
+            )
+            (production [ x, ]
+            )
+            (production [ \-, ]
+            )
+        )
+        (Rule ID
+            (production [ [a-zA-Z][a-zA-Z0-9]*, ]
+            )
+        )
+        (Rule NUM
+            (production [ [1-9][0-9]*, ]
+            )
+        )
+    )
+    (StartSymbol ARPN)
+)

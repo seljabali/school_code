@@ -1,0 +1,44 @@
+source("/Users/samieljabali/Desktop/Stat-Proj2/func.R")
+source("/Users/samieljabali/Desktop/Stat-Proj2/GCGoogleE.R")
+source("/Users/samieljabali/Desktop/Stat-Proj2/slerp.R")
+
+
+data = read.table(file("/Users/samieljabali/Desktop/Stat-Proj2/points.txt"))
+data[,2] = data[,2] * -1
+
+halfWay = data[1:40,]
+halfWay = data.frame(halfWay[,2],halfWay[,1])
+
+GreatCircle = slerp(c(34.0, -120.0),c(46.7, -147.2), 40)
+GreatCircle = data.frame(GreatCircle[,2],GreatCircle[,1])
+
+plot(GreatCircle, type = "l")
+par(new=T)
+plot(halfWay, type = "l")
+
+half1 = halfWay[,1]
+great1 = GreatCircle[,1]
+resid1 = half1 - great1
+
+half2 = halfWay[,2]
+half2 = c(half2)
+
+great2 = GreatCircle[,2]
+resid2 = half2 - great2
+resid = data.frame(resid1,resid2)
+
+
+
+plot(resid2, ylim = c(-40,20), xlim = c(-8,3))
+plot(resid2)
+plot(resid1)
+plot(x = halfWay[,1], y = resid2)
+plot(resid1)
+plot(resid1, ylim = c(-5,5))
+
+newGC1 = read.table(file("/Users/samieljabali/Desktop/Stat-Proj2/ghetto.txt"))
+newGC1 = data.frame(newGC1[,2],newGC1[,3])
+plot (x= newGC1[,1], y = half2 - newGC1[,2])
+
+
+

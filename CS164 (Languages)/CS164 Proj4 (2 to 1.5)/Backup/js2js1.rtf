@@ -1,0 +1,88 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf440
+{\fonttbl\f0\fnil\fcharset77 Monaco;}
+{\colortbl;\red255\green255\blue255;\red192\green18\blue25;\red0\green0\blue255;\red0\green170\blue0;
+\red128\green0\blue0;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs22 \cf2 #!/usr/bin/env python\cf0 \
+\
+\pard\pardeftab720
+\cf3 import\cf0  parser_generator, grammar_parser, sys, getopt\
+\cf3 from\cf0  semant \cf3 import\cf0  *\
+\cf3 from\cf0  cgen \cf3 import\cf0  *\
+\cf3 from\cf0  emit \cf3 import\cf0  *\
+\cf3 from\cf0  TypeChecker \cf3 import\cf0  *\
+\cf3 from\cf0  Types \cf3 import\cf0  *\
+\
+USAGE_STRING = \cf4 """USAGE:\cf0 \
+\pard\pardeftab720
+\cf4 python js2p.py INPUT-FILE.js [-o OUPUT-FILE-NAME]"""\cf0 \
+\pard\pardeftab720
+\cf3 def\cf0  usage ():\
+    \cf3 print\cf0  USAGE_STRING\
+    sys.exit (\cf5 2\cf0 )\
+\
+\
+\cf3 def\cf0  main (argv):\
+    \cf3 try\cf0 :\
+        opts, args = getopt.gnu_getopt (argv, \cf4 'o:'\cf0 )\
+    \cf3 except\cf0  getopt.GetoptError:\
+        usage ()\
+\
+    \cf3 if\cf0  len (opts) > \cf5 1\cf0  \cf3 or\cf0  len (args) < \cf5 1\cf0 :\
+        usage ()\
+\
+    grammarFile = \cf4 './javascript2.grm'\cf0 \
+    inputFileName = args[\cf5 0\cf0 ]\
+    \cf3 if\cf0  len(opts) > \cf5 0\cf0 :\
+        outputFileName = opts[\cf5 0\cf0 ][\cf5 1\cf0 ]\
+    \cf3 else\cf0 :\
+        outputFileName = \cf3 None\cf0 \
+\
+    parser = parser_generator.makeParser (grammar_parser.parseFile (grammarFile))\
+    \
+    ast = parser.parse (open (inputFileName).read ())\
+\
+    \cf3 if\cf0  outputFileName:\
+        emitter = Emitter (open (outputFileName, \cf4 'w'\cf0 ))\
+    \cf3 else\cf0 :\
+        emitter = Emitter ()\
+\
+    \cf2 #emitter.comment ('==Semantic Phase==')\cf0 \
+    semant = SemanticAnalyzer (emitter)\
+    ast.accept (semant)\
+    \cf2 #print "Classes:",semant.classes\cf0 \
+\
+    emitter.comment (\cf4 '==Gather Types Phase=='\cf0 )\
+    types = Types(emitter)\
+    ast.accept (types)\
+    \
+    \cf3 print\cf0  \cf4 "Classes"\cf0  \
+    \cf3 for\cf0  c \cf3 in\cf0  types.table[\cf4 'class'\cf0 ]:\
+        \cf3 print\cf0  \cf4 " "\cf0 ,c,\cf4 "ext"\cf0 ,types.table[\cf4 'class'\cf0 ][c][\cf4 'super'\cf0 ],\cf4 "has"\cf0 ,len(types.table[\cf4 'class'\cf0 ][c][\cf4 'methods'\cf0 ]), \cf4 "methods:"\cf0 \
+        \cf3 for\cf0  m \cf3 in\cf0  types.table[\cf4 'class'\cf0 ][c][\cf4 'methods'\cf0 ]:\
+            \cf3 print\cf0  \cf4 " "\cf0 ,m,types.table[\cf4 'class'\cf0 ][c][\cf4 'methods'\cf0 ][m],\cf4 "len"\cf0 ,len(types.table[\cf4 'class'\cf0 ][c][\cf4 'methods'\cf0 ][m])\
+        \cf3 print\cf0  \cf4 "  fields"\cf0 ,types.table[\cf4 'class'\cf0 ][c][\cf4 'fields'\cf0 ]\
+        \cf3 print\cf0  \cf4 ""\cf0 \
+        \
+    \cf3 print\cf0  \cf4 "Hoolllasas"\cf0 \
+    \cf3 print\cf0  types.table[\cf4 'class'\cf0 ][\cf4 'A'\cf0 ][\cf4 'methods'\cf0 ][\cf4 'Zib'\cf0 ]\
+    \cf2 #print types.table['class']['A']['methods']['Zib'][0][1]\cf0 \
+    \cf2 #print types.table['class']['A']['methods']['Zib'][0][2]\cf0 \
+    \cf2 #print types.table['class']['A']['methods']['Regular'][0][0]\cf0 \
+    \cf3 print\cf0  \cf4 "Main"\cf0 \
+    \cf3 print\cf0  \cf4 "  "\cf0 ,types.table[\cf4 'methods'\cf0 ]\
+    \cf3 print\cf0  \cf4 "  "\cf0 ,types.table[\cf4 'fields'\cf0 ]\
+    \
+                             \
+    \cf2 #emitter.comment ('==Type Checking Phase==')\cf0 \
+    \cf2 #ast.accept (TypeChecker (emitter, types))\cf0 \
+        \
+    \cf2 #emitter.comment ('==Code Gen Phase==')\cf0 \
+    \cf2 #ast.accept (CodeGenerator (emitter, semant))\cf0 \
+\
+\cf3 if\cf0  __name__ == \cf4 '__main__'\cf0 :\
+    main (sys.argv[\cf5 1\cf0 :])\
+}

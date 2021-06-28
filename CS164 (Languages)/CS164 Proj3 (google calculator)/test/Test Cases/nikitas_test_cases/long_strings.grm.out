@@ -1,0 +1,25 @@
+(Grammar
+    (Declarations
+        (import ast)
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, E, ]
+                (action { return ast.Plus (n1, n3) })
+            )
+            (production [ E, \+, \+, \+, E, ]
+            )
+            (production [ \+, \+, E, ]
+            )
+            (production [ E, \+, \+, ]
+            )
+            (production [ E, \++, ]
+            )
+            (production [ (epsilon), ]
+            )
+            (production [ \\, ]
+            )
+        )
+    )
+    (StartSymbol E)
+)

@@ -1,0 +1,88 @@
+Sami Eljabali
+Computer Science 61c
+HW1
+
+1.1) 5
+1.2) 1
+1.3) 3
+1.4) 8
+1.5) 19
+1.6) 10
+1.7) 9
+1.8) 11
+1.9) 15
+1.10) 22
+1.11) 18
+1.12) 27
+1.13) 23
+1.14) 14
+1.15) 13
+1.16) 6
+1.17) 24
+1.18) 12
+1.19) 28
+1.20) 2
+1.21) 20
+1.22) 7
+1.23) 25
+1.24) 16
+1.25) 4
+1.26) 17
+1.27) 21
+1.28) 26
+
+1.29) i
+1.30) b
+1.31) e 
+1.32) a
+1.33) h
+1.34) d
+1.35) f
+1.36) b
+1.37) c
+1.38) f
+1.39) d
+1.40) a
+1.41) c
+1.42) i
+1.43) e
+1.44) g
+1.45) a
+
+1.46)a) (7200RPM)/60=(1/2RPM)/t. t=0.004167 seconds
+     b) 0.0003 seconds
+
+1.51) Profit = Costs
+      retail - cost = cost
+      cost  = (($4 * x) * 2) + $10) * 100/90 + $500,000
+      retail -  (8x+10)*100/9 + 500,000 =  (8x+10)*100/9 + 500,00
+      (1.4*8x+10)*100/9 + 500,00 = 2*((8x+10)*100/9 + 500,000 =  (8x+10)*100/9 + 500,00))
+      x = 40177.3 chips
+     
+
+1.52) RISC preformers better than CISC
+
+1.55) At every car manufaturor, there are always different types of classes for every mobile. For example BMW. At the top there is the 7 series which has 8 cylinders and is extremely spaceous. Then there is the 5 series which is middle size and has 6 cylinders. Finally, there is the 3 series which is the smallest type there is that has 4 cylinders and the least amount of features.
+ 
+1.56) Computers essentially loaded data, or instructions which are brought from input devices such as a mouse, keyboard, scanner, or other storage devices such as hard disks, CD's, DVD's and zip drives. Then through electrical pulses data, which can be interpreted as instructions, is moved to memory where all tasks that are ready to be done are stored. Through pipelines, the data is transferred to cache memory. Cache memory is a faster type of memory that helps increase the computer's speed, for it keeps recently used data and quickly sends it to the processor. The processor has two parts the control and the datapath. The datapath at 3 trillion tasks per second processes the instructions. The control unit then manages where the processed information goes. Since the processor recevies millions of instructions at the same time it has no time to keep track of which program or hardware required some instructions to be preformed. That's why the processor gets interupted by them. For example you move your mouse and type on your keyboard at the same time. What the processor does is it starts off whatever got input first, lets say the mouse. The mouse while being processed gets interupted by the keyboard, which is then processed. You would think since the processor can only do one task at a time or a cycle at a time that it couldn't process both devices at the same time. But becuase it is so quick, it gives you the illusion that it does. The output is then displayed through one or more of serval output devices, such as the monitor, and the printer.  
+
+3.1)4096ten = 0000 0000 0000 000 0001 0000 0000 0000bin
+
+3.2)-2047ten = 1111 1111 1111 1111 1111  1000 0000 0001bin
+
+3.3)-2000000ten = 1111 1111 1110 0001 0111 1011 1000 0000bin
+ 
+Problem 2:
+
+a) 1) -148
+   2) 4294967148
+
+b) 1)-1651
+   2)4294965645
+
+c) 1)2147484164
+   2)2147484164
+
+d) 1)1431655775
+   2)1431655775
+

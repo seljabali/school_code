@@ -1,0 +1,15 @@
+ // A FORTRAN-like expression language
+ %import ast
+ %left '+' '-'
+ %left '*' '/'
+ %ignore /[ \t]+/
+ %%
+ E -> E '+' E                            %{ return ast.Plus (n1, n3) %}
+    | E '-' E                            %{ return ast.Minus (n1, n3) %}
+    | E '*' E                            %{ return ast.Mult (n1, n3) %}
+    | E '/' E                            %{ return ast.Div (n1, n3) %}
+    | Primary                            %{ return ast.Primary (n1) %}
+    | _
+    ;
+ Primary -> Integer       %{ return ast.Integer (n1) %} ;
+ Integer -> /[0-9]+/      %{ return int (n1) %} ;

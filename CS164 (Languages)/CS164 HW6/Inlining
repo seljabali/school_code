@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <p>
+      The mouse's coordinates are
+      ({! mouseTop (document) ||| _ !},
+      {! mouseLeft (document) ||| _ !}).
+    </p>
+
+    <div style={! { color: '#FFFFFF', 
+                    backgroundColor: '#336699',
+                    position: 'absolute',
+                    left: delay (mouseLeft (), 100),
+                    top: delay (mouseTop (), 100),
+                    padding: '10px'} !}>
+      {! Math.floor (timer (100) / 1000) !}
+    </div>
+  </body>
+</html>
+ 
+////////////////////////////////////////////////////////////////////////////////////////
+
+<p> <span>
+	<span id="__skipjax_id_1"> _
+	<span id="__skipjax_id_2"> _ 
+	</span>	
+	<script type="text/javascript">
+		insertDom (mouseTop(document), '__skipjax_id_1',"over")
+		insertDom (mouseLeft(document), '__skipjax_id_2',"over")
+	</script>
+</p>
+<div id="__skipjax_id_3" style="">
+<div style=
+  <script type="text/javascript">
+	insertValue (lift (function () { mkObject.apply (this, arguments); },
+                   'color', '#FFFFFF',
+                   'backgroundColor', '#336699',
+                   'position', 'absolute',
+                   'left', __maybeLiftCall (delay ( __maybeLiftCall (mouseLeft), 100))
+                   'top',  __maybeLiftCall (delay ( __maybeLiftCall (mouseTop), 100)),
+             	'__skipjax_id_3', 'style'));
+  </script>
+</div>
+<span>
+	<span id="__skipjax_id_4">
+</span>
+<script type="text/javascript">
+	insertDom (__maybeLiftCall (Math.floor (__maybeLiftCall (timer),100)/100), '__skipjax_id_4')
+</script>
+</body>
+</html>
+////////////////////////////////////////////////////////////////////////////////////////
+<p> <span>
+	<span id="__skipjax_id_1"> _
+	<span id="__skipjax_id_2"> _ 
+	</span>	
+	<script type="text/javascript">
+
+	var currentObj = hook; //insertDom
+    lift (
+        function (newObj) {
+            if (!((typeof(newObj) == 'object') && (newObj.nodeType == 1))) { 
+                var d = document.createElement ('span');
+                d.appendChild (document.createTextNode (newObj));
+                newObj = d;
+            }
+            swapDom (currentObj, newObj);
+            currentObj = newObj;
+            return newObj;
+        },//mouseTop
+		lift (function (coords) { return coords.top; }, //mousePosition
+			 new Behavior (
+		        function (e) {
+		            return (e.pageX || e.pageY) ?  
+		                       {left: e.pageX, top: e.pageY} :
+		                       (e.clientX || e.clientY) ?
+		                           {left: e.clientX + document.body.scrollLeft,
+		                            top: e.clientY + document.body.scrollTop} :
+		                            __defaultMousePos;
+		        },
+		        [hold (extractEvent (domObj, 'mousemove'), __defaultMousePos)],
+		        __defaultMousePos);
+				)
+			)
+
+
+	//insertDom (mouseLeft(document), '__skipjax_id_2',"over")
+	var currentObj = hook; //insertDom
+    lift (
+        function (newObj) {
+            if (!((typeof(newObj) == 'object') && (newObj.nodeType == 1))) { 
+                var d = document.createElement ('span');
+                d.appendChild (document.createTextNode (newObj));
+                newObj = d;
+            }
+            swapDom (currentObj, newObj);
+            currentObj = newObj;
+            return newObj;
+        },//mouseLeft
+	    lift (function (coords) { return coords.left; },
+		 new Behavior (
+	        function (e) {
+	            return (e.pageX || e.pageY) ?  
+	                       {left: e.pageX, top: e.pageY} :
+	                       (e.clientX || e.clientY) ?
+	                           {left: e.clientX + document.body.scrollLeft,
+	                            top: e.clientY + document.body.scrollTop} :
+	                            __defaultMousePos;
+	        },
+	        [hold (extractEvent (domObj, 'mousemove'), __defaultMousePos)],
+	        __defaultMousePos);
+			)
+		)
+		
+
+	//insertValue (lift (function () { mkObject.apply (this, arguments); },  
+	//function isDynamic (x) {return x instanceof Behavior || x instanceof Event || x instanceof Source;}
+	
+	lift (function (v, i) { deepUpdate (domObj, v, i); },
+	                 value, index);
+	               'color', '#FFFFFF',
+                   'backgroundColor', '#336699',
+                   'position', 'absolute', //'left', __maybeLiftCall (delay ( __maybeLiftCall (mouseLeft), 100))
+                   'left', lift (function (val) { //delay
+								setTimeout (function () { injectEvent (val, [src]); }, lag); },
+			          			
+								lift (function (coords) { return coords.left; },//mouseLeft
+									new Behavior (
+								        function (e) {
+								            return (e.pageX || e.pageY) ?  //mousePosition
+								                       {left: e.pageX, top: e.pageY} :
+								                       (e.clientX || e.clientY) ?
+								                           {left: e.clientX + document.body.scrollLeft,
+								                            top: e.clientY + document.body.scrollTop} :
+								                            __defaultMousePos;
+								        },
+								        [hold (extractEvent (domObj, 'mousemove'), __defaultMousePos)],
+								        __defaultMousePos);
+								);
+			       'Top', lift (function (val) { //delay
+							setTimeout (function () { injectEvent (val, [src]); }, lag); },
+							lift (function (coords) { return coords.top; },//mouseLeft
+									new Behavior (
+								        function (e) {
+								            return (e.pageX || e.pageY) ?  //mousePosition
+							                       {left: e.pageX, top: e.pageY} :
+							                       (e.clientX || e.clientY) ?
+							                           {left: e.clientX + document.body.scrollLeft,
+							                            top: e.clientY + document.body.scrollTop} :
+						                            	__defaultMousePos;
+								        },
+								        [hold (extractEvent (domObj, 'mousemove'), __defaultMousePos)],
+								        __defaultMousePos);
+								);
+					
+					
+					
+					
+	//insertDom (__maybeLiftCall (Math.floor (__maybeLiftCall (timer),100)/100), '__skipjax_id_4')
+	lift (
+	        function (newObj) {
+	            if (!((typeof(newObj) == 'object') && (newObj.nodeType == 1))) { 
+	                var d = document.createElement ('span');
+	                d.appendChild (document.createTextNode (newObj));
+	                newObj = d;
+	            }
+	            swapDom (currentObj, newObj);
+	            currentObj = newObj;
+	            return newObj;
+	        }, 
+	        Math.floor //timer
+				var timerStream = lift (
+			        function (newInterval) {
+			            if (currentTimer !== undefined)  clearInterval (currentTimer);
+
+			            var timer_source = staticTimer (newInterval);
+			            currentTimer = timer_source[0];
+			            return timer_source[1];
+			        }, intervalMs);
+			);

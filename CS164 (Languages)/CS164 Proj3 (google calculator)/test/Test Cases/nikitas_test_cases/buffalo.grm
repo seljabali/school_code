@@ -1,0 +1,10 @@
+//Buffalo+ is a valid english sentence!
+%%
+S -> NP VP;
+NP -> NP RC | PN N;
+RC -> NP V;
+VP -> V NP;
+PN -> 'Buffalo';
+N -> 'buffalo';
+V -> 'buffalo';
+// try parsing "Buffalo buffalo Buffalo buffalo buffalo buffalo Buffalo buffalo"!

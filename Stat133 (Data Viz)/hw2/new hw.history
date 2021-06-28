@@ -1,0 +1,8 @@
+file = file("/Users/samieljabali/Desktop/stathw2.txt")
+data2 = read.table(file,header = TRUE, sep = " ")
+ss = data.frame(x=data2$x[1:254], y=data2$y[1:254], signal = c(data2$S1[1:254], data2$S2[1:254], data2$S3[1:254],data2$S4[1:254],data2$S5[1:254]), accessPoints = rep(c(1,2,3,4,5), c(254,254,254,254,254)), client = rep(c(1:254),5))
+AP = data.frame(x=data2$x[250:254], y = data2$y[250:254])
+x = c(rep(19, length=254), rep(213, length=254), rep(206, 254), rep(12, 254), rep(110, 254))
+y = c(rep(49, length= 254), rep(34, length= 254), rep(120, 254), rep(118, 254), rep(66, 254))
+distance = sqrt(  (ss$x - x)^2 + (ss$y - y) ^ 2)
+distance

@@ -1,0 +1,306 @@
+
+<html>
+<head><title>CS61C - Project 4: Cache Simulator</title>
+</head>
+<body>
+
+<center>
+<font size=+2>Machine Structures. Summer 2006, UC Berkeley</font><br>
+<font size=+4>Project 4: Cache Simulator</font><br>
+TA in charge: Michael (<a href="mailto:cs61c-tb@imail.eecs.berkeley.edu">cs61c-tb@imail</a>)<br>
+Due date: Tuesday, August 15, 2006 at 11:59pm
+
+<p><b><font color="#ff0000">Last Updated: Saturday, August 15, 2006 at 01:54pm</font></b>
+</center>
+
+
+<p><font size=+2><b>Updates</b></font><br>
+
+<ul>
+<li><b>August 14, 2006 at 01:54pm</b> -- The oracle has been updated to fix a bug when the cache was configured in write back mode. The dirty bit should revert back to 0 (or VIRGIN) if a dirty cache block is sent from the cache to physical memory. The oracle did not do that previously. Please update your local copy of the oracle.
+<li><b>August 12, 2006 at 05:29pm</b> -- Updated <code>nogui.c</code> and the oracles to fix a bug related to how the LRU information was being displayed in no gui mode. Please update your copies of those files.
+<li><b>August 09, 2006 at 11:26am</b> -- Updated <code>Makefile</code> and <code>gui.c</code> to make it executable friendly with Ubuntu (possibly for other versions of linux).
+<li><b>August 09, 2006 at 11:09am</b> -- Oracle now available for <a href='tips_oracle_ubuntu'>Ubuntu</a>.
+<!--<li><b>April 30, 2006 at 04:15pm</b> -- Clairified the contradiction in "Getting Started" section. Some associativity value should be used with <code>cache[]</code> and the index should be used with <code>block[]</code>.
+<p>
+<li><b>April 30, 2006 at 12:48am</b> -- I will stop by 271 Soda Sunday night to answer last minute questions about this project. What time I'll stop by, I'm not sure but I will at least make an appearance before 11:59pm that Sunday.
+<p>
+<li><b>April 29, 2006 at 03:50pm</b> -- The oracle has been updated to fix a bug when the cache was configured in write back mode. The dirty bit should revert back to 0 (or VIRGIN) if a dirty cache block is sent from the cache to physical memory. The oracle did not do that previously. Please update your local copy of the oracle.
+<p>
+<li><b>April 28, 2006 at 02:44pm</b> -- FAQ has been updated to define associativity and set.
+<p>--also tips.h updated to clarify purpose of <code>block_size</code> variable and the <code>mode</code> argument to <code>accessDRAM() function</code>
+<p>
+<li><b>April 28, 2006 at 06:12am</b> -- <font color=#ff0000><b>*Critical Update*</b></font> Due to bad a modeling approach, I will clairify the meaning of <code>assoc</code>, <code>block_count</code>, and <code>block_size</code>. I hope this will finally end the confusion about the meaning of the three extern variables.
+<p><ul>
+<li><code>assoc</code> represents associativity. associativity is defined to be the number of cache blocks a memory block CAN be placed into using the index of the memory block
+<p>
+<li><code>block_count</code> represents the number of unique indexes in the cache. A set would then be defined as the collection of cache blocks associated with the SAME index. This is the level where you should use the index obtained from the memory address.
+<p>
+<li><code>block_size</code> represents how much data the cache is going to hold in each cache block
+</ul>
+<p>The order of these three variables is the hierarchical order of the cache data structure. You enter the first level using a value associated with associativity. You enter the next level using the index you obtain from the from the memory address. Finally, you enter the last level using the offset from the memory address.
+<p>
+<li><b>April 25, 2006 at 08:32am</b> -- There was an error in <code>memory.c</code> when determining the transfer size for <code>OCT_WORD_SIZE</code>. There should be a <code>break;</code> statement after <code>transfer_size = 32;</code> statement (around line 100). <code>memory.c</code> has been updated.
+<p>
+<li><b>April 24, 2006 at 09:49am</b> -- Simplified description of <code>memcpy()</code> has been given in the "Tasks" section
+<p>
+<li><b>April 23, 2006 at 02:48pm</b> -- FAQ has been updated to provide specific directions added on how to get this project running on Cygwin/Windows
+<p>
+<li><b>April 23, 2006 at 01:12am</b> -- "Getting Started" section has been updated to mention how each of the cache levels are regulated by the various parameters.
+<p>
+<li><b>April 23, 2006 at 01:03am</b> -- At the request of a few, the GUI (and non-GUI) has been updated to provide an index-based view of the cache (versus the associativity based view that was originally before). This index-based view of the cache is similar to the approach seen in CAMERA, while the associativity view is what is seen in figure 7.17 of the textbook. You can switch between either of the views via the 'Cache Config' button. For assurance, this new view has <b>NO</b> consequence to any code you have written so far for <code>cachelogic.c</code>.
+<p>For those who want an index based view of the cache, you will have to update the following four files: <code>tips.h</code>, <code>tips.c</code>, <code>gui.c</code>, and <code>nogui.c</code>
+<p>
+<li><b>April 22, 2006 at 01:32pm</b> -- <code>tips.c</code> and the oracles have been updated to not permit block sizes of 1 or 2 bytes. This means you do not need to support situations where the cache has block size of 1 or 2 bytes.
+<p>
+<li><b>April 17, 2006 at 12:32pm</b> -- GUI needs to be told of when changes happen. This is easily accomplished using <code>refresh_cache_display()</code> function described in <code>tips.h</code>
+<p>-- Added an oracle that works with x86/Solaris named <code>tips_oracle.x86</code>
+<p>
+<li><b>April 16, 2006 at 08:13pm</b> -- Changed comment about purpose of the <code>data</code> argument in <code>tips.h</code> for <code>accessMemory()</code> function (line 117). <code>data</code> represents a pointer to a single word, not an array of words. It is suppose to represent what the CPU does with lw/sw as it only gets 32-bits from memory (for lw) or sends 32-bits to memory (for sw).
+<p>-- Also, <code>tips.c</code> has been modified to prevent block size of just 1 byte.
+<p>-- <code>TransferUnit</code> enum definition in <code>tips.h</code> has been updated to be the following:
+<pre>    typedef enum {BYTE_SIZE = 0, <font color="#ff0000"><b>HALF_WORD_SIZE,</b></font> WORD_SIZE, DOUBLEWORD_SIZE, QUADWORD_SIZE, OCTWORD_SIZE} TransferUnit;</pre>
+<p>-- <code>accessDRAM()</code> function in  <code>memory.c</code> has been updated to support <code>HALF_WORD_SIZE</code> in the switch statement.
+<p>
+<li><b>April 14, 2006 at 05:02pm</b> -- Clarified a few items in "Getting Started" pertaining to Write-Through policy
+<p>
+<li><b>April 14, 2006 at 02:25pm</b> -- An error in the original code for <code>cachelogic.c</code> caused the project not to compile. <code>WORD</code> should be <code>WORD_SIZE</code>. <code>cachelogic.c</code> now reflects this change.
+-->
+</ul>
+
+<hr width=75%>
+
+
+<p><font size=+2><b>Purpose</b></font><br>
+
+<p>In this project, you will be implementing the cache logic of a MIPS simulator, called <b>TIPS</b>. Most of the code for <b>TIPS</b> has been implemented for you, except the cache logic.
+<p><hr width=75%>
+
+<p><font size=+2><b>Setup</b></font>
+
+<p>To copy tips to your home directory, enter the following commands:
+
+<pre>
+  % cd
+  % mkdir proj4
+  % cd proj4
+  % cp ~cs61c/proj4/* .
+</pre>
+
+<p>To compile and execute <b>TIPS</b>, do the following:
+
+<pre>
+  % gmake
+  % ./tips
+</pre>
+
+<p>The given code has a default cache size of 0, because it has no cache logic written into it yet.  After you build and run <b>TIPS</b>, you can configure the cache by clicking on the "Config Cache" button at the lower left of the interface. After configuring the cache, the GUI should update showing you a cache similar to the parameters you have entered.
+
+<p><hr width=75%>
+
+<p><font size=+2><b>GUI Walkthrough</b></font>
+
+<p>The GUI has been designed to be straight-forward. There are four main components to the GUI interface: register display, execution log, cache display, and control panel.
+
+<p>
+<table border=0 width=100%>
+<tr valign=center>
+<td><img src=gui.jpg></td>
+<td width=5%>&nbsp;</td>
+<td>
+<p>A description of each of the GUI widgets are described as follows:
+<ol>
+<li>Register display -- detailed view of the current state of the registers
+<li>Execution log -- log of actions by <b>TIPS</b>. Messages can be displayed in this box using the <code>append_log()</code> function.
+<li>Cache display -- current snapshot of the state of the cache. The meaning of the column headings on each unit should be obvious.
+<ul>
+<li>Blk - block number
+<li>V - valid bit
+<li>D - dirty bit
+<li>LRU - LRU data
+<li>Tag - Tag for the block
+<li>Numbers - offset
+</ul>
+<li>Config Cache -- configure the cache parameters
+<li>Load Program -- loads a dump file for execution
+<li>Step -- execute one instruction
+<li>Run -- automate execution
+<li>CPU -- reset the PC and reinit registers
+<li>Cache -- flush the cache
+<li>Output -- clear the execution log
+<li>Quit -- exit <b>TIPS</b>
+</ol>
+</td>
+</tr>
+</table>
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Task</b></font>
+
+<p>To complete this project, you must complete the <code>accessMemory()</code> function in <code>cachelogic.c</code>. This function is the gateway to accessing actual memory, represented by the <code>accessDRAM()</code> function. Thus, the behavior of <code>accessMemory()</code> function should be a cache that will call the <code>accessDRAM()</code> function as needed.
+
+<p>To ensure a variety of caches can be simulated, you will be required to dynamically support 5 properties:
+<ul>
+<li>Associativity (ranges from 1 to 5)
+<li>Number of unique indexes (2<sup>n</sup> where n ranges from 0 to 4)
+<li>Block size (2<sup>n</sup> bytes where n ranges from 2 to 5)
+<li>Replacement Policy (LRU and Random)
+<li>Memory Synchronization Policy (Write Back and Write Through)
+</ul>
+
+<p>More information about the variables you will be working with and the functions at your disposal with can be ascertained by looking over <code>tips.h</code>.
+
+<p>You should keep the following things in mind when formulating the code to do the task at hand:
+<ul>
+<li><code>-ansi</code> and <code>-pedantic</code> flags are enabled on <code>gcc</code>.
+<li><code>accessDRAM()</code> requires a <code>byte</code> pointer when it is called.
+<li>There are 4 bytes in 1 word.
+<li>The tag information must be right aligned. For example, if the tag is only 25 bits for a given cache configuration, the top 7 bits must always be 0.
+<li>When you are moving things between cache and physical memory, a <b>BLOCK</b> is transfered, <b>NOT</b> just a word nor a byte. Thus, if the block size is 16 bytes, when you want to move data from cache to memory (or vice versa) you must make sure 16 bytes travel between the cache and physical memory on your <code>accessDRAM()</code> function call.
+<li>Write Through policy requires the <b>ENTIRE</b> block be transferred on a write to physical memory operation.
+<li>To move data to and from a cache block, the <code>memcpy()</code> function should be used. The function prototype of <codE>memcpy()</code> is defined as follows:
+<center><pre>void* memcpy(void* dest, void* src, size_t amount);</pre></center>
+<p>where <code>dest</code> is the desination of where things should be copied, <code>src</code> is the source to be copied, and <code>amount</code> is the number of bytes to copy. A more detailed description of this function can be found in K&R.
+<!--<li>The GUI needs to be told of when you make changes to the cache. Thus, if you want to see changes immediately, you can call the <code>refresh_cache_display()</code> function.-->
+</ul>
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Getting Started</b></font>
+
+<p>Look over what is mentioned in <code>tips.h</code> and <code>cachelogic.c</code>. <code>tips.h</code> gives you an overview of how the program was put together. A section of that file has been marked as something you should read to get an idea of what functions you should be calling as well as the variables you are working with. <code>cachelogic.c</code> contains a slightly more detailed explanation of what you should be writing in <code>accessMemory()</code> function.
+
+<p>The cache data structure is divided into three levels:
+<ul>
+<li>The first level of entry is selecting which set you want. For example, <code>cache[2]</code> states that you are going to be accessing the 3rd set of the cache. This level is regulated by <code>set_count</code>.
+<li>The next level is selecting the block you want in the set. That is specified by the <code>block</code> field. For example, <code>cache[2].block[5]</code> accesses the 6th block of the 3rd set. The block that is returned gives access to tag, valid bit, dirty bit, and lru information of the block. This level is regulated by the associativity of the cache.
+<li>The final level of entry is selecting which bytes of the block do you want retrieve or modify. The data contained in a block is represented by the <code>data</code> field of a block. Using the offset, a particular byte can be referenced.
+</ul>
+
+<p>There are two methods to access the LRU information of a block. The first method is via <code>lru.value</code>, a field that will hold LRU information in integer format. The other method is via <code>lru.data</code>, a field that will hold LRU information represented in another format (as its type is of void*, which means it can be a pointer to anything). You are free to use either methods to represent the LRU, just as long as the LRU behaves in a deterministic fashion (i.e. no two blocks (when both are valid) will ever be candiates for replacement at the same time).
+
+<p>In a nutshell, the <code>accessMemory()</code> function is a function that facilitates communication between the CPU and DRAM. The code within the <code>accessMemory()</code> function manipulates the cache data structure defined in <code>tips.h</code>.
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Creating Dump Files for Testing</b></font>
+
+<p><b>TIPS</b> contains a subset of the MIPS R2000 processor instruction set. As a result, it accepts MIPS code dumped by <code>spim</code>. The dump file can be loaded into the program by clicking on the "Load Program" button.
+
+<p>Dumpfiles should be created using <code>spim</code>. The following command sequence will ensure you make a compatible dumpfile for <b>TIPS</b>. The delayed-branches flag is VERY important to get branches to work properly with <b>TIPS</b>.
+<pre>
+  cs61c@nova [22] ~/proj5 > spim <b>-delayed_branches</b>
+  SPIM Version 7.2.1 of August 28, 2005
+  Copyright 1990-2004 by James R. Larus (larus@cs.wisc.edu).
+  All Rights Reserved.
+  See the file README for a full copyright notice.
+  Loaded: /usr/spim/exceptions.s
+  Loaded: /usr/spim/cs61c-io.s
+  (spim) load "test.s"
+  (spim) dump "test.dump"
+  Dumped 6 words starting at 0x0040006c to file test.dump
+  (spim) exit
+</pre>
+
+<i>If spim 7.2.1 is giving odd dump files (i.e. dump files larger than your own code), then you can use <code>spimsal</code> to create your dumpfiles. You can start <code>spimsal</code> by just typing the name of the program (no need to add the delayed-branches flag). Remember if you are using <code>spimsal</code>, you need to use <code>__start:</code> as the start point of your assembly file when you load it. Otherwise, you will get an error.</i>
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Frequently Asked Questions</b></font>
+
+<p><b>Q: What are the definitions of associativity and set?</b><br>
+A: Associativity is the number of cache blocks where a given memory block <u>can</u> be placed into using the memory block's index.
+
+<p>Set is the collection of blocks associatied with the <u>SAME</u> index. The number of unique indexes is equal to the number of sets you have.
+
+<p><b>Q: How do I know my cache is working correctly?</b><br>
+A: An oracle will be provided in the project folder. The name of the oracle is <code>tips_oracle</code>.
+
+<p><b>Q: Is an oracle available for my home computer?</b><br>
+A: There are also an oracle available for <a href='tips_oracle_cygwin.exe'>Cygwin/Windows</a> and <a href='tips_oracle_ubunutu'>Ubuntu</a> (WIP).
+
+<p><b>Q: I am updating the cache in my function, but the GUI isn't doing anything. What is going on?</b><br>
+A: The GUI needs to be told of when changes are made to the cache. As a result, the GUI functions at your disposal are mentioned in <code>tips.h</code>. The function that merely updates the display is the <code>refresh_cache_display()</code> function.
+
+<p><b>Q: How much of the GUI behavior do I have to copy?</b><br>
+A: No, you do not have to copy any of the GUI behavior (i.e. the flashes, the messages, etc). But you do have to implement the cache logic in <code>cachelogic.c</code>
+
+<p><b>Q: Should I follow the LRU algorithm seen in COD?</b><br>
+A: No, you should not follow the LRU algorithm in COD. The LRU algorithm in COD is an approximation LRU algorithm, which produces ties between valid blocks that are candidates for replacement. As a result, it is suggested you should use a true LRU algorithm, where there is a unique ranking between valid blocks. In other words, there should never be any randomness in your LRU replacement policy, nor should it always default to kicking just one block out in the event of a "tie" (two LRU values being the same for two valid blocks--blocks with valid bit set to 1).
+
+<p><b>Q: Do I have to use numbers for my LRU algorithm?</b><br>
+A: No, you do not have to use numbers for your LRU algorithm. If you want to use something else (such as time structs), use the <code>lru.data</code> to be the pointer to this data. Make sure you update <code>init_lru()</code> function and <code>lru_to_string()</code> function.
+
+<p><b>Q: Are the addresses in this project byte addressed or word addressed?</b><br>
+A: They are byte addressed.
+
+<p><b>Q: What do you mean by unit of transfer between cache and physical memory is in blocks?</b><br>
+A: This means if you have blocks in your cache with a size of 4 words, you must always move data to and from physical memory in units of 4 words. There should never be a time in which the amount of data you move to physical memory from cache be less or greather than the block size of the cache.
+
+<p><b>Q: Can I add more files to the project?</b><br>
+A: You can, but we are only going to be using <code>cachelogic.c</code> from your submission when we test your submission.
+
+<p><b>Q: Can I work from home without Exceed?</b><br>
+A: Yes, there is a "No GUI" mode for <b>TIPS</b> that can be activated by adding the <code>-nogui</code> flag when starting up <b>TIPS</b>. To navigate the "No GUI" interface, type "help" on the prompt after starting up <b>TIPS</b>
+
+<p><b>Q: Can I work from home without using SSH?</b><br>
+A: Yes, the Makefile in the <code>proj4</code> folder comes with lines that allow compilation with Cygwin/Windows or Linux automatically.
+
+<p><b>Q: Can I start <b>TIPS</b> with a dump file already loaded?</b><br>
+A: Yes, <b>TIPS</b> will interpret the last argument on the command line as a name of a file. If you want to start up <b>TIPS</b> with a dump file named <code>test23.dump</code>, you can type the following:
+
+<pre>
+  % ./tips test23.dump
+</pre>
+
+<p><b>Q: I typed in <code>make</code> and it says there is an error in the Makefile. What's wrong?</b><br>
+A: Use <code>gmake</code>
+
+<p><b>Q: I ran gmake and I can't compile this project on Cygwin/Windows because of *some reason*. What do I have to do to get it to compile on Cygwin/Windows?</b><br>
+A: This project's GUI interface is built on <a href="http://www.gtk.org">GTK+</a>. Compiling this project on Cygwin/Windows requires you at least install <code>pkg-config</code>, <code>atk</code>, <code>gtk</code>, <code>glib</code>, and <code>pango</code> libraries (all available via Cygwin's setup program). Information about specifics of the general GTK+ installation can be found <a href="http://developer.gnome.org/doc/API/2.0/gtk/gtk-building.html">here</a>.
+
+<p><b>Q: What are the specific directions of getting this project compilable on Cygwin/Windows?</b><br>
+A: Try the following, assuming you already have a Cygwin/Window installation with x11 and gcc installed:
+<ol><li>Download and start Cygwin's setup program
+<li>On the 'Select Packages' portion of the install, enable the following packages to install: <code>atk-devel</code>, <code>glib-devel</code>, <code>gtk+-devel</code>, <code>gtk2-x11-devel</code>, <code>pango-devel</code>, and <code>pkg-config</code>. If you haven't installed Cygwin previously, you will also need <code>xterm</code>, <code>xorg-x11-devel</code>, <code>gcc</code>, <code>gdb</code>, <code>make</code>, and <code>emacs</code>.
+<li>Install those selected packages
+<li>Exit from the setup program
+<li>Download <a href="http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/">Bitstream Vera</a> fonts from here. Save the ZIP or the tarball in some place you can get to.
+<li>Extract all the fonts to <code>/usr/share/fonts</code>, (formerly C:\cygwin\usr\share\fonts)
+<li>Start up the X11 server -- you must have X11 running for the GUI to display
+</ol>
+If you follow these directions, a simple <code>make</code> should compile the project, where you can then just type <code>tips</code>
+
+<p><b>Q: Can I use other compilers on Windows?</b><br>
+A: All the project files are configured for use Sparc/Solaris or Cygwin/Windows. If you want to use other compilers (i.e. Microsoft Visual Studio), you will have to find the libraries usable with those compilers and make the appropriate modifications. Remember, you must make sure your program compiles on the lab computers in 271 Soda.
+
+<p><b>Q: Do I have to figure out answers to "Things to Ponder" section for getting full credit on this project?</b><br>
+A: No, but they can give you a break when you need one.
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Submission</b></font>
+
+<p>You will only be required to submit one file, <code>cachelogic.c</code>. You can submit a <code>README</code> if you wish to convey a message to your reader when grading this project. Thus, all your code MUST be in <code>cachelogic.c</code>. When we test your project, we will be using our own files (including the Makefile) except for <code>cachelogic.c</code>.
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Bug Submission/GUI Suggestions</b></font>
+
+<p><b>TIPS</b> originally was written several years ago to work with a GUI API known as <a href="http://www.tcl.tk">Tcl/Tk</a>. Because TIPS has been redesigned from the bottom up, bugs fixed in the previous version of the GUI interface may have been reintroduced or bugs may exist in the code itself. If you find a bug, the staff (i.e. the TA in charge) would appreciate it if the bug was brought to his attention via email or the newsgroup. Therefore, if you find a bug in the oracle or in the interface, or if you have suggestions to improve the interface, please contact the TA in charge.
+
+<p><hr width=75%>
+
+<p><font size=+2><b>Things to ponder</b></font><br>
+<ul>
+<li>Whose hair is that on the title bar for the GUI snapshot?
+<li>What do you get when you cross bungee cord and an owl?
+<li>Will this <a href="http://www-inst.eecs.berkeley.edu/~lem5202/nanaca-crash_v105.swf">flash</a> help you relieve your stress?
+<li>Perhaps you will like this <a href="http://ccgi.gdward.plus.com/cgi-bin/tetris/index.php">game</a> more...
+<li>Is it possible to destroy the earth? You may be <a href="http://qntm.org/destroy">surprised</a>
+</ul>
+
+<p>
+
+</body></html>

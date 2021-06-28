@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.3.9: http://docutils.sourceforge.net/" />
+<title>U.C. Berkeley Spring 06, CS61c</title>
+<link rel="stylesheet" href="../default.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="u-c-berkeley-spring-06-cs61c">
+<h1 class="title">U.C. Berkeley Spring 06, CS61c</h1>
+<h2 class="subtitle" id="lab1-simple-c-and-number-representation">Lab1: Simple C and Number Representation</h2>
+<!-- $Header: /home/ff/cs61c/cvsroot/assignments/lab/01.intro/index.rst,v 1.13 2006/01/18 00:56:27 cs61c Exp $ -->
+<table border="0" width="100%" cellpadding="2" cellspacing="0">
+<tr><td width="10%"><h3>Name</h3></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td width="10%"><h3>Section</h3></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+</table><div class="section" id="background">
+<h1><a name="background">Background</a></h1>
+<div class="section" id="goals">
+<h2><a name="goals">Goals</a></h2>
+<p>These lab exercises are intended to show you how to run a C 
+program on the EECS instructional computers, to introduce you to the gdb 
+debugger, and to get you thinking about the internal representations of 
+numbers.</p>
+</div>
+<div class="section" id="reading">
+<h2><a name="reading">Reading</a></h2>
+<ul class="simple">
+<li>K&amp;R: 1.1-1.5</li>
+<li>P&amp;H: 3.1-3.2</li>
+</ul>
+</div>
+<div class="section" id="accounts">
+<h2><a name="accounts">Accounts</a></h2>
+<p>You need to have an EECS instructional account (cs61c-*) in order to
+do your lab work.  Most importantly, you will need to log in to this
+account in order to enroll in the class.  Don't forget to change your
+password once you have logged in.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h1><a name="exercises">Exercises</a></h1>
+<div class="section" id="setup">
+<h2><a name="setup">Setup</a></h2>
+<p>Copy the contents of ~cs61c/labs/01 to a suitable location in
+your home directory.</p>
+<pre class="literal-block">
+$ mkdir ~/lab
+$ gcp -R ~cs61c/labs/01/ ~/lab
+</pre>
+</div>
+<div class="section" id="exercise-1-simple-c-program">
+<h2><a name="exercise-1-simple-c-program">Exercise 1: Simple C program</a></h2>
+<p>Fill in the blank in the following C program, also in output0.c, so that its 
+output is a line containing 0. Don't change anything else in the program.</p>
+<pre class="literal-block">
+#include &lt;stdio.h&gt;
+int main ( ) {
+  int n;
+  n = _____;
+  printf (&quot;%c\n&quot;, n);
+  return 0;
+}
+</pre>
+<p>To verify your solution, compile it and run the resulting binary:</p>
+<pre class="literal-block">
+$ gcc -c output0.c
+$ gcc output0.o -o output0
+$ ./output0
+0
+</pre>
+<div class="section" id="checkoff">
+<h3><a name="checkoff">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >Show your TA how you run output0.</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+<div class="section" id="exercise-2-debugger">
+<h2><a name="exercise-2-debugger">Exercise 2: Debugger</a></h2>
+<p>Compile your solution to exercise 1 with the &quot;-g&quot; option. This causes gcc to 
+store information in the executable program for gdb to make sense of it. Then 
+single-step through the whole program by:</p>
+<ol class="arabic simple">
+<li>setting a breakpoint at main</li>
+<li>giving gdb's run command</li>
+<li>using gdb's single-step command</li>
+</ol>
+<p>Type <tt class="docutils literal"><span class="pre">help</span></tt> from within gdb to find out the commands to do these things.</p>
+<div class="section" id="id1">
+<h3><a name="id1">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >Set the breakpoint at main, and show your TA how you run upto that breakpoint.</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >Show your TA how you single step a program.</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+<div class="section" id="exercise-3-octal-dump">
+<h2><a name="exercise-3-octal-dump">Exercise 3: Octal Dump</a></h2>
+<p>The program <tt class="docutils literal"><span class="pre">mysteryout</span></tt> apparently produces a blank line as output
+when it is executed.  Find out what it really prints using the <tt class="docutils literal"><span class="pre">od</span></tt>
+(octal dump) command. Running &quot;man od&quot; will give you
+information on how it works.  Print the output as hexadecimal numbers
+(hex).  You will learn more about hex numbers in next lecture.
+<em>Hint</em>: The output is a sequence of 5 bytes.  Therefore, it is best to
+look at the output byte by byte using <tt class="docutils literal"><span class="pre">-t</span></tt> switch of <tt class="docutils literal"><span class="pre">od</span></tt>.</p>
+<div class="section" id="id2">
+<h3><a name="id2">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >Show the output of mysteryout in hexadecimal numbers.</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >Show the output of mysteryout in decimal numbers.</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+<div class="section" id="exercise-4-the-biggest-integer">
+<h2><a name="exercise-4-the-biggest-integer">Exercise 4: The Biggest Integer</a></h2>
+<p>In Friday's class, we will discuss number representation. In
+particular, we are going to discuss
+unsigned integers and two's complement, the almost ubiquitous format for 
+signed integers. Look at <tt class="docutils literal"><span class="pre">biggestInt.c</span></tt>. You may wish to read through the 
+comments but at this point it is not critical that you understand exactly how 
+the program works. Basically, it is a C program that will tell you some 
+useful information about certain C data types. It does this by exploiting the 
+fact that C does not check for overflow and wrap around conditions. Compile 
+and run the program and answer the following questions:</p>
+<ol class="arabic simple">
+<li>The first piece of information output by the program tells you the value 
+of the most significant bit (MSB) of an unsigned int on your terminal. Based 
+on this information, How many bits does the C data type unsigned int have?</li>
+<li>The second piece of information tells you the value of the largest 
+positive signed long on your terminal. Based on this information, how many 
+bits does the C data type long have?</li>
+<li>The third piece of information tells you the value of the most negative 
+signed int on your machine. Based on this information, do the unsigned int 
+and signed int have the same number of bits?</li>
+<li>2's Complement number representations have one more negative number than 
+they do positive numbers. That is, the most negative number does not have a 
+positive counter-part. The final piece of information printed is the signed 
+value of what you get when you try to negate the most negative value. Can you 
+explain why this happens?</li>
+</ol>
+<div class="section" id="id3">
+<h3><a name="id3">Checkoff</a></h3>
+<table border="1" width="90%" align="center" cellpadding="4" cellspacing="0">
+<tr><td width="90%" height="40" valign="center" align="left" >
+Answer to question 1
+</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >
+Answer to question 2
+</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >
+Answer to question 3
+</td><td>&nbsp;</td></tr>
+<tr><td width="90%" height="40" valign="center" align="left" >
+Answer to question 4
+</td><td>&nbsp;</td></tr>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr class="footer" />
+Generated by <a class="reference" href="http://docutils.sourceforge.net/">Docutils</a> from <a class="reference" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> source.
+
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+ // A for loop-like expression language
+ %import ast
+ %ignore /[ \t]+/
+ %%
+ forloop -> 'for' '(' assignment ';' expr ';' assignment ')' assignment ;
+ assignment -> var '=' expr ';' ;
+ var -> /[a-zA-Z][a-zA-Z0-9_]*/ ;
+ expr -> primary '+' primary %{ return ast.Plus (n1, n3) %} ;
+ primary -> integer       %{ return ast.Integer (n1) %} ;
+ integer -> /-?[0-9]+/      %{ return int (n1) %} ;
+

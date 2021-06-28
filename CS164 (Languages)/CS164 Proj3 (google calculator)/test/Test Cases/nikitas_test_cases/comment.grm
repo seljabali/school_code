@@ -1,0 +1,9 @@
+//This is a comment that should be ignored
+%left '+' //Here is another comment
+%% //And another
+A -> A '+' B
+//And yet another comment
+   | B ; //So many comments
+B -> /[0-9]+/ ;
+  //   Everywhere you look // yaya
+C -> /[a-z]/;

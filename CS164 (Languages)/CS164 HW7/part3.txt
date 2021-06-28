@@ -1,0 +1,129 @@
+Sami Eljabali
+CS164-BH
+HW7
+
+Q1)
+var secs = seconds()
+insertValue(secs, "a", "innerHTML")
+
+
+b)
+var o = seconds % 2 == 0 ? {c: milliseconds} : {c: seconds};
+var v = o.c
+insertDom(v, "a","innerHTML");
+
+expect: 12345....999 1 123....999 3
+prefer  12345....999 1 123....999 3
+
+c)
+function a (v) {
+  v.c++;
+  return v;
+}
+var o = {c: milliseconds}
+insertValue(o.c, "a", "innerHTML")
+v = a(o);
+insertValue(o.c, "b","innerHTML");
+
+expect: 
+a-> 13579 
+b-> 246810
+
+prefer:
+a-> 13579 
+b-> 246810
+
+d)
+function a (v) {
+  v.c++;
+  return v;
+}
+var o = seconds() % 2 == 0 ? {c: milliseconds()} : {c: seconds()};
+a(o);
+var v = o.c
+insertValue(v, "a","innerHTML");
+
+expect: 
+a: 123123 123123002 123123003 123123004 123123005 .... 123125 123125002 
+
+prefer:
+a: 123123 123123002 123123003 123123004 123123005 .... 123125 123125002 
+
+
+e)
+function f(x) {
+  insertValue((new Date()).getSeconds(), "a", “innerHTML”);
+}
+f(seconds());
+
+expect: 123123 123124 123125
+prefer: 123123 123124 123125
+
+Question 2:
+a)
+var s = seconds();							
+function hit (v){alert('hit');}    ====> seconds(function hit (v){alert('hit');})
+hit(s);
+
+b)
+function count (n) {													
+  return collect(n, function(acc,v) {return acc + 1;}, 0);		
+}															
+count.__doNotLift = true;
+var numRequests = count(changes(requests));
+==>
+function count (n) {													
+  return collect(n, function(acc,v) {return acc + 1;}, 0);		
+  self.lift = false
+}
+var numRequests = count(changes(requests));
+
+c)
+var history = [];
+function log(v) {
+    history.push(v);
+}
+function sumCounts (x, y) {
+  var cx = count(x);
+  log(cx + ': first count changed: ' + x);
+  var cy = count(y);
+  log(cy + ': second count changed: ' + y);
+}
+====>
+function log(v) {
+    history.push(v);
+}
+function sumCounts (x, y) {
+  log(count(x) + ': first count changed: ' + x);
+  log(count(y) + ': second count changed: ' + y);
+}
+
+
+Question 3: Yes
+***********
+
+Question 4:
+***********
+return lift(function(d){
+	if (d > sensitivity - 1) { return minSize; }
+	else {				
+		var res = Math.round(Math.max(minSize,Math.min(maxSize, maxSize * Math.log(sensitivity - d) / Math.log(sensitivity))));
+		return res;
+	}
+},dist)
+
+Question 5:
+***********
+a)
+We can have a delay which according to the resolution of a picture we get from flicker would delay how long the picture is shown before it is changed.
+
+b)
+function relift (f){
+function (x, y){
+ if (!isDynamic(y)){ 
+     return f;
+     }else{
+     return lift function (b){return f(x,b), y}
+  }
+}		
+}

@@ -1,0 +1,54 @@
+(Grammar
+    (Declarations
+        (assoc \+ 0 left)
+        (assoc \- 0 left)
+        (assoc \>\> 1 left)
+        (assoc \<\< 1 left)
+        (assoc \& 2 left)
+        (assoc \| 2 left)
+        (assoc \! 3 right)
+        (assoc \~ 3 right)
+    )
+    (Rules
+        (Rule E
+            (production [ E, \+, E, ]
+                (action { return n1 + n2 })
+            )
+            (production [ E, \-, E, ]
+                (action { return n1 - n2 })
+            )
+            (production [ E, \&, E, ]
+                (action { return n1 & n2 })
+            )
+            (production [ E, \|, E, ]
+                (action { return n1 | n2 })
+            )
+            (production [ E, \>\>, E, ]
+                (action { return n1 >> n2 })
+            )
+            (production [ E, \<\<, E, ]
+                (action { return n1 << n2 })
+            )
+            (production [ \(, E, \), ]
+                (action { return n1 })
+            )
+            (production [ \!, E, ]
+                (action { return !n1 })
+            )
+            (production [ \~, E, ]
+                (action { return ~n1 })
+            )
+            (production [ \-, E, ]
+                (assoc \!)
+                (action { return -n1 })
+            )
+            (production [ NUM, ]
+            )
+        )
+        (Rule NUM
+            (production [ [1-9][0-9]*, ]
+            )
+        )
+    )
+    (StartSymbol E)
+)

@@ -1,0 +1,12 @@
+U 31623 Norris Hunt -1500.00
+I 20301 Joe Hammil +500.00
+I 31416 Becky Wu +100.00
+U 10203 Mindy Ho -2000.00
+U 14142 James Bond +1500.00
+U 27183 Teresa Wong -1234.56
+I 10101 Judy Malik +1000.00
+I 32123 John Doe +900.00
+I 22222 Joanne Doe +2750.02
+D 31623 Norris Hunt 0
+D 10203 Mindy Ho 0
+D 27183 Teresa Wong 0

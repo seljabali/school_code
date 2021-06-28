@@ -1,0 +1,70 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 %import mymodule\
+%ignore /[ \\t\\n]+/\
+%left '+'\
+%left '*'\
+%%\
+\
+S ->	  E       		%\{ mymodule.printResult(n1.val) %\}\
+	| '(' E ')'		%\{ mymodule.printResult(n1.val) %\}\
+	| E 'in' ToUnit 	%\{ mymodule.printResult(mymodule.Convert(n1.val, n3.val)) %\}\
+   	;\
+\
+E ->      E '+' E    		%\{ return mymodule.Add(n1.val,n3.val) %\}   \
+	| E '-' E        	%\{ return mymodule.Subtract(n1.val,n3.val) %\}   \
+   	| E '*' E   		%\{ return mymodule.Times(n1.val,n3.val) %\}\
+	| E '/' E		%\{ return mymodule.Divide(n1.val, n3.val) %\}           \
+	| Number '!' Unit	%\{ return mymodule.Factorial(n1.val) %\}\
+	| Term			%\{ return n1.val %\}\
+	;\
+\
+			#CONVERT TO SI\
+Term ->   Number Unit 	  %\{return mymodule.Times(n1.val, n2.val) %\} \
+	| F Q Number Unit %\{return mymodule.Times(mymodule.Times(n1.val,n2.val),mymodule.Times(n3.val,n4.val)) %\} \
+	;\
+\
+F -> 	  F F		%\{return n1.val * n2.val%\}\
+	| FTypes	%\{return n1.val%\}\
+	;\
+\
+FTypes -> 'half'	%\{return float(.5) %\}\
+	| 'quater'	%\{return float(.25)%\}\
+	| _		%\{return int(1.)%\}\
+	;\
+\
+Q -> 	  'dozen'	%\{return int(12.)%\}\
+	| 'couple'	%\{return int(2.) %\}\
+	| _		%\{return int(1.)%\}\
+	;	\
+			#LEAVE AS IS\
+Unit ->   Unit '/'  Unit 	%\{ return mymodule.Divide(n1.val,n3.val) %\}\
+	| Unit '^' Number 	%\{ return mymodule.Pow(n1.val, n3.val) %\}\
+	| UTypes	 	%\{ return mymodule.Term(n1.val).getSI() %\}\
+      	| _        		%\{ return [1.,\{\}] %\}\
+      	;	\
+\
+ToUnit -> ToUnit '/'  ToUnit 	%\{ return mymodule.Divide(n1.val, n3.val) %\}\
+	| ToUnit '^' Number 	%\{ return mymodule.Pow(n1.val, n3.val) %\}\
+	| UTypes	 	%\{ return mymodule.Term(n1.val).getInit() %\}\
+      	| _        		%\{ return [1.,\{\}] %\}\
+      	;	\
+\
+\
+UTypes -> 'm' 		%\{ return n1.val %\}\
+	|'feet'		%\{ return n1.val %\}\
+	|'mph'		%\{ return n1.val %\}\
+	|'liter'	%\{ return n1.val %\}\
+	|'J'		%\{ return n1.val %\}\
+	|'calorie'	%\{ return n1.val %\}\
+	|'s'		%\{ return n1.val %\}\
+	|'acre'		%\{ return n1.val %\}\
+	|'km' 		%\{ return n1.val %\}\
+	;\
+\
+Number -> /\\d+\\.\\d*|\\d+|\\.\\d+/  %\{ return int(n1.val) %\}\
+    ;}

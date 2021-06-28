@@ -1,0 +1,66 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  user_id: 1
+  title: Washington VS. Cal
+  description: Washington Plays Cal
+  summary: Washington Plays Cal
+  telephone: 555-555-5555
+  event_datetime: 9/06/2008 3:30 PM
+  street1: Stadium
+  city: Pullman
+  state: WA
+  zip: 12345
+  country: USA
+  longitude: -122.301525
+  latitude: 47.6501111111111
+
+two:
+  id: 2
+  user_id: 1
+  title: Maryland VS. Cal
+  description: Maryland Plays Cal
+  summary: Maryland Plays Cal
+  telephone: 555-555-5555
+  event_datetime: 9/13/2008 9:00 AM
+  street1: Stadium
+  city: College Park,
+  state: MD
+  zip: 12345
+  country: USA
+  longitude: -76.6228027777778
+  latitude: 39.2777916666667
+
+three:
+  id: 3
+  user_id: 2
+  title: Arizona VS. Cal
+  description: Arizona Plays Cal
+  summary: Arizona Plays Cal
+  telephone: 555-555-5555
+  event_datetime: 10/18/2008 7:00 PM
+  street1: Stadium
+  city: Tucson
+  state: AZ
+  zip: 12345
+  country: USA
+  longitude: -110.948841666667
+  latitude: 32.2287722222222
+
+four:
+  id: 4
+  user_id: 3
+  title: Michigan at Cal
+  description: Michigan Plays Cal
+  summary: Michigan Plays Cal
+  telephone: 555-555-5555
+  event_datetime: 8/30/2008 5:00 PM
+  street1: Stadium
+  city: Berkeley
+  state: CA
+  zip: 94704
+  country: USA
+  longitude: -122.264830555556
+  latitude: 37.8686194444444
+

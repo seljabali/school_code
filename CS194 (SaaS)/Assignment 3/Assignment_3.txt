@@ -1,0 +1,133 @@
+
+* Overview
+
+  This Lab will build upon Assignment 2 and add model validations and 
+  authentication. We will be using RESTful authentication and adding
+  access validation for all actions. 
+  
+  Again, we will supply the spec to make sure the access restrictions are 
+  being handled correctly. 
+
+* Prep Work
+  
+  1. Start with your *working* solution to assignment 2.  For safety,
+     MAKE A COMPLETE COPY of your working solution directory, and use
+     that copy to start Assignment 3.
+  
+  2. Unpack the Assignment3.zip file as before in the application
+     root directory of the COPY of your Assignment 2.
+
+     unzip Assignment_3.zip
+
+     REMINDER: From this point on, all command lines should be executed
+     in the app root directory of assignment 3 unless otherwise noted.
+     
+     The zipfile includes the RESTful authentication plugin.  During the
+     lab you'll see how it works, but you should also look at Chapter 14
+     of The Rails Way, which describes the structurally similar Acts As
+     Authenticated plugin.
+
+  3. Generate the user and session models. The RESTful authentication plugin
+     adds capabilities to script/generate for doing this.
+
+       ruby script/generate authenticated user sessions
+
+     (If prompted whether to overwrite some existing files, the answer
+     is no.)
+
+     HINT: The generator will print some helpful messages like "Once
+     finished, don't forget to..." - pay attention to these, you'll need
+     them later.
+
+     HINT: You will find a helpful comment right at the top of
+     users_controller.rb.  Take heed of it.  Check out chapter 14 (Acts
+     as authenticated) of the Rails Way to  understand why it's there.
+     
+  4. Migrate the database using the migrations created by the generator.
+     This should run 2 successful migrations, CreateUsers and
+     AddUserAssociations. 
+
+     rake db:migrate
+     
+* Part 1: Refactoring Events and Comments
+
+  1. In lab 2, the model structure was an Event that has_many Comments.
+     For lab 3, refactor the event and comment so they have user
+     references.  That is, an Event is associated with the one User who
+     created it, and a Comment is associated both with an Event and with
+     the User who posted it.
+
+     You will end up with three models - Events, Comments, Users - with
+     the appropriate associations among them.
+
+  2. Add model validations as follows.
+     HINT: You may want to learn about regular expressions (Ruby library
+     class Regexp) to help you write some of the validation rules.
+
+     Event:
+     a. The following fields must have values: 
+        title, description, event_datetime, summary, street1, city, 
+        state, country, telephone
+     b. telephone number must have only numbers and '-'.
+     c. title may be at most 100 characters long.
+     d. description may be at most 500 characters long.
+     e. summary may be at most 100 characters long.
+     f. zip code must begin with 5 digits which may be followed by 
+        an optional '-' (possibly with whitespace around it) and 4 digits.
+     g. an event must be associated with a user.
+     
+     Comment:
+     a. comment field must have a value.
+     b. comment must be associated with an event and a user.
+  
+     Spec tests are provided that validate the above.  Interactively,
+     you should be able to associate users with events, 
+
+* Part 2: Add Authentication and Access Control
+     
+  HINT: Chapter 14 of The Rails Way will be very helpful in
+  understanding the flow of authentication, and how the
+  RESTful-authentication plugin combines model validations and
+  controller filters to accomplish this flow.
+
+  1. Access control must restrict as follows:
+  
+     a. A user must be logged in to add events or comments.
+     b. Only the user who created an event can edit the event.
+     c. Authentication is not required to view information.
+     
+
+     HINT: Define a new access_denied method to handle the condition
+     when a user has insufficient privileges.  CAUTION: As always, 
+     understand how the example implementation below actually works
+     before you copy and paste it!
+
+      def access_denied
+        if logged_in?
+          render :text => "You have insufficient permissions", :status => 401
+          return false
+        else
+          super
+        end
+      end
+
+      HINT: Use a before-filter for the actions that need validation:
+      (This example is for Comment, Event left as an exercise)
+
+      def check_user
+        @comment = Comment.find(params[:id])
+        unless @comment.user_id == current_user.id
+          access_denied
+        end
+      end
+
+  2. Add the user_bar partial to the top of the main application
+      layout.  (The partial is provided for you in the layouts
+      directory.) 
+  
+ * Goal
+
+Get all rspec tests to pass.
+    
+
+

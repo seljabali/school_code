@@ -1,0 +1,68 @@
+import ast
+
+builtins = {
+        #"Void"   : [ ast.Undefined],
+        #"Null"   : [ ast.Undefined, ast.Null ],
+        "Boolean" : [ ast.True_, ast.False_ ],
+        "Number"  : [ ast.Number ],
+        "String"  : [ ast.String ],
+        "Array"   : [ ast.ArrayInit ],
+        "Object"  : [ ast.ObjectInit ]
+}
+
+class TypeChecker(ast.Visitor):
+
+    def compareTypes(t1, t2):
+        return t1.value == t2.value
+        
+    def typeNameOf(value):
+        tvalue = type(value)
+        for name, typeList in self.typeNames.items():
+            for t in typeList:
+                if tvalue == t:
+                    return name
+        return "untyped"
+
+    def __init__ (self, emitter, types):
+        self.out = emitter
+        self.typeNames = dict(builtins) #+ semant.classes
+        self.table = types.table
+    
+        
+    def visitClassA(self, c_):
+        cname = c_.cname.value                  
+        self.curClassName = cname
+        super = None
+        if c_.csuper:
+            super = c_.csuper.value
+            self.table['class'][cname]['super'] = c_.csuper.value
+        else:
+            self.table['class'][cname]['super'] = None
+        self.inClass = True
+        c_.cbody.accept(self)
+        self.inClass = False
+
+    def visitCBlock(self, b_):
+        for o in b_.children:
+            self.static = o[1]
+            if type(o) == type(('tu','ple')):
+                if isinstance(o[0], ast.Statements.FunctionDecl):
+                    #print o[0].name.value
+                    self.curMethod = None
+            o[0].accept(self)        
+        
+    
+    def visitVarDecl (self, decl):
+        print decl.typeDecorator
+        decl.name.accept (self)
+        if decl.initializer:
+            #self.e.printdent (" = ", endLine=False)
+            decl.initializer.accept (self)
+    
+    def visitAtomType(self, type_):
+        if type_.value not in self.typeNames:
+            self.out.error("%s is not a valid type" % type_.value)
+        
+    def visitDynamicType(self):
+        pass
+    

@@ -1,0 +1,70 @@
+
+* Overview
+
+Here's your first end-to-end Rails assignment. This will build upon
+last weeks assignment adding the controller and view portions of the
+application. This will be your first real Rails web application and
+getting it right can be a bit tricky. Just to add some complexity, you
+will need to add an additional model, comment. 
+
+Each event can have many comments. The comments model will be very
+simple (the migration is supplied as before) and only contain a
+comment text field. The user can only view comments while viewing the
+event; the tests will require that there are no separate index or show
+actions for the comment which render html only xml rendering is
+supported (we'll get to REST later). The new and edit will be
+implemented usual.
+
+There are some complexities with regards to the multimodel
+associations, so watch out.
+
+* Tasks
+  
+  1. Create a simple rails application
+  
+  2. Unpack the Applicaiton_2.zip file as before in your application
+     root directory.
+
+     unzip Assignment_2.zip
+
+  3. Migrate your database to add the new Comment model.
+
+     rake db:migrate
+
+  4. Add the Comment model to the models directory and create the
+     necessary associations between the event and the comments. Now
+     create the routing required for both the events and the comments
+     and the associations. If you decided to be clever and scaffold,
+     you will have to rewrite a lot of your code since the scaffold
+     didn't know about the association.
+
+* Hints
+
+  1. All the url helpers will need to change slightly to support the
+     association. The navigation through the site should be as
+     follows:
+
+     a. The default view is the events list.
+
+     b. The events list will allow for the user to create a new event or
+     	show, edit, and delete an existing event.
+
+     c. The show event will list all comments associated with the
+     	event and allow the user to add a new comment and delete
+     	existing comments.
+
+     d. Adding and editing the comments will take the user to a new
+     	page (we haven't learned AJAX yet.) 
+
+  2. Keep MVC in mind; test models, controllers, and views seperately with
+     'rake spec:models', 'rake spec:controllers', and 'rake spec:views',
+     respectively. Likewise, you can test an invidiual spec with 'ruby
+     spec/models/event_spec.rb' but you may have to 'rake db:test:prepare'
+     before that.
+
+ * Goal
+
+Get the rspec tests to pass.
+    
+
+

@@ -1,0 +1,34 @@
+import ast
+
+builtins = {
+        "Void" : [ ast.Undefined],
+        "Null" : [ ast.Undefined, ast.Null ],
+        "Boolean" : [ ast.True, ast.False ],
+        "Number" : [ ast.Number ],
+        "String" : [ ast.String ],
+        "Array" : [ ast.ArrayInit ]
+        "Object" : [ ast.ObjectInit ]
+}
+
+class TypeChecker(ast.Visitor):
+
+    def compareTypes(t1, t2):
+        t1.value == t2.value
+
+    def typeNameOf(value):
+        tvalue = type(value)
+        for name, typeList in self.typeNames.items():
+            for t in typeList:
+                if tvalue == t:
+                    return name
+        return "untyped"
+
+    def __init__ (self, emitter, semant):
+        self.out = emitter
+        self.typeNames = dict(builtins) #+ semant.classes
+        
+
+    def visitAtomType(self, type_):
+        if type_.value not in self.typeNames:
+            self.out.error("%s is not a valid type" % type_.value)
+        

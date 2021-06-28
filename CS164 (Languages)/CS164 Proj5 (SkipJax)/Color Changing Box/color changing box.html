@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Hello world!</title>
+  </head>
+  <body>
+    <p>The mouse's coordinates are ({! mouseLeft()!}, {! mouseTop()!})</p>
+    <div id="themouse" style={!{ 
+            backgroundColor: '#336699', //lol
+            position: 'absolute',
+            left: delay(mouseLeft(), 500),
+            top: delay(mouseTop(),500),
+            padding: '10px'} !}
+    </div>
+    <script type="text/skipjax">
+    var lifted = lift (function (x){
+        if (x > 50){return '#C0C0C0';}
+        }, mouseLeft());
+    insertValue(lifted,$('themouse').style, 'backgroundColor');
+    </script>
+  </body>
+</html>
+
+

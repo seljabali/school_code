@@ -1,0 +1,25 @@
+ss = data.frame(c(data2$S1[1:254], data2$S2[1:254], data2$S3[1:254], data2$S4[1:254], data2$S5[1:254]), rep(c(1,2,3,4,5), c(254,254,254,254)))
+
+
+ss = data.frame(x=data$x[1:254], y=data$y[1:254], signal = c(data2$S1[1:254], data2$S2[1:254], data2$S3[1:254],data2$S4[1:254,data2$S5[1:254]), accessPoints = rep(c(1,2,3,4,5), c(254,254,254,254,254)), client = rep(c(1:254),5))
+
+255  19.0  49.0 -33 -85 -92 -72 -82
+256 213.0  34.0 -92 -35 -71 -92 -75
+257 206.0 120.0 -92 -67 -38 -81 -84
+258  12.0 118.0 -72 -92 -85 -31 -92
+259 110.7  66.0 -76 -81 -88 -84 -38
+
+s1 = 19,49
+distance = sqrt(  (data2$x - x)^2 + power((data2$y - y),2)  )
+
+
+data.frame(c(distance = ss[accessPoint=1])
+
+lol = ss$x(which(ss['accessPoints'] == 1, TRUE)) - 19 	
+
+sqrt((rep(data2$x[1:254],5) - rep(AP$x, rep(254,5)))^2 + (rep(wifi$y[1:254]),5) - rep(AP$y, rep(254,5)))^2)
+
+AP = data.frame(x=data2$x[250:254], y = data2$y[250:254])
+
+
+distance = sqrt(  (ss$x - x)^2 + (ss$y - y) ^ 2)

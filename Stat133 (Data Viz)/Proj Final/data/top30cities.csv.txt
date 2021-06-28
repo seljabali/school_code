@@ -1,0 +1,31 @@
+city, state, latitude, longitude
+New York, NY, 40.7833, -73.9667 
+Los Angeles,CA,  34.50, -118.25
+Chicago, IL, 41.8333, -87.6167
+Houston, TX, 29.75, -95.35
+Philadelphia, PA, 39.95, -75.1667 
+Phoenix, AZ, 33.4833, -112.0667
+San Diego, CA, 32.70, -117.1667
+San Antonio, TX, 29.3833, -98.55
+Dallas, TX, 32.7667, -96.7667
+Detroit, MI, 42.3333, -83.0500
+San Jose, CA, 37.3333, -117.1667
+Indianapolis, IN, 39.7667, -86.1667
+Jacksonville, FL, 30.3667, -81.6667 
+San Francisco, CA, 37.7833, -122.4333
+Columbus, OH, 40.0, -83.0167
+Austin, TX, 30.2667, -97.7333
+Memphis, TN, 35.15, -90.05
+Baltimore, MD, 39.3, -76.6333
+Milwaukee, WI, 43.0333, -87.9167
+Fort Worth, TX, 32.7167, -97.3167
+Charlotte, NC, 35.2333, -80.8333 
+El Paso, TX, 31.7667, -106.4833
+Boston, MA, 42.35, -71.0833
+Seattle, WA, 47.6167, -122.3333
+District of Columbia, DC, 38.8833, -77.0333
+Denver, CO, 39.75, -105.0
+Nashville-Davidson, TN, 36.1667, -86.7833
+Portland, OR, 45.5167, -122.6833
+Oklahoma City, OK, 35.4333, -97.4667
+Las Vegas, NV, 36.1667, -115.2

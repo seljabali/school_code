@@ -1,0 +1,149 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 %import mymodule\
+%ignore /[ \\t\\n]+/\
+%ignore /#.*/\
+%left '+'\
+%left '*'\
+%%\
+\
+S ->	  E       		%\{ return n1.val %\}\
+	| '(' E ')'		%\{ return n2.val %\}\
+	| E 'in' ToUnit 	%\{ return mymodule.Convert(n1.val, n3.val) %\}\
+   	;\
+\
+E ->      E '+' E    		%\{ return mymodule.Add(n1.val,n3.val) %\}   \
+	| E '-' E        	%\{ return mymodule.Subtract(n1.val,n3.val) %\}   \
+   	| E '*' E   		%\{ return mymodule.Times(n1.val,n3.val) %\}\
+	| E '/' E		%\{ return mymodule.Divide(n1.val, n3.val) %\}           \
+	| Number '!' Unit	%\{ return mymodule.Times(mymodule.Factorial(n1.val),n3.val) %\}\
+	| Term			%\{ return n1.val %\}\
+	;\
+\
+\
+Term ->   Number Unit 	  %\{return mymodule.Times(n1.val, n2.val) %\} \
+	| F Q Number Unit %\{return mymodule.Times(mymodule.Times(n1.val,n2.val),mymodule.Times(n3.val,n4.val)) %\} \
+	;\
+\
+F -> 	  F F		%\{return n1.val * n2.val%\}\
+	| F		%\{ return n1.val %\}\
+	| FTypes	%\{return n1.val%\}\
+	;\
+\
+FTypes -> 'half'	%\{return mymodule.FQ(n1.val) %\}\
+	| 'quater'	%\{return mymodule.FQ(n1.val) %\}\
+	| _		%\{return mymodule.Epsilon(n1.val) %\}\
+	;\
+\
+Q ->	QType		%\{return n1.val%\}\
+	;  \
+\
+QType ->  'dozen'	%\{return mymodule.FQ(n1.val) %\}\
+	| 'couple'	%\{return mymodule.FQ(n1.val) %\}\
+	| _		%\{return mymodule.Epsilon(n1.val) %\}\
+	;	\
+\
+Unit ->   '(' Unit')'		%\{ return n2.val %\}\
+	| Unit '/'  Unit 	%\{ return mymodule.Divide(n1.val,n3.val) %\}\
+	| Unit '*' Unit		%\{ return mymodule.Times(n1.val,n3.val) %\}\
+	| Unit '^' Number 	%\{ return mymodule.Pow(n1.val, n3.val) %\}\
+	| UTypes	 	%\{ return mymodule.Term(n1.val).getSI() %\}\
+      	| _        		%\{ return mymodule.Epsilon(n1.val) %\}\
+      	;	\
+\
+ToUnit -> '(' ToUnit')'		%\{ return n2.val %\}\
+	| ToUnit '*' ToUnit	%\{ return mymodule.Times(n1.val,n3.val) %\}\
+	| ToUnit '/'  ToUnit 	%\{ return mymodule.Divide(n1.val, n3.val) %\}\
+	| ToUnit '^' Number 	%\{ return mymodule.Pow(n1.val, n3.val) %\}\
+	| UTypes	 	%\{ return mymodule.Term(n1.val).getInit() %\}\
+      	| _        		%\{ return mymodule.Epsilon(n1.val) %\}\
+      	;	\
+\
+\
+UTypes -> 'm' 		%\{ return n1.val %\}\
+	|'cm'		%\{ return n1.val %\}\
+	|'mm'		%\{ return n1.val %\}\
+	|'km'		%\{ return n1.val %\}\
+	|'feet'		%\{ return n1.val %\}\
+	|'foot'		%\{ return n1.val %\}\
+	|'in'		%\{ return n1.val %\}\
+	|'inch'		%\{ return n1.val %\}\
+	|'inches'	%\{ return n1.val %\}\
+	|'smoot'	%\{ return n1.val %\}\
+	|'smoots'	%\{ return n1.val %\}\
+	|'mile'		%\{ return n1.val %\}\
+	|'miles'	%\{ return n1.val %\}\
+	|'ly'		%\{ return n1.val %\}\
+	|'lightyear'	%\{ return n1.val %\}\
+	|'lightyears'	%\{ return n1.val %\}\
+	|'AU'		%\{ return n1.val %\}\
+	|'g'		%\{ return n1.val %\}\
+	|'gram'		%\{ return n1.val %\}\
+	|'grams'	%\{ return n1.val %\}	\
+	|'kg'		%\{ return n1.val %\}\
+	|'lb'		%\{ return n1.val %\}\
+	|'lbs'		%\{ return n1.val %\}\
+	|'pound'	%\{ return n1.val %\}\
+	|'pounds'	%\{ return n1.val %\}\
+	|'acre'		%\{ return n1.val %\}\
+	|'acres'	%\{ return n1.val %\}\
+	|'s'		%\{ return n1.val %\}\
+	|'sec'		%\{ return n1.val %\}\
+	|'secs'		%\{ return n1.val %\}\
+	|'secound'	%\{ return n1.val %\}\
+	|'secounds'	%\{ return n1.val %\}\
+	|'min'		%\{ return n1.val %\}\
+	|'minute'	%\{ return n1.val %\}\
+	|'minutes'	%\{ return n1.val %\}\
+	|'h'		%\{ return n1.val %\}\
+	|'hour'		%\{ return n1.val %\}\
+	|'hours'	%\{ return n1.val %\}\
+	|'day'		%\{ return n1.val %\}\
+	|'days'		%\{ return n1.val %\}\
+	|'year'		%\{ return n1.val %\}\
+	|'years'	%\{ return n1.val %\}\
+	|'a cup'	%\{ return n1.val %\}\
+	|'a cups'	%\{ return n1.val %\}\
+	|'cup'		%\{ return n1.val %\}\
+	|'cups'		%\{ return n1.val %\}\
+	|'L'		%\{ return n1.val %\}\
+	|'l'		%\{ return n1.val %\}\
+	|'liter'	%\{ return n1.val %\}\
+	|'liters'	%\{ return n1.val %\}\
+	|'Liter'	%\{ return n1.val %\}\
+	|'Liters'	%\{ return n1.val %\}\
+	|'teaspoon'	%\{ return n1.val %\}\
+	|'teaspoons'	%\{ return n1.val %\}\
+	|'kilderkin'	%\{ return n1.val %\}\
+	|'kilderkins'	%\{ return n1.val %\}\
+	|'pint'		%\{ return n1.val %\}\
+	|'pints'	%\{ return n1.val %\}\
+	|'fl oz'	%\{ return n1.val %\}\
+	|'mph'		%\{ return n1.val %\}\
+	|'c'		%\{ return n1.val %\}\
+	|'knot'		%\{ return n1.val %\}\
+	|'knots'	%\{ return n1.val %\}\
+   	|'J'		%\{ return n1.val %\}\
+   	|'Joule'	%\{ return n1.val %\}\
+   	|'Joules'	%\{ return n1.val %\}\
+	|'joule'	%\{ return n1.val %\}\
+   	|'joules'	%\{ return n1.val %\}\
+   	|'cal'		%\{ return n1.val %\}\
+   	|'calorie'	%\{ return n1.val %\}\
+   	|'calories'	%\{ return n1.val %\}\
+   	|'Cal'		%\{ return n1.val %\}\
+   	|'Calorie'	%\{ return n1.val %\}\
+   	|'Calories'	%\{ return n1.val %\}\
+   	|'W'		%\{ return n1.val %\}\
+   	|'Watt'		%\{ return n1.val %\}\
+   	|'watt'		%\{ return n1.val %\}\
+   	|'Watts'	%\{ return n1.val %\}\
+   	|'watts'	%\{ return n1.val %\}\
+	;\
+\
+Number -> /\\d+\\.\\d*|\\d+|\\.\\d+/  %\{ return int(n1.val) %\}\
+    ;		}

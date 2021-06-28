@@ -1,0 +1,9 @@
+%ignore ' '
+%%
+S -> Stmt /$/ ;
+
+Stmt -> Hello | Foo ;
+
+Hello -> 'Hello' 'world' ;
+
+Foo -> 'Foo' 'bar' ;

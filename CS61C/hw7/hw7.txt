@@ -1,0 +1,26 @@
+/*Sami Eljabali
+ *cs61c-by
+ */
+1)
+   a. 10^6(100*10^^-12)) = 1 * 10^-4
+   b. 10^6 / 20 pipeline = 50000
+      50000*100*10^-12 = 1.0(10^4) = 5.0(10^-6)
+      1.0*10^-4/5.0*10^-6) = 20x quicker.
+   c. Throughput.
+
+2)
+add $3, $4, $2     F D A M R
+sub $5, $3, $1       F D A M R (forwarded from add's alu)
+lw $6, 200($3)         F D A M R(forwarded from add's alu)
+nop
+add $7, $3, $6             F D A M R (stall then forwarded from lw's mem)
+
+3) 
+When stride = 256; 100% miss rate. 
+When stride = 255; hit, miss, miss, hit, miss, miss
+In 2-way set associative; 100% hits.
+
+4)
+Page: 16kb = (2^4*2^10); 
+Page Size: 26bits * 2^26
+

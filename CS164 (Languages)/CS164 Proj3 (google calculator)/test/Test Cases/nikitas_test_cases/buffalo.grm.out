@@ -1,0 +1,37 @@
+(Grammar
+    (Declarations
+    )
+    (Rules
+        (Rule S
+            (production [ NP, VP, ]
+            )
+        )
+        (Rule NP
+            (production [ NP, RC, ]
+            )
+            (production [ PN, N, ]
+            )
+        )
+        (Rule RC
+            (production [ NP, V, ]
+            )
+        )
+        (Rule VP
+            (production [ V, NP, ]
+            )
+        )
+        (Rule PN
+            (production [ Buffalo, ]
+            )
+        )
+        (Rule N
+            (production [ buffalo, ]
+            )
+        )
+        (Rule V
+            (production [ buffalo, ]
+            )
+        )
+    )
+    (StartSymbol S)
+)

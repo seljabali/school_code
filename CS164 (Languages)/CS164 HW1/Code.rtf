@@ -1,0 +1,150 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 <!--Sami Eljabali\
+    CS164-bh\
+    HW1\
+    Sept 3rd, 07\
+//--->\
+<html>\
+<head>\
+<title>Sami Eljabali's HW1</title>\
+<style type="text/css">\
+\
+body \{\
+ font:76% normal verdana,arial,tahoma;\
+\}\
+\
+h1, h2 \{\
+ font-size:1em;\
+\}\
+\
+#Box \{\
+ /* Box Properties */\
+ position:absolute;\
+ left:0px;\
+ top:10em;\
+ width:22em;\
+ line-height:5em;\
+ height:10;\
+ background:#99ccff;\
+ foreground:#28ccff;\
+ border:1px solid #003366;\
+ white-space:nowrap;\
+ padding:0.5em;\
+\}\
+\
+</style>\
+<script type="text/javascript">\
+\
+//Date from count-down\
+var grad_day = new Date("May 28, 2008 00:00:00 GMT");\
+var box = null;\
+var tempX = 0, tempY = 0;\
+var boxX = 0, boxY = 0;\
+var IE = document.all?true:false;\
+\
+//Compatibility taken from //http://www.thescripts.com/forum/thread150939.html\
+if (!IE) document.captureEvents(Event.MOUSEMOVE)\
+function getMouseXY(e) \{\
+  if (IE) \{ // grab the x-y pos.s if browser is IE\
+    tempX = event.clientX + document.body.scrollLeft\
+    tempY = event.clientY + document.body.scrollTop\
+  \} else \{  // grab the x-y pos.s if browser is NS\
+    tempX = e.pageX\
+    tempY = e.pageY\
+  \}\
+  if (tempX < 0)\{tempX = 0\}\
+  if (tempY < 0)\{tempY = 0\}  \
+  return true\
+\}\
+\
+//Box\
+function doHeight()\{\
+  box.style.height =(Math.round(100 - Math.sqrt(\
+  Math.pow (tempX - boxX, 2) +\
+  Math.pow (tempY - boxY, 2) ))).toString();\
+  setTimeout(doHeight,1);\
+\}\
+\
+function doMove() \{\
+  boxX = tempX;\
+  boxY = tempY;\
+  box.style.left = tempX; //parseInt(box.style.left)+1+'px';\
+  box.style.top = tempY;\
+  setTimeout(doMove,200); //call doMove in 20msec\
+\}\
+\
+function doTimer() \{\
+  var cur_day = new Date()\
+  var time_left = Math.floor(\
+                 (grad_day.getTime()-cur_day.getTime()) /1000);\
+\
+  var secs = time_left %60;\
+  time_left=Math.floor(time_left/60);\
+\
+  var mins = time_left%60;\
+  time_left = Math.floor(time_left/60);\
+\
+  var hours = time_left%24;\
+  time_left = Math.floor(time_left/24);\
+  \
+  var days = time_left;   \
+ \
+  var output = "Freedom in: "+ "Days: " + days + " Hours: " +\
+                hours + " Mins: " + mins + " Secs: " + secs;\
+  document.getElementById('Box').innerHTML= output;\
+  setTimeout(doTimer,100);\
+\}\
+\
+function init() \{\
+  box = document.getElementById('Box');\
+  box.style.left = '0px';\
+  doMove(); \
+  doHeight();\
+  doTimer();\
+\}\
+\
+\
+window.onload = init;\
+document.onmousemove = getMouseXY;\
+document.onmousemove.write(tempX);\
+</script>\
+</head>\
+\
+<body>\
+\
+<h1>Sami Eljabali's HW1: Countdown to Graduation</h1>\
+<h3><p> Part 2: Analyze</p></h3>\
+<h1>HTML Syntax/Semantics Errors:</h1>\
+<p>1) Couldn't get to display a new line by writing "\\n" in the text and I still can't. I am only using the p tag</p>\
+<p>2) Was referring to javascript variable names in the html section by using the script tag</p>\
+<p>3) 100 tries to find out how to write text in the box in the javascript</p>\
+<p>4) Trying to display the box without the div tag</p>\
+<p>5) Mismatched parenthesis </p>\
+<p>6) Dind't include the /p when closing a p tag </p>\
+<p>7) Didn't close the html tag </p>\
+<p>8) Mispelled variable name </p>\
+<p>9) Didn't add the + in between strings<p>\
+\
+<h1> Logical Errors</h1>\
+<p>1) Was expecting sequential running of code </p>\
+<p>2) Didn't have functions called, since they needed to be event triggered</p>\
+<p>3) Didn't have the functions call themselves TimeSet</p>\
+<p>4) Figuring out how to deal with getTime \
+\
+<h3><p>Part 3: Critique & Suggestions</p></h3>\
+When describing an object as such "line-height:5em;"<p>What is meant by em?\
+There is also another unit px. Both em and px are used to describe</p> location. How?! Again you can also describe width with em. Bright side you can describe it <p>using percentages.</p>\
+<p> Why on earth does getTime get the time from 1/1/1970?!!</p>\
+<p> Think the whole idea of inserting tags is primitive. Must have</p><p> templates, or at least have structures pre-defined such as bullet points. numbered points such</p> <p> as MS Word.</p>\
+\
+<div id="Box">\
+</div>\
+\
+\
+</body>\
+</html>}

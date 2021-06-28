@@ -1,0 +1,10 @@
+//a stack language
+%%
+ARPN -> V ARPN | UNIT ARPN | _ ;
+V -> V V OP | ID | NUM;
+UNIT -> ASGN | RM;
+ASGN -> V ID ':=';
+RM -> ID 'x=';
+OP -> '+' | 'x' | '-';
+ID -> /[a-zA-Z][a-zA-Z0-9]*/;
+NUM -> /[1-9][0-9]*/;
