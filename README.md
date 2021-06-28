@@ -1,1 +1,1 @@
-# school_code
+# Various college courses'work
